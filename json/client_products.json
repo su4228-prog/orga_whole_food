@@ -1,0 +1,68 @@
+{
+  "section_title": "고객님만을 위한 이 상품",
+  "subtitle": "#AI 취향 비슷한 고객들이 구매한 상품 추천 드려요",
+  "items": [
+    {
+      "id": 1,
+      "image": "./img/client_product/01.jpg",
+      "badge": null,
+      "brand": "올가",
+      "name": "블루베리가 들어간 샌드웨이퍼 (32g)",
+      "discount": null,
+      "price": "4,200원",
+      "unit_price": "(10g당 1,313원)",
+      "rating": 4.8,
+      "reviews": 415
+    },
+    {
+      "id": 2,
+      "image": "./img/client_product/02.jpg",
+      "badge": "BEST",
+      "brand": "올가",
+      "name": "[산지직송] 프리미엄 참송이버섯 선물세트(친환경,500g) (500g)",
+      "discount": "35%",
+      "price": "130,000원",
+      "unit_price": "(100g당 26,000원)",
+      "rating": 4.9,
+      "reviews": 23,
+      "delivery_badge": "무료배송"
+    },
+    {
+      "id": 3,
+      "image": "./img/client_product/03.jpg",
+      "badge": "BEST",
+      "brand": "올가",
+      "name": "ORGA 바삭하고 고소한 파래 김자반 (50g)",
+      "discount": "33%",
+      "price": "3,200원",
+      "unit_price": "(10g당 640원)",
+      "rating": 4.9,
+      "reviews": 1631
+    },
+    {
+      "id": 4,
+      "image": "./img/client_product/04.jpg",
+      "badge": "BEST",
+      "brand": "올가",
+      "name": "현미 국산쑥 모나카(소비기한:26/09/11) (13g×8개)",
+      "discount": "37%",
+      "price": "3,300원",
+      "unit_price": "(10g당 317원)",
+      "rating": 4.8,
+      "reviews": 761
+    },
+    {
+      "id": 5,
+      "image": "./img/client_product/05.jpg",
+      "badge": "BEST",
+      "brand": "올가",
+      "name": "얇은피 새우만두 (480g)",
+      "discount": "40%",
+      "price": "7,500원",
+      "unit_price": "(100g당 1,563원)",
+      "rating": 4.8,
+      "reviews": 437,
+      "extra_badge": "골라담아할인"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "section_title": "MD 추천상품",
+  "banner": "./img/md_prodcut/01.jpg",
+  "items": [
+    {
+      "id": 1,
+      "image": "./img/md_prodcut/02.jpg",
+      "badge": "BEST",
+      "brand": "올가",
+      "name": "[산지직송]도축 4일 무항생제 삼겹살세트 800g",
+      "discount": null,
+      "price": "48,900원",
+      "unit_price": "(100g당 6,113원)",
+      "rating": 4.8,
+      "reviews": 28
+    },
+    {
+      "id": 2,
+      "image": "./img/md_prodcut/03.jpg",
+      "badge": null,
+      "brand": "올가",
+      "name": "전통 쌈장 (500g)",
+      "discount": null,
+      "price": "22,500원",
+      "unit_price": "(100g당 4,500원)",
+      "rating": 4.7,
+      "reviews": 370
+    },
+    {
+      "id": 3,
+      "image": "./img/md_prodcut/05.jpg",
+      "badge": "BEST",
+      "brand": "올가",
+      "name": "상추&깻잎쌈(친환경) (100g)",
+      "discount": null,
+      "price": "4,900원",
+      "unit_price": "(100g당 4,900원)",
+      "rating": 4.7,
+      "reviews": 17
+    },
+    {
+      "id": 4,
+      "image": "./img/md_prodcut/04.jpg",
+      "badge": null,
+      "brand": "올가",
+      "name": "지중해의 카놀라유를 넣은 깔끔한 참치 (150g)",
+      "discount": null,
+      "price": "5,500원",
+      "unit_price": "(100g당 3,667원)",
+      "rating": 4.8,
+      "reviews": 1186
+    },
+    {
+      "id": 5,
+      "image": "./img/md_prodcut/06.jpg",
+      "badge": "BEST",
+      "brand": "올가",
+      "name": "청상추(친환경) (100g)",
+      "discount": null,
+      "price": "4,900원",
+      "unit_price": "(100g당 4,900원)",
+      "rating": 5,
+      "reviews": 4
+    }
+  ]
+}

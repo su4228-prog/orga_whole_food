@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   ORGA Whole Foods - 상품 상세
+  </title>
+  <link href="./css/reset.css" rel="stylesheet"/>
+  <link href="./css/common.css" rel="stylesheet"/>
+  <link href="./css/sub.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <!-- 헤더 -->
+  <header class="site-header">
+   <div class="wrap">
+    <div class="header-top">
+     <div class="brand-group">
+      <a class="orga-logo" href="./index.html" target="_self">
+       ORGA
+       <small>
+        WHOLE FOODS
+       </small>
+      </a>
+      <div class="brand-links">
+       풀무원 |
+       <b>
+        올가
+       </b>
+       | 풀무원헬스케어
+      </div>
+     </div>
+     <label class="search-box">
+      <input aria-label="검색어 입력" type="text"/>
+      <img alt="검색" src="./img/icon/serch_icon.png"/>
+     </label>
+     <nav class="member-links">
+      <a href="#">
+       로그인
+      </a>
+      <a href="#">
+       회원가입
+      </a>
+      <a href="#">
+       고객센터
+      </a>
+     </nav>
+    </div>
+    <div class="header-bottom">
+     <nav class="main-nav">
+      <a class="category-menu" href="#">
+       <span class="hamburger">
+       </span>
+       <span>
+        카테고리
+       </span>
+      </a>
+      <a href="#">
+       전단행사
+      </a>
+      <a href="#">
+       인기상품
+      </a>
+      <a href="#">
+       매장배송
+      </a>
+      <a href="#">
+       산지직송
+      </a>
+      <a href="#">
+       올가이야기
+      </a>
+     </nav>
+     <div class="header-icons">
+      <a href="#">
+       <img alt="마이페이지" src="./img/icon/person_icon.png"/>
+      </a>
+      <a href="#">
+       <img alt="알림" src="./img/icon/bell_icon.png"/>
+      </a>
+      <a href="#">
+       <img alt="장바구니" src="./img/icon/cart_icon.png"/>
+      </a>
+     </div>
+    </div>
+   </div>
+  </header>
+  <!-- 상품 상세 메인 (데이터는 json/sub.json 에서 불러와 렌더링) -->
+  <main class="product-detail-page">
+   <div class="wrap">
+    <div class="product-detail-layout">
+     <!-- 대표 이미지 / 썸네일 / 확대 기능 -->
+     <section class="product-gallery" id="productGallery">
+     </section>
+     <!-- 상품명 / 가격 / 배송 / 수량 정보 -->
+     <section class="product-info" id="productInfo">
+     </section>
+    </div>
+    <!-- 상품후기 / 주문금액 / 구매 버튼 -->
+    <div class="product-bottom-row" id="productBottomRow">
+    </div>
+   </div>
+  </main>
+  <!-- 연관 상품 추천 슬라이더 -->
+  <section class="ai-recommend-section">
+   <div class="wrap">
+    <div class="ai-recommend-title">
+     <span class="ai-badge">
+      <strong>
+       #
+      </strong>
+      Ai
+     </span>
+     <span>
+      보고 계신 상품의 연관 상품 추천해 드려요!
+     </span>
+    </div>
+    <div class="ai-slider">
+     <button aria-label="이전 상품" class="ai-slider-btn prev" id="aiPrevBtn" type="button">
+      &lsaquo;
+     </button>
+     <div class="ai-slider-window">
+      <div class="ai-slider-track" id="aiSliderTrack">
+      </div>
+     </div>
+     <button aria-label="다음 상품" class="ai-slider-btn next" id="aiNextBtn" type="button">
+      &rsaquo;
+     </button>
+    </div>
+   </div>
+  </section>
+  <!-- 상품정보 탭 / 상세 콘텐츠 -->
+  <section class="product-info-section" id="productInfoSection">
+   <div class="product-info-tabs">
+    <div class="wrap">
+     <nav class="product-info-tab-list" id="productInfoTabList">
+     </nav>
+    </div>
+   </div>
+   <div class="product-info-content" id="productInfoContent">
+   </div>
+  </section>
+  <!-- 푸터 -->
+  <footer class="site-footer">
+   <div class="wrap">
+    <nav class="footer-menu">
+     <a href="#">
+      회사소개
+     </a>
+     <a href="#">
+      풀무원이야기
+     </a>
+     <a class="active" href="#">
+      개인정보처리방침
+     </a>
+     <a href="#">
+      이용약관
+     </a>
+     <a href="#">
+      임직원 인증
+     </a>
+     <a href="#">
+      상품입점상담
+     </a>
+    </nav>
+    <div class="footer-content">
+     <div class="footer-left">
+      <img alt="Pulmuone" class="footer-pulmuone" src="./img/footage/footer-pulmuone.svg"/>
+      <div class="footer-cert-list">
+       <img alt="ESCROW INIPAY" src="./img/footage/01.png"/>
+       <img alt="KCP" src="./img/footage/02.jpg"/>
+       <img alt="소비자중심" src="./img/footage/03.jpg"/>
+      </div>
+      <div class="footer-note">
+       이니시스 결제 시스템과 에스크로 서비스
+       <br/>
+       (결제대금예치업 등록번호 : 02-006-00012)
+       <br/>
+       를 통해 안전거래를 보장하고 있습니다.
+      </div>
+     </div>
+     <div class="footer-company">
+      <strong>
+       (주)풀무원
+      </strong>
+      <p>
+       대표자 : 이우봉 | 주소 : 서울 강남구 광평로 280 (수서동), (주) 풀무원
+      </p>
+      <p>
+       사업자등록번호 : 315-81-01744
+       <span class="linklike">
+        사업자 정보확인
+       </span>
+       | 통신판매업신고 : 제2019-서울강남-02379호
+      </p>
+      <p>
+       건강기능식품 신고 : 제2019-016813호 | 호스팅 제공자 : (주)풀무원
+      </p>
+      <p style="margin-top:15px;">
+       (주)풀무원은 통신판매중개자이며 통신판매의 당사자가 아닙니다. (주)풀무원은 상품, 거래정보 및 거래에
+       <br/>
+       대하여 책임을 지지 않습니다.
+      </p>
+      <p>
+       Copyright ⓒ Pulmuone co.,Ltd All Rights Reserved. &middot; Last updated 2026.08.24
+      </p>
+     </div>
+     <div class="footer-support">
+      <p>
+       고객기쁨센터
+       <span class="footer-phone">
+        080-022-0086
+       </span>
+       <span class="footer-kakao">
+        카카오톡상담
+       </span>
+      </p>
+      <p>
+       이메일 : pmocs_02@pulmuone.com
+      </p>
+      <p>
+       평일 : 09:00 - 18:00 | 점심시간 : 12:00 - 13:00
+      </p>
+      <div class="footer-links-bottom">
+       <a href="#">
+        고객기쁨센터 바로가기
+       </a>
+       <span>
+        &rsaquo;
+       </span>
+       <a href="#">
+        공지사항
+       </a>
+       <span>
+        &rsaquo;
+       </span>
+      </div>
+     </div>
+    </div>
+   </div>
+  </footer>
+  <!-- 맨 위로 버튼 -->
+  <button class="floating-top" id="floatingTop" type="button">
+   &uarr;
+  </button>
+   <script src="./js/sub.js"></script>
+ </body>
+</html>

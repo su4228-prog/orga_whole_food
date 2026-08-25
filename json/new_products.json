@@ -1,0 +1,35 @@
+{
+  "section_title": "NEW, 제일 먼저 만나는 신상품",
+  "items": [
+    {
+      "id": 1,
+      "main_image": "./img/new_product/01.jpg",
+      "thumb": "./img/new_product/04.jpg",
+      "brand": "올가",
+      "name": "유기농 국산 볶음 서리태 (190g)",
+      "price": "12,900원",
+      "rating": 4.8,
+      "reviews": 16
+    },
+    {
+      "id": 2,
+      "main_image": "./img/new_product/02.jpg",
+      "thumb": "./img/new_product/05.jpg",
+      "brand": "올가",
+      "name": "유기농 국산 볶음 약콩 (145g)",
+      "price": "12,900원",
+      "rating": 4.9,
+      "reviews": 17
+    },
+    {
+      "id": 3,
+      "main_image": "./img/new_product/03.jpg",
+      "thumb": "./img/new_product/06.jpg",
+      "brand": "올가",
+      "name": "진한 치킨스톡 (230g)",
+      "price": "9,900원",
+      "rating": 5,
+      "reviews": 44
+    }
+  ]
+}

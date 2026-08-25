@@ -1,0 +1,249 @@
+{
+  "product": {
+    "category": "견과·가공식품",
+    "brand": {
+      "icon": "./img/icon/green_icon.png",
+      "name": "올가"
+    },
+    "badge": "BEST",
+    "nameLines": [
+      "복숭아 병조림 선물세트 (백도/황도)",
+      "(450gx2병)"
+    ],
+    "fullName": "복숭아 병조림 선물세트 (백도/황도) (450gx2병)",
+    "description": "신선한 복숭아만 담은 병조림 선물세트",
+    "price": {
+      "original": 45000,
+      "sale": 36000,
+      "discountRate": 20,
+      "unit": "(100g당 4,000원)"
+    },
+    "infoRows": [
+      { "rowClass": "origin-row", "label": "원산지", "value": "상세설명참조" },
+      { "rowClass": "storage-row", "label": "보관방법", "value": "실온보관" }
+    ],
+    "delivery": {
+      "types": [
+        { "icon": "🚚", "label": "일반배송" },
+        { "icon": "☾", "label": "새벽배송" }
+      ],
+      "details": [
+        {
+          "icon": "🚚",
+          "title": "일반배송",
+          "lines": [
+            "지금 결제 시 <em>08-26 (수)</em> 도착예정",
+            "40,000원 미만 구매 시 3,000원"
+          ]
+        },
+        {
+          "icon": "☾",
+          "title": "새벽배송",
+          "lines": [
+            "지금 결제 시 <em>08-26 (수)</em> 까지 도착",
+            "40,000원 미만 구매 시 3,000원"
+          ]
+        }
+      ]
+    },
+    "gallery": {
+      "mainImage": "./img/sub/main_product/01.jpg",
+      "mainAlt": "복숭아 병조림 선물세트",
+      "thumbnails": [
+        { "image": "./img/sub/sub_prouct/01.jpg", "alt": "상품 이미지 1" },
+        { "image": "./img/sub/sub_prouct/02.jpg", "alt": "상품 이미지 2" }
+      ]
+    },
+    "reviewCount": 78
+  },
+
+  "aiRecommend": [
+    {
+      "image": "./img/sub/ai_recommend/01.jpg",
+      "alt": "샌드웨이퍼 3종 선물세트",
+      "badge": "BEST",
+      "brand": "올가",
+      "name": "샌드웨이퍼 3종 선물세트 (64gx3종)",
+      "discount": 30,
+      "price": 23100,
+      "unit": "(10g당 1,203원)",
+      "rating": 4.9,
+      "reviewCount": 197
+    },
+    {
+      "image": "./img/sub/ai_recommend/02.jpg",
+      "alt": "프로틴 하루견과",
+      "badge": "BEST",
+      "brand": "풀무원식품",
+      "name": "프로틴 하루견과 (20gx25개)",
+      "price": 26800,
+      "unit": "(100g당 5,360원)",
+      "rating": 4.9,
+      "reviewCount": 646
+    },
+    {
+      "image": "./img/sub/ai_recommend/03.jpg",
+      "alt": "특등급 국산콩두유",
+      "badge": "BEST",
+      "brand": "풀무원식품",
+      "name": "특등급 국산콩두유 (190mlx16개입)",
+      "price": 23980,
+      "unit": "(100ml당 789원)",
+      "rating": 4.9,
+      "reviewCount": 765
+    },
+    {
+      "image": "./img/sub/ai_recommend/04.jpg",
+      "alt": "저탄소 천도복숭아",
+      "badge": "BEST",
+      "brand": "올가",
+      "name": "[산지직송] 저탄소 천도복숭아 2kg",
+      "price": 24900,
+      "unit": "(100g당 1,245원)",
+      "rating": 4.6,
+      "reviewCount": 24,
+      "label": "무료배송"
+    },
+    {
+      "image": "./img/sub/ai_recommend/05.jpg",
+      "alt": "저탄소 복숭아",
+      "badge": "BEST",
+      "brand": "올가",
+      "name": "[산지직송]당도선별 저탄소 복숭아(물복)",
+      "price": 49900,
+      "unit": "(100g당 1,663원)",
+      "rating": 4.6,
+      "reviewCount": 46,
+      "label": "무료배송"
+    },
+    {
+      "image": "./img/sub/ai_recommend/06.jpg",
+      "alt": "아카시아 벌꿀 액상차 3종 선물세트",
+      "badge": "BEST",
+      "brand": "올가",
+      "name": "아카시아 벌꿀 액상차 3종 선물세트 (550gx3개)",
+      "discount": 15,
+      "price": 34850
+    },
+    {
+      "image": "./img/sub/ai_recommend/07.jpg",
+      "alt": "수확 복숭아",
+      "badge": "BEST",
+      "brand": "올가",
+      "name": "[산지직송]갓 수확 복숭아(저탄소/GAP) (3kg)",
+      "price": 44900,
+      "unit": "(100g당 1,497원)",
+      "rating": 4.7,
+      "reviewCount": 1288,
+      "label": "무료배송"
+    },
+    {
+      "image": "./img/sub/ai_recommend/08.jpg",
+      "alt": "프로폴리스 치약 세트",
+      "badge": "BEST",
+      "brand": "올가",
+      "name": "프로폴리스 치약 세트(1박스) (120gx5개입)",
+      "price": 35000,
+      "unit": "(100g당 5,833원)",
+      "rating": 4.8,
+      "reviewCount": 405
+    },
+    {
+      "image": "./img/sub/ai_recommend/09.jpg",
+      "alt": "편강청초 선물세트",
+      "badge": "BEST",
+      "brand": "올가",
+      "name": "편강청초 선물세트 (280gx2g)",
+      "discount": 15,
+      "price": 38250,
+      "unit": "(100g당 6,830원)",
+      "rating": 4.8,
+      "reviewCount": 110
+    },
+    {
+      "image": "./img/sub/ai_recommend/10.jpg",
+      "alt": "황도 복숭아",
+      "badge": "BEST",
+      "brand": "올가",
+      "name": "재배 농장에서 바로 만든 황도 복숭아 (450g)",
+      "price": 21000,
+      "unit": "(100g당 467원)",
+      "rating": 4.8,
+      "reviewCount": 654
+    }
+  ],
+
+  "infoTabs": [
+    { "label": "상품정보", "active": true },
+    { "label": "구매정보" },
+    { "label": "상품후기", "count": 78 },
+    { "label": "상품문의", "count": 5 },
+    { "label": "배송/환불" }
+  ],
+
+  "detailContent": [
+    { "type": "image", "variant": "logo", "src": "./img/sub/product_info/0.PNG", "alt": "ORGA Whole Foods" },
+    { "type": "image", "src": "./img/sub/product_info/01.webp", "alt": "복숭아 병조림 선물세트 상세 이미지 1" },
+    {
+      "type": "storyIntro",
+      "kicker": "여름의 달콤함을 선물하세요",
+      "title": "복숭아 병조림 선물세트(1box, 450gX2입)",
+      "desc": "그냥 평범한 복숭아 병조림이 아닌, 재배 농장에서 바로 만든 특별한 복숭아 병조림 선물세트를 소개 할게요. 인기 많은 황도와 백도 두 가지를 한 박스에 구성해 품종에 따라 다채로운 맛을 즐길 수 있답니다. 여름의 달콤한 정취를 가득 담아 부담 없이 감사의 마음을 전하기에 그만일 거예요.",
+      "points": [
+        { "icon": "./img/icon/check_icon.png", "lines": ["재배 농장", "생산 병조림"] },
+        { "icon": "./img/icon/check_icon.png", "lines": ["유명 산지", "경북 의성산"] },
+        { "icon": "./img/icon/check_icon.png", "lines": ["저탄소", "농산물 인증"] },
+        { "icon": "./img/icon/check_icon.png", "lines": ["백도와 황도", "2종 구성"] }
+      ]
+    },
+    { "type": "image", "src": "./img/sub/product_info/02.webp", "alt": "황도와 백도 구성 연출 이미지" },
+    {
+      "type": "yellowPanel",
+      "extraClass": "composition-after-image",
+      "heading": "구성을 확인하세요",
+      "boxes": [
+        {
+          "title": "① 재배 농장에서 바로 만든 황도",
+          "lines": [
+            "· 중량 : 450g",
+            "· 특징 : 선명한 노란색이 먹음직스러운 황도예요. 달콤하면서도 산뜻한 맛이 매력적이랍니다."
+          ]
+        },
+        {
+          "title": "② 재배 농장에서 바로 만든 백도",
+          "lines": [
+            "· 중량 : 450g",
+            "· 특징 : 단맛과 산미의 조화가 적절한 하얀 빛깔의 백도예요."
+          ]
+        }
+      ]
+    },
+    { "type": "image", "src": "./img/sub/product_info/03.webp", "alt": "복숭아 연출 이미지" },
+    {
+      "type": "textSection",
+      "heading": "재배 농장에서 가공했어요",
+      "paragraphs": [
+        "복숭아 산지로 유명한 경북 의성에서 정성껏 키운 복숭아를 재배 농장에서 바로 가공했어요. 잘 익은 복숭아에 유기농 설탕을 넣어 은은하게 달콤하답니다."
+      ]
+    },
+    { "type": "image", "src": "./img/sub/product_info/04.webp", "alt": "황도 복숭아 연출 이미지" },
+    { "type": "image", "src": "./img/sub/product_info/05.webp", "alt": "백도 복숭아 연출 이미지" },
+    {
+      "type": "textSection",
+      "heading": "복숭아 얼그레이 마리네이드",
+      "paragraphs": [
+        "복숭아 병조림에 잘게 부순 얼그레이 홍차와 꿀, 레몬즙을 넣고 재운 뒤 드셔 보세요. 부라타 치즈를 곁들여도 잘 어울려요."
+      ],
+      "usefulTitle": "유용한 정보"
+    },
+    { "type": "image", "src": "./img/sub/product_info/06.webp", "alt": "복숭아 병조림 선물세트 유용한 정보 이미지" },
+    {
+      "type": "storage",
+      "heading": "보관법",
+      "text": "-직사광선을 피해 실온에 보관해 주세요. 개봉 후에는 냉장 보관 하시거나 빨리 드시는 것을 추천해요.",
+      "note": "※ 본 기술서의 관능 표현과 사용, 보관 등 추천의 내용은 사용자나 적용 환경에 따라 달라질 수 있습니다."
+    },
+    { "type": "image", "variant": "narrow", "src": "./img/sub/product_info/07.jpg", "alt": "상품 표시 정보" },
+    { "type": "brandMessage", "src": "./img/sub/product_info/08.jpg", "alt": "ORGA 브랜드 안내" }
+  ]
+}

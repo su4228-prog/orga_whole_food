@@ -1,0 +1,66 @@
+{
+  "section_title": "올가 할인 특가",
+  "items": [
+    {
+      "id": 1,
+      "image": "./img/discount_product/01.jpg",
+      "badge": null,
+      "brand": "올가",
+      "name": "행복 사과/배 혼합세트(저탄소/GAP) (5kg)",
+      "discount": "23%",
+      "price": "130,000원",
+      "unit_price": null,
+      "rating": 4.4,
+      "reviews": 65
+    },
+    {
+      "id": 2,
+      "image": "./img/discount_product/02.jpg",
+      "badge": null,
+      "brand": "올가",
+      "name": "[산지직송]법성포 굴비세트 9호 (950g)",
+      "discount": "20%",
+      "price": "95,000원",
+      "unit_price": null,
+      "rating": 4.8,
+      "reviews": 75,
+      "delivery_badge": "무료배송"
+    },
+    {
+      "id": 3,
+      "image": "./img/discount_product/03.jpg",
+      "badge": "BEST",
+      "brand": "올가",
+      "name": "참향 홍삼정 (10gx60포)",
+      "discount": "55%",
+      "price": "58,300원",
+      "unit_price": null,
+      "rating": 4.7,
+      "reviews": 191
+    },
+    {
+      "id": 4,
+      "image": "./img/discount_product/04.jpg",
+      "badge": "BEST",
+      "brand": "올가",
+      "name": "복숭아 병조림 선물세트 (백도/황도) (450gx2병)",
+      "discount": "20%",
+      "price": "36,000원",
+      "unit_price": "(100g당 4,000원)",
+      "rating": 4.9,
+      "reviews": 78
+    },
+    {
+      "id": 5,
+      "image": "./img/discount_product/05.jpg",
+      "badge": "NEW",
+      "brand": "올가",
+      "name": "매실&오미자청 선물세트 (330gx2개)",
+      "discount": "13%",
+      "price": "51,330원",
+      "unit_price": "(10g당 778원)",
+      "rating": null,
+      "reviews": null
+    }
+  ]
+}

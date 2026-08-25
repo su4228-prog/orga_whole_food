@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+ 
+<html lang="ko">
+ 
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>ORGA Whole Foods</title>
+ 
+  <!-- ==================== CSS 스타일시트 ====================
+       reset  : 브라우저 기본 스타일 초기화
+       common : 모든 페이지 공통 (헤더 · 푸터 · 디자인 토큰)
+       main   : 메인 페이지 전용 (슬라이더 · 카테고리 · 상품 섹션)
+  ========================================================= -->
+  <link rel="stylesheet" href="./css/reset.css" />
+  <link rel="stylesheet" href="./css/common.css" />
+  <link rel="stylesheet" href="./css/main.css" />
+</head>
+ 
+<body>
+ 
+  <!-- ========================================================
+       HEADER – 로고, 검색, 회원 메뉴, 메인 네비게이션
+  ========================================================= -->
+  <header class="site-header">
+    <div class="wrap">
+ 
+      <!-- ── 상단 영역 : 로고 · 검색 · 회원 링크 ── -->
+      <div class="header-top">
+ 
+        <!-- 브랜드 로고 & 계열사 링크 -->
+        <div class="brand-group">
+          <a class="orga-logo" href="index.html">
+            ORGA
+            <small>WHOLE FOODS</small>
+          </a>
+          <div class="brand-links">
+            풀무원 | <b>올가</b> | 풀무원헬스케어
+          </div>
+        </div>
+ 
+        <!-- 검색창 -->
+        <label class="search-box">
+          <input aria-label="검색어 입력" type="text" />
+          <img alt="검색" src="./img/icon/serch_icon.png" />
+        </label>
+ 
+        <!-- 회원 메뉴 (로그인 · 회원가입 · 고객센터) -->
+        <nav class="member-links">
+          <a href="#">로그인</a>
+          <a href="#">회원가입</a>
+          <a href="#">고객센터</a>
+        </nav>
+      </div>
+ 
+      <!-- ── 하단 영역 : 메인 네비게이션 · 유틸 아이콘 ── -->
+      <div class="header-bottom">
+ 
+        <!-- GNB (Global Navigation Bar) -->
+        <nav class="main-nav">
+          <a class="category-menu" href="#">
+            <span class="hamburger"></span>
+            <span>카테고리</span>
+          </a>
+          <a href="#">전단행사</a>
+          <a href="#">인기상품</a>
+          <a href="#">매장배송</a>
+          <a href="#">산지직송</a>
+          <a href="#">올가이야기</a>
+        </nav>
+ 
+        <!-- 유틸 아이콘 (마이페이지 · 알림 · 장바구니) -->
+        <div class="header-icons">
+          <a href="#"><img alt="마이페이지" src="./img/icon/person_icon.png" /></a>
+          <a href="#"><img alt="알림" src="./img/icon/bell_icon.png" /></a>
+          <a href="#"><img alt="장바구니" src="./img/icon/cart_icon.png" /></a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- // HEADER -->
+ 
+ 
+  <!-- ========================================================
+       MAIN – 페이지 본문 콘텐츠
+  ========================================================= -->
+  <main class="main">
+    <div class="wrap">
+ 
+      <!-- ────────────────────────────────────────────────────
+           섹션 1) 메인 배너 슬라이더
+      ──────────────────────────────────────────────────── -->
+      <section aria-label="메인 배너" class="slider-window">
+        <div class="slider-track" id="sliderTrack">
+          <a class="slide" href="sub.html" target="_self"><img alt="슬라이드 1" src="./img/slider/01.png" /></a>
+          <a class="slide" href="sub.html" target="_self"><img alt="슬라이드 2" src="./img/slider/02.png" /></a>
+          <a class="slide" href="sub.html" target="_self"><img alt="슬라이드 3" src="./img/slider/03.png" /></a>
+          <a class="slide" href="sub.html" target="_self"><img alt="슬라이드 4" src="./img/slider/04.png" /></a>
+          <a class="slide" href="sub.html" target="_self"><img alt="슬라이드 5" src="./img/slider/05.png" /></a>
+          <a class="slide" href="sub.html" target="_self"><img alt="슬라이드 6" src="./img/slider/06.png" /></a>
+          <a class="slide" href="sub.html" target="_self"><img alt="슬라이드 7" src="./img/slider/07.png" /></a>
+          <a class="slide" href="sub.html" target="_self"><img alt="슬라이드 8" src="./img/slider/08.png" /></a>
+        </div>
+      </section>
+ 
+      <!-- 슬라이더 컨트롤 (이전 · 카운터 · 다음 · 일시정지) -->
+      <div class="slider-controls">
+        <button aria-label="이전 슬라이드" class="circle-btn" id="prevBtn">‹</button>
+        <span class="counter"><b id="currentNum">1</b> / 8</span>
+        <button aria-label="다음 슬라이드" class="circle-btn" id="nextBtn">›</button>
+        <button aria-label="자동재생 정지" class="circle-btn pause" id="pauseBtn">Ⅱ</button>
+      </div>
+ 
+ 
+      <!-- ────────────────────────────────────────────────────
+           섹션 2) 상품 카테고리 아이콘 목록 (12개)
+      ──────────────────────────────────────────────────── -->
+      <section aria-label="상품 카테고리" class="category-list">
+        <a class="category-item" href="sub.html" target="_self"><img alt="" src="./img/category_list/01.png" /><span>올가단독</span></a>
+        <a class="category-item" href="sub.html" target="_self"><img alt="" src="./img/category_list/02.png" /><span>과일</span></a>
+        <a class="category-item" href="sub.html" target="_self"><img alt="" src="./img/category_list/03.png" /><span>채소</span></a>
+        <a class="category-item" href="sub.html" target="_self"><img alt="" src="./img/category_list/04.png" /><span>쌀·견과</span></a>
+        <a class="category-item" href="sub.html" target="_self"><img alt="" src="./img/category_list/05.png" /><span>정육·달걀</span></a>
+        <a class="category-item" href="sub.html" target="_self"><img alt="" src="./img/category_list/06.png" /><span>수산</span></a>
+        <a class="category-item" href="sub.html" target="_self"><img alt="" src="./img/category_list/07.png" /><span>국·반찬</span></a>
+        <a class="category-item" href="sub.html" target="_self"><img alt="" src="./img/category_list/08.png" /><span>간편식</span></a>
+        <a class="category-item" href="sub.html" target="_self"><img alt="" src="./img/category_list/09.png" /><span>간식·음료</span></a>
+        <a class="category-item" href="sub.html" target="_self"><img alt="" src="./img/category_list/10.png" /><span>양념·오일</span></a>
+        <a class="category-item" href="sub.html" target="_self"><img alt="" src="./img/category_list/11.png" /><span>건강식품</span></a>
+        <a class="category-item" href="sub.html" target="_self"><img alt="" src="./img/category_list/12.png" /><span>생활·뷰티</span></a>
+      </section>
+ 
+      <div class="after-categories"></div>
+    </div>
+ 
+ 
+    <!-- ──────────────────────────────────────────────────────
+         섹션 3) 고객 맞춤 추천 상품 (#AI 추천)
+    ────────────────────────────────────────────────────── -->
+    <section class="client-products">
+      <div class="wrap">
+ 
+        <!-- 섹션 헤더 -->
+        <div class="client-head">
+          <div class="client-title">
+            <h2>고객님만을 위한 이 상품</h2>
+            <div class="client-sub">
+              <span class="ai">#AI</span>
+              <span>취향 비슷한 고객들이 구매한 상품 추천 드려요</span>
+            </div>
+          </div>
+          <a class="client-more" href="#">더보기 <span>›</span></a>
+        </div>
+ 
+        <!-- 추천 상품 카드 그리드 : json/client_products.json을 fetch해서 JS가 채움 -->
+        <div class="client-product-grid"></div>
+ 
+        <!-- 추천 상품 캐러셀 네비게이션 -->
+        <div class="client-carousel-nav">
+          <button aria-label="추천상품 이전" class="circle-btn">‹</button>
+          <button aria-label="추천상품 다음" class="circle-btn">›</button>
+        </div>
+      </div>
+    </section>
+    <!-- // 고객 맞춤 추천 상품 -->
+ 
+ 
+    <!-- ──────────────────────────────────────────────────────
+         섹션 4) 올가 할인 특가
+    ────────────────────────────────────────────────────── -->
+    <section class="discount-products">
+      <div class="wrap">
+        <h2 class="discount-title">올가 할인 특가</h2>
+ 
+        <!-- 할인 상품 카드 그리드 : json/discount_products.json을 fetch해서 JS가 채움 -->
+        <div class="discount-grid"></div>
+ 
+        <!-- 할인 특가 캐러셀 네비게이션 -->
+        <div class="discount-nav">
+          <button aria-label="할인 특가 이전" class="circle-btn">‹</button>
+          <button aria-label="할인 특가 다음" class="circle-btn">›</button>
+        </div>
+      </div>
+    </section>
+    <!-- // 올가 할인 특가 -->
+ 
+ 
+    <!-- ──────────────────────────────────────────────────────
+         섹션 5) 광고 배너 + 추석 선물세트 사전예약
+    ────────────────────────────────────────────────────── -->
+    <section class="ad-gift-section">
+      <div class="wrap">
+ 
+        <!-- 프로모션 광고 배너 (2개) -->
+        <div class="ad-row">
+          <a class="ad-card" href="sub.html" target="_self">
+            <img alt="엄선상품 착한가격 ORGA 알뜰장보기" src="./img/advertisement/01.jpg" />
+          </a>
+          <a class="ad-card" href="sub.html" target="_self">
+            <img alt="놓치면 아쉬운 할인 혜택 ORGA 전단행사" src="./img/advertisement/02.jpg" />
+          </a>
+        </div>
+ 
+        <!-- 추석 선물세트 사전예약 헤더 -->
+        <div class="gift-head">
+          <div class="gift-title-wrap">
+            <h2>바쁘기 전에 미리 준비하는</h2>
+            <p>2026년 추석 선물세트 사전예약!</p>
+          </div>
+          <a class="gift-more" href="#">더보기 <span>›</span></a>
+        </div>
+ 
+        <!-- 선물세트 상품 카드 그리드 : json/gift_products.json을 fetch해서 JS가 채움 -->
+        <div class="gift-grid"></div>
+ 
+        <!-- 선물세트 캐러셀 네비게이션 -->
+        <div class="gift-nav">
+          <button aria-label="추석 선물 이전" class="circle-btn">‹</button>
+          <button aria-label="추석 선물 다음" class="circle-btn">›</button>
+        </div>
+      </div>
+    </section>
+    <!-- // 광고 배너 + 추석 선물세트 -->
+ 
+ 
+    <!-- ──────────────────────────────────────────────────────
+         섹션 6) MD 추천상품
+    ────────────────────────────────────────────────────── -->
+    <section class="md-products">
+      <div class="wrap">
+ 
+        <!-- 섹션 헤더 -->
+        <div class="md-head">
+          <h2>MD 추천상품</h2>
+          <a class="md-more" href="#">더보기 <span>›</span></a>
+        </div>
+ 
+        <!-- MD 추천 메인 배너 -->
+        <a class="md-banner" href="sub.html" target="_self">
+          <img alt="한입 가득, 맛의 보따리" src="./img/md_prodcut/01.jpg" />
+        </a>
+ 
+        <!-- MD 추천 상품 카드 그리드 : json/md_products.json을 fetch해서 JS가 채움 -->
+        <div class="md-grid"></div>
+ 
+        <!-- MD 추천 캐러셀 네비게이션 -->
+        <div class="md-nav">
+          <button aria-label="MD 추천 이전" class="circle-btn">‹</button>
+          <button aria-label="MD 추천 다음" class="circle-btn">›</button>
+        </div>
+      </div>
+    </section>
+    <!-- // MD 추천상품 -->
+ 
+ 
+    <!-- ──────────────────────────────────────────────────────
+         섹션 7) NEW 신상품
+    ────────────────────────────────────────────────────── -->
+    <section class="new-products">
+      <div class="wrap">
+ 
+        <!-- 섹션 헤더 -->
+        <div class="new-head">
+          <h2><span class="star">☆</span>NEW, 제일 먼저 만나는 신상품</h2>
+          <a class="new-more" href="#">더보기 <span>›</span></a>
+        </div>
+ 
+        <!-- 신상품 카드 그리드 : json/new_products.json을 fetch해서 JS가 채움 -->
+        <div class="new-grid"></div>
+ 
+        <!-- 신상품 캐러셀 네비게이션 -->
+        <div class="new-nav">
+          <button aria-label="신상품 이전" class="circle-btn">‹</button>
+          <button aria-label="신상품 다음" class="circle-btn">›</button>
+        </div>
+      </div>
+    </section>
+    <!-- // NEW 신상품 -->
+ 
+ 
+    <!-- ──────────────────────────────────────────────────────
+         섹션 8) 베스트 상품 추천 (탭 필터 + 랭킹 1~10위)
+    ────────────────────────────────────────────────────── -->
+    <section class="best-products">
+      <div class="wrap">
+        <h2 class="best-title">🏅베스트 상품 추천</h2>
+ 
+        <!-- 카테고리 탭 필터 -->
+        <div class="best-tabs">
+          <div class="best-tab-arrow">‹</div>
+          <a class="best-tab active" href="javascript:void(0)">
+            <img alt="전체" src="./img/best_icon/01.png" />
+            <span>전체</span>
+          </a>
+          <a class="best-tab" href="javascript:void(0)">
+            <img alt="올가 단독" src="./img/best_icon/02.png" />
+            <span>올가 단독</span>
+          </a>
+          <a class="best-tab" href="javascript:void(0)">
+            <img alt="선물세트" src="./img/best_icon/03.png" />
+            <span>선물세트</span>
+          </a>
+          <a class="best-tab" href="javascript:void(0)">
+            <img alt="과일" src="./img/best_icon/04.png" />
+            <span>과일</span>
+          </a>
+          <a class="best-tab" href="javascript:void(0)">
+            <img alt="채소" src="./img/best_icon/05.png" />
+            <span>채소</span>
+          </a>
+          <a class="best-tab" href="javascript:void(0)">
+            <img alt="쌀 견과" src="./img/best_icon/06.png" />
+            <span>쌀 견과</span>
+          </a>
+          <a class="best-tab" href="javascript:void(0)">
+            <img alt="정육 달걀" src="./img/best_icon/07.png" />
+            <span>정육 달걀</span>
+          </a>
+          <a class="best-tab" href="javascript:void(0)">
+            <img alt="수산" src="./img/best_icon/08.png" />
+            <span>수산</span>
+          </a>
+          <div class="best-tab-arrow">›</div>
+        </div>
+ 
+        <!-- 베스트 상품 1~5위 : json/best_products.json을 fetch해서 JS가 채움 -->
+        <div class="best-grid"></div>
+ 
+        <!-- 베스트 상품 6~10위 : json/best_products.json을 fetch해서 JS가 채움 -->
+        <div class="best-grid best-grid-second"></div>
+ 
+        <!-- 베스트 상품 더보기 버튼 -->
+        <div class="best-more-wrap">
+          <a class="best-more-button" href="#">베스트 상품 더 보기 ›</a>
+        </div>
+      </div>
+    </section>
+    <!-- // 베스트 상품 추천 -->
+ 
+  </main>
+  <!-- // MAIN -->
+ 
+ 
+  <!-- ========================================================
+       JS – 슬라이더 & 인터랙션
+  ========================================================= -->
+  <script type="module" src="./js/main.js"></script>
+ 
+ 
+  <!-- ========================================================
+       FOOTER – 회사 정보, 인증, 고객 지원
+  ========================================================= -->
+  <footer class="site-footer">
+    <div class="wrap">
+ 
+      <!-- 푸터 상단 메뉴 -->
+      <nav class="footer-menu">
+        <a href="#">회사소개</a>
+        <a href="#">풀무원이야기</a>
+        <a class="active" href="#">개인정보처리방침</a>
+        <a href="#">이용약관</a>
+        <a href="#">임직원 인증</a>
+        <a href="#">상품입점상담</a>
+      </nav>
+ 
+      <!-- 푸터 콘텐츠 (3컬럼) -->
+      <div class="footer-content">
+ 
+        <!-- 좌측 : 풀무원 로고 · 결제 인증 마크 -->
+        <div class="footer-left">
+          <img alt="Pulmuone" class="footer-pulmuone" src="./img/footage/footer-pulmuone.svg" />
+          <div class="footer-cert-list">
+            <img alt="ESCROW INIPAY" src="./img/footage/01.png" />
+            <img alt="KCP" src="./img/footage/02.jpg" />
+            <img alt="소비자중심" src="./img/footage/03.jpg" />
+          </div>
+          <div class="footer-note">
+            이니시스 결제 시스템과 에스크로 서비스<br />
+            (결제대금예치업 등록번호 : 02-006-00012)<br />
+            를 통해 안전거래를 보장하고 있습니다.
+          </div>
+        </div>
+ 
+        <!-- 중앙 : 회사 정보 (사업자 등록 · 통신판매업 등) -->
+        <div class="footer-company">
+          <strong>(주)풀무원</strong>
+          <p>대표자 : 이우봉 | 주소 : 서울 강남구 광평로 280 (수서동), (주) 풀무원</p>
+          <p>사업자등록번호 : 315-81-01744 <span class="linklike">사업자 정보확인</span> | 통신판매업신고 : 제2019-서울강남-02379호</p>
+          <p>건강기능식품 신고 : 제2019-016813호 | 호스팅 제공자 : (주)풀무원</p>
+          <p style="margin-top:15px;">(주)풀무원은 통신판매중개자이며 통신판매의 당사자가 아닙니다. (주)풀무원은 상품, 거래정보 및 거래에<br />대하여 책임을 지지 않습니다.
+          </p>
+          <p>Copyright ⓒ Pulmuone co.,Ltd All Rights Reserved. · Last updated 2026.08.24</p>
+        </div>
+ 
+        <!-- 우측 : 고객 지원 (전화 · 이메일 · 운영시간) -->
+        <div class="footer-support">
+          <p>고객기쁨센터 <span class="footer-phone">080-022-0086</span><span class="footer-kakao">카카오톡상담</span></p>
+          <p>이메일 : pmocs_02@pulmuone.com</p>
+          <p>평일 : 09:00 - 18:00 | 점심시간 : 12:00 - 13:00</p>
+          <div class="footer-links-bottom">
+            <a href="#">고객기쁨센터 바로가기</a><span>›</span>
+            <a href="#">공지사항</a><span>›</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- // FOOTER -->
+ 
+</body>
+ 
+</html>

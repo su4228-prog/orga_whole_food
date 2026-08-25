@@ -1,0 +1,66 @@
+{
+  "section_title": "바쁘기 전에 미리 준비하는",
+  "subtitle": "2026년 추석 선물세트 사전예약!",
+  "items": [
+    {
+      "id": 1,
+      "image": "./img/gift_product/gift01.jpg",
+      "badge": "BEST",
+      "brand": "올가",
+      "name": "[산지직송]유기농 원목재배 표고혼합세트 1호",
+      "discount": "23%",
+      "price": "99,000원",
+      "unit_price": "(100g당 33,000원)",
+      "rating": 5,
+      "reviews": 5
+    },
+    {
+      "id": 2,
+      "image": "./img/gift_product/gift02.jpg",
+      "badge": null,
+      "brand": "올가",
+      "name": "행복 사과세트(저탄소/GAP) (3.3kg)",
+      "discount": "25%",
+      "price": "89,000원",
+      "unit_price": null,
+      "rating": 4.7,
+      "reviews": 14
+    },
+    {
+      "id": 3,
+      "image": "./img/gift_product/gift03.jpg",
+      "badge": null,
+      "brand": "올가",
+      "name": "[산지직송]법성포 굴비세트 9호 (950g)",
+      "discount": "20%",
+      "price": "95,000원",
+      "unit_price": null,
+      "rating": 4.8,
+      "reviews": 75
+    },
+    {
+      "id": 4,
+      "image": "./img/gift_product/gift04.jpg",
+      "badge": null,
+      "brand": "올가",
+      "name": "건어물세트 1호",
+      "discount": "28%",
+      "price": "79,000원",
+      "unit_price": "(100g당 17,556원)",
+      "rating": null,
+      "reviews": null
+    },
+    {
+      "id": 5,
+      "image": "./img/gift_product/gift05.jpg",
+      "badge": null,
+      "brand": "올가",
+      "name": "조미료 종합 선물세트",
+      "discount": null,
+      "price": "80,000원",
+      "unit_price": null,
+      "rating": 4,
+      "reviews": 4
+    }
+  ]
+}

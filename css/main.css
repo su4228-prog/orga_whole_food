@@ -1,0 +1,1476 @@
+/* ============================================================
+   main.css — 메인 페이지 전용 스타일
+   ── 슬라이더, 카테고리 목록, 상품 섹션, 베스트 상품
+   ── (서브 페이지에는 포함되지 않음)
+   ============================================================ */
+
+
+/* ================================================================
+   슬라이더 — 메인 배너
+   ================================================================ */
+
+/* ── 슬라이더 뷰포트 ── */
+
+/* 슬라이드가 넘치지 않도록 감싸는 마스크 영역 */
+.slider-window {
+  overflow: hidden;
+  width: 100%;
+}
+
+
+/* ── 슬라이드 트랙 ── */
+
+/* 슬라이드를 가로로 나열하는 이동 레일 (JS에서 transform 제어) */
+.slider-track {
+  display: flex;
+  gap: 18px;
+  transition: transform .5s ease;
+  will-change: transform;
+}
+
+
+/* ── 개별 슬라이드 ── */
+
+/* 한 화면에 3장 노출 (gap 2개분 36px 제외 후 3등분) */
+.slide {
+  flex: 0 0 calc((100% - 36px) / 3);
+  aspect-ratio: 404 / 385;
+  overflow: hidden;
+  background: #f3f0eb;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* ── 슬라이더 컨트롤 ── */
+
+/* 이전 · 카운터 · 다음 · 일시정지 버튼 영역 */
+.slider-controls {
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  color: #777;
+  font-size: 13px;
+}
+
+/* 현재 슬라이드 번호 ("1 / 8") */
+.counter {
+  width: 43px;
+  text-align: center;
+  color: #777;
+}
+
+
+/* ================================================================
+   카테고리 아이콘 리스트 (12개)
+   ================================================================ */
+
+/* 12열 그리드 (최대 1090px) */
+.category-list {
+  width: 1090px;
+  max-width: 100%;
+  margin: 3px auto 0;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+/* 개별 카테고리 아이템 (아이콘 + 라벨) */
+.category-item {
+  text-align: center;
+  font-size: 12px;
+  color: #222;
+  white-space: nowrap;
+}
+
+/* 카테고리 원형 아이콘 */
+.category-item img {
+  width: 66px;
+  height: 66px;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* 카테고리 리스트와 다음 섹션 사이 간격 */
+.after-categories {
+  height: 98px;
+}
+
+
+/* ================================================================
+   상품 카드 공통
+   ── 모든 섹션의 상품 카드가 동일한 높이·간격을 갖도록
+      flex 레이아웃과 최소 높이를 통일
+   ================================================================ */
+
+/* 카드 컨테이너 — 세로 flex 정렬 */
+.client-card,
+.discount-card,
+.gift-card,
+.md-card,
+.best-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* 이미지 영역 — 크기 고정 (축소 방지) */
+.client-image,
+.discount-image,
+.gift-image,
+.md-image,
+.best-image {
+  flex: 0 0 auto;
+}
+
+/* 상품 카드 이미지 링크 (상세 페이지 연결용) — 이미지 영역을 그대로 채우고 손 커서 표시 */
+.client-image a,
+.discount-image a,
+.gift-image a,
+.md-image a,
+.best-image a,
+.new-main-image a,
+.new-thumb a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+/* 액션 버튼 (찜 · 장바구니) — 높이 34px 고정 */
+.client-actions,
+.discount-actions,
+.gift-actions,
+.md-actions,
+.best-actions {
+  flex: 0 0 34px;
+  height: 34px;
+}
+
+/* 뱃지 (BEST · NEW 등) — 높이 통일 */
+.client-badge,
+.discount-badge,
+.gift-badge,
+.md-badge {
+  height: 25px;
+  line-height: 15px;
+  margin-bottom: 7px;
+  align-self: flex-start;
+}
+
+/* 브랜드명 — 최소 높이 확보 */
+.client-brand,
+.discount-brand,
+.gift-brand,
+.md-brand,
+.best-brand {
+  min-height: 16px;
+  margin-bottom: 5px;
+}
+
+/* 상품명 — 2줄 고정 높이 (넘침 숨김) */
+.client-name,
+.discount-name,
+.gift-name,
+.md-name,
+.best-name {
+  min-height: 63px;
+  height: 63px;
+  line-height: 1.5;
+  overflow: hidden;
+  margin: 0;
+}
+
+/* 판매가 — 최소 높이 + 세로 중앙 정렬 */
+.client-price,
+.discount-price,
+.gift-price,
+.md-price,
+.best-price {
+  min-height: 21px;
+  margin-top: 7px;
+  display: flex;
+  align-items: center;
+}
+
+/* 단위 가격 — 최소 높이 확보 */
+.client-unit,
+.discount-unit,
+.gift-unit,
+.md-unit,
+.best-unit {
+  min-height: 17px;
+  margin-top: 5px;
+}
+
+/* 가격 바로 다음에 오는 메타(평점·리뷰) — 간격 넓힘 */
+.client-card .client-price+.client-meta,
+.discount-card .discount-price+.discount-meta,
+.gift-card .gift-price+.gift-meta,
+.md-card .md-price+.md-meta,
+.best-card .best-price+.best-meta {
+  margin-top: 29px;
+}
+
+/* 메타 정보 (평점 · 리뷰) — 최소 높이 */
+.client-meta,
+.discount-meta,
+.gift-meta,
+.md-meta,
+.best-meta {
+  min-height: 15px;
+  margin-top: 7px;
+}
+
+
+/* ── 아이콘 통일 (찜·장바구니·평점 아이콘의 투명도·흑백 처리) ── */
+
+/* 찜 · 장바구니 아이콘 — 흐리게 + 흑백 */
+.client-actions img,
+.discount-actions img,
+.gift-actions img,
+.md-actions img,
+.best-actions img {
+  opacity: .46 !important;
+  filter: grayscale(1) !important;
+  cursor: pointer;
+}
+
+/* 평점 · 리뷰 아이콘 — 흐리게 + 흑백 */
+.client-meta img,
+.discount-meta img,
+.gift-meta img,
+.md-meta img,
+.best-meta img,
+.new-meta img {
+  opacity: .42 !important;
+  filter: grayscale(1) !important;
+}
+
+
+/* ── 라벨 크기 고정 ("골라담아할인", "무료배송" 등이 카드 너비를 꽉 채우지 않도록) ── */
+
+.best-label,
+.delivery-label,
+.mini-label {
+  display: inline-block !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: max-content !important;
+  align-self: flex-start !important;
+  flex: 0 0 auto !important;
+  padding: 4px 7px !important;
+  line-height: 1.2 !important;
+  white-space: nowrap !important;
+}
+
+/* 라벨 왼쪽 정렬 보장 */
+.best-card>.best-label,
+.discount-card>.delivery-label,
+.gift-card>.delivery-label {
+  align-self: flex-start !important;
+}
+
+
+/* ================================================================
+   AI 추천 상품 (client-products)
+   ── "고객님만을 위한 이 상품" 섹션
+   ================================================================ */
+
+/* 섹션 래퍼 */
+.client-products {
+  padding: 70px 0 82px;
+  background: #fff;
+}
+
+/* ── 섹션 헤더 (타이틀 + 더보기) ── */
+
+.client-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 40px;
+}
+
+/* 섹션 타이틀 */
+.client-title h2 {
+  margin: 0;
+  font-size: 25px;
+  line-height: 1.25;
+  font-weight: 800;
+  letter-spacing: -1.2px;
+}
+
+/* 서브 타이틀 (#AI 태그 + 안내 문구) */
+.client-sub {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 15px;
+}
+
+/* #AI 뱃지 (초록색 강조) */
+.client-sub .ai {
+  color: #32ad3b;
+  font-weight: 900;
+  font-size: 24px;
+  letter-spacing: -1px;
+}
+
+/* "더보기 ›" 링크 */
+.client-more {
+  color: #777;
+  font-size: 14px;
+  padding-bottom: 3px;
+}
+
+.client-more span {
+  margin-left: 8px;
+  color: #aaa;
+  font-size: 22px;
+  vertical-align: -2px;
+}
+
+/* ── 상품 그리드 (5열) ── */
+
+.client-product-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+/* ── 개별 카드 스타일 ── */
+
+/* 카드 오버플로 방지 */
+.client-card {
+  min-width: 0;
+}
+
+/* 상품 이미지 (1:1 비율, 아이보리 배경) */
+.client-image {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #f4f0e9;
+}
+
+.client-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 찜 · 장바구니 액션 */
+.client-actions {
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.client-actions img {
+  width: 21px;
+  height: 21px;
+  object-fit: contain;
+  opacity: .55;
+}
+
+/* 뱃지 (BEST 등) */
+.client-badge {
+  display: inline-block;
+  padding: 5px 10px;
+  margin-bottom: 7px;
+  background: #e7e7e7;
+  color: #222;
+  font-size: 11px;
+}
+
+/* 브랜드명 */
+.client-brand {
+  font-size: 11px;
+  color: #999;
+  margin-bottom: 5px;
+}
+
+/* 상품명 */
+.client-name {
+  font-size: 14px;
+  line-height: 1.45;
+  min-height: 41px;
+  word-break: keep-all;
+}
+
+/* 판매가 */
+.client-price {
+  margin-top: 7px;
+  font-size: 17px;
+  line-height: 1;
+  font-weight: 800;
+}
+
+/* 할인율 (빨간색) */
+.client-price .discount {
+  color: #ff4137;
+  margin-right: 7px;
+}
+
+/* 단위 가격 */
+.client-unit {
+  margin-top: 7px;
+  font-size: 11px;
+  color: #aaa;
+}
+
+/* 평점 · 리뷰 */
+.client-meta {
+  margin-top: 7px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #b5b5b5;
+  font-size: 11px;
+}
+
+.client-meta img {
+  width: 12px;
+  height: 12px;
+  object-fit: contain;
+  opacity: .35;
+}
+
+/* 캐러셀 네비게이션 */
+.client-carousel-nav {
+  margin-top: 23px;
+  display: flex;
+  justify-content: center;
+  gap: 11px;
+}
+
+
+/* ================================================================
+   올가 할인 특가 (discount-products)
+   ================================================================ */
+
+/* 섹션 래퍼 (베이지 배경) */
+.discount-products {
+  padding: 64px 0 78px;
+  background: #fbf5eb;
+}
+
+/* 섹션 타이틀 */
+.discount-title {
+  margin: 0 0 40px;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+/* ── 상품 그리드 (5열) ── */
+
+.discount-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+/* ── 개별 카드 스타일 ── */
+
+.discount-card {
+  min-width: 0;
+}
+
+/* 상품 이미지 (1:1, 베이지 배경) */
+.discount-image {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #f1e7d8;
+}
+
+.discount-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 찜 · 장바구니 */
+.discount-actions {
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.discount-actions img {
+  width: 21px;
+  height: 21px;
+  object-fit: contain;
+  opacity: .55;
+}
+
+/* 뱃지 */
+.discount-badge {
+  display: inline-block;
+  background: #e7e7e7;
+  color: #222;
+  font-size: 11px;
+  padding: 5px 10px;
+  margin-bottom: 7px;
+}
+
+/* 브랜드명 */
+.discount-brand {
+  font-size: 11px;
+  color: #999;
+  margin-bottom: 5px;
+}
+
+/* 상품명 */
+.discount-name {
+  font-size: 14px;
+  line-height: 1.45;
+  min-height: 42px;
+  word-break: keep-all;
+}
+
+/* 판매가 */
+.discount-price {
+  margin-top: 7px;
+  font-size: 17px;
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+/* 할인율 (빨간색) */
+.discount-rate {
+  color: #ff4137;
+  margin-right: 7px;
+}
+
+/* 단위 가격 */
+.discount-unit {
+  margin-top: 6px;
+  font-size: 11px;
+  color: #aaa;
+}
+
+/* 평점 · 리뷰 */
+.discount-meta {
+  margin-top: 7px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #b5b5b5;
+  font-size: 11px;
+}
+
+.discount-meta img {
+  width: 12px;
+  height: 12px;
+  object-fit: contain;
+  opacity: .35;
+}
+
+/* 캐러셀 네비게이션 */
+.discount-nav {
+  margin-top: 34px;
+  display: flex;
+  justify-content: center;
+  gap: 11px;
+}
+
+
+/* ================================================================
+   광고 배너 + 추석 선물세트 (ad-gift-section)
+   ================================================================ */
+
+/* 섹션 래퍼 */
+.ad-gift-section {
+  padding: 64px 0 86px;
+  background: #fff;
+}
+
+/* ── 광고 배너 (2열) ── */
+
+.ad-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 96px;
+}
+
+/* 개별 광고 카드 */
+.ad-card {
+  overflow: hidden;
+  aspect-ratio: 500 / 170;
+  background: #eee;
+}
+
+.ad-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── 선물세트 헤더 ── */
+
+.gift-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 34px;
+}
+
+/* 타이틀 */
+.gift-title-wrap h2 {
+  margin: 0;
+  font-size: 26px;
+  line-height: 1.25;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+/* 서브 타이틀 ("2026년 추석 선물세트 사전예약!") */
+.gift-title-wrap p {
+  margin: 8px 0 0;
+  font-size: 15px;
+  color: #333;
+}
+
+/* "더보기 ›" 링크 */
+.gift-more {
+  font-size: 14px;
+  color: #777;
+  white-space: nowrap;
+}
+
+.gift-more span {
+  margin-left: 8px;
+  font-size: 21px;
+  color: #aaa;
+  vertical-align: -2px;
+}
+
+/* ── 선물세트 그리드 (5열) ── */
+
+.gift-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+/* ── 개별 카드 스타일 ── */
+
+.gift-card {
+  min-width: 0;
+}
+
+/* 상품 이미지 (1:1, 베이지 배경) */
+.gift-image {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #f3eee6;
+}
+
+.gift-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 찜 · 장바구니 */
+.gift-actions {
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.gift-actions img {
+  width: 21px;
+  height: 21px;
+  object-fit: contain;
+  opacity: .55;
+}
+
+/* 뱃지 */
+.gift-badge {
+  display: inline-block;
+  padding: 5px 10px;
+  margin-bottom: 7px;
+  background: #e7e7e7;
+  color: #222;
+  font-size: 11px;
+}
+
+/* 브랜드명 */
+.gift-brand {
+  font-size: 11px;
+  color: #999;
+  margin-bottom: 5px;
+}
+
+/* 상품명 */
+.gift-name {
+  font-size: 14px;
+  line-height: 1.45;
+  min-height: 42px;
+  word-break: keep-all;
+}
+
+/* 판매가 */
+.gift-price {
+  margin-top: 7px;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+/* 할인율 (빨간색) */
+.gift-price .discount {
+  color: #ff4137;
+  margin-right: 7px;
+}
+
+/* 단위 가격 */
+.gift-unit {
+  margin-top: 6px;
+  font-size: 11px;
+  color: #aaa;
+}
+
+/* 평점 · 리뷰 */
+.gift-meta {
+  margin-top: 7px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #b5b5b5;
+  font-size: 11px;
+}
+
+.gift-meta img {
+  width: 12px;
+  height: 12px;
+  object-fit: contain;
+  opacity: .35;
+}
+
+/* 캐러셀 네비게이션 */
+.gift-nav {
+  margin-top: 34px;
+  display: flex;
+  justify-content: center;
+  gap: 11px;
+}
+
+
+/* ================================================================
+   MD 추천상품 (md-products)
+   ================================================================ */
+
+/* 섹션 래퍼 (연회색 배경) */
+.md-products {
+  padding: 58px 0 68px;
+  background: #f5f5f5;
+}
+
+/* ── 섹션 헤더 ── */
+
+.md-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 34px;
+}
+
+.md-head h2 {
+  margin: 0;
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+/* "더보기 ›" 링크 */
+.md-more {
+  color: #777;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.md-more span {
+  margin-left: 8px;
+  color: #aaa;
+  font-size: 21px;
+  vertical-align: -2px;
+}
+
+/* ── MD 추천 메인 배너 ── */
+
+.md-banner {
+  display: block;
+  width: 100%;
+  height: 128px;
+  overflow: hidden;
+  margin-bottom: 22px;
+}
+
+.md-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── 상품 그리드 (5열) ── */
+
+.md-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+/* ── 개별 카드 스타일 ── */
+
+.md-card {
+  min-width: 0;
+}
+
+/* 상품 이미지 (1:1, 베이지 배경) */
+.md-image {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #efe7da;
+}
+
+.md-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 찜 · 장바구니 */
+.md-actions {
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.md-actions img {
+  width: 21px;
+  height: 21px;
+  object-fit: contain;
+  opacity: .55;
+}
+
+/* 뱃지 */
+.md-badge {
+  display: inline-block;
+  padding: 5px 10px;
+  margin-bottom: 7px;
+  background: #e7e7e7;
+  color: #222;
+  font-size: 11px;
+}
+
+/* 브랜드명 */
+.md-brand {
+  font-size: 11px;
+  color: #999;
+  margin-bottom: 5px;
+}
+
+/* 상품명 */
+.md-name {
+  min-height: 42px;
+  font-size: 14px;
+  line-height: 1.45;
+  word-break: keep-all;
+}
+
+/* 판매가 */
+.md-price {
+  margin-top: 7px;
+  font-size: 17px;
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+/* 단위 가격 */
+.md-unit {
+  margin-top: 6px;
+  color: #aaa;
+  font-size: 11px;
+}
+
+/* 평점 · 리뷰 */
+.md-meta {
+  margin-top: 7px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #b5b5b5;
+  font-size: 11px;
+}
+
+.md-meta img {
+  width: 12px;
+  height: 12px;
+  object-fit: contain;
+  opacity: .35;
+}
+
+/* 캐러셀 네비게이션 */
+.md-nav {
+  margin-top: 34px;
+  display: flex;
+  justify-content: center;
+  gap: 11px;
+}
+
+
+/* ================================================================
+   NEW 신상품 (new-products)
+   ── 메인 이미지 + 썸네일·정보 하단 레이아웃
+   ================================================================ */
+
+/* 섹션 래퍼 */
+.new-products {
+  padding: 58px 0 82px;
+  background: #fff;
+}
+
+/* ── 섹션 헤더 ── */
+
+.new-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 36px;
+}
+
+.new-head h2 {
+  margin: 0;
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+/* ☆ 별 아이콘 (노란 테두리) */
+.new-head .star {
+  display: inline-block;
+  margin-right: 4px;
+  font-size: 28px;
+  color: #ffca2f;
+  -webkit-text-stroke: 1.5px #111;
+  paint-order: stroke fill;
+}
+
+/* "더보기 ›" 링크 */
+.new-more {
+  color: #777;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.new-more span {
+  margin-left: 8px;
+  color: #aaa;
+  font-size: 21px;
+  vertical-align: -2px;
+}
+
+/* ── 상품 그리드 (3열) ── */
+
+.new-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+/* ── 개별 카드 스타일 ── */
+
+.new-card {
+  min-width: 0;
+}
+
+/* 메인 이미지 (가로 넓은 비율) */
+.new-main-image {
+  aspect-ratio: 1.46 / 1;
+  overflow: hidden;
+  background: #f3e8d7;
+}
+
+.new-main-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 하단 영역 (썸네일 136px + 상품 정보) */
+.new-bottom {
+  display: grid;
+  grid-template-columns: 136px 1fr;
+  gap: 12px;
+  margin-top: 18px;
+  align-items: start;
+}
+
+/* 썸네일 이미지 (1:1 비율) */
+.new-thumb {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #f3e8d7;
+}
+
+.new-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 상품 정보 영역 */
+.new-info {
+  padding-top: 2px;
+  min-height: 116px;
+}
+
+/* 브랜드명 */
+.new-brand {
+  color: #999;
+  font-size: 11px;
+  margin-bottom: 5px;
+}
+
+/* 상품명 */
+.new-name {
+  font-size: 14px;
+  line-height: 1.45;
+  min-height: 42px;
+  word-break: keep-all;
+}
+
+/* 판매가 */
+.new-price {
+  margin-top: 8px;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+/* 평점 · 리뷰 */
+.new-meta {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 8px;
+  color: #b5b5b5;
+  font-size: 11px;
+}
+
+.new-meta img {
+  width: 12px;
+  height: 12px;
+  object-fit: contain;
+  opacity: .35;
+  cursor: pointer;
+}
+
+/* 캐러셀 네비게이션 */
+.new-nav {
+  margin-top: 58px;
+  display: flex;
+  justify-content: center;
+  gap: 11px;
+}
+
+
+/* ================================================================
+   베스트 상품 추천 (best-products)
+   ── 탭 필터 + 랭킹 1~10위
+   ================================================================ */
+
+/* ── 섹션 전체 레이아웃 ── */
+
+/* 베스트 상품 섹션 래퍼 */
+.best-products {
+  padding: 58px 0 82px;
+  background: #fff;
+}
+
+/* 섹션 타이틀 ("🏅베스트 상품 추천") */
+.best-title {
+  margin: 0 0 34px;
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+
+/* ── 카테고리 탭 필터 ── */
+
+/* 탭 컨테이너 (좌우 화살표 포함 10열 그리드) */
+.best-tabs {
+  display: grid;
+  grid-template-columns: 32px repeat(8, 1fr) 32px;
+  align-items: stretch;
+  min-height: 76px;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 36px;
+}
+
+/* 탭 좌우 화살표 (‹ ›) */
+.best-tab-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c7c7c7;
+  font-size: 24px;
+}
+
+/* 개별 탭 버튼 (아이콘 + 라벨) */
+.best-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  position: relative;
+  color: #9b9b9b;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* 탭 사이 세로 구분선 */
+.best-tab:not(:last-of-type)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 20%;
+  width: 1px;
+  height: 60%;
+  background: #e4e4e4;
+}
+
+/* 탭 — 활성 상태 (텍스트 진하게) */
+.best-tab.active {
+  color: #111;
+}
+
+/* 탭 아이콘 — 기본 (흐리게 + 흑백 처리) */
+.best-tab img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  opacity: .47 !important;
+  filter: grayscale(1) !important;
+}
+
+/* 탭 아이콘 — 활성 첫 번째 탭 ("전체") 전용 컬러 복원 */
+.best-tab.active:first-of-type img {
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+/* 탭 텍스트 — 활성 첫 번째 탭 전용 브라운 컬러 */
+.best-tab.active:first-of-type {
+  color: #3a2a20;
+}
+
+
+/* ── 상품 카드 그리드 (5열) ── */
+
+/* 1~5위, 6~10위 공통 그리드 */
+.best-grid,
+.best-grid-second {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+/* 6~10위 그리드 상단 여백 */
+.best-grid-second {
+  margin-top: 44px;
+}
+
+
+/* ── 개별 상품 카드 ── */
+
+/* 카드 컨테이너 (그리드 오버플로 방지) */
+.best-card {
+  min-width: 0;
+}
+
+/* 순위 번호 (01_ ~ 10_) */
+.best-rank {
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+/* 상품 이미지 영역 (1:1 비율, 베이지 배경) */
+.best-image {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #efe7da;
+}
+
+.best-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 찜 · 장바구니 액션 버튼 */
+.best-actions {
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.best-actions img {
+  width: 21px;
+  height: 21px;
+  object-fit: contain;
+  opacity: .55;
+}
+
+/* 브랜드명 */
+.best-brand {
+  font-size: 11px;
+  color: #999;
+  margin-bottom: 5px;
+}
+
+/* 상품명 (최소 높이로 카드 높이 통일) */
+.best-name {
+  min-height: 42px;
+  font-size: 14px;
+  line-height: 1.45;
+  word-break: keep-all;
+}
+
+/* 판매가 */
+.best-price {
+  margin-top: 7px;
+  font-size: 17px;
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+/* 할인율 (빨간색) */
+.best-price .discount {
+  color: #ff4137;
+  margin-right: 7px;
+}
+
+/* 단위당 가격 */
+.best-unit {
+  margin-top: 6px;
+  color: #aaa;
+  font-size: 11px;
+}
+
+/* 평점 · 리뷰 수 */
+.best-meta {
+  margin-top: 7px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #b5b5b5;
+  font-size: 11px;
+}
+
+.best-meta img {
+  width: 12px;
+  height: 12px;
+  object-fit: contain;
+  opacity: .35;
+}
+
+/* 추가 라벨 ("골라담아할인", "무료배송" 등) */
+.best-label {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 4px 7px;
+  border: 1px solid #aaa;
+  background: #fff;
+  font-size: 10px;
+  color: #555;
+}
+
+
+/* ── 더보기 버튼 ── */
+
+/* 버튼 중앙 정렬 래퍼 */
+.best-more-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 54px;
+}
+
+/* "베스트 상품 더 보기 ›" 버튼 */
+.best-more-button {
+  width: 420px;
+  max-width: 100%;
+  height: 48px;
+  border: 1px solid #c8c8c8;
+  border-radius: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #333;
+  background: #fff;
+}
+
+.best-more-button:hover {
+  border-color: #999;
+}
+
+
+/* ================================================================
+   RESPONSIVE — 메인 페이지 콘텐츠 반응형
+   ── 브레이크포인트: 1100 → 980 → 900 → 760 → 560px
+   ================================================================ */
+
+/* ── 1100px 이하 : 카테고리 6열 ── */
+@media (max-width: 1100px) {
+  .category-list {
+    grid-template-columns: repeat(6, 1fr);
+    row-gap: 20px;
+  }
+}
+
+/* ── 980px 이하 : 베스트 탭 가로 스크롤, 베스트 그리드 2열 ── */
+@media (max-width: 980px) {
+  .best-tabs {
+    overflow-x: auto;
+    grid-template-columns: 32px repeat(8, 110px) 32px;
+  }
+
+  .best-grid {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 34px;
+  }
+}
+
+/* ── 900px 이하 : 전 섹션 상품 그리드 2열 ── */
+@media (max-width: 900px) {
+  .client-product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 35px;
+  }
+
+  .discount-grid {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 34px;
+  }
+
+  .ad-row {
+    grid-template-columns: 1fr;
+  }
+
+  .gift-grid {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 34px;
+  }
+
+  .md-grid {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 34px;
+  }
+
+  .new-grid {
+    grid-template-columns: 1fr;
+    row-gap: 38px;
+  }
+
+  /* 상품명 고정 높이 해제 (콘텐츠에 맞게 늘어남) */
+  .client-name,
+  .discount-name,
+  .gift-name,
+  .md-name,
+  .best-name {
+    height: auto;
+    min-height: 48px;
+  }
+}
+
+/* ── 760px 이하 : 슬라이더 peek 레이아웃, 카테고리 4열 ── */
+@media (max-width: 760px) {
+  .slide {
+    flex: 0 0 82%;
+    aspect-ratio: 404 / 385;
+  }
+
+  .category-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ── 560px 이하 : 좁은 모바일, 전 섹션 1열 전환 ── */
+@media (max-width: 560px) {
+  .client-products {
+    padding-top: 45px;
+  }
+
+  .client-head {
+    align-items: flex-start;
+  }
+
+  .client-more {
+    margin-top: 4px;
+  }
+
+  .client-product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .discount-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gift-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .md-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* MD 배너 높이 자동 + 가로 넓은 비율 유지 */
+  .md-banner {
+    height: auto;
+    aspect-ratio: 8.5 / 1;
+  }
+
+  /* 신상품 썸네일 축소 (136px → 105px) */
+  .new-bottom {
+    grid-template-columns: 105px 1fr;
+  }
+
+  /* 베스트 상품 : 2열 → 1열 */
+  .best-grid {
+    grid-template-columns: 1fr;
+  }
+}

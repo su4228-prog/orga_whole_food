@@ -1,0 +1,128 @@
+{
+  "section_title": "베스트 상품 추천",
+  "categories": [
+    "전체",
+    "올가 단독",
+    "선물세트",
+    "과일",
+    "채소",
+    "쌀 견과",
+    "정육 달걀",
+    "수산"
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "image": "./img/best_product/01.jpg",
+      "brand": "올가",
+      "name": "나토키나제가 살아있는 우리콩 생나또(99g) (49.5gx2개입)",
+      "discount": "33%",
+      "price": "2,600원",
+      "unit_price": "(100g당 2,626원)",
+      "rating": 4.8,
+      "reviews": 4281,
+      "extra_badge": "골라담아할인"
+    },
+    {
+      "rank": 2,
+      "image": "./img/best_product/02.jpg",
+      "brand": "올가",
+      "name": "맥반석구이 오징어 60g",
+      "discount": "30%",
+      "price": "6,900원",
+      "unit_price": "(100g당 11,500원)",
+      "rating": 4.8,
+      "reviews": 1448
+    },
+    {
+      "rank": 3,
+      "image": "./img/best_product/03.jpg",
+      "brand": "올가",
+      "name": "찐밤 그대로 (80g)",
+      "discount": "30%",
+      "price": "3,800원",
+      "unit_price": "(100g당 4,750원)",
+      "rating": 4.8,
+      "reviews": 523
+    },
+    {
+      "rank": 4,
+      "image": "./img/best_product/04.jpg",
+      "brand": "올가",
+      "name": "동물복지인증 유정란으로 만든 구운 계란 (10입)",
+      "discount": null,
+      "price": "11,900원",
+      "unit_price": "(100g당 3,400원)",
+      "rating": 4.8,
+      "reviews": 8464
+    },
+    {
+      "rank": 5,
+      "image": "./img/best_product/05.jpg",
+      "brand": "올가",
+      "name": "ORGA 바삭하고 고소한 파래 김자반 (50g)",
+      "discount": "33%",
+      "price": "3,200원",
+      "unit_price": "(10g당 640원)",
+      "rating": 4.9,
+      "reviews": 1631
+    },
+    {
+      "rank": 6,
+      "image": "./img/best_product/06.jpg",
+      "brand": "올가",
+      "name": "그래놀라 Oat & Nut (25g)",
+      "discount": "30%",
+      "price": "2,030원",
+      "unit_price": "(100g당 8,120원)",
+      "rating": 4.9,
+      "reviews": 65
+    },
+    {
+      "rank": 7,
+      "image": "./img/best_product/07.jpg",
+      "brand": "올가",
+      "name": "얇은피 새우만두 (480g)",
+      "discount": "40%",
+      "price": "7,500원",
+      "unit_price": "(100g당 1,563원)",
+      "rating": 4.8,
+      "reviews": 437,
+      "extra_badge": "골라담아할인"
+    },
+    {
+      "rank": 8,
+      "image": "./img/best_product/08.jpg",
+      "brand": "올가",
+      "name": "샌드웨이퍼 3종 (딸기&요거트&블루베리) (32gx3개)",
+      "discount": "30%",
+      "price": "8,820원",
+      "unit_price": null,
+      "rating": 4.8,
+      "reviews": 5444
+    },
+    {
+      "rank": 9,
+      "image": "./img/best_product/09.jpg",
+      "brand": "올가",
+      "name": "[산지직송] 무항생제 1+ 한우 불고기 (200g)",
+      "discount": "30%",
+      "price": "13,900원",
+      "unit_price": "(100g당 6,950원)",
+      "rating": 4.8,
+      "reviews": 186,
+      "delivery_badge": "무료배송"
+    },
+    {
+      "rank": 10,
+      "image": "./img/best_product/10.jpg",
+      "brand": "올가",
+      "name": "5가지 국산 채소와 고춧가루로 만든 총각김치 (1.5kg)",
+      "discount": "50%",
+      "price": "10,950원",
+      "unit_price": "(100g당 730원)",
+      "rating": 4.7,
+      "reviews": 470
+    }
+  ]
+}

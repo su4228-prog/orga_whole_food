@@ -1,0 +1,492 @@
+/* ============================================================
+   common.css — 모든 페이지에 공통으로 들어가는 요소
+   ── 디자인 토큰, 공통 레이아웃/컴포넌트, 헤더, 푸터
+   ── (서브 페이지에서도 그대로 재사용)
+   ============================================================ */
+
+
+/* ── CSS 커스텀 속성 (디자인 토큰) ── */
+:root {
+  --content: 1262px;
+  /* 콘텐츠 최대 너비 */
+  --line: #e7e7e7;
+  /* 구분선 색상 */
+  --brown: #76553f;
+  /* 브랜드 포인트 컬러 (브라운) */
+}
+
+
+/* ── 공통 레이아웃 ── */
+
+/* 콘텐츠 래퍼 (최대 너비 제한 + 좌우 여백 24px씩) */
+.wrap {
+  width: min(var(--content), calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* 메인 영역 상단 여백 */
+.main {
+  padding-top: 22px;
+}
+
+
+/* ── 공통 컴포넌트 ── */
+
+/* 원형 버튼 (슬라이더 이전/다음, 캐러셀 네비게이션 등) */
+.circle-btn {
+  width: 31px;
+  height: 31px;
+  border: 1px solid #c8c8c8;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8f8f8f;
+  cursor: pointer;
+  background: #fff;
+  padding: 0;
+}
+
+.circle-btn:hover {
+  border-color: #999;
+  color: #555;
+}
+
+/* 일시정지 버튼 전용 스타일 */
+.circle-btn.pause {
+  font-size: 11px;
+  letter-spacing: -1px;
+}
+
+/* 뱃지 자리 확보용 (공간은 차지하되 보이지 않음) */
+.badge-placeholder {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* 배송 라벨 ("무료배송" 등) */
+.delivery-label {
+  display: inline-block;
+  margin-top: 9px;
+  padding: 4px 7px;
+  border: 1px solid #aaa;
+  background: #fff;
+  font-size: 10px;
+  color: #555;
+}
+
+
+/* ================================================================
+   HEADER — 사이트 헤더, 검색바, 네비게이션
+   ================================================================ */
+
+/* ── 헤더 전체 레이아웃 ── */
+
+/* 헤더 래퍼 (상단 + 하단 합산 138px 고정) */
+.site-header {
+  height: 138px;
+  border-bottom: 1px solid var(--line);
+  background: #fff;
+}
+
+
+/* ── 상단 영역 : 로고 · 검색 · 회원 링크 ── */
+
+/* 3컬럼 그리드 (브랜드 360px · 검색 유동 · 회원 280px) */
+.header-top {
+  height: 79px;
+  display: grid;
+  grid-template-columns: 360px 1fr 280px;
+  align-items: center;
+  column-gap: 28px;
+}
+
+
+/* ── 브랜드 그룹 (로고 + 계열사 링크) ── */
+
+.brand-group {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-width: 0;
+}
+
+/* ORGA 로고 */
+.orga-logo {
+  width: 68px;
+  flex: 0 0 auto;
+  line-height: 1;
+  color: #2f2a20;
+  font-weight: 800;
+  letter-spacing: -1.6px;
+  font-size: 25px;
+}
+
+/* 로고 하단 "WHOLE FOODS" 서브 텍스트 */
+.orga-logo small {
+  display: block;
+  margin-top: 3px;
+  color: #7e8f28;
+  font-size: 7px;
+  letter-spacing: .1px;
+  font-weight: 700;
+}
+
+/* 계열사 링크 (풀무원 | 올가 | 풀무원헬스케어) */
+.brand-links {
+  font-size: 12px;
+  color: #aaa;
+  white-space: nowrap;
+}
+
+/* 현재 사이트 강조 ("올가") */
+.brand-links b {
+  color: #222;
+  font-weight: 700;
+}
+
+
+/* ── 검색창 ── */
+
+/* 검색 입력 래퍼 (브라운 테두리 알약형) */
+.search-box {
+  width: 390px;
+  max-width: 100%;
+  height: 42px;
+  margin: 0 auto;
+  border: 1px solid #8d684e;
+  border-radius: 24px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 42px 0 18px;
+}
+
+/* 텍스트 인풋 (기본 스타일 제거) */
+.search-box input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: 14px;
+}
+
+/* 돋보기 아이콘 (오른쪽 정렬) */
+.search-box img {
+  position: absolute;
+  right: 17px;
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+
+/* ── 회원 메뉴 (로그인 · 회원가입 · 고객센터) ── */
+
+.member-links {
+  display: flex;
+  justify-content: flex-end;
+  gap: 25px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+
+/* ── 하단 영역 : GNB · 유틸 아이콘 ── */
+
+.header-bottom {
+  height: 59px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+/* ── GNB (Global Navigation Bar) ── */
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 45px;
+}
+
+/* 네비게이션 링크 공통 */
+.main-nav a {
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* "카테고리" 메뉴 (햄버거 아이콘 + 텍스트) */
+.category-menu {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* 햄버거 아이콘 (CSS로 3줄 생성) */
+.hamburger {
+  width: 16px;
+  height: 12px;
+  position: relative;
+  display: inline-block;
+  border-top: 2px solid #111;
+  border-bottom: 2px solid #111;
+}
+
+/* 햄버거 가운데 줄 */
+.hamburger:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 4px;
+  border-top: 2px solid #111;
+}
+
+
+/* ── 유틸 아이콘 (마이페이지 · 알림 · 장바구니) ── */
+
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.header-icons img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* 유틸 아이콘 — 약간 흐리게 + 흑백 */
+.header-icons img {
+  opacity: .66 !important;
+  filter: grayscale(1) !important;
+}
+
+
+/* ================================================================
+   FOOTER — 사이트 푸터
+   ================================================================ */
+
+/* ── 푸터 전체 레이아웃 ── */
+
+/* 푸터 래퍼 (연회색 배경) */
+.site-footer {
+  background: #f7f7f7;
+  padding: 24px 0 34px;
+  color: #aaa;
+  font-size: 12px;
+}
+
+
+/* ── 푸터 상단 메뉴 ── */
+
+/* 메뉴 링크 가로 나열 (회사소개 · 이용약관 등) */
+.footer-menu {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 42px;
+  white-space: nowrap;
+}
+
+/* 메뉴 링크 — 기본 */
+.footer-menu a {
+  color: #aaa;
+}
+
+/* 메뉴 링크 — 활성 ("개인정보처리방침") */
+.footer-menu a.active {
+  color: #111;
+  font-weight: 700;
+}
+
+
+/* ── 푸터 본문 (3컬럼 그리드) ── */
+
+/* 좌측(210px) · 중앙(유동) · 우측(360px) */
+.footer-content {
+  display: grid;
+  grid-template-columns: 210px 1fr 360px;
+  gap: 34px;
+  align-items: start;
+}
+
+
+/* ── 좌측 : 로고 · 인증 마크 · 안내 문구 ── */
+
+/* 그리드 오버플로 방지 */
+.footer-left {
+  min-width: 0;
+}
+
+/* 풀무원 로고 (연하게 처리) */
+.footer-pulmuone {
+  width: 120px;
+  height: auto;
+  opacity: .25;
+  margin-bottom: 20px;
+}
+
+/* 결제 인증 마크 (이니시스 · KCP · 소비자중심) */
+.footer-cert-list {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 13px;
+}
+
+.footer-cert-list img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+/* 에스크로 안내 문구 */
+.footer-note {
+  font-size: 10px;
+  line-height: 1.6;
+  color: #aaa;
+}
+
+
+/* ── 중앙 : 회사 정보 ── */
+
+/* 회사명 */
+.footer-company strong {
+  color: #111;
+  font-size: 15px;
+}
+
+/* 사업자 정보 텍스트 */
+.footer-company p {
+  margin: 6px 0;
+  line-height: 1.45;
+}
+
+/* "사업자 정보확인" 링크 스타일 */
+.footer-company .linklike {
+  color: #555;
+  text-decoration: underline;
+}
+
+
+/* ── 우측 : 고객 지원 ── */
+
+/* 고객 지원 영역 기본 색상 */
+.footer-support {
+  color: #aaa;
+}
+
+.footer-support p {
+  margin: 4px 0;
+  line-height: 1.5;
+}
+
+/* 고객센터 전화번호 (강조) */
+.footer-phone {
+  color: #111;
+  font-size: 20px;
+  font-weight: 800;
+  margin-left: 6px;
+}
+
+/* 카카오톡 상담 버튼 (노란 배경 알약형) */
+.footer-kakao {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 5px 10px;
+  border-radius: 13px;
+  background: #ffe500;
+  color: #111;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* 하단 바로가기 링크 (고객기쁨센터 · 공지사항) */
+.footer-links-bottom {
+  margin-top: 12px;
+  color: #111;
+  font-size: 12px;
+}
+
+.footer-links-bottom a {
+  text-decoration: underline;
+}
+
+/* 링크 사이 구분자 (›) 좌우 여백 */
+.footer-links-bottom span {
+  margin: 0 7px;
+}
+
+
+/* ================================================================
+   RESPONSIVE — 헤더 · 푸터 · 공통 레이아웃 반응형
+   ── 브레이크포인트: 1100 → 900 → 760px
+   ================================================================ */
+
+/* ── 1100px 이하 : 헤더 2컬럼 전환, 회원 메뉴 숨김 ── */
+@media (max-width: 1100px) {
+  .header-top {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .member-links {
+    display: none;
+  }
+
+  .site-header {
+    height: auto;
+  }
+
+  .main-nav {
+    gap: 24px;
+    overflow-x: auto;
+  }
+}
+
+/* ── 900px 이하 : 푸터 1컬럼 전환 ── */
+@media (max-width: 900px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-menu {
+    flex-wrap: wrap;
+    gap: 14px 22px;
+  }
+}
+
+/* ── 760px 이하 : 모바일 진입, 헤더 1컬럼 ── */
+@media (max-width: 760px) {
+  .wrap {
+    width: min(100% - 28px, var(--content));
+  }
+
+  .header-top {
+    grid-template-columns: 1fr;
+    height: auto;
+    padding: 15px 0;
+    row-gap: 15px;
+  }
+
+  .brand-group {
+    justify-content: space-between;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .header-bottom {
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+
+  .header-icons {
+    display: none;
+  }
+}
