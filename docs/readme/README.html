@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ORGA Whole Foods — README 슬라이드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+/* 슬라이드는 항상 1600×900 (16:9) 고정. 제목·부제목·본문·꼬리말 위치는 모든 장이 같은 좌표를 씁니다.
+   eyebrow top52 · 제목 top84 · 부제목 top156 · 구분선 top204 · 본문 top228~bottom92 · 꼬리말 bottom34 */
+:root{
+  --ink:#16261c; --muted:#5a665c; --paper:#f4f6ee; --card:#ffffff; --line:#dde2d0;
+  --green:#56741c; --green-soft:#e6eecf; --brown:#76553f; --brown-soft:#f0e7dd; --red:#e8372c;
+  --dark:#14231a; --dark-2:#1d3125; --dark-line:#2d4535; --dark-muted:#a9b8a9;
+  --sans:"Noto Sans KR","Malgun Gothic",system-ui,sans-serif; --mono:"IBM Plex Mono",Consolas,monospace;
+  --s:1;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#cfd4c6}
+body{font-family:var(--sans);color:var(--ink);padding:24px 0 48px;display:flex;flex-direction:column;align-items:center;gap:24px}
+.frame{width:calc(1600px*var(--s));height:calc(900px*var(--s));flex:none;box-shadow:0 6px 24px rgba(0,0,0,.18)}
+.slide{width:1600px;height:900px;position:relative;overflow:hidden;background:var(--paper);transform:scale(var(--s));transform-origin:0 0}
+.slide.dark{background:var(--dark);color:#f2f6ee}
+
+/* ── 공통 머리말 (모든 장 동일 위치) ── */
+.eyebrow{position:absolute;left:80px;top:52px;font:600 15px/1 var(--mono);letter-spacing:.16em;color:var(--green);text-transform:uppercase}
+.title{position:absolute;left:80px;top:80px;width:1440px;height:68px;font:900 52px/68px var(--sans);letter-spacing:-.02em;white-space:nowrap;overflow:hidden}
+.subtitle{position:absolute;left:80px;top:154px;width:1440px;height:36px;font:400 22px/36px var(--sans);color:var(--muted);white-space:nowrap;overflow:hidden}
+.rule{position:absolute;left:80px;right:80px;top:204px;height:1px;background:var(--line)}
+.body{position:absolute;left:80px;right:80px;top:228px;bottom:92px}
+.foot{position:absolute;left:80px;right:80px;bottom:30px;display:flex;justify-content:space-between;font:400 15px/1 var(--sans);color:var(--muted)}
+.foot b{font:600 15px/1 var(--mono);color:var(--green)}
+.dark .eyebrow{color:#a8c75b}.dark .subtitle{color:var(--dark-muted)}.dark .rule{background:var(--dark-line)}
+.dark .foot{color:var(--dark-muted)}.dark .foot b{color:#a8c75b}
+
+/* ── 공통 부품 ── */
+.grid{display:grid;gap:20px;height:100%;min-height:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px 26px;min-height:0;min-width:0;display:flex;flex-direction:column;gap:12px;overflow:hidden}
+.card h3{font:700 22px/1.3 var(--sans)}
+.card p,.card li{font:400 17px/1.6 var(--sans);color:var(--muted)}
+.card b,.card strong{color:var(--ink);font-weight:700}
+.card ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+.card.big li{font-size:19px;line-height:1.65}
+.card.big .note{font-size:17px}
+.card li{padding-left:16px;position:relative}
+.card li::before{content:"";position:absolute;left:0;top:.72em;width:6px;height:6px;border-radius:50%;background:var(--green)}
+.num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:9px;background:var(--green-soft);color:var(--green);font:600 16px/1 var(--mono);flex:none}
+.hd{display:flex;align-items:center;gap:12px}
+.note{background:var(--green-soft);border-radius:10px;padding:12px 16px;font:400 16px/1.55 var(--sans);color:var(--ink)}
+.note.brown{background:var(--brown-soft)}
+.note small{display:block;font:600 12px/1 var(--mono);letter-spacing:.12em;color:var(--green);margin-bottom:6px;text-transform:uppercase}
+.note.brown small{color:var(--brown)}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;display:flex;flex-direction:column;justify-content:center;gap:6px}
+.stat b{font:900 46px/1 var(--sans);color:var(--green);letter-spacing:-.02em}.stat b i{font:700 20px/1 var(--sans);font-style:normal;margin-left:3px}
+.stat span{font:400 16px/1.4 var(--sans);color:var(--muted)}
+.dark .stat{background:var(--dark-2);border-color:var(--dark-line)}.dark .stat b{color:#b9d96a}.dark .stat span{color:var(--dark-muted)}
+.pill{display:inline-flex;align-items:center;padding:7px 15px;border-radius:99px;border:1px solid var(--line);background:#fff;font:600 15px/1 var(--sans);color:var(--ink)}
+.dark .pill{background:var(--dark-2);border-color:var(--dark-line);color:#f2f6ee}
+.pill.hot{background:#8fb33a;border-color:#8fb33a;color:#10200f}
+table{border-collapse:collapse;width:100%}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);font:400 16.5px/1.5 var(--sans);vertical-align:top}
+th{font:600 13px/1.2 var(--mono);letter-spacing:.08em;color:var(--green);text-transform:uppercase;background:#f1f5e4}
+td:first-child{font-weight:700;white-space:nowrap}
+table.tight th,table.tight td{padding:7px 14px;font-size:16px}
+.tbl{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;min-height:0}
+code,pre{font-family:var(--mono)}
+pre{background:#14231a;color:#dbe8cf;border-radius:12px;padding:18px 20px;font-size:14.5px;line-height:1.62;white-space:pre;overflow:hidden;min-height:0}
+pre .k{color:#a8c75b}pre .s{color:#f0c89a}pre .c{color:#7f9482}
+code.i{background:var(--green-soft);color:var(--green);padding:1px 7px;border-radius:5px;font-size:.88em}
+
+/* 스크린샷 프레임 */
+.shot{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#fff;min-height:0;min-width:0}
+.shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.shot em{position:absolute;left:12px;top:12px;z-index:2;background:rgba(20,35,26,.88);color:#fff;font:600 14px/1 var(--sans);padding:7px 12px;border-radius:7px;font-style:normal}
+.shot em b{font:600 13px/1 var(--mono);color:#b9d96a;margin-right:7px}
+.cap{font:400 15px/1.5 var(--sans);color:var(--muted)}
+.shot.fit{background:#fff}.shot.fit img{object-fit:contain;object-position:center}
+.cap2{display:flex;flex-direction:column;gap:2px;flex:none}.cap2 b{font:700 17px/1.35 var(--sans)}.cap2 b i{font:600 14px/1 var(--mono);font-style:normal;color:var(--green);margin-right:8px}.cap2 span{font:400 15px/1.4 var(--sans);color:var(--muted)}
+.bar{display:flex;flex-direction:column;gap:8px;min-height:0}
+.bar .shot{flex:1}
+.flow{display:flex;align-items:center;gap:0}
+.flow .box{flex:1;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:6px;height:100%;justify-content:center}
+.flow .box b{font:700 18px/1.3 var(--sans)}.flow .box span{font:400 15px/1.5 var(--sans);color:var(--muted)}
+.flow .arr{flex:none;width:44px;text-align:center;font:600 26px/1 var(--mono);color:var(--green)}
+.flow.v{flex-direction:column;align-items:stretch;height:100%}
+.flow.v .arr{width:auto;height:30px;line-height:30px;transform:rotate(90deg)}
+
+@media screen{.slide{box-shadow:none}}
+</style>
+</head>
+<body>
+
+<!-- ================= 01 표지 ================= -->
+<div class="frame"><section class="slide dark" id="s01">
+  <div class="eyebrow">Online Food Shop · Front-end Project</div>
+  <h1 class="title">ORGA Whole Foods</h1>
+  <p class="subtitle">올가 홀푸드 쇼핑몰을 본뜬 반응형 웹사이트 — 데이터(JSON)와 화면을 분리해 만든 정적 사이트</p>
+  <div class="rule"></div>
+  <div class="body" style="display:grid;grid-template-columns:900px 1fr;gap:28px">
+    <div class="shot" style="border-color:var(--dark-line)"><em><b>LIVE</b>su4228-prog.github.io/0825_004</em><img src="img/fit_hero.jpg" alt="메인 화면"></div>
+    <div style="display:grid;grid-template-rows:1fr 1fr auto;gap:16px;min-height:0">
+      <div class="grid" style="grid-template-columns:1fr 1fr;gap:16px">
+        <div class="stat"><b>2<i>페이지</i></b><span>메인 · 상품 상세</span></div>
+        <div class="stat"><b>33<i>개</i></b><span>JSON으로 렌더링한 상품 카드</span></div>
+      </div>
+      <div class="grid" style="grid-template-columns:1fr 1fr;gap:16px">
+        <div class="stat"><b>6<i>개</i></b><span>메인 상품 섹션</span></div>
+        <div class="stat"><b>10<i>단계</i></b><span>반응형 분기점(미디어쿼리)</span></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;padding-top:6px">
+        <p style="font:400 18px/1.65 var(--sans);color:var(--dark-muted)">HTML · CSS · 바닐라 JavaScript만으로 메인 페이지와 상품 상세 페이지를 만들고, 상품 정보는 JSON 파일에서 불러와 그립니다.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px"><span class="pill hot">● Live Demo</span><span class="pill">HTML5</span><span class="pill">CSS3</span><span class="pill">JavaScript (ES Modules)</span><span class="pill">JSON</span><span class="pill">GitHub Pages</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span><b>01</b> / 18</span><span>ORGA Whole Foods · su4228-prog</span></div>
+</section></div>
+
+<!-- ================= 02 개요 ================= -->
+<div class="frame"><section class="slide" id="s02">
+  <div class="eyebrow">Overview</div>
+  <h2 class="title">프로젝트 한눈에 보기</h2>
+  <p class="subtitle">무엇을 어떤 범위로 만들었고, 어떤 순서로 설명하는지 정리했습니다.</p>
+  <div class="rule"></div>
+  <div class="body" style="display:grid;grid-template-columns:1fr 520px;grid-template-rows:1fr 118px;gap:20px">
+    <div class="tbl" style="grid-row:1">
+      <table style="height:100%">
+        <tr><td style="width:130px">목표</td><td>쇼핑몰 화면(메인 · 상품 상세)을 직접 구현하고, 데이터·스타일·스크립트를 역할별로 나눠 관리합니다.</td></tr>
+        <tr><td>메인 페이지</td><td>헤더 · 배너 슬라이더 · 카테고리 · 상품 6개 섹션(33개 카드) · 푸터</td></tr>
+        <tr><td>상세 페이지</td><td>이미지 확대 · 수량/금액 계산 · 배송 정보 · 연관 상품 슬라이더 · 상세 콘텐츠 14블록</td></tr>
+        <tr><td>데이터</td><td><code class="i">json/</code> 7개 파일 — 섹션별 상품 6종 + 상세 1종</td></tr>
+        <tr><td>스타일</td><td><code class="i">reset</code> · <code class="i">common</code> · <code class="i">main</code> · <code class="i">sub</code> CSS 4개로 분리</td></tr>
+        <tr><td>배포</td><td>GitHub Pages (<code class="i">su4228-prog/0825_004</code>) · 빌드 과정 없는 정적 배포</td></tr>
+        <tr><td>개발</td><td>su4228-prog — 화면 구현 · 구조 설계 · 배포</td></tr>
+      </table>
+    </div>
+    <div class="card" style="grid-row:1;gap:10px">
+      <h3>📌 목차</h3>
+      <ul style="gap:5px;flex:1;justify-content:space-between">
+        <li><b>설계 목표</b> · 기술 스택과 배포 구조</li>
+        <li><b>메인 페이지</b> · 홈과 상품 섹션</li>
+        <li><b>JSON 기반 렌더링</b> 구조</li>
+        <li><b>상세 페이지</b> · 상세 콘텐츠 블록</li>
+        <li><b>CSS 구조</b>와 반응형</li>
+        <li><b>기술적 의사결정</b></li>
+        <li><b>프로젝트 구조</b> · 실행 방법</li>
+        <li><b>검증 결과</b>와 개선 항목</li>
+        <li><b>회고</b>와 향후 계획 (백엔드)</li>
+      </ul>
+    </div>
+    <div class="grid" style="grid-column:1/3;grid-template-columns:repeat(5,1fr);gap:16px">
+      <div class="stat"><b>33<i>개</i></b><span>상품 카드</span></div>
+      <div class="stat"><b>7<i>개</i></b><span>JSON 데이터 파일</span></div>
+      <div class="stat"><b>108<i>개</i></b><span>이미지 파일</span></div>
+      <div class="stat"><b>4<i>개</i></b><span>CSS 파일 (3,733줄)</span></div>
+      <div class="stat"><b>9<i>개</i></b><span>JS 파일 (955줄)</span></div>
+    </div>
+  </div>
+  <div class="foot"><span><b>02</b> / 18</span><span>Overview</span></div>
+</section></div>
+
+<!-- ================= 03 설계 목표 ================= -->
+<div class="frame"><section class="slide" id="s03">
+  <div class="eyebrow">Design Goals</div>
+  <h2 class="title">설계 목표 — 분리하고, 재사용한다</h2>
+  <p class="subtitle">화면이 커져도 관리할 수 있도록 세 가지 기준을 먼저 정하고 구조를 잡았습니다.</p>
+  <div class="rule"></div>
+  <div class="body" style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 108px;gap:20px">
+    <div class="card">
+      <div class="hd"><span class="num">01</span><h3>데이터와 화면의 분리</h3></div>
+      <p>상품 이름·가격·이미지를 HTML에 직접 쓰지 않고 JSON으로 분리했습니다. 상품이 바뀌면 JSON만 고치면 됩니다.</p>
+      <ul><li>섹션별 JSON 6개 + 상세 JSON 1개</li><li>기능별 <code class="i">01~06_fetch_*.js</code>가 읽어서 카드 생성</li><li>가격·할인·평점 등 없는 값은 화면에서 자동 생략</li></ul>
+      <pre style="flex:1;font-size:15px;line-height:1.7"><span class="c">json/*.json</span>
+  └▶ <span class="k">js/0N_fetch_*.js</span>
+       └▶ &lt;article&gt; 카드
+<span class="c">5 + 5 + 5 + 5 + 3 + 10 = 33</span></pre>
+    </div>
+    <div class="card">
+      <div class="hd"><span class="num">02</span><h3>공통과 페이지별 스타일 분리</h3></div>
+      <p>모든 페이지에 들어갈 요소와 한 페이지에만 쓰는 요소를 나눠, 새 페이지를 추가해도 공통 부분은 다시 만들지 않게 했습니다.</p>
+      <ul><li><code class="i">reset.css</code> 브라우저 기본값 초기화</li><li><code class="i">common.css</code> 헤더 · 푸터 · 변수</li><li><code class="i">main.css</code> / <code class="i">sub.css</code> 페이지 전용</li></ul>
+      <pre style="flex:1;font-size:15px;line-height:1.7"><span class="k">index.html</span>  reset + common + <span class="s">main</span>
+<span class="k">sub.html</span>    reset + common + <span class="s">sub</span>
+<span class="c">/* 새 페이지 = 전용 CSS 1개 추가 */</span></pre>
+    </div>
+    <div class="card">
+      <div class="hd"><span class="num">03</span><h3>페이지 사이를 잇는 구조</h3></div>
+      <p>메인의 상품 카드를 누르면 상세 페이지로 이동하고, 상세 페이지도 같은 방식으로 JSON을 읽어 화면을 구성합니다.</p>
+      <ul><li>카드 이미지 36곳 → <code class="i">sub.html</code> 링크</li><li><code class="i">sub.json</code> 한 파일로 상세 전체 렌더링</li><li>상세 콘텐츠는 블록 타입별 템플릿으로 조립</li></ul>
+      <pre style="flex:1;font-size:15px;line-height:1.7"><span class="k">카드 이미지</span> ─▶ sub.html
+<span class="k">sub.html</span> ─▶ fetch(<span class="s">"sub.json"</span>)
+          └▶ 갤러리 · 가격 · 연관상품 · 상세</pre>
+    </div>
+    <div class="grid" style="grid-column:1/4;grid-template-columns:repeat(3,1fr);gap:20px">
+      <div class="stat" style="flex-direction:row;align-items:center;gap:18px"><b>7</b><span>JSON 파일로 분리된 데이터</span></div>
+      <div class="stat" style="flex-direction:row;align-items:center;gap:18px"><b>4</b><span>역할별로 나눈 CSS 파일</span></div>
+      <div class="stat" style="flex-direction:row;align-items:center;gap:18px"><b>36</b><span>상세 페이지로 연결된 카드 이미지</span></div>
+    </div>
+  </div>
+  <div class="foot"><span><b>03</b> / 18</span><span>Design Goals</span></div>
+</section></div>
+
+<!-- ================= 04 기술 스택 ================= -->
+<div class="frame"><section class="slide" id="s04">
+  <div class="eyebrow">Tech Stack &amp; Deployment</div>
+  <h2 class="title">기술 스택과 배포 구조</h2>
+  <p class="subtitle">빌드 도구 없이 브라우저가 바로 읽는 파일만으로 구성했습니다.</p>
+  <div class="rule"></div>
+  <div class="body" style="display:grid;grid-template-columns:660px 1fr;grid-template-rows:1fr 150px;gap:20px">
+    <div class="tbl" style="grid-row:1/3">
+      <table style="height:100%">
+        <tr><th colspan="2">구분 · 기술</th></tr>
+        <tr><td style="width:150px">마크업</td><td>HTML5 시맨틱 태그 (<code class="i">header</code> · <code class="i">main</code> · <code class="i">section</code> · <code class="i">article</code>)</td></tr>
+        <tr><td>스타일</td><td>CSS3 · 변수(<code class="i">:root</code>) · Grid · Flex · <code class="i">aspect-ratio</code> · 미디어쿼리</td></tr>
+        <tr><td>스크립트</td><td>JavaScript (ES Modules <code class="i">import / export</code>)</td></tr>
+        <tr><td>데이터</td><td>JSON 7개 · <code class="i">fetch()</code> + 템플릿 문자열로 렌더링</td></tr>
+        <tr><td>인터랙션</td><td>배너 슬라이더(자동재생/일시정지) · 이미지 확대 렌즈 · 수량 계산 · 접이식 배송정보</td></tr>
+        <tr><td>폰트</td><td>시스템 한글 폰트 스택 (<code class="i">Noto Sans KR</code>, <code class="i">Malgun Gothic</code>)</td></tr>
+        <tr><td>배포</td><td>GitHub Pages — 저장소 루트를 그대로 정적 호스팅</td></tr>
+        <tr><td>서버</td><td>없음 (이번 버전). 백엔드는 향후 계획으로 분리</td></tr>
+      </table>
+    </div>
+    <div class="flow v" style="grid-row:1">
+      <div class="box" style="flex:1"><b>브라우저</b><span>사용자가 index.html · sub.html 요청</span></div>
+      <div class="arr">→</div>
+      <div class="box" style="flex:1.2"><b>GitHub Pages (정적 호스팅)</b><span>HTML · CSS · JS · JSON · 이미지를 그대로 전달 — 서버 코드 실행 없음</span></div>
+      <div class="arr">→</div>
+      <div class="box" style="flex:1.2"><b>브라우저에서 실행되는 JS</b><span><code class="i">fetch("./json/…")</code> → 카드 HTML 생성 → 화면에 삽입</span></div>
+    </div>
+    <div class="note brown" style="grid-row:2;grid-column:2;display:flex;flex-direction:column;justify-content:center"><small>Why static</small>상품 데이터가 읽기 전용이고 갱신이 잦지 않아 서버·DB 없이 JSON으로 충분했습니다. 대신 <b>fetch를 쓰므로 파일을 더블클릭해서 열면 동작하지 않고</b> 로컬에서도 HTTP 서버가 필요합니다.</div>
+  </div>
+  <div class="foot"><span><b>04</b> / 18</span><span>Tech Stack &amp; Deployment</span></div>
+</section></div>
+
+<!-- ================= 05 홈 ================= -->
+<div class="frame"><section class="slide" id="s05">
+  <div class="eyebrow">Feature 01 · Home</div>
+  <h2 class="title">메인 화면 — 헤더 · 배너 · 카테고리</h2>
+  <p class="subtitle">첫 화면에서 브랜드 메뉴와 프로모션 배너, 12개 카테고리까지 한 번에 보여줍니다.</p>
+  <div class="rule"></div>
+  <div class="body" style="display:grid;grid-template-columns:1fr 520px;grid-template-rows:1fr 1fr;gap:20px">
+    <div class="shot" style="grid-row:1/3"><em><b>01</b>메인 첫 화면 (1440px)</em><img src="img/fit_hero.jpg" alt="메인 첫 화면"></div>
+    <div class="card" style="gap:10px">
+      <h3>배너 슬라이더</h3>
+      <ul><li>배너 8장, 한 화면에 <b>3장</b>(모바일 1장) 노출</li><li><b>3.5초</b> 자동 넘김 · 이전/다음 · 일시정지(Ⅱ ↔ ▶)</li><li>현재 번호 카운터(<code class="i">2 / 8</code>) 실시간 표시</li><li>화면 크기가 바뀌면 이동 거리를 다시 계산</li></ul>
+    </div>
+    <div class="shot"><em><b>02</b>슬라이더 · 카테고리 12개</em><img src="img/fit_slider.jpg" alt="슬라이더와 카테고리"></div>
+  </div>
+  <div class="foot"><span><b>05</b> / 18</span><span>Feature · Home</span></div>
+</section></div>
+
+<!-- ================= 06 상품 섹션 ================= -->
+<div class="frame"><section class="slide" id="s06">
+  <div class="eyebrow">Feature 02 · Product Sections</div>
+  <h2 class="title">상품 섹션 6개 — 33개 카드</h2>
+  <p class="subtitle">섹션마다 배경색과 카드 구성을 달리하고, 가격·할인·평점 같은 요소는 데이터가 있을 때만 표시합니다.</p>
+  <div class="rule"></div>
+  <div class="body" style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr;gap:16px 20px">
+    <div class="bar"><div class="shot fit"><img src="img/full_client.jpg" alt="고객 맞춤 추천 · 5개"></div><div class="cap2"><b><i>01</i>고객 맞춤 추천 · 5개</b><span>#AI 추천 — 할인 뱃지 · 단위 가격 · 평점/후기</span></div></div>
+    <div class="bar"><div class="shot fit"><img src="img/full_discount.jpg" alt="올가 할인 특가 · 5개"></div><div class="cap2"><b><i>02</i>올가 할인 특가 · 5개</b><span>베이지 배경 — 할인율을 빨간색으로 강조</span></div></div>
+    <div class="bar"><div class="shot fit"><img src="img/full_gift.jpg" alt="광고 배너 + 선물세트 · 5개"></div><div class="cap2"><b><i>03</i>광고 배너 + 선물세트 · 5개</b><span>배너 2개와 추석 선물세트 사전예약 카드</span></div></div>
+    <div class="bar"><div class="shot fit"><img src="img/full_md.jpg" alt="MD 추천상품 · 5개"></div><div class="cap2"><b><i>04</i>MD 추천상품 · 5개</b><span>와이드 배너 + 카드 그리드</span></div></div>
+    <div class="bar"><div class="shot fit"><img src="img/full_new.jpg" alt="NEW 신상품 · 3개"></div><div class="cap2"><b><i>05</i>NEW 신상품 · 3개</b><span>메인 이미지 + 썸네일 2단 레이아웃</span></div></div>
+    <div class="bar"><div class="shot fit"><img src="img/full_best.jpg" alt="베스트 상품 · 10개"></div><div class="cap2"><b><i>06</i>베스트 상품 · 10개</b><span>카테고리 탭과 1~10위 순위 번호 (1~5위 표시)</span></div></div>
+  </div>
+  <div class="foot"><span><b>06</b> / 18</span><span>Feature · Product Sections</span></div>
+</section></div>
+
+<!-- ================= 07 JSON 렌더링 ================= -->
+<div class="frame"><section class="slide" id="s07">
+  <div class="eyebrow">Architecture · Data Rendering</div>
+  <h2 class="title">JSON → 카드 렌더링 구조</h2>
+  <p class="subtitle">섹션마다 JSON 파일과 렌더링 함수가 짝을 이루고, main.js 한 곳에서 모두 실행합니다.</p>
+  <div class="rule"></div>
+  <div class="body" style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:272px 1fr;gap:20px">
+    <pre style="font-size:13.8px;line-height:1.55"><span class="c">// json/client_products.json (일부)</span>
+{
+  <span class="k">"section_title"</span>: <span class="s">"고객님만을 위한 이 상품"</span>,
+  <span class="k">"items"</span>: [{
+    <span class="k">"id"</span>: 1,
+    <span class="k">"image"</span>: <span class="s">"./img/client_product/01.jpg"</span>,
+    <span class="k">"name"</span>: <span class="s">"블루베리가 들어간 샌드웨이퍼 (32g)"</span>,
+    <span class="k">"price"</span>: <span class="s">"4,200원"</span>,
+    <span class="k">"rating"</span>: 4.8, <span class="k">"reviews"</span>: 415
+  }, …]
+}</pre>
+    <pre style="font-size:13.8px;line-height:1.55"><span class="c">// js/01_fetch_client.js (일부)</span>
+<span class="k">export function</span> loadClientProducts() {
+  fetch(<span class="s">"./json/client_products.json"</span>)
+    .then((res) =&gt; res.json())
+    .then((data) =&gt; {
+      grid.innerHTML = data.items.map((item) =&gt; {
+        <span class="k">const</span> badge = item.badge ? <span class="s">`&lt;span …&gt;`</span> : <span class="s">""</span>;
+        <span class="k">return</span> <span class="s">`&lt;article class="client-card"&gt; … &lt;/article&gt;`</span>;
+      }).join(<span class="s">""</span>);
+    });
+}</pre>
+    <div class="tbl" style="grid-column:1/3">
+      <table style="height:100%" class="tight">
+        <tr><th>JSON</th><th>항목 수</th><th>렌더링 함수</th><th>화면 영역</th><th>섹션 전용 정보</th></tr>
+        <tr><td>client_products.json</td><td>5</td><td><code class="i">loadClientProducts</code></td><td>고객 맞춤 추천</td><td>제목 · 부제목</td></tr>
+        <tr><td>discount_products.json</td><td>5</td><td><code class="i">loadDiscountProducts</code></td><td>올가 할인 특가</td><td>제목</td></tr>
+        <tr><td>gift_products.json</td><td>5</td><td><code class="i">loadGiftProducts</code></td><td>추석 선물세트</td><td>제목 · 부제목</td></tr>
+        <tr><td>md_products.json</td><td>5</td><td><code class="i">loadMdProducts</code></td><td>MD 추천상품</td><td>제목 · 배너</td></tr>
+        <tr><td>new_products.json</td><td>3</td><td><code class="i">loadNewProducts</code></td><td>NEW 신상품</td><td>제목</td></tr>
+        <tr><td>best_products.json</td><td>10</td><td><code class="i">loadBestProducts</code></td><td>베스트 상품</td><td>제목 · 카테고리 탭</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="foot"><span><b>07</b> / 18</span><span>Architecture · Data Rendering</span></div>
+</section></div>
+
+<!-- ================= 08 상세 페이지 상단 ================= -->
+<div class="frame"><section class="slide" id="s08">
+  <div class="eyebrow">Feature 03 · Product Detail</div>
+  <h2 class="title">상품 상세 — 갤러리와 이미지 확대</h2>
+  <p class="subtitle">카드를 누르면 이동하는 상세 페이지입니다. 대표 이미지에 마우스를 올리면 확대 렌즈가 나타납니다.</p>
+  <div class="rule"></div>
+  <div class="body" style="display:grid;grid-template-columns:780px 1fr;grid-template-rows:296px 1fr;gap:20px">
+    <div class="shot" style="grid-row:1/3"><em><b>01</b>상세 첫 화면</em><img src="img/fit_sub_top.jpg" alt=""></div>
+    <div class="shot"><em><b>02</b>이미지 확대 (렌즈 250px → 결과 550px)</em><img src="img/fit_sub_zoom.jpg" alt=""></div>
+    <div class="card" style="gap:6px;padding:16px 24px">
+      <h3>기능</h3>
+      <ul style="gap:5px;flex:1;justify-content:space-between">
+        <li><b>대표 이미지 + 썸네일</b> 전환 · <b>확대 렌즈</b>(2.2배)</li>
+        <li>BEST 뱃지 · 카테고리 · 브랜드 · 원산지/보관방법</li>
+        <li>정가 취소선 · 판매가 · <b>할인율</b> · 100g당 단가</li>
+        <li>찜하기 · 공유하기(복사/기기 공유) · 맨 위로 버튼</li>
+      </ul>
+      <div class="note" style="padding:9px 14px"><small style="margin-bottom:3px">Data</small>모두 <code class="i">sub.json</code>의 <code class="i">product</code> 값에서 생성</div>
+    </div>
+  </div>
+  <div class="foot"><span><b>08</b> / 18</span><span>Feature · Product Detail</span></div>
+</section></div>
+
+<!-- ================= 09 상세 주문/연관 ================= -->
+<div class="frame"><section class="slide" id="s09">
+  <div class="eyebrow">Feature 04 · Order &amp; Recommendation</div>
+  <h2 class="title">수량 계산 · 배송정보 · 연관 상품</h2>
+  <p class="subtitle">구매 직전에 필요한 정보를 접고 펼 수 있게 하고, 연관 상품 10개를 슬라이더로 보여줍니다.</p>
+  <div class="rule"></div>
+  <div class="body" style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 150px;gap:20px">
+    <div class="shot"><em><b>01</b>배송정보 펼침 · 수량 3 → 108,000원</em><img src="img/fit_sub_order.jpg" alt=""></div>
+    <div class="shot"><em><b>02</b>연관 상품 슬라이더 (5개씩 노출)</em><img src="img/fit_sub_ai.jpg" alt=""></div>
+    <div class="grid" style="grid-column:1/3;grid-template-columns:repeat(3,1fr);gap:20px">
+      <div class="card" style="gap:6px;padding:16px 22px"><h3 style="font-size:19px">수량 · 금액</h3><p style="font-size:16px;line-height:1.55">＋ / － 버튼으로 수량을 바꾸면 판매가 × 수량이 <b>주문금액</b>과 항목 금액에 동시에 반영됩니다. (최소 1개)</p><code class="i" style="font-size:13.5px;align-self:flex-start">price = productPrice × quantity</code></div>
+      <div class="card" style="gap:6px;padding:16px 22px"><h3 style="font-size:19px">배송정보 토글</h3><p style="font-size:16px;line-height:1.55">일반배송 · 새벽배송 도착 예정일과 배송비 기준을 <b>max-height 전환</b>으로 부드럽게 접고 펼칩니다.</p><code class="i" style="font-size:13.5px;align-self:flex-start">.delivery-section.closed → max-height: 0</code></div>
+      <div class="card" style="gap:6px;padding:16px 22px"><h3 style="font-size:19px">연관 상품 슬라이더</h3><p style="font-size:16px;line-height:1.55">화면 폭에 따라 <b>5 → 3 → 2개</b>씩 보이며, 처음과 끝에서는 이전/다음 버튼이 비활성 처리됩니다.</p><code class="i" style="font-size:13.5px;align-self:flex-start">≤650px → 2개 · ≤1000px → 3개 · 그 외 5개</code></div>
+    </div>
+  </div>
+  <div class="foot"><span><b>09</b> / 18</span><span>Feature · Order &amp; Recommendation</span></div>
+</section></div>
+
+<!-- ================= 10 상세 콘텐츠 블록 ================= -->
+<div class="frame"><section class="slide" id="s10">
+  <div class="eyebrow">Architecture · Detail Content Blocks</div>
+  <h2 class="title">상세 설명은 “블록” 14개로 조립합니다</h2>
+  <p class="subtitle">긴 상세 설명을 HTML로 쓰지 않고, 블록 타입과 내용만 JSON에 적으면 화면이 만들어집니다.</p>
+  <div class="rule"></div>
+  <div class="body" style="display:grid;grid-template-columns:500px 1fr 400px;gap:20px">
+    <pre style="font-size:16px;line-height:1.72"><span class="c">// json/sub.json → detailContent</span>
+[
+ { <span class="k">"type"</span>:<span class="s">"image"</span>, <span class="k">"variant"</span>:<span class="s">"logo"</span>,
+   <span class="k">"src"</span>:<span class="s">"./img/sub/…/0.PNG"</span> },
+ { <span class="k">"type"</span>:<span class="s">"storyIntro"</span>,
+   <span class="k">"kicker"</span>:<span class="s">"여름의 달콤함을 선물하세요"</span>,
+   <span class="k">"title"</span>:<span class="s">"복숭아 병조림 선물세트"</span>,
+   <span class="k">"points"</span>:[ {<span class="k">"lines"</span>:[<span class="s">"재배 농장"</span>,…]} ] },
+ { <span class="k">"type"</span>:<span class="s">"yellowPanel"</span>,
+   <span class="k">"heading"</span>:<span class="s">"구성을 확인하세요"</span>,
+   <span class="k">"boxes"</span>:[ … ] },
+ { <span class="k">"type"</span>:<span class="s">"textSection"</span>, … },
+ { <span class="k">"type"</span>:<span class="s">"storage"</span>, … },
+ { <span class="k">"type"</span>:<span class="s">"brandMessage"</span>, … }
+]</pre>
+    <div class="shot"><em><b>화면</b>렌더링된 상세 콘텐츠</em><img src="img/fit_sub_detail.jpg" alt=""></div>
+    <div class="tbl">
+      <table style="height:100%">
+        <tr><th colspan="2">블록 타입 → 14개 구성</th></tr>
+        <tr><td>image</td><td>이미지 블록 (로고 · 일반 · 좁은 폭) — 8개</td></tr>
+        <tr><td>storyIntro</td><td>소개 문구 + 특징 4개 — 1개</td></tr>
+        <tr><td>yellowPanel</td><td>구성 안내 박스 — 1개</td></tr>
+        <tr><td>textSection</td><td>제목 + 문단 — 2개</td></tr>
+        <tr><td>storage</td><td>보관법 안내 — 1개</td></tr>
+        <tr><td>brandMessage</td><td>브랜드 메시지 이미지 — 1개</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="foot"><span><b>10</b> / 18</span><span>Architecture · Detail Content Blocks</span></div>
+</section></div>
+
+<!-- ================= 11 CSS 구조 ================= -->
+<div class="frame"><section class="slide" id="s11">
+  <div class="eyebrow">Architecture · CSS</div>
+  <h2 class="title">CSS 구조 — 초기화 · 공통 · 페이지별</h2>
+  <p class="subtitle">7개로 흩어져 있던 스타일을 역할 기준 4개로 정리하고, 반응형 규칙도 담당 파일 안에 두었습니다.</p>
+  <div class="rule"></div>
+  <div class="body" style="display:grid;grid-template-columns:1fr 560px;grid-template-rows:1fr 190px;gap:20px">
+    <div class="tbl" style="grid-row:1">
+      <table style="height:100%">
+        <tr><th>파일</th><th>줄 수</th><th>담당 영역</th><th>로드하는 페이지</th></tr>
+        <tr><td>reset.css</td><td>42</td><td>box-sizing · 여백 · 링크 · 버튼 · 이미지 초기화</td><td>전체</td></tr>
+        <tr><td>common.css</td><td>492</td><td>색상 변수 · <code class="i">.wrap</code> · 원형 버튼 · <b>헤더 · 푸터</b> · 공통 반응형</td><td>전체</td></tr>
+        <tr><td>main.css</td><td>1,476</td><td>슬라이더 · 카테고리 · 상품 카드 공통 · 6개 섹션 · 반응형</td><td>index.html</td></tr>
+        <tr><td>sub.css</td><td>1,723</td><td>갤러리 · 확대 · 가격 · 배송 · 주문 · 연관 슬라이더 · 상세 블록</td><td>sub.html</td></tr>
+      </table>
+    </div>
+    <pre style="grid-row:1;font-size:13.6px;line-height:1.55"><span class="c">/* common.css — 디자인 토큰 */</span>
+:root {
+  <span class="k">--content</span>: 1262px;   <span class="c">/* 콘텐츠 최대 너비 */</span>
+  <span class="k">--line</span>: #e7e7e7;     <span class="c">/* 구분선 */</span>
+  <span class="k">--brown</span>: #76553f;    <span class="c">/* 포인트 컬러 */</span>
+}
+<span class="c">/* 모든 영역이 같은 폭 규칙을 사용 */</span>
+.wrap {
+  width: min(<span class="k">var(--content)</span>, calc(100% - 48px));
+  margin: 0 auto;
+}
+<span class="c">/* 760px 이하에서는 여백만 줄임 */</span>
+@media (max-width: 760px) {
+  .wrap { width: min(100% - 28px, <span class="k">var(--content)</span>); }
+}</pre>
+    <div class="grid" style="grid-column:1/3;grid-template-columns:repeat(3,1fr);gap:20px">
+      <div class="note" style="display:flex;flex-direction:column;justify-content:center"><small>Order</small><span><code class="i">reset</code> → <code class="i">common</code> → <code class="i">main</code> 순서로 로드해 뒤쪽이 앞쪽을 덮어쓰도록 했습니다.</span></div>
+      <div class="note" style="display:flex;flex-direction:column;justify-content:center"><small>Why</small><span>반응형 규칙을 따로 모으지 않고 담당 파일에 두어, 한 파일만 봐도 그 영역의 모든 상태를 알 수 있습니다.</span></div>
+      <div class="note brown" style="display:flex;flex-direction:column;justify-content:center"><small>Next page</small><span>새 서브 페이지는 <b>reset + common</b>을 그대로 쓰고 전용 CSS만 추가하면 됩니다.</span></div>
+    </div>
+  </div>
+  <div class="foot"><span><b>11</b> / 18</span><span>Architecture · CSS</span></div>
+</section></div>
+
+<!-- ================= 12 반응형 ================= -->
+<div class="frame"><section class="slide" id="s12">
+  <div class="eyebrow">Feature 05 · Responsive</div>
+  <h2 class="title">반응형 — 데스크톱에서 모바일까지</h2>
+  <p class="subtitle">그리드 열 수와 헤더 구성을 화면 폭에 따라 단계적으로 바꿉니다.</p>
+  <div class="rule"></div>
+  <div class="body" style="display:grid;grid-template-columns:262px 262px 262px 1fr;gap:20px">
+    <div class="shot"><em><b>390px</b>메인</em><img src="img/mobile_home.jpg" alt=""></div>
+    <div class="shot"><em><b>390px</b>상품 카드</em><img src="img/mobile_cards.jpg" alt=""></div>
+    <div class="shot"><em><b>390px</b>상세</em><img src="img/mobile_sub.jpg" alt=""></div>
+    <div class="tbl">
+      <table style="height:100%">
+        <tr><th>폭</th><th>달라지는 것</th></tr>
+        <tr><td>≤1100</td><td>헤더 2열 · 회원 메뉴 숨김 · 카테고리 6열</td></tr>
+        <tr><td>≤980</td><td>베스트 탭 가로 스크롤 · 베스트 2열</td></tr>
+        <tr><td>≤900</td><td>상품 그리드 5열 → 2열 · 푸터 1열</td></tr>
+        <tr><td>≤800</td><td>상세 1열 · 확대 기능 해제</td></tr>
+        <tr><td>≤760</td><td>헤더 1열 · 슬라이더 1장(미리보기) · 카테고리 4열</td></tr>
+        <tr><td>≤560</td><td>모든 상품 그리드 1열</td></tr>
+        <tr><td>≤520</td><td>상세 글자 크기 · 구매 버튼 1열</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="foot"><span><b>12</b> / 18</span><span>Feature · Responsive</span></div>
+</section></div>
+
+<!-- ================= 13 의사결정 ================= -->
+<div class="frame"><section class="slide" id="s13">
+  <div class="eyebrow">Decisions</div>
+  <h2 class="title">기술적 의사결정</h2>
+  <p class="subtitle">선택한 방식과 검토한 대안, 그렇게 정한 이유를 정리했습니다.</p>
+  <div class="rule"></div>
+  <div class="body tbl">
+    <table style="height:100%">
+      <tr><th style="width:190px">항목</th><th style="width:300px">채택</th><th style="width:300px">검토 대안</th><th>이유</th></tr>
+      <tr><td>데이터 저장</td><td>JSON 파일 + <code class="i">fetch</code></td><td>HTML에 직접 작성 / DB</td><td>읽기 전용이고 갱신이 적어 DB는 과하고, HTML 직접 작성은 수정할 곳이 너무 많아집니다.</td></tr>
+      <tr><td>렌더링 코드 분리</td><td>섹션별 <code class="i">export function</code></td><td>하나의 큰 스크립트</td><td>import되는 순간 실행되는 것을 막고, <code class="i">main.js</code>에서 실행 시점을 한 곳에서 제어합니다.</td></tr>
+      <tr><td>스타일 분리</td><td>reset · common · main · sub</td><td>섹션마다 CSS 파일</td><td>파일이 많아 관리가 어려웠고, 서브 페이지 추가를 고려해 “공통 / 페이지별”로 나눴습니다.</td></tr>
+      <tr><td>상세 콘텐츠</td><td>블록 타입별 템플릿</td><td>상세 HTML 직접 작성</td><td>상품이 늘어도 같은 코드로 다른 내용을 그릴 수 있습니다.</td></tr>
+      <tr><td>없는 값 처리</td><td>값이 있을 때만 태그 생성</td><td>빈 칸으로 표시</td><td>할인·평점이 없는 상품도 레이아웃이 깨지지 않고 자연스럽게 보입니다.</td></tr>
+      <tr><td>페이지 이동</td><td><code class="i">&lt;a href target="_self"&gt;</code></td><td><code class="i">onclick</code> 스크립트 이동</td><td>링크 형태를 유지해야 검색·키보드 이동·새 탭 열기가 기본으로 동작합니다.</td></tr>
+      <tr><td>배포</td><td>GitHub Pages</td><td>별도 서버 호스팅</td><td>빌드 없이 저장소를 그대로 올릴 수 있어 포트폴리오 링크로 공유하기 쉽습니다.</td></tr>
+    </table>
+  </div>
+  <div class="foot"><span><b>13</b> / 18</span><span>Decisions</span></div>
+</section></div>
+
+<!-- ================= 14 프로젝트 구조 ================= -->
+<div class="frame"><section class="slide" id="s14">
+  <div class="eyebrow">Project Structure</div>
+  <h2 class="title">프로젝트 구조와 데이터 모델</h2>
+  <p class="subtitle">폴더는 역할별로, 파일 이름은 “어느 화면의 무엇인지” 바로 알 수 있게 지었습니다.</p>
+  <div class="rule"></div>
+  <div class="body" style="display:grid;grid-template-columns:640px 1fr;gap:20px">
+    <pre style="font-size:17px;line-height:1.72">0825_004/
+├─ index.html            <span class="c"># 메인 페이지</span>
+├─ sub.html              <span class="c"># 상품 상세 페이지</span>
+├─ css/
+│  ├─ reset.css          <span class="c"># 기본값 초기화</span>
+│  ├─ common.css         <span class="c"># 헤더 · 푸터 · 공통</span>
+│  ├─ main.css           <span class="c"># 메인 전용</span>
+│  └─ sub.css            <span class="c"># 상세 전용</span>
+├─ js/
+│  ├─ main.js            <span class="c"># 모듈 실행 진입점</span>
+│  ├─ slider.js          <span class="c"># 배너 슬라이더</span>
+│  ├─ 01~06_fetch_*.js   <span class="c"># 섹션별 렌더링</span>
+│  └─ sub.js             <span class="c"># 상세 렌더링 · 인터랙션</span>
+├─ json/                 <span class="c"># 상품 데이터 7개</span>
+├─ img/                  <span class="c"># 섹션별 이미지 108개</span>
+├─ docs/readme/          <span class="c"># README 슬라이드 · 화면 · 시연 영상</span>
+└─ README.md</pre>
+    <div style="display:grid;grid-template-rows:1fr 1fr;gap:20px;min-height:0">
+      <pre style="font-size:15.5px;line-height:1.5;padding:14px 20px"><span class="c">// 섹션 JSON 공통 구조 (요약)</span>
+{
+  <span class="k">"section_title"</span>: <span class="s">"올가 할인 특가"</span>,
+  <span class="k">"items"</span>: [{ <span class="k">"id"</span>: 1, <span class="k">"brand"</span>: <span class="s">"올가"</span>, <span class="k">"badge"</span>: <span class="s">"BEST"</span>,
+    <span class="k">"image"</span>: <span class="s">"./img/…/01.jpg"</span>, <span class="k">"name"</span>: <span class="s">"상품명"</span>,
+    <span class="k">"discount"</span>: <span class="s">"20%"</span>, <span class="k">"price"</span>: <span class="s">"36,000원"</span>,
+    <span class="k">"unit_price"</span>: <span class="s">"…"</span>, <span class="k">"rating"</span>: 4.9,
+    <span class="k">"reviews"</span>: 78, <span class="k">"delivery_badge"</span>: <span class="s">"무료배송"</span> }]
+}</pre>
+      <pre style="font-size:15.5px;line-height:1.5;padding:14px 20px"><span class="c">// sub.json 구조 (요약)</span>
+{
+  <span class="k">"product"</span>: { category · brand · badge · nameLines,
+              price{…} · delivery{…} · gallery{…} },
+  <span class="k">"aiRecommend"</span>:   [ 연관 상품 10개 ],
+  <span class="k">"infoTabs"</span>:      [ 탭 5개 ],
+  <span class="k">"detailContent"</span>: [ 상세 블록 14개 ]
+}</pre>
+    </div>
+  </div>
+  <div class="foot"><span><b>14</b> / 18</span><span>Project Structure</span></div>
+</section></div>
+
+<!-- ================= 15 실행 방법 ================= -->
+<div class="frame"><section class="slide" id="s15">
+  <div class="eyebrow">Getting Started</div>
+  <h2 class="title">실행 방법</h2>
+  <p class="subtitle">설치할 것은 거의 없습니다. 파일을 내려받아 간단한 HTTP 서버로 열면 됩니다.</p>
+  <div class="rule"></div>
+  <div class="body" style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 150px;gap:20px">
+    <div class="card" style="gap:14px">
+      <div class="hd"><span class="num">01</span><h3>내려받기 — PowerShell</h3></div>
+      <pre style="font-size:17px;line-height:1.8;flex:1"><span class="c"># 저장소 복제</span>
+git clone https://github.com/su4228-prog/0825_004.git
+cd 0825_004
+
+<span class="c"># Python이 있다면 (권장)</span>
+python -m http.server 8080</pre>
+      <p>브라우저에서 <code class="i">http://localhost:8080/</code> 을 엽니다.</p>
+    </div>
+    <div class="card" style="gap:14px">
+      <div class="hd"><span class="num">02</span><h3>다른 방법</h3></div>
+      <ul style="gap:7px">
+        <li><b>VS Code</b> — Live Server 확장에서 <code class="i">Go Live</code></li>
+        <li><b>Node.js</b> — <code class="i">npx serve .</code></li>
+        <li><b>배포 사이트</b> — 설치 없이 바로 확인<br><code class="i">su4228-prog.github.io/0825_004</code></li>
+        <li><b>확인할 곳</b> — 메인 <code class="i">/</code> · 상세 <code class="i">/sub.html</code></li>
+        <li><b>멈추기</b> — 터미널에서 <code class="i">Ctrl + C</code></li>
+      </ul>
+      <div class="note" style="margin-top:auto"><small>주의</small><code class="i">index.html</code>을 더블클릭해 열면(<code class="i">file://</code>) 브라우저 보안 정책 때문에 JSON을 읽지 못해 상품이 비어 보입니다.</div>
+    </div>
+    <div class="grid" style="grid-column:1/3;grid-template-columns:repeat(3,1fr);gap:20px">
+      <div class="stat" style="flex-direction:row;align-items:center;gap:18px"><b>0</b><span>설치해야 하는 패키지 (npm 없음)</span></div>
+      <div class="stat" style="flex-direction:row;align-items:center;gap:18px"><b>0</b><span>빌드 단계</span></div>
+      <div class="stat" style="flex-direction:row;align-items:center;gap:18px"><b>1</b><span>명령으로 로컬 실행</span></div>
+    </div>
+  </div>
+  <div class="foot"><span><b>15</b> / 18</span><span>Getting Started</span></div>
+</section></div>
+
+<!-- ================= 16 검증 ================= -->
+<div class="frame"><section class="slide" id="s16">
+  <div class="eyebrow">Verification</div>
+  <h2 class="title">검증 결과 — 배포 사이트 기준</h2>
+  <p class="subtitle">2026.10.17 배포 주소를 브라우저 자동화(Playwright · Chrome)로 직접 열어 확인했습니다.</p>
+  <div class="rule"></div>
+  <div class="body" style="display:grid;grid-template-columns:1fr 520px;grid-template-rows:1fr 150px;gap:20px">
+    <div class="tbl" style="grid-row:1/3">
+      <table style="height:100%">
+        <tr><th>검사</th><th>결과</th></tr>
+        <tr><td>메인 상품 카드 수</td><td>33개 (추천 5 · 할인 5 · 선물 5 · MD 5 · 신상품 3 · 베스트 10)</td></tr>
+        <tr><td>상세 페이지 연결</td><td>카드 이미지 36곳 모두 <code class="i">href="sub.html" target="_self"</code></td></tr>
+        <tr><td>이미지 로드</td><td>메인 197개 · 상세 전부 정상 (깨진 이미지 0)</td></tr>
+        <tr><td>오류</td><td>JS 오류 0건 · 404 등 HTTP 오류 0건</td></tr>
+        <tr><td>슬라이더</td><td>배너 8장 · 다음 버튼 후 카운터 2 · 일시정지 전환 확인</td></tr>
+        <tr><td>상세 렌더링</td><td>썸네일 2 · 연관상품 10 · 탭 5 · 상세 블록 14</td></tr>
+        <tr><td>수량 계산</td><td>수량 3 → 108,000원 · 수량 2 → 72,000원 정상</td></tr>
+        <tr><td>인터랙션</td><td>배송정보 펼침 · 찜 활성 · 썸네일 전환 정상</td></tr>
+        <tr><td>가로 넘침</td><td>1440 · 1100 · 900 · 760 · 560px에서 0 (메인은 390px도 0)</td></tr>
+      </table>
+    </div>
+    <div class="card" style="gap:8px;border-color:#e8c9a8;background:#fff8f0">
+      <h3 style="color:var(--brown)">🔧 개선 예정 항목</h3>
+      <p><b>상세 페이지 390px 폭에서 가로 69px 넘침을 보정할 예정입니다.</b> 데스크톱·태블릿 폭에서는 정상이며, 모바일 상세의 고정 폭 요소가 원인으로 보입니다.</p>
+      <table class="tight" style="margin-top:6px"><tr><th>폭</th><th>메인</th><th>상세</th></tr><tr><td>1440 ~ 560px</td><td>넘침 0</td><td>넘침 0</td></tr><tr><td style="color:var(--red)">390px</td><td>넘침 0</td><td style="color:var(--red);font-weight:700">+69px</td></tr></table>
+      <div class="note brown" style="margin-top:auto"><small>Next</small>회고의 “추후 단계”에 보정 항목으로 넣었습니다.</div>
+    </div>
+    <div class="note brown" style="display:flex;flex-direction:column;justify-content:center"><small>검증하지 않은 범위</small>모든 브라우저·기기 실측, 접근성 전수 점검, 이미지 사용 권한 검토는 이번에 확인하지 않았습니다.</div>
+  </div>
+  <div class="foot"><span><b>16</b> / 18</span><span>Verification</span></div>
+</section></div>
+
+<!-- ================= 17 회고 ================= -->
+<div class="frame"><section class="slide" id="s17">
+  <div class="eyebrow">Retrospective</div>
+  <h2 class="title">회고</h2>
+  <p class="subtitle">잘한 점, 개선할 점, 그리고 추후 단계를 정리했습니다.</p>
+  <div class="rule"></div>
+  <div class="body" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+    <div class="card big"><div class="hd"><span class="num" style="background:#dff0d5;color:#3c7a1f">K</span><h3>잘한 점 (Keep)</h3></div>
+      <ul style="gap:11px"><li><b>데이터와 화면을 분리</b>해 상품 정보를 JSON만 고쳐 바꿀 수 있습니다.</li><li><b>공통 / 페이지별 CSS</b>로 나눠 새 페이지를 추가하기 쉬워졌습니다.</li><li>상세 설명을 <b>블록 구조</b>로 만들어 같은 코드로 다른 내용을 그릴 수 있습니다.</li><li>없는 값은 자동으로 생략해 <b>레이아웃이 깨지지 않습니다.</b></li></ul>
+      <div class="note" style="margin-top:auto"><small>Keep</small>배포 사이트를 <b>자동화 테스트로 직접 점검</b>해 수치로 확인했습니다.</div></div>
+    <div class="card big"><div class="hd"><span class="num" style="background:#f7e2cf;color:#a8591a">I</span><h3>개선할 점 (Improve)</h3></div>
+      <ul style="gap:11px"><li>상세 페이지를 <b>상품 번호별로 연결</b> — 지금은 상품 1개분 상세로 이동</li><li>로그인 · 장바구니 · 검색 · 챗봇은 화면까지 완료, <b>동작은 다음 단계</b></li><li>가격을 문자열 <code class="i">"4,200원"</code>에서 <b>숫자 값으로 전환</b></li><li>모바일 상세의 <b>가로 넘침 보정</b></li></ul>
+      <div class="note brown" style="margin-top:auto"><small>Improvement</small>390px 상세 페이지의 <b>가로 넘침 69px</b>을 보정할 예정입니다.</div></div>
+    <div class="card big"><div class="hd"><span class="num" style="background:#dfe8f7;color:#2b5aa8">N</span><h3>추후 단계 (Next)</h3></div>
+      <ul style="gap:11px"><li><b>상품 번호로 상세 연결</b> — <code class="i">sub.html?id=…</code></li><li><b>Supabase</b>에 상품 · 섹션 · 상세 데이터 보관</li><li><b>FastAPI 서버</b> — 상품 · 검색 API</li><li><b>쇼핑몰 안내 챗봇</b> — 문서 기반 답변</li><li>회원가입 · 로그인 · 장바구니</li><li>모바일 상세 가로 넘침 보정</li></ul>
+      <div class="note" style="margin-top:auto"><small>Order</small>데이터 이전 → API → 화면 연결 → 챗봇 → 공개 순서로 진행합니다.</div></div>
+  </div>
+  <div class="foot"><span><b>17</b> / 18</span><span>Retrospective</span></div>
+</section></div>
+
+<!-- ================= 18 로드맵 ================= -->
+<div class="frame"><section class="slide dark" id="s18">
+  <div class="eyebrow">Roadmap</div>
+  <h2 class="title">향후 계획 — 백엔드로 확장</h2>
+  <p class="subtitle">지금의 JSON 구조를 그대로 DB로 옮기고, 화면은 거의 바꾸지 않는 방향으로 진행합니다.</p>
+  <div class="rule"></div>
+  <div class="body" style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 150px;gap:20px">
+    <div class="card" style="background:var(--dark-2);border-color:var(--dark-line);color:#f2f6ee">
+      <h3 style="color:#f2f6ee">구조</h3>
+      <pre style="background:#0f1a13;border:1px solid var(--dark-line);flex:1;font-size:15.5px;line-height:1.75">브라우저 (현재 사이트)
+   │  fetch("/api/...")
+   ▼
+FastAPI 서버 ──▶ Supabase (PostgreSQL)
+   │              products · sections
+   │              section_products · product_details
+   └────────────▶ OpenAI (챗봇, 버튼을 눌렀을 때만)</pre>
+      <p style="color:var(--dark-muted)">같은 상품이 여러 섹션에 나와도 <b style="color:#fff">상품은 1줄</b>만 두고 섹션과는 연결 표로 묶습니다.</p>
+    </div>
+    <div class="card" style="background:var(--dark-2);border-color:var(--dark-line);color:#f2f6ee">
+      <h3 style="color:#f2f6ee">단계</h3>
+      <ul style="gap:11px;color:var(--dark-muted)">
+        <li style="color:var(--dark-muted)"><b style="color:#fff">1.</b> Supabase에 표 4개 생성, 기존 JSON 이전</li>
+        <li style="color:var(--dark-muted)"><b style="color:#fff">2.</b> 섹션별 목록 · 상세 · 검색 API</li>
+        <li style="color:var(--dark-muted)"><b style="color:#fff">3.</b> 화면이 JSON 대신 API를 읽도록 변경, 카드마다 자기 상세로 이동</li>
+        <li style="color:var(--dark-muted)"><b style="color:#fff">4.</b> 쇼핑몰 안내 챗봇 (문서에 없는 내용은 “확인되지 않습니다”)</li>
+        <li style="color:var(--dark-muted)"><b style="color:#fff">5.</b> 서버 배포 · 챗봇 사용 횟수 제한 · 키는 서버에만 보관</li>
+        <li style="color:var(--dark-muted)"><b style="color:#fff">6.</b> 이후 로그인 · 장바구니</li>
+      </ul>
+    </div>
+    <div class="grid" style="grid-column:1/3;grid-template-columns:repeat(3,1fr);gap:20px">
+      <div class="stat" style="flex-direction:row;align-items:center;gap:18px"><b>4</b><span>DB 표 (상품 · 섹션 · 연결 · 상세)</span></div>
+      <div class="stat" style="flex-direction:row;align-items:center;gap:18px"><b>4</b><span>API (섹션 · 상세 · 검색 · 챗봇)</span></div>
+      <div class="stat" style="flex-direction:row;align-items:center;gap:18px"><b>0</b><span>키를 프론트엔드에 노출하는 곳</span></div>
+    </div>
+  </div>
+  <div class="foot"><span><b>18</b> / 18</span><span>ORGA Whole Foods · su4228-prog</span></div>
+</section></div>
+
+<script>
+// 화면 폭에 맞춰 슬라이드를 축소해서 보여줍니다 (?export 를 붙이면 1600×900 원본 크기)
+(function(){
+  const fit=()=>{const s=location.search.includes('export')?1:Math.min(1,(innerWidth-32)/1600);document.documentElement.style.setProperty('--s',s)};
+  fit();addEventListener('resize',fit);
+})();
+</script>
+</body>
+</html>

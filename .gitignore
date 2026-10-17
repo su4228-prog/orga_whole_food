@@ -1,0 +1,14 @@
+# ===== 비밀 열쇠 / 개인 설정 (절대 GitHub에 올리지 않습니다) =====
+.env
+.env.*
+!.env.example
+backend/.env
+
+# ===== 파이썬 임시 파일 =====
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# ===== 내 컴퓨터 전용 설정 =====
+.claude/
