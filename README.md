@@ -4,7 +4,7 @@
 
 메인 페이지(헤더 · 배너 슬라이더 · 카테고리 · 상품 6개 섹션)와 상품 상세 페이지(이미지 확대 · 수량/금액 계산 · 배송정보 · 연관 상품 슬라이더 · 상세 콘텐츠)를 **HTML · CSS · 바닐라 JavaScript**만으로 구현했습니다. 상품 정보는 JSON 파일에서 불러와 그리고, 스타일은 `reset · common · main · sub`로 나눠 새 페이지를 추가하기 쉽게 설계했습니다.
 
-링크: https://su4228-prog.github.io/0825_004/
+🔗 **사이트 바로가기 →** [https://su4228-prog.github.io/0825_004/](https://su4228-prog.github.io/0825_004/)
 
 <p align="center">
   <img src="./docs/readme/demo/demo.gif" alt="배포 사이트 기능 시연 — 홈, 상품 섹션, 상세 페이지 확대·수량·배송정보, 연관 상품, 상세 콘텐츠" width="100%" />
