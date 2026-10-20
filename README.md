@@ -20,11 +20,11 @@
 ![OpenAI](https://img.shields.io/badge/OpenAI-gpt--4o--mini-412991?style=flat-square&logo=openai&logoColor=white)
 ![Render](https://img.shields.io/badge/Render-46E3B7?style=flat-square&logo=render&logoColor=black)
 
-> 📑 슬라이드(16:9)로 보기: 아래 [슬라이드 펼쳐보기](#-슬라이드-펼쳐보기)에서 18장을 이미지로 볼 수 있습니다. 슬라이드는 **1차(정적 사이트) 버전** 기준이며, 2차(서버 · 상담봇) 내용은 이 README에 정리했습니다.
+> 📑 슬라이드(16:9)로 보기: 아래 [슬라이드 펼쳐보기](#-슬라이드-펼쳐보기)에서 화면 · FastAPI · Supabase · 상담봇 · Render 배포까지 반영한 최종 버전 18장을 볼 수 있습니다.
 
-| 페이지 | 상품 | 상세 페이지 | API | 상담봇 점검 | 반응형 분기점 |
+| 이용 화면 | 상품 | 상세 페이지 | API | 상담봇 점검 | 반응형 분기점 |
 |:---:|:---:|:---:|:---:|:---:|:---:|
-| **2개** | **30개** (카드 33) | **30개** | **7개** | **22문항 통과** | **10단계** |
+| **31개** (메인 1 + 상세 30) | **30개** (카드 33) | **30개** | **7개** | **22문항 통과** | **10단계** |
 
 ---
 
@@ -386,10 +386,10 @@ python -m http.server 8080
 
 ## 📊 슬라이드 펼쳐보기
 
-1차(정적 사이트) 버전의 전체 내용을 16:9 슬라이드 18장으로 정리했습니다. 원본은 [`docs/readme/README.html`](./docs/readme/README.html)입니다.
+화면 구현부터 FastAPI · Supabase · 상담봇 · Render 공개 배포까지 전체 내용을 16:9 슬라이드 18장으로 정리했습니다. 원본은 [`docs/readme/README.html`](./docs/readme/README.html)입니다.
 
 <details>
-<summary><b>📂 슬라이드 펼쳐보기 (총 18장 · 1차 버전)</b></summary>
+<summary><b>📂 슬라이드 펼쳐보기 (총 18장 · 백엔드 확장·배포 완료 버전)</b></summary>
 <br />
 
 <p align="center">
@@ -399,18 +399,18 @@ python -m http.server 8080
   <img src="./docs/readme/slides/04.png" alt="Slide 04 · 기술 스택과 배포 구조" width="95%" /><br /><sub>04 · 기술 스택과 배포 구조</sub><br /><br />
   <img src="./docs/readme/slides/05.png" alt="Slide 05 · 메인 화면" width="95%" /><br /><sub>05 · 메인 화면 — 헤더 · 배너 · 카테고리</sub><br /><br />
   <img src="./docs/readme/slides/06.png" alt="Slide 06 · 상품 섹션" width="95%" /><br /><sub>06 · 상품 섹션 6개 — 33개 카드</sub><br /><br />
-  <img src="./docs/readme/slides/07.png" alt="Slide 07 · JSON 렌더링 구조" width="95%" /><br /><sub>07 · JSON → 카드 렌더링 구조</sub><br /><br />
+  <img src="./docs/readme/slides/07.png" alt="Slide 07 · API 우선 렌더링 구조" width="95%" /><br /><sub>07 · API 우선 · JSON 대체 구조</sub><br /><br />
   <img src="./docs/readme/slides/08.png" alt="Slide 08 · 상품 상세" width="95%" /><br /><sub>08 · 상품 상세 — 갤러리와 이미지 확대</sub><br /><br />
   <img src="./docs/readme/slides/09.png" alt="Slide 09 · 수량·배송·연관 상품" width="95%" /><br /><sub>09 · 수량 계산 · 배송정보 · 연관 상품</sub><br /><br />
-  <img src="./docs/readme/slides/10.png" alt="Slide 10 · 상세 콘텐츠 블록" width="95%" /><br /><sub>10 · 상세 설명은 “블록” 14개로 조립</sub><br /><br />
-  <img src="./docs/readme/slides/11.png" alt="Slide 11 · CSS 구조" width="95%" /><br /><sub>11 · CSS 구조 — 초기화 · 공통 · 페이지별</sub><br /><br />
-  <img src="./docs/readme/slides/12.png" alt="Slide 12 · 반응형" width="95%" /><br /><sub>12 · 반응형 — 데스크톱에서 모바일까지</sub><br /><br />
+  <img src="./docs/readme/slides/10.png" alt="Slide 10 · FastAPI 상품 API" width="95%" /><br /><sub>10 · FastAPI 상품 API</sub><br /><br />
+  <img src="./docs/readme/slides/11.png" alt="Slide 11 · Supabase 데이터 모델" width="95%" /><br /><sub>11 · Supabase 데이터 모델</sub><br /><br />
+  <img src="./docs/readme/slides/12.png" alt="Slide 12 · 쇼핑몰 상담봇" width="95%" /><br /><sub>12 · 문서와 상품 정보를 근거로 답하는 상담봇</sub><br /><br />
   <img src="./docs/readme/slides/13.png" alt="Slide 13 · 기술적 의사결정" width="95%" /><br /><sub>13 · 기술적 의사결정</sub><br /><br />
   <img src="./docs/readme/slides/14.png" alt="Slide 14 · 프로젝트 구조" width="95%" /><br /><sub>14 · 프로젝트 구조와 데이터 모델</sub><br /><br />
-  <img src="./docs/readme/slides/15.png" alt="Slide 15 · 실행 방법" width="95%" /><br /><sub>15 · 실행 방법</sub><br /><br />
+  <img src="./docs/readme/slides/15.png" alt="Slide 15 · 로컬 실행과 Render 배포" width="95%" /><br /><sub>15 · 로컬 실행과 Render 배포</sub><br /><br />
   <img src="./docs/readme/slides/16.png" alt="Slide 16 · 검증 결과" width="95%" /><br /><sub>16 · 검증 결과 — 배포 사이트 기준</sub><br /><br />
   <img src="./docs/readme/slides/17.png" alt="Slide 17 · 회고" width="95%" /><br /><sub>17 · 회고</sub><br /><br />
-  <img src="./docs/readme/slides/18.png" alt="Slide 18 · 1차 당시 향후 계획" width="95%" /><br /><sub>18 · 1차 당시 계획 — 백엔드로 확장 (현재 완료)</sub><br /><br />
+  <img src="./docs/readme/slides/18.png" alt="Slide 18 · 백엔드 확장과 공개 배포 완료" width="95%" /><br /><sub>18 · 백엔드 확장과 공개 배포 완료</sub><br /><br />
 </p>
 
 </details>
