@@ -7,9 +7,9 @@ services:
     runtime: python
     plan: free
     region: singapore
-    rootDir: backend
-    buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
+    # rootDir 를 비워 두어야 화면 파일(css·js·html)만 바뀌어도 자동으로 다시 배포됩니다
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: cd backend && uvicorn app:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /health
     envVars:
       - key: PYTHON_VERSION

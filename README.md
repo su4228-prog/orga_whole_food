@@ -4,14 +4,15 @@
 
 1차로 메인 페이지와 상품 상세 페이지를 **HTML · CSS · 바닐라 JavaScript**로 만들고 상품 정보를 JSON으로 분리했습니다. 2차로 그 JSON을 **Supabase DB**로 옮기고 **FastAPI 서버**를 붙여, 카드마다 자기 상품의 상세 페이지(30개)로 이동하고 왼쪽 아래 **로봇 상담봇**이 배송 · 반품 · 적립금 · 상품 가격을 답하도록 확장했습니다.
 
-🔗 **사이트 바로가기 →** [https://su4228-prog.github.io/0825_004/](https://su4228-prog.github.io/0825_004/) <sub>(GitHub Pages · 서버 없이 JSON으로 동작하는 1차 버전 화면)</sub>
+🔗 **배포 사이트 바로가기 →** [https://orga-whole-food.onrender.com](https://orga-whole-food.onrender.com) <sub>(Render · 화면 + FastAPI + Supabase + 상담봇)</sub><br>
+🔗 **정적 버전 →** [https://su4228-prog.github.io/0825_004/](https://su4228-prog.github.io/0825_004/) <sub>(GitHub Pages · 서버 없이 JSON으로 동작하는 1차 버전)</sub>
 
 <p align="center">
   <img src="./docs/readme/demo/demo.gif" alt="배포 사이트 기능 시연 — 홈, 상품 섹션, 상세 페이지 확대·수량·배송정보, 연관 상품, 상세 콘텐츠" width="100%" />
 </p>
 <p align="center"><sub>▶ 1차 버전 기능 시연 (약 74초) · 메인 슬라이더 → 상품 섹션 → 상세 이동 → 이미지 확대 → 배송정보 · 수량 → 연관 상품 → 상세 콘텐츠 · 고화질 영상: <a href="./docs/readme/demo/demo.mp4">demo.mp4</a></sub></p>
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-su4228--prog.github.io%2F0825__004-5b7a1c?style=flat-square)](https://su4228-prog.github.io/0825_004/)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Render-46E3B7?style=flat-square&logo=render&logoColor=black)](https://orga-whole-food.onrender.com)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES_Modules-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
@@ -57,7 +58,7 @@
 | **DB** | Supabase(PostgreSQL) — 상품 · 섹션 · 섹션-상품 연결 · 상세 4개 표 |
 | **상담봇** | 쇼핑몰 이용 안내 + 상품 목록을 근거로 답하는 로봇 상담봇 (OpenAI `gpt-4o-mini`) |
 | **개발** | su4228-prog — 화면 구현 · 구조 설계 · 서버 · 배포 |
-| **실행 환경** | 서버 버전: `http://127.0.0.1:8000` (Render 배포 준비 완료) · 정적 버전: [GitHub Pages](https://su4228-prog.github.io/0825_004/) |
+| **실행 환경** | 배포 서버: [Render](https://orga-whole-food.onrender.com) · 로컬 서버: `http://127.0.0.1:8000` · 정적 버전: [GitHub Pages](https://su4228-prog.github.io/0825_004/) |
 
 > **저작권 안내** — 학습과 포트폴리오 목적으로 만든 프로젝트이며, 상호 · 로고 · 상품 이미지와 문구의 권리는 각 권리자에게 있습니다. 상담봇의 이용 안내 문서는 실제 쇼핑몰 FAQ를 참고해 직접 다시 쓴 내용입니다.
 
@@ -83,7 +84,7 @@
 | **서버** | Python · FastAPI · Uvicorn · Pydantic (입력 · 응답 형태 검사) |
 | **DB** | Supabase (PostgreSQL) · 읽기 전용 보안 정책(RLS) |
 | **상담봇** | OpenAI `gpt-4o-mini` · 이용 안내 문서 + 상품 목록 + 서버가 계산한 사실을 함께 전달 |
-| **배포** | 정적: GitHub Pages · 서버: Render (`render.yaml` 설정 포함) |
+| **배포** | 정적 화면: GitHub Pages · 통합 서비스: Render 무료 Web Service (`main` 자동 배포, `/health` 상태 확인) |
 
 ```text
 브라우저 ──▶ FastAPI 서버 (사이트 화면 + API를 한 주소에서 제공)
@@ -272,6 +273,7 @@ orga_whole_food/
 │  └─ chat.js                # 상담봇 버튼 · 채팅 창
 ├─ json/                     # 서버가 없을 때 쓰는 예비 데이터 7개
 ├─ img/                      # 상품 · 배너 이미지 108개
+├─ requirements.txt          # 저장소 최상위에서 backend 의존성 설치
 ├─ backend/                  # 서버 (처음 켜는 방법: backend/README.md)
 │  ├─ app.py                 # API 주소 · 사이트 화면 제공
 │  ├─ services/              # 상품 · 상담봇 · 횟수 제한
@@ -318,7 +320,16 @@ python -m http.server 8080
 
 ### Render 배포
 
-저장소의 `render.yaml`에 서버 설정이 들어 있습니다. Render에서 **New → Blueprint**로 이 저장소를 고르고, 비밀 키 3개(`SUPABASE_URL` · `SUPABASE_SERVICE_ROLE_KEY` · `OPENAI_API_KEY`)를 Render 화면에서 입력하면 사이트 · API · 상담봇이 한 주소로 열립니다.
+무료 Web Service로 배포되어 사이트 · API · 상담봇이 한 주소에서 동작합니다.
+
+- **사이트**: [https://orga-whole-food.onrender.com](https://orga-whole-food.onrender.com)
+- **서버 상태**: [/health](https://orga-whole-food.onrender.com/health)
+- **API 문서**: [/docs](https://orga-whole-food.onrender.com/docs)
+- **Build Command**: `pip install -r backend/requirements.txt`
+- **Start Command**: `cd backend && uvicorn app:app --host 0.0.0.0 --port $PORT`
+- **Health Check Path**: `/health`
+
+`SUPABASE_URL` · `SUPABASE_SERVICE_ROLE_KEY` · `OPENAI_API_KEY`는 저장소에 넣지 않고 Render 환경 변수로 관리합니다. `render.yaml`에는 같은 배포 구성을 다시 만들 수 있는 Blueprint 설정이 들어 있습니다.
 
 ---
 
@@ -338,6 +349,7 @@ python -m http.server 8080
 | 서버 없는 환경 | 상품 33개 정상 표시 · 상담봇 버튼 숨김 · 오류 0 |
 | 보안 | `backend/.env` · 서버 코드 · `.git` 주소 접근 시 404 · 키는 GitHub에 올라가지 않음 |
 | 가로 넘침 | 1440 · 1100 · 900 · 760 · 560px 메인/상세 0 · 메인은 390px도 0 |
+| 공개 배포 | Render `/health` 정상 · 메인 상품 데이터 표시 · 상품 상세 API 연동 · 상담봇 실제 응답 확인 |
 
 ### 🔧 개선 예정 항목
 
@@ -365,10 +377,11 @@ python -m http.server 8080
 - 모바일(390px) 상세 페이지의 **가로 넘침 69px 보정**
 
 **추후 단계 (Next)**
-1. Render에 서버 배포 후 GitHub Pages 화면도 그 서버를 쓰도록 연결
+1. GitHub Pages 화면도 Render API를 쓰도록 연결
 2. 헤더 검색창을 검색 API와 연결
 3. 회원가입 · 로그인 · 장바구니 (Supabase 인증)
-4. 모바일 상세 넘침 수정
+4. 상담봇 횟수 제한을 외부 저장소로 옮겨 서버 재시작 뒤에도 유지
+5. 모바일 상세 넘침 수정
 
 ---
 
@@ -398,7 +411,7 @@ python -m http.server 8080
   <img src="./docs/readme/slides/15.png" alt="Slide 15 · 실행 방법" width="95%" /><br /><sub>15 · 실행 방법</sub><br /><br />
   <img src="./docs/readme/slides/16.png" alt="Slide 16 · 검증 결과" width="95%" /><br /><sub>16 · 검증 결과 — 배포 사이트 기준</sub><br /><br />
   <img src="./docs/readme/slides/17.png" alt="Slide 17 · 회고" width="95%" /><br /><sub>17 · 회고</sub><br /><br />
-  <img src="./docs/readme/slides/18.png" alt="Slide 18 · 향후 계획" width="95%" /><br /><sub>18 · 향후 계획 — 백엔드로 확장</sub><br /><br />
+  <img src="./docs/readme/slides/18.png" alt="Slide 18 · 1차 당시 향후 계획" width="95%" /><br /><sub>18 · 1차 당시 계획 — 백엔드로 확장 (현재 완료)</sub><br /><br />
 </p>
 
 </details>

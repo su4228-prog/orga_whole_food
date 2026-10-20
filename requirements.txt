@@ -1,0 +1,2 @@
+# 호스팅(Render 등)이 저장소 맨 위에서 설치 명령을 실행해도 서버 프로그램이 설치되도록 backend 목록을 그대로 불러옵니다.
+-r backend/requirements.txt
