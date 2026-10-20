@@ -393,24 +393,24 @@ python -m http.server 8080
 <br />
 
 <p align="center">
-  <img src="./docs/readme/slides/01.png" alt="Slide 01 · 표지" width="95%" /><br /><sub>01 · 표지</sub><br /><br />
-  <img src="./docs/readme/slides/02.png" alt="Slide 02 · 프로젝트 한눈에 보기" width="95%" /><br /><sub>02 · 프로젝트 한눈에 보기</sub><br /><br />
-  <img src="./docs/readme/slides/03.png" alt="Slide 03 · 설계 목표" width="95%" /><br /><sub>03 · 설계 목표</sub><br /><br />
-  <img src="./docs/readme/slides/04.png" alt="Slide 04 · 기술 스택과 배포 구조" width="95%" /><br /><sub>04 · 기술 스택과 배포 구조</sub><br /><br />
-  <img src="./docs/readme/slides/05.png" alt="Slide 05 · 메인 화면" width="95%" /><br /><sub>05 · 메인 화면 — 헤더 · 배너 · 카테고리</sub><br /><br />
-  <img src="./docs/readme/slides/06.png" alt="Slide 06 · 상품 섹션" width="95%" /><br /><sub>06 · 상품 섹션 6개 — 33개 카드</sub><br /><br />
-  <img src="./docs/readme/slides/07.png" alt="Slide 07 · API 우선 렌더링 구조" width="95%" /><br /><sub>07 · API 우선 · JSON 대체 구조</sub><br /><br />
-  <img src="./docs/readme/slides/08.png" alt="Slide 08 · 상품 상세" width="95%" /><br /><sub>08 · 상품 상세 — 갤러리와 이미지 확대</sub><br /><br />
-  <img src="./docs/readme/slides/09.png" alt="Slide 09 · 수량·배송·연관 상품" width="95%" /><br /><sub>09 · 수량 계산 · 배송정보 · 연관 상품</sub><br /><br />
-  <img src="./docs/readme/slides/10.png" alt="Slide 10 · FastAPI 상품 API" width="95%" /><br /><sub>10 · FastAPI 상품 API</sub><br /><br />
-  <img src="./docs/readme/slides/11.png" alt="Slide 11 · Supabase 데이터 모델" width="95%" /><br /><sub>11 · Supabase 데이터 모델</sub><br /><br />
-  <img src="./docs/readme/slides/12.png" alt="Slide 12 · 쇼핑몰 상담봇" width="95%" /><br /><sub>12 · 문서와 상품 정보를 근거로 답하는 상담봇</sub><br /><br />
-  <img src="./docs/readme/slides/13.png" alt="Slide 13 · 기술적 의사결정" width="95%" /><br /><sub>13 · 기술적 의사결정</sub><br /><br />
-  <img src="./docs/readme/slides/14.png" alt="Slide 14 · 프로젝트 구조" width="95%" /><br /><sub>14 · 프로젝트 구조와 데이터 모델</sub><br /><br />
-  <img src="./docs/readme/slides/15.png" alt="Slide 15 · 로컬 실행과 Render 배포" width="95%" /><br /><sub>15 · 로컬 실행과 Render 배포</sub><br /><br />
-  <img src="./docs/readme/slides/16.png" alt="Slide 16 · 검증 결과" width="95%" /><br /><sub>16 · 검증 결과 — 배포 사이트 기준</sub><br /><br />
-  <img src="./docs/readme/slides/17.png" alt="Slide 17 · 회고" width="95%" /><br /><sub>17 · 회고</sub><br /><br />
-  <img src="./docs/readme/slides/18.png" alt="Slide 18 · 백엔드 확장과 공개 배포 완료" width="95%" /><br /><sub>18 · 백엔드 확장과 공개 배포 완료</sub><br /><br />
+  <img src="./docs/readme/slides/01.png?v=backend-20261020" alt="Slide 01 · 표지" width="95%" /><br /><sub>01 · 표지</sub><br /><br />
+  <img src="./docs/readme/slides/02.png?v=backend-20261020" alt="Slide 02 · 프로젝트 한눈에 보기" width="95%" /><br /><sub>02 · 프로젝트 한눈에 보기</sub><br /><br />
+  <img src="./docs/readme/slides/03.png?v=backend-20261020" alt="Slide 03 · 설계 목표" width="95%" /><br /><sub>03 · 설계 목표</sub><br /><br />
+  <img src="./docs/readme/slides/04.png?v=backend-20261020" alt="Slide 04 · 기술 스택과 배포 구조" width="95%" /><br /><sub>04 · 기술 스택과 배포 구조</sub><br /><br />
+  <img src="./docs/readme/slides/05.png?v=backend-20261020" alt="Slide 05 · 메인 화면" width="95%" /><br /><sub>05 · 메인 화면 — 헤더 · 배너 · 카테고리</sub><br /><br />
+  <img src="./docs/readme/slides/06.png?v=backend-20261020" alt="Slide 06 · 상품 섹션" width="95%" /><br /><sub>06 · 상품 섹션 6개 — 33개 카드</sub><br /><br />
+  <img src="./docs/readme/slides/07.png?v=backend-20261020" alt="Slide 07 · API 우선 렌더링 구조" width="95%" /><br /><sub>07 · API 우선 · JSON 대체 구조</sub><br /><br />
+  <img src="./docs/readme/slides/08.png?v=backend-20261020" alt="Slide 08 · 상품 상세" width="95%" /><br /><sub>08 · 상품 상세 — 갤러리와 이미지 확대</sub><br /><br />
+  <img src="./docs/readme/slides/09.png?v=backend-20261020" alt="Slide 09 · 수량·배송·연관 상품" width="95%" /><br /><sub>09 · 수량 계산 · 배송정보 · 연관 상품</sub><br /><br />
+  <img src="./docs/readme/slides/10.png?v=backend-20261020" alt="Slide 10 · FastAPI 상품 API" width="95%" /><br /><sub>10 · FastAPI 상품 API</sub><br /><br />
+  <img src="./docs/readme/slides/11.png?v=backend-20261020" alt="Slide 11 · Supabase 데이터 모델" width="95%" /><br /><sub>11 · Supabase 데이터 모델</sub><br /><br />
+  <img src="./docs/readme/slides/12.png?v=backend-20261020" alt="Slide 12 · 쇼핑몰 상담봇" width="95%" /><br /><sub>12 · 문서와 상품 정보를 근거로 답하는 상담봇</sub><br /><br />
+  <img src="./docs/readme/slides/13.png?v=backend-20261020" alt="Slide 13 · 기술적 의사결정" width="95%" /><br /><sub>13 · 기술적 의사결정</sub><br /><br />
+  <img src="./docs/readme/slides/14.png?v=backend-20261020" alt="Slide 14 · 프로젝트 구조" width="95%" /><br /><sub>14 · 프로젝트 구조와 데이터 모델</sub><br /><br />
+  <img src="./docs/readme/slides/15.png?v=backend-20261020" alt="Slide 15 · 로컬 실행과 Render 배포" width="95%" /><br /><sub>15 · 로컬 실행과 Render 배포</sub><br /><br />
+  <img src="./docs/readme/slides/16.png?v=backend-20261020" alt="Slide 16 · 검증 결과" width="95%" /><br /><sub>16 · 검증 결과 — 배포 사이트 기준</sub><br /><br />
+  <img src="./docs/readme/slides/17.png?v=backend-20261020" alt="Slide 17 · 회고" width="95%" /><br /><sub>17 · 회고</sub><br /><br />
+  <img src="./docs/readme/slides/18.png?v=backend-20261020" alt="Slide 18 · 백엔드 확장과 공개 배포 완료" width="95%" /><br /><sub>18 · 백엔드 확장과 공개 배포 완료</sub><br /><br />
 </p>
 
 </details>
