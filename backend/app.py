@@ -13,7 +13,7 @@ from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 
 from config import (ALLOWED_ORIGINS, CHAT_LIMIT_PER_DAY, CHAT_LIMIT_PER_USER,
-                    CHAT_LIMIT_WINDOW_SEC, SITE_DIR)
+                    CHAT_LIMIT_WINDOW_SEC, SITE_DIR, TRUST_PROXY)
 from schemas import (ChatRequest, ChatResponse, ProductDetailResponse, ProductSummary,
                      SectionResponse, SectionSummary)
 from services import chat_service
@@ -94,6 +94,15 @@ def product(product_id: int):
 limiter = ChatRateLimiter(CHAT_LIMIT_PER_USER, CHAT_LIMIT_WINDOW_SEC, CHAT_LIMIT_PER_DAY)
 
 
+def _visitor(request: Request) -> str:
+    """질문 횟수를 셀 방문자 주소. 호스팅(프록시) 뒤에서는 X-Forwarded-For 의 첫 주소를 씁니다."""
+    if TRUST_PROXY:
+        forwarded = request.headers.get("x-forwarded-for", "").split(",")[0].strip()
+        if forwarded:
+            return forwarded
+    return request.client.host if request.client else "unknown"
+
+
 @app.get("/api/chat/status", tags=["챗봇"], summary="챗봇을 쓸 수 있는지 (화면에서 버튼 표시 여부 판단)")
 def chat_status():
     return {"enabled": chat_service.chat_enabled()}
@@ -104,8 +113,7 @@ def chat_status():
 def chat(req: ChatRequest, request: Request):
     if not chat_service.chat_enabled():
         return JSONResponse(status_code=503, content={"detail": "지금은 상담봇을 이용할 수 없어요."})
-    user_key = request.client.host if request.client else "unknown"
-    limiter.check(user_key)                 # 넘으면 429 (OpenAI 를 부르기 전에 막음)
+    limiter.check(_visitor(request))                 # 넘으면 429 (OpenAI 를 부르기 전에 막음)
     answer = chat_service.ask(req.question.strip(), [t.model_dump() for t in req.history])
     return {"answer": answer}
 

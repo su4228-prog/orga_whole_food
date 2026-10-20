@@ -1,0 +1,24 @@
+# Render 배포 설정 — Render 에서 "New → Blueprint" 로 이 저장소를 고르면 아래대로 서버가 만들어집니다.
+# 서버 하나가 사이트 화면 + 상품 API + 상담봇을 모두 맡습니다.
+# 비밀 키 3개는 여기에 적지 않고, 만들 때 Render 화면에서 직접 입력합니다 (sync: false).
+services:
+  - type: web
+    name: orga-whole-food
+    runtime: python
+    plan: free
+    region: singapore
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.12
+      - key: TRUST_PROXY
+        value: "1"
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false

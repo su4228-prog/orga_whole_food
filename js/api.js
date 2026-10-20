@@ -4,7 +4,8 @@
 // 2) 서버가 없거나 응답이 없으면 기존 json/ 파일로 대신합니다.
 //    → GitHub Pages 같은 정적 배포(서버 없음)에서도 사이트가 그대로 동작합니다.
 
-// 서버를 인터넷에 올린 뒤 그 주소를 여기에 적습니다. 비어 있으면 배포 사이트에서는 json/ 파일을 씁니다.
+// 서버를 인터넷(Render)에 올린 뒤 그 주소를 여기에 적습니다. 예: "https://orga-whole-food.onrender.com"
+// 비어 있으면 GitHub Pages 같은 정적 배포에서는 json/ 파일을 씁니다.
 const PROD_API_BASE = "";
 
 const LOCAL_HOSTS = ["localhost", "127.0.0.1"];
@@ -15,6 +16,8 @@ export function apiBase() {
     // 서버(8000번)가 사이트도 함께 보여주는 중이면 같은 주소, 다른 포트로 열었으면 로컬 서버 주소
     return location.port === "8000" ? "" : "http://127.0.0.1:8000";
   }
+  // Render 서버가 사이트도 함께 보여주는 중이면 같은 주소
+  if (location.hostname.endsWith(".onrender.com") || location.origin === PROD_API_BASE) return "";
   return PROD_API_BASE || null;
 }
 

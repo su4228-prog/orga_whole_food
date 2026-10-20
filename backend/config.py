@@ -28,3 +28,7 @@ _DEFAULT_ORIGINS = ",".join([
     "https://su4228-prog.github.io",
 ])
 ALLOWED_ORIGINS = [o.strip() for o in os.getenv("ALLOWED_ORIGINS", _DEFAULT_ORIGINS).split(",") if o.strip()]
+
+# Render 같은 호스팅은 중간 서버(프록시)를 거쳐 접속이 들어오므로,
+# 질문 횟수 제한에 쓸 '실제 방문자 주소'를 X-Forwarded-For 에서 읽습니다. (내 컴퓨터에서는 끔)
+TRUST_PROXY = os.getenv("TRUST_PROXY", "").strip().lower() in ("1", "true", "yes")

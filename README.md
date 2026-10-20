@@ -1,27 +1,30 @@
 # 🥬 ORGA Whole Foods
 
-**올가 홀푸드 쇼핑몰을 본뜬 반응형 웹사이트 — 데이터(JSON)와 화면을 분리해 만든 정적 사이트**
+**올가 홀푸드 쇼핑몰을 본뜬 반응형 웹사이트 — 화면(HTML · CSS · JS) + 상품 API 서버(FastAPI · Supabase) + 쇼핑몰 상담봇(OpenAI)**
 
-메인 페이지(헤더 · 배너 슬라이더 · 카테고리 · 상품 6개 섹션)와 상품 상세 페이지(이미지 확대 · 수량/금액 계산 · 배송정보 · 연관 상품 슬라이더 · 상세 콘텐츠)를 **HTML · CSS · 바닐라 JavaScript**만으로 구현했습니다. 상품 정보는 JSON 파일에서 불러와 그리고, 스타일은 `reset · common · main · sub`로 나눠 새 페이지를 추가하기 쉽게 설계했습니다.
+1차로 메인 페이지와 상품 상세 페이지를 **HTML · CSS · 바닐라 JavaScript**로 만들고 상품 정보를 JSON으로 분리했습니다. 2차로 그 JSON을 **Supabase DB**로 옮기고 **FastAPI 서버**를 붙여, 카드마다 자기 상품의 상세 페이지(30개)로 이동하고 왼쪽 아래 **로봇 상담봇**이 배송 · 반품 · 적립금 · 상품 가격을 답하도록 확장했습니다.
 
-🔗 **사이트 바로가기 →** [https://su4228-prog.github.io/0825_004/](https://su4228-prog.github.io/0825_004/)
+🔗 **사이트 바로가기 →** [https://su4228-prog.github.io/0825_004/](https://su4228-prog.github.io/0825_004/) <sub>(GitHub Pages · 서버 없이 JSON으로 동작하는 1차 버전 화면)</sub>
 
 <p align="center">
   <img src="./docs/readme/demo/demo.gif" alt="배포 사이트 기능 시연 — 홈, 상품 섹션, 상세 페이지 확대·수량·배송정보, 연관 상품, 상세 콘텐츠" width="100%" />
 </p>
-<p align="center"><sub>▶ 배포 사이트 기능 시연 (약 74초) · 메인 슬라이더 → 상품 섹션 → 상세 이동 → 이미지 확대 → 배송정보 · 수량 → 연관 상품 → 상세 콘텐츠 · 고화질 영상: <a href="./docs/readme/demo/demo.mp4">demo.mp4</a></sub></p>
+<p align="center"><sub>▶ 1차 버전 기능 시연 (약 74초) · 메인 슬라이더 → 상품 섹션 → 상세 이동 → 이미지 확대 → 배송정보 · 수량 → 연관 상품 → 상세 콘텐츠 · 고화질 영상: <a href="./docs/readme/demo/demo.mp4">demo.mp4</a></sub></p>
 
 [![Live Demo](https://img.shields.io/badge/Live_Demo-su4228--prog.github.io%2F0825__004-5b7a1c?style=flat-square)](https://su4228-prog.github.io/0825_004/)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES_Modules-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
-![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-222222?style=flat-square&logo=github&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white)
+![OpenAI](https://img.shields.io/badge/OpenAI-gpt--4o--mini-412991?style=flat-square&logo=openai&logoColor=white)
+![Render](https://img.shields.io/badge/Render-46E3B7?style=flat-square&logo=render&logoColor=black)
 
-> 📑 슬라이드(16:9)로 보기: 아래 [슬라이드 펼쳐보기](#-슬라이드-펼쳐보기)에서 18장을 이미지로 볼 수 있고, [`docs/readme/README.html`](./docs/readme/README.html)은 같은 슬라이드의 HTML 원본입니다. 이미지는 같은 폴더의 `img/`를 사용하므로 폴더째 내려받아 브라우저에서 열어 주세요.
+> 📑 슬라이드(16:9)로 보기: 아래 [슬라이드 펼쳐보기](#-슬라이드-펼쳐보기)에서 18장을 이미지로 볼 수 있습니다. 슬라이드는 **1차(정적 사이트) 버전** 기준이며, 2차(서버 · 상담봇) 내용은 이 README에 정리했습니다.
 
-| 페이지 | 상품 카드 | JSON 데이터 | 이미지 | 반응형 분기점 |
-|:---:|:---:|:---:|:---:|:---:|
-| **2개** | **33개** | **7개** | **108개** | **10단계** |
+| 페이지 | 상품 | 상세 페이지 | API | 상담봇 점검 | 반응형 분기점 |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| **2개** | **30개** (카드 33) | **30개** | **7개** | **22문항 통과** | **10단계** |
 
 ---
 
@@ -31,14 +34,15 @@
 2. [설계 목표](#-설계-목표)
 3. [기술 스택과 배포 구조](#-기술-스택과-배포-구조)
 4. [주요 기능](#-주요-기능)
-5. [JSON 기반 렌더링 구조](#-json-기반-렌더링-구조)
-6. [CSS 구조와 반응형](#-css-구조와-반응형)
-7. [기술적 의사결정](#-기술적-의사결정)
-8. [프로젝트 구조와 데이터 모델](#-프로젝트-구조와-데이터-모델)
-9. [실행 방법](#-실행-방법)
-10. [검증 결과](#-검증-결과)
-11. [회고와 향후 계획](#-회고와-향후-계획)
-12. [슬라이드 펼쳐보기](#-슬라이드-펼쳐보기)
+5. [백엔드 — 상품 API](#-백엔드--상품-api)
+6. [상담봇](#-상담봇)
+7. [CSS 구조와 반응형](#-css-구조와-반응형)
+8. [기술적 의사결정](#-기술적-의사결정)
+9. [프로젝트 구조와 데이터 모델](#-프로젝트-구조와-데이터-모델)
+10. [실행 방법](#-실행-방법)
+11. [검증 결과](#-검증-결과)
+12. [회고와 향후 계획](#-회고와-향후-계획)
+13. [슬라이드 펼쳐보기](#-슬라이드-펼쳐보기)
 
 ---
 
@@ -46,27 +50,27 @@
 
 | 항목 | 내용 |
 |---|---|
-| **목표** | 쇼핑몰 화면(메인 · 상품 상세)을 직접 구현하고, 데이터 · 스타일 · 스크립트를 역할별로 나눠 관리합니다. |
+| **목표** | 쇼핑몰 화면(메인 · 상품 상세)을 직접 구현하고, 데이터를 DB와 API 서버로 옮겨 실제 쇼핑몰처럼 동작하게 만듭니다. |
 | **메인 페이지** | 헤더 · 배너 슬라이더 · 카테고리 12개 · 상품 6개 섹션(33개 카드) · 푸터 |
-| **상세 페이지** | 이미지 확대 · 수량/금액 계산 · 배송정보 접기/펼치기 · 연관 상품 슬라이더 · 상세 콘텐츠 14블록 |
-| **데이터** | `json/` 7개 파일 — 섹션별 상품 6종 + 상세 1종 |
-| **스타일** | `reset` · `common` · `main` · `sub` CSS 4개 |
-| **개발** | su4228-prog — 화면 구현 · 구조 설계 · 배포 |
-| **실행 환경** | 배포 사이트 [su4228-prog.github.io/0825_004](https://su4228-prog.github.io/0825_004/) (GitHub Pages) · 로컬 `http://localhost:8080` |
+| **상세 페이지** | 상품 30개 각각의 상세 (`sub.html?id=번호`) · 이미지 확대 · 수량/금액 계산 · 배송정보 · 연관 상품 · 상세 콘텐츠 |
+| **서버** | FastAPI — 섹션 · 상품 검색 · 상세 · 상담봇 API, 사이트 화면도 함께 제공 |
+| **DB** | Supabase(PostgreSQL) — 상품 · 섹션 · 섹션-상품 연결 · 상세 4개 표 |
+| **상담봇** | 쇼핑몰 이용 안내 + 상품 목록을 근거로 답하는 로봇 상담봇 (OpenAI `gpt-4o-mini`) |
+| **개발** | su4228-prog — 화면 구현 · 구조 설계 · 서버 · 배포 |
+| **실행 환경** | 서버 버전: `http://127.0.0.1:8000` (Render 배포 준비 완료) · 정적 버전: [GitHub Pages](https://su4228-prog.github.io/0825_004/) |
 
-> **저작권 안내** — 학습과 포트폴리오 목적으로 만든 프로젝트이며, 상호 · 로고 · 상품 이미지와 문구의 권리는 각 권리자에게 있습니다.
+> **저작권 안내** — 학습과 포트폴리오 목적으로 만든 프로젝트이며, 상호 · 로고 · 상품 이미지와 문구의 권리는 각 권리자에게 있습니다. 상담봇의 이용 안내 문서는 실제 쇼핑몰 FAQ를 참고해 직접 다시 쓴 내용입니다.
 
 ---
 
 ## 🎯 설계 목표
 
-화면이 커져도 관리할 수 있도록 세 가지 기준을 먼저 정하고 구조를 잡았습니다.
-
 | # | 기준 | 구현 | 결과 |
 |:---:|---|---|---|
-| 01 | **데이터와 화면의 분리** | 상품 이름 · 가격 · 이미지를 HTML에 직접 쓰지 않고 JSON으로 분리. `01~06_fetch_*.js`가 읽어서 카드를 생성하고, 없는 값(할인 · 평점 등)은 화면에서 자동 생략 | 상품이 바뀌면 JSON만 수정 · 카드 33개를 코드 6개 파일이 그림 |
-| 02 | **공통과 페이지별 스타일 분리** | `reset.css`(초기화) · `common.css`(헤더 · 푸터 · 변수) · `main.css` / `sub.css`(페이지 전용) | 서브 페이지는 reset + common에 전용 CSS만 추가 |
-| 03 | **페이지 사이를 잇는 구조** | 카드 이미지 36곳 → `sub.html` 링크, `sub.json` 한 파일로 상세 전체 렌더링, 상세 콘텐츠는 블록 타입별 템플릿으로 조립 | 상품별 상세로 확장할 수 있는 뼈대 |
+| 01 | **데이터와 화면의 분리** | 상품 정보를 HTML에 쓰지 않고 JSON → DB로 분리. `01~06_fetch_*.js`가 읽어서 카드를 생성하고, 없는 값(할인 · 평점 등)은 자동 생략 | 상품이 바뀌면 DB만 수정 · 카드 33개를 코드 6개 파일이 그림 |
+| 02 | **서버가 없어도 동작** | 화면은 먼저 API를 부르고, 서버가 없거나 응답이 없으면 기존 `json/` 파일로 대신 | GitHub Pages(정적)와 서버 버전이 같은 코드로 동작 |
+| 03 | **공통과 페이지별 스타일 분리** | `reset` · `common` · `main` / `sub` + 상담봇 전용 `chat.css` | 새 페이지 · 새 기능을 기존 화면에 영향 없이 추가 |
+| 04 | **비밀 키는 서버에만** | OpenAI · Supabase 키는 `backend/.env`에만 두고 화면 코드에는 넣지 않음 | 브라우저에서 키가 보이지 않음 · `.env`는 GitHub에 올라가지 않음 |
 
 ---
 
@@ -74,24 +78,22 @@
 
 | 구분 | 기술 |
 |---|---|
-| **마크업** | HTML5 시맨틱 태그 (`header` · `main` · `section` · `article`) |
-| **스타일** | CSS3 · 변수(`:root`) · Grid · Flex · `aspect-ratio` · 미디어쿼리 |
-| **스크립트** | JavaScript (ES Modules `import / export`) |
-| **데이터** | JSON 7개 · `fetch()` + 템플릿 문자열로 렌더링 |
-| **인터랙션** | 배너 슬라이더(자동재생 · 일시정지) · 이미지 확대 렌즈 · 수량 계산 · 접이식 배송정보 · 연관 상품 슬라이더 |
-| **배포** | GitHub Pages — 저장소 루트를 그대로 정적 호스팅 (빌드 단계 없음) |
-| **서버** | 없음 (이번 버전). 백엔드는 [향후 계획](#-회고와-향후-계획) |
+| **마크업 · 스타일** | HTML5 시맨틱 태그 · CSS3 변수 · Grid · Flex · `aspect-ratio` · 미디어쿼리 |
+| **스크립트** | JavaScript (ES Modules) · `fetch()` + 템플릿 문자열 렌더링 |
+| **서버** | Python · FastAPI · Uvicorn · Pydantic (입력 · 응답 형태 검사) |
+| **DB** | Supabase (PostgreSQL) · 읽기 전용 보안 정책(RLS) |
+| **상담봇** | OpenAI `gpt-4o-mini` · 이용 안내 문서 + 상품 목록 + 서버가 계산한 사실을 함께 전달 |
+| **배포** | 정적: GitHub Pages · 서버: Render (`render.yaml` 설정 포함) |
 
 ```text
-브라우저 ──▶ GitHub Pages (정적 파일만 전달, 서버 코드 실행 없음)
-              │  index.html · sub.html · css/ · js/ · json/ · img/
-              ▼
-          브라우저에서 실행되는 JS
-              │  fetch("./json/…")  →  카드 HTML 생성  →  화면에 삽입
-              └─ 상세: fetch("./json/sub.json") → 갤러리 · 가격 · 연관상품 · 상세 블록 렌더링
+브라우저 ──▶ FastAPI 서버 (사이트 화면 + API를 한 주소에서 제공)
+   │           ├─ /api/sections · /api/products ──▶ Supabase (상품 30 · 섹션 6 · 상세 30)
+   │           └─ /api/chat ─(횟수 제한 통과 시)──▶ OpenAI
+   │
+   └─ 서버가 없을 때(GitHub Pages) ──▶ json/ 파일로 대신 표시 · 상담봇 버튼은 숨김
 ```
 
-> ⚠️ **`fetch`를 쓰기 때문에** `index.html`을 더블클릭해서 열면(`file://`) JSON을 읽지 못해 상품이 비어 보입니다. 로컬에서도 HTTP 서버가 필요합니다. ([실행 방법](#-실행-방법))
+> ⚠️ `index.html`을 더블클릭해서 열면(`file://`) 데이터를 읽지 못해 상품이 비어 보입니다. 서버를 켜거나 HTTP 서버로 열어 주세요. ([실행 방법](#-실행-방법))
 
 ---
 
@@ -99,10 +101,8 @@
 
 ### 1. 메인 — 헤더 · 배너 · 카테고리
 
-첫 화면에서 브랜드 메뉴와 프로모션 배너, 12개 카테고리까지 한 번에 보여줍니다.
-
-- **배너 슬라이더**: 8장 중 한 화면에 3장(모바일 1장) 노출 · 3.5초 자동 넘김 · 이전/다음 · 일시정지(Ⅱ ↔ ▶) · 현재 번호 카운터(`2 / 8`)
-- **화면 크기 변화 대응**: 창 크기가 바뀌면 슬라이드 이동 거리를 다시 계산
+- **배너 슬라이더**: 8장 중 한 화면에 3장(모바일 1장) · 3.5초 자동 넘김 · 이전/다음 · 일시정지 · 현재 번호(`2 / 8`)
+- 배너 · 카테고리 · 광고 배너는 보여주기용이라 다른 곳으로 이동하지 않고, **상품 카드만** 상세로 연결됩니다.
 
 <p align="center">
   <img src="./docs/readme/img/home.jpg" alt="메인 첫 화면" width="48%" />
@@ -113,12 +113,12 @@
 
 ### 2. 상품 섹션 6개 — 33개 카드
 
-섹션마다 배경색과 카드 구성을 달리하고, 가격 · 할인 · 평점 같은 요소는 **데이터가 있을 때만** 표시합니다.
+섹션마다 배경색과 카드 구성을 달리하고, 가격 · 할인 · 평점은 **데이터가 있을 때만** 표시합니다. 같은 상품이 여러 섹션에 나오면 DB에서는 1개로 저장하고 섹션과 연결만 합니다(카드 33개 → 상품 30개).
 
 | 섹션 | 카드 수 | 특징 |
 |---|:---:|---|
 | 고객 맞춤 추천 (#AI) | 5 | 할인 뱃지 · 단위 가격 · 평점/후기 |
-| 올가 할인 특가 | 5 | 베이지 배경, 할인율을 빨간색으로 강조 |
+| 올가 할인 특가 | 5 | 베이지 배경, 할인율 강조 |
 | 광고 배너 + 추석 선물세트 | 5 | 배너 2개와 사전예약 카드 |
 | MD 추천상품 | 5 | 와이드 배너 + 카드 그리드 |
 | NEW 신상품 | 3 | 메인 이미지 + 썸네일 2단 레이아웃 |
@@ -129,39 +129,25 @@
   <img src="./docs/readme/img/sec_discount.jpg" alt="올가 할인 특가" width="48%" />
 </p>
 <p align="center">
-  <img src="./docs/readme/img/sec_gift.jpg" alt="광고 배너와 선물세트" width="48%" />
-  <img src="./docs/readme/img/sec_md.jpg" alt="MD 추천상품" width="48%" />
-</p>
-<p align="center">
   <img src="./docs/readme/img/sec_new.jpg" alt="NEW 신상품" width="48%" />
   <img src="./docs/readme/img/sec_best.jpg" alt="베스트 상품" width="48%" />
 </p>
 
 ---
 
-### 3. 상품 상세 — 갤러리와 이미지 확대
+### 3. 상품 상세 — 30개 상품 각자의 페이지
 
-카드 이미지를 누르면 `sub.html`로 이동합니다. 대표 이미지에 마우스를 올리면 **확대 렌즈(250px)** 가 따라다니며 오른쪽에 확대 결과(550px)를 보여줍니다.
+카드를 누르면 `sub.html?id=번호`로 이동해 **그 상품의** 이름 · 가격 · 할인율 · 보관방법 · 상세 설명 · 연관 상품을 보여줍니다.
 
-- 대표 이미지 + 썸네일 전환 · BEST 뱃지 · 카테고리 · 브랜드
-- 정가 취소선 · 판매가 · **할인율** · 100g당 단가 · 원산지/보관방법
-- 찜하기 · 공유하기(주소 복사 또는 기기 공유) · 맨 위로 버튼
+- 대표 이미지 + 썸네일 · **확대 렌즈(250px)** · 정가 취소선 · 할인율 · 단위 가격
+- 수량 ＋/－ 로 주문금액 계산 · 배송정보 접기/펼치기 · 연관 상품 10개 슬라이더(같은 섹션 상품 우선)
+- 상세 콘텐츠는 **블록 타입별 템플릿**으로 조립 — 복숭아 병조림은 원본 상세 14블록, 나머지 29개는 상품별 소개 · 특징 · 즐기는 법 · 보관법 문구로 구성
+- 없는 상품 번호로 들어오면 “찾으시는 상품이 없습니다” 안내
 
 <p align="center">
-  <img src="./docs/readme/img/sub_top.jpg" alt="상세 첫 화면" width="48%" />
+  <img src="./docs/readme/img/sub_product.jpg" alt="김자반 상세 페이지" width="48%" />
   <img src="./docs/readme/img/sub_zoom.jpg" alt="이미지 확대" width="48%" />
 </p>
-
----
-
-### 4. 수량 계산 · 배송정보 · 연관 상품
-
-| 기능 | 동작 |
-|---|---|
-| **수량 · 금액** | ＋ / － 버튼으로 수량을 바꾸면 판매가 × 수량이 주문금액과 항목 금액에 동시에 반영 (최소 1개) |
-| **배송정보 토글** | 일반배송 · 새벽배송 도착 예정일과 배송비 기준을 `max-height` 전환으로 접고 펼침 |
-| **연관 상품 슬라이더** | 연관 상품 10개를 화면 폭에 따라 5 → 3 → 2개씩 노출, 처음과 끝에서는 이전/다음 버튼 비활성 |
-
 <p align="center">
   <img src="./docs/readme/img/sub_order.jpg" alt="배송정보와 수량 계산" width="48%" />
   <img src="./docs/readme/img/sub_ai.jpg" alt="연관 상품 슬라이더" width="48%" />
@@ -169,82 +155,75 @@
 
 ---
 
-### 5. 상세 콘텐츠 — 블록 14개로 조립
+### 4. 상담봇 — 왼쪽 아래 로봇 버튼
 
-긴 상세 설명을 HTML로 쓰지 않고, **블록 타입과 내용만 JSON에 적으면** 화면이 만들어집니다.
+모든 페이지 **왼쪽 아래**에 로봇 버튼이 떠 있고, 스크롤해도 같은 자리에 고정됩니다. 누르면 채팅 창이 살짝 떠오르며 열립니다. ([자세히](#-상담봇))
 
-| 블록 타입 | 용도 | 개수 |
-|---|---|:---:|
-| `image` | 이미지 블록 (로고 · 일반 · 좁은 폭) | 8 |
-| `storyIntro` | 소개 문구 + 특징 4개 | 1 |
-| `yellowPanel` | 구성 안내 박스 | 1 |
-| `textSection` | 제목 + 문단 | 2 |
-| `storage` | 보관법 안내 | 1 |
-| `brandMessage` | 브랜드 메시지 이미지 | 1 |
+- 인사말 + 추천 질문 4개 · 답변 준비 중 점 3개 · 이전 대화를 이어서 질문 가능(“그거 2개 사면 얼마예요?”)
+- 모바일에서는 아래에서 올라오는 전체 화면 창 · `Esc`로 닫기
+- 서버가 없는 환경(GitHub Pages)에서는 버튼을 띄우지 않음
 
 <p align="center">
-  <img src="./docs/readme/img/sub_detail.jpg" alt="상세 콘텐츠 1" width="48%" />
-  <img src="./docs/readme/img/sub_detail2.jpg" alt="상세 콘텐츠 2" width="48%" />
+  <img src="./docs/readme/img/chat.jpg" alt="상담봇 대화 화면" width="60%" />
 </p>
 
 ---
 
-## 🧩 JSON 기반 렌더링 구조
+## 🔌 백엔드 — 상품 API
 
-섹션마다 JSON 파일과 렌더링 함수가 짝을 이루고, `main.js` 한 곳에서 모두 실행합니다.
+FastAPI가 Supabase에서 데이터를 읽어 화면이 쓰던 JSON과 **같은 모양**으로 돌려줍니다. 그래서 화면 코드는 데이터를 어디서 받는지만 바꾸고 그리는 부분은 거의 그대로입니다.
 
-```jsonc
-// json/client_products.json (일부)
-{
-  "section_title": "고객님만을 위한 이 상품",
-  "items": [{
-    "id": 1,
-    "image": "./img/client_product/01.jpg",
-    "name": "블루베리가 들어간 샌드웨이퍼 (32g)",
-    "price": "4,200원",
-    "rating": 4.8, "reviews": 415
-  }]
-}
-```
+| 주소 | 하는 일 |
+|---|---|
+| `GET /api/sections` | 섹션 6개 목록 |
+| `GET /api/sections/{key}` | 섹션 1개의 제목과 카드 목록 (`client` · `discount` · `gift` · `md` · `new` · `best`) |
+| `GET /api/products?q=` | 상품 이름 · 브랜드 검색 |
+| `GET /api/products/{id}` | 상품 상세 (상세 · 탭 · 연관 상품 포함) |
+| `GET /api/chat/status` | 상담봇 사용 가능 여부 (화면의 버튼 표시 판단) |
+| `POST /api/chat` | 상담봇 질문 |
+| `GET /health` | 서버 상태 확인 |
 
-```js
-// js/01_fetch_client.js (일부)
-export function loadClientProducts() {
-  fetch("./json/client_products.json")
-    .then((res) => res.json())
-    .then((data) => {
-      grid.innerHTML = data.items.map((item) => {
-        const badge = item.badge ? `<span …>` : "";   // 값이 있을 때만 태그 생성
-        return `<article class="client-card"> … </article>`;
-      }).join("");
-    });
-}
-```
+`/docs`에서 모든 API를 직접 눌러 시험할 수 있습니다.
 
-| JSON | 항목 수 | 렌더링 함수 | 화면 영역 |
-|---|:---:|---|---|
-| `client_products.json` | 5 | `loadClientProducts` | 고객 맞춤 추천 |
-| `discount_products.json` | 5 | `loadDiscountProducts` | 올가 할인 특가 |
-| `gift_products.json` | 5 | `loadGiftProducts` | 추석 선물세트 |
-| `md_products.json` | 5 | `loadMdProducts` | MD 추천상품 |
-| `new_products.json` | 3 | `loadNewProducts` | NEW 신상품 |
-| `best_products.json` | 10 | `loadBestProducts` | 베스트 상품 |
-| `sub.json` | — | `sub.js` 내부 렌더러 | 상세 페이지 전체 |
+**DB 표 4개**
+
+| 표 | 행 | 내용 |
+|---|:---:|---|
+| `products` | 30 | 이름 · 브랜드 · 가격(숫자) · 할인율 · 이미지 · 평점 등 |
+| `sections` | 6 | 섹션 키 · 제목 · 순서 |
+| `section_products` | 33 | 어느 섹션에 어떤 상품이 몇 번째로 나오는지 |
+| `product_details` | 30 | 상세 페이지 내용 (JSON) |
+
+- 가격을 `"4,200원"` 문자열에서 **숫자**로 바꿔 저장하고, 화면에 줄 때 다시 `4,200원`으로 만듭니다.
+- 정가는 판매가와 할인율로 역산하되, **10원 단위로 정확히 맞을 때만** 표시합니다.
+- 같은 사진이 중복된 상품은 사진 내용(md5)을 비교해 한 장만 씁니다.
+
+---
+
+## 🤖 상담봇
+
+| 항목 | 내용 |
+|---|---|
+| **답하는 근거** | ① 쇼핑몰 이용 안내 문서(배송 · 주문취소 · 반품 · 환불 · 적립금 · 쿠폰 · 결제 · 고객센터) ② 상품 30개 목록 ③ 서버가 미리 계산한 사실(무료배송 상품, 베스트 순위, 질문 속 상품의 가격 · 보관방법 · 반품 기준) |
+| **모르는 내용** | 문서에 없으면 지어내지 않고 “확인되지 않는다”고 안내 후 고객센터 연결 |
+| **비용 · 남용 방지** | 한 사람당 10분에 10번 · 사이트 전체 하루 300번 · 질문 300자 · 이전 대화 6개까지만 전송 |
+| **안전** | OpenAI 키는 서버에만 · 답변은 글자로만 화면에 넣어 HTML이 실행되지 않음 · 서버 오류 시 내부 정보 없이 짧은 안내만 표시 |
+
+**정확도를 높인 방법** — 처음에는 모델이 베스트 순위나 무료배송 상품을 틀리게 말하는 경우가 있었습니다. 그래서 순위 · 무료배송 목록 · “냉장 상품은 2일, 상온 상품은 30일” 같은 반품 기준을 **서버가 먼저 계산해 함께 넘기도록** 바꿨고, 질문 22개 점검을 3번 연속 모두 통과했습니다.
 
 ---
 
 ## 🎨 CSS 구조와 반응형
 
-7개로 흩어져 있던 스타일을 역할 기준 4개로 정리하고, 반응형 규칙도 담당 파일 안에 두었습니다.
-
 | 파일 | 줄 수 | 담당 영역 | 로드하는 페이지 |
 |---|---:|---|---|
 | `reset.css` | 42 | box-sizing · 여백 · 링크 · 버튼 · 이미지 초기화 | 전체 |
 | `common.css` | 492 | 색상 변수 · `.wrap` · 원형 버튼 · **헤더 · 푸터** · 공통 반응형 | 전체 |
-| `main.css` | 1,476 | 슬라이더 · 카테고리 · 상품 카드 공통 · 6개 섹션 · 반응형 | `index.html` |
-| `sub.css` | 1,723 | 갤러리 · 확대 · 가격 · 배송 · 주문 · 연관 슬라이더 · 상세 블록 | `sub.html` |
+| `main.css` | 1,476 | 슬라이더 · 카테고리 · 상품 카드 · 6개 섹션 | `index.html` |
+| `sub.css` | 1,733 | 갤러리 · 확대 · 가격 · 배송 · 주문 · 연관 슬라이더 · 상세 블록 | `sub.html` |
+| `chat.css` | 116 | 상담봇 버튼 · 채팅 창 | `chat.js`가 직접 불러옴 |
 
-로드 순서는 `reset → common → main(또는 sub)`로, 뒤쪽이 앞쪽을 덮어쓰도록 했습니다.
+상담봇 스타일은 `chat.js`가 **CSS를 다 불러온 뒤에만** 버튼을 만들어서, 브라우저에 예전 CSS가 남아 있어도 스타일 없는 큰 아이콘이 보이지 않습니다.
 
 | 폭 | 달라지는 것 |
 |---|---|
@@ -253,7 +232,7 @@ export function loadClientProducts() {
 | ≤ 900px | 상품 그리드 5열 → 2열 · 푸터 1열 |
 | ≤ 800px | 상세 1열 · 확대 기능 해제 |
 | ≤ 760px | 헤더 1열 · 슬라이더 1장(미리보기) · 카테고리 4열 |
-| ≤ 560px | 모든 상품 그리드 1열 |
+| ≤ 560px | 상품 그리드 1열 · 상담봇 전체 화면 창 |
 | ≤ 520px | 상세 글자 크기 · 구매 버튼 1열 |
 
 <p align="center">
@@ -261,7 +240,6 @@ export function loadClientProducts() {
   <img src="./docs/readme/img/mobile_cards.jpg" alt="모바일 상품 카드" width="30%" />
   <img src="./docs/readme/img/mobile_sub.jpg" alt="모바일 상세" width="30%" />
 </p>
-<p align="center"><sub>390px 폭 — 메인 · 상품 카드 · 상세 (상세 페이지의 가로 넘침은 <a href="#-검증-결과">검증 결과</a> 참고)</sub></p>
 
 ---
 
@@ -269,100 +247,104 @@ export function loadClientProducts() {
 
 | 항목 | 채택 | 검토 대안 | 이유 |
 |---|---|---|---|
-| **데이터 저장** | JSON 파일 + `fetch` | HTML에 직접 작성 / DB | 읽기 전용이고 갱신이 적어 DB는 과하고, HTML 직접 작성은 수정할 곳이 너무 많아집니다. |
-| **렌더링 코드 분리** | 섹션별 `export function` | 하나의 큰 스크립트 | import되는 순간 실행되는 것을 막고, `main.js`에서 실행 시점을 한 곳에서 제어합니다. |
-| **스타일 분리** | reset · common · main · sub | 섹션마다 CSS 파일 | 파일이 많아 관리가 어려웠고, 서브 페이지 추가를 고려해 “공통 / 페이지별”로 나눴습니다. |
-| **상세 콘텐츠** | 블록 타입별 템플릿 | 상세 HTML 직접 작성 | 상품이 늘어도 같은 코드로 다른 내용을 그릴 수 있습니다. |
-| **없는 값 처리** | 값이 있을 때만 태그 생성 | 빈 칸으로 표시 | 할인 · 평점이 없는 상품도 레이아웃이 깨지지 않습니다. |
-| **페이지 이동** | `<a href target="_self">` | `onclick` 스크립트 이동 | 링크 형태를 유지해야 검색 · 키보드 이동 · 새 탭 열기가 기본으로 동작합니다. |
-| **배포** | GitHub Pages | 별도 서버 호스팅 | 빌드 없이 저장소를 그대로 올릴 수 있어 포트폴리오 링크로 공유하기 쉽습니다. |
+| **데이터 저장** | Supabase (PostgreSQL) | JSON 파일 유지 | 상품별 상세 30개 · 검색 · 상담봇이 같은 데이터를 써야 해서 DB로 옮겼습니다. |
+| **표 구조** | 상품 1개 = 1줄 + 섹션 연결 표 | 섹션마다 상품 복사 | 여러 섹션에 나오는 상품도 가격을 한 곳에서만 고치면 됩니다. |
+| **서버** | FastAPI | Node(Express) | 입력 · 응답 형태 검사와 `/docs` 자동 문서가 기본으로 제공됩니다. |
+| **API 응답 모양** | 기존 JSON과 같은 모양 | 새 형태로 설계 | 화면 렌더링 코드를 거의 바꾸지 않고 연결했습니다. |
+| **서버 없을 때** | `json/` 파일로 대신 | 오류 화면 | GitHub Pages에서도 사이트가 그대로 보입니다. |
+| **상담봇 근거** | 문서 + 상품 목록 + 서버 계산 사실 | 모델 지식만 사용 | 순위 · 가격 · 반품 기준처럼 틀리면 안 되는 내용을 정확하게 답합니다. |
+| **상담봇 비용** | 횟수 제한 + 짧은 답변 + 작은 모델 | 제한 없음 | 공개 사이트에서 요금이 갑자기 늘지 않도록 막습니다. |
+| **배포** | 서버 하나가 화면 + API 제공 (Render) | 화면 · 서버 따로 배포 | 주소 하나로 모든 기능이 동작하고 설정이 단순합니다. |
 
 ---
 
 ## 📂 프로젝트 구조와 데이터 모델
 
 ```text
-0825_004/
-├─ index.html            # 메인 페이지
-├─ sub.html              # 상품 상세 페이지
-├─ css/
-│  ├─ reset.css          # 기본값 초기화
-│  ├─ common.css         # 헤더 · 푸터 · 공통
-│  ├─ main.css           # 메인 전용
-│  └─ sub.css            # 상세 전용
+orga_whole_food/
+├─ index.html · sub.html     # 메인 · 상품 상세
+├─ css/                      # reset · common · main · sub · chat
 ├─ js/
-│  ├─ main.js            # 모듈 실행 진입점
-│  ├─ slider.js          # 배너 슬라이더
-│  ├─ 01~06_fetch_*.js   # 섹션별 렌더링
-│  └─ sub.js             # 상세 렌더링 · 인터랙션
-├─ json/                 # 상품 데이터 7개
-├─ img/                  # 섹션별 이미지 108개
-├─ docs/readme/          # README 슬라이드 · 화면 · 시연 영상
-└─ README.md
+│  ├─ main.js · slider.js    # 실행 진입점 · 배너 슬라이더
+│  ├─ api.js                 # 서버 주소 결정 · 서버 없으면 json 으로 대신
+│  ├─ 01~06_fetch_*.js       # 섹션별 카드 렌더링
+│  ├─ sub.js                 # 상세 렌더링 · 인터랙션
+│  └─ chat.js                # 상담봇 버튼 · 채팅 창
+├─ json/                     # 서버가 없을 때 쓰는 예비 데이터 7개
+├─ img/                      # 상품 · 배너 이미지 108개
+├─ backend/                  # 서버 (처음 켜는 방법: backend/README.md)
+│  ├─ app.py                 # API 주소 · 사이트 화면 제공
+│  ├─ services/              # 상품 · 상담봇 · 횟수 제한
+│  ├─ rag_docs/policy.md     # 상담봇이 참고하는 이용 안내
+│  ├─ sql/                   # Supabase 표 만들기
+│  └─ scripts/               # 데이터 넣기 · 점검 도구
+├─ render.yaml               # Render 배포 설정
+└─ docs/readme/              # README 슬라이드 · 화면 · 시연 영상
 ```
 
 ```jsonc
-// 섹션 JSON 공통 구조 (요약)
-{ "section_title": "…",
-  "items": [{ "id", "brand", "badge", "image", "name",
-              "discount", "price", "unit_price",
-              "rating", "reviews", "delivery_badge" }] }
-
-// sub.json 구조 (요약)
-{ "product":       { "category", "brand", "badge", "nameLines", "price", "delivery", "gallery" },
-  "aiRecommend":   [ /* 연관 상품 10개 */ ],
+// GET /api/products/3 (요약)
+{ "id": 3, "hasFullDetail": false,
+  "product":       { "category", "brand", "badge", "nameLines", "description", "price", "infoRows", "delivery", "gallery" },
+  "aiRecommend":   [ /* 연관 상품 10개 (id 포함) */ ],
   "infoTabs":      [ /* 탭 5개 */ ],
-  "detailContent": [ /* 상세 블록 14개 */ ] }
+  "detailContent": [ /* 상세 블록 */ ] }
 ```
 
 ---
 
 ## 🚀 실행 방법
 
-설치할 패키지는 없습니다(npm 불필요, 빌드 단계 없음). 파일을 내려받아 간단한 HTTP 서버로 열면 됩니다.
+### 서버 버전 (상품별 상세 + 상담봇)
 
 ```powershell
-git clone https://github.com/su4228-prog/0825_004.git
-cd 0825_004
+git clone https://github.com/su4228-prog/orga_whole_food.git
+cd orga_whole_food\backend
+python -m venv .venv
+.venv\Scripts\python -m pip install -r requirements.txt
+copy .env.example .env          # 메모장으로 열어 Supabase · OpenAI 키 입력
+.venv\Scripts\python -m uvicorn app:app --host 127.0.0.1 --port 8000
+```
 
-# Python이 있다면 (권장)
+브라우저에서 `http://127.0.0.1:8000/` 을 엽니다. DB 준비와 점검 도구는 [`backend/README.md`](./backend/README.md)에 정리했습니다.
+
+### 정적 버전 (설치 없이 화면만)
+
+```powershell
 python -m http.server 8080
 ```
 
-브라우저에서 `http://localhost:8080/` 을 엽니다. 상세 페이지는 `http://localhost:8080/sub.html` 입니다.
+`http://localhost:8080/` 을 열면 `json/` 데이터로 화면이 보입니다(상세는 모두 복숭아 병조림, 상담봇 없음).
 
-| 방법 | 명령 |
-|---|---|
-| **Python** | `python -m http.server 8080` |
-| **Node.js** | `npx serve .` |
-| **VS Code** | Live Server 확장 → `Go Live` |
-| **설치 없이** | 배포 사이트 [su4228-prog.github.io/0825_004](https://su4228-prog.github.io/0825_004/) |
+### Render 배포
 
-> `index.html`을 더블클릭해 열면(`file://`) 브라우저 보안 정책 때문에 JSON을 읽지 못합니다. 반드시 위 방법 중 하나로 실행하세요.
+저장소의 `render.yaml`에 서버 설정이 들어 있습니다. Render에서 **New → Blueprint**로 이 저장소를 고르고, 비밀 키 3개(`SUPABASE_URL` · `SUPABASE_SERVICE_ROLE_KEY` · `OPENAI_API_KEY`)를 Render 화면에서 입력하면 사이트 · API · 상담봇이 한 주소로 열립니다.
 
 ---
 
 ## ✅ 검증 결과
 
-2026.10.17, **배포 사이트**를 브라우저 자동화(Playwright · Chrome)로 직접 열어 확인했습니다.
+2026.10.20, 서버 버전을 브라우저 자동화(Playwright · Chrome)와 점검 스크립트로 확인했습니다.
 
 | 검사 | 결과 |
 |---|---|
-| 메인 상품 카드 수 | 33개 (추천 5 · 할인 5 · 선물 5 · MD 5 · 신상품 3 · 베스트 10) |
-| 상세 페이지 연결 | 카드 이미지 36곳 모두 `href="sub.html" target="_self"` |
-| 이미지 로드 | 메인 197개 · 상세 전부 정상 (깨진 이미지 0) |
-| 오류 | JS 오류 0건 · HTTP 오류(404 등) 0건 |
-| 슬라이더 | 배너 8장 · 다음 버튼 후 카운터 2 · 일시정지 전환 확인 |
-| 상세 렌더링 | 썸네일 2 · 연관상품 10 · 탭 5 · 상세 블록 14 |
-| 수량 계산 | 수량 3 → 108,000원 · 수량 2 → 72,000원 |
-| 인터랙션 | 배송정보 펼침 · 찜 활성 · 썸네일 전환 정상 |
-| 가로 넘침 | 1440 · 1100 · 900 · 760 · 560px에서 메인/상세 모두 0 · 메인은 390px도 0 |
+| 메인 | 카드 33개 · 상품 카드 이미지 36곳이 각자 `sub.html?id=번호`로 연결 · 배너/카테고리/광고는 링크 없음 · 깨진 이미지 0 |
+| 상세 30개 | 모두 이름 · 상세 블록 · 연관 상품 10개 · 이미지 정상 · 없는 번호는 안내 문구 |
+| 오류 | JS 오류 0건 · HTTP 오류 0건 |
+| DB | 원본 JSON과 DB 데이터 일치 (`verify_seed.py`) |
+| API | 섹션 · 검색 · 상세 · 잘못된 입력 처리 모두 통과 (`verify_api.py`) |
+| 상담봇 | 질문 22개(배송 · 반품 · 적립금 · 가격 · 순위 · 모르는 질문 등) 3회 연속 전부 통과 (`test_chat.py`) |
+| 상담봇 화면 | 왼쪽 아래 고정 · 스크롤해도 같은 자리 · 모바일 전체 화면 · 맨 위로 버튼과 겹치지 않음 |
+| 서버 없는 환경 | 상품 33개 정상 표시 · 상담봇 버튼 숨김 · 오류 0 |
+| 보안 | `backend/.env` · 서버 코드 · `.git` 주소 접근 시 404 · 키는 GitHub에 올라가지 않음 |
+| 가로 넘침 | 1440 · 1100 · 900 · 760 · 560px 메인/상세 0 · 메인은 390px도 0 |
 
 ### 🔧 개선 예정 항목
 
 | 항목 | 내용 |
 |---|---|
-| **상세 페이지 390px 가로 보정** | 상세 페이지를 390px 폭에서 열면 가로로 **69px** 넘칩니다. 데스크톱 · 태블릿 폭에서는 정상이며, 모바일 상세의 고정 폭 요소가 원인으로 보입니다. 개선 예정입니다. |
+| **상세 페이지 390px 가로 보정** | 상세 페이지를 390px 폭에서 열면 가로로 **69px** 넘칩니다. 모바일 상세의 고정 폭 요소가 원인으로 보이며 개선 예정입니다. |
+| **무료 서버 대기 시간** | Render 무료 요금제는 한동안 접속이 없으면 잠들어, 첫 접속에 수십 초가 걸릴 수 있습니다. |
 
 **검증하지 않은 범위**: 모든 브라우저 · 기기 실측, 접근성 전수 점검, 이미지 사용 권한 검토.
 
@@ -371,48 +353,31 @@ python -m http.server 8080
 ## 📈 회고와 향후 계획
 
 **잘한 점 (Keep)**
-- **데이터와 화면을 분리**해 상품 정보를 JSON만 고쳐 바꿀 수 있습니다.
-- **공통 / 페이지별 CSS**로 나눠 새 페이지를 추가하기 쉬워졌습니다.
-- 상세 설명을 **블록 구조**로 만들어 같은 코드로 다른 내용을 그릴 수 있습니다.
-- 없는 값은 자동으로 생략해 레이아웃이 깨지지 않습니다.
-- 배포 사이트를 자동화 테스트로 직접 점검해 수치로 확인했습니다.
+- **데이터와 화면을 분리**해 두어서, JSON을 DB로 옮길 때 화면 코드를 거의 바꾸지 않았습니다.
+- 서버가 없으면 JSON으로 대신하도록 만들어 **정적 배포와 서버 버전이 같은 코드**로 동작합니다.
+- 상담봇이 틀리던 내용을 **서버가 계산한 사실**로 보완해 22개 질문을 모두 맞혔습니다.
+- 비밀 키 · 사용 횟수 · 오류 문구까지 **공개 사이트를 전제로** 안전장치를 넣었습니다.
+- 화면 · DB · API · 상담봇을 **점검 스크립트**로 만들어 언제든 다시 확인할 수 있습니다.
 
 **개선할 점 (Improve)**
-- 상세 페이지를 **상품 번호별로 연결** — 지금은 모든 카드가 상품 1개분의 상세 데이터(복숭아 병조림)로 이동합니다.
-- 로그인 · 장바구니 · 검색 · 챗봇은 화면 구성까지 완료했고, **동작 기능은 다음 단계**에서 구현합니다.
-- 가격을 `"4,200원"` 문자열에서 **숫자 값으로 전환**해 계산 · 정렬에 쓸 수 있게 합니다.
+- 로그인 · 장바구니 · 검색창은 화면만 있고 **동작은 다음 단계**입니다(검색 API는 준비됨).
+- 상담봇 횟수 제한을 서버 메모리에 저장해, 서버가 다시 켜지면 초기화됩니다.
 - 모바일(390px) 상세 페이지의 **가로 넘침 69px 보정**
 
-**추후 단계 (Next) — 백엔드로 확장**
-
-지금의 JSON 구조를 그대로 DB로 옮기고, 화면은 거의 바꾸지 않는 방향으로 진행할 계획입니다.
-
-```text
-브라우저 (현재 사이트)
-   │  fetch("/api/...")
-   ▼
-FastAPI 서버 ──▶ Supabase (PostgreSQL)
-   │              products · sections · section_products · product_details
-   └────────────▶ OpenAI (챗봇, 버튼을 눌렀을 때만)
-```
-
-1. Supabase에 표 4개를 만들고 기존 JSON 이전 (같은 상품은 1줄로 합치고 섹션과는 연결 표로 묶기)
-2. 섹션별 목록 · 상세 · 검색 API
-3. 화면이 JSON 대신 API를 읽도록 변경 → 카드마다 자기 상세 페이지로 이동 (`sub.html?id=…`)
-4. 쇼핑몰 안내 챗봇 (문서에 없는 내용은 “확인되지 않습니다”로 답변)
-5. 서버 배포 · 챗봇 사용 횟수 제한 · 키는 서버에만 보관
-6. 이후 회원가입 · 로그인 · 장바구니, 모바일 상세 넘침 수정
-
-> 위 내용은 **계획**이며 현재 배포 사이트에는 서버가 없습니다.
+**추후 단계 (Next)**
+1. Render에 서버 배포 후 GitHub Pages 화면도 그 서버를 쓰도록 연결
+2. 헤더 검색창을 검색 API와 연결
+3. 회원가입 · 로그인 · 장바구니 (Supabase 인증)
+4. 모바일 상세 넘침 수정
 
 ---
 
 ## 📊 슬라이드 펼쳐보기
 
-프로젝트 전체 내용을 16:9 슬라이드 18장으로 정리했습니다. 원본은 [`docs/readme/README.html`](./docs/readme/README.html)이며, 아래 이미지는 같은 슬라이드를 1600×900으로 내보낸 것입니다.
+1차(정적 사이트) 버전의 전체 내용을 16:9 슬라이드 18장으로 정리했습니다. 원본은 [`docs/readme/README.html`](./docs/readme/README.html)입니다.
 
-<details open>
-<summary><b>📂 슬라이드 펼쳐보기 (총 18장)</b></summary>
+<details>
+<summary><b>📂 슬라이드 펼쳐보기 (총 18장 · 1차 버전)</b></summary>
 <br />
 
 <p align="center">
@@ -440,4 +405,4 @@ FastAPI 서버 ──▶ Supabase (PostgreSQL)
 
 ---
 
-<sub>ORGA Whole Foods · su4228-prog · 검증 기준일 2026.10.17</sub>
+<sub>ORGA Whole Foods · su4228-prog · 검증 기준일 2026.10.20</sub>
