@@ -12,3 +12,6 @@ venv/
 
 # ===== 내 컴퓨터 전용 설정 =====
 .claude/
+
+# ===== 테스트 실행 결과 (실행할 때마다 새로 생김) =====
+backend/scripts/test_chat_result.json

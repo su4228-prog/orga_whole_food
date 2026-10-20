@@ -4,10 +4,12 @@
 // export fetch(...) 형태로 직접 내보낼 수 없음
 // fetch 코드를 함수로 감싼 후 그 함수를 export 해야 함
 
+// 서버(API)가 있으면 서버에서, 없으면 json 파일에서 가져옵니다 (js/api.js)
+import { loadSection, detailUrl } from "./api.js";
+
 export function loadGiftProducts() {
 
-  fetch("./json/gift_products.json")
-    .then((res) => res.json())
+  loadSection("gift", "./json/gift_products.json")
     .then((data) => {
 
       const grid = document.querySelector(".gift-grid");
@@ -40,7 +42,7 @@ export function loadGiftProducts() {
         return `
           <article class="gift-card">
             <div class="gift-image">
-              <a class="card-link" href="sub.html" target="_self"><img alt="${item.name}" src="${item.image}" /></a>
+              <a class="card-link" href="${detailUrl(item)}" target="_self"><img alt="${item.name}" src="${item.image}" /></a>
             </div>
             <div class="gift-actions">
               <img alt="찜" src="./img/icon/01_heart_icon.png" />

@@ -3,17 +3,30 @@
 // ── json/sub.json 을 불러와 화면을 렌더링하고 인터랙션을 연결한다
 // ============================================================
 
+import { loadProductDetail, detailUrl } from './api.js';
+
 document.addEventListener('DOMContentLoaded', function () {
-  fetch('./json/sub.json')
-    .then(function (res) { return res.json(); })
+  // 주소의 ?id=번호 로 어떤 상품인지 정합니다. 서버가 없으면 json/sub.json(복숭아 병조림)을 보여줍니다.
+  const id = new URLSearchParams(location.search).get('id');
+
+  loadProductDetail(id, './json/sub.json')
     .then(function (data) {
       renderPage(data);
       bindInteractions(data);
+      document.title = data.product.fullName + ' - ORGA Whole Foods';
     })
     .catch(function (err) {
       console.error('상품 데이터를 불러오지 못했습니다.', err);
+      showError(err);
     });
 });
+
+function showError(err) {
+  const notFound = err && (err.status === 404 || err.status === 422);
+  const message = notFound ? '찾으시는 상품이 없습니다.' : '상품 정보를 불러오지 못했습니다.<br>잠시 후 다시 시도해 주세요.';
+  document.querySelector('.product-detail-page .wrap').innerHTML =
+    '<div class="detail-error"><p>' + message + '</p><a href="index.html">메인으로 돌아가기</a></div>';
+}
 
 
 // ============================================================
@@ -86,15 +99,18 @@ function renderProductInfo(product) {
     '  </div>' +
     '</div>' +
     '<h1 class="product-name">' + product.nameLines.join('<br/>') + '</h1>' +
-    '<p class="product-description">' + product.description + '</p>' +
+    (product.description ? '<p class="product-description">' + product.description + '</p>' : '<p class="product-description"></p>') +
     '<div class="product-price-area">' +
-    '  <div class="original-price">' + product.price.original.toLocaleString() + '</div>' +
+    // 할인 전 가격 · 할인율은 값이 있을 때만 보여줍니다
+    (product.price.original != null ? '  <div class="original-price">' + product.price.original.toLocaleString() + '</div>' : '') +
     '  <div class="sale-price-row">' +
     '    <strong class="sale-price">' + product.price.sale.toLocaleString() + '<span>원</span></strong>' +
-    '    <strong class="discount-rate">' + product.price.discountRate + '%</strong>' +
-    '    <button class="discount-info-button" type="button">할인정보<span>?</span></button>' +
+    (product.price.discountRate != null
+      ? '    <strong class="discount-rate">' + product.price.discountRate + '%</strong>' +
+        '    <button class="discount-info-button" type="button">할인정보<span>?</span></button>'
+      : '') +
     '  </div>' +
-    '  <div class="unit-price">' + product.price.unit + '</div>' +
+    (product.price.unit ? '  <div class="unit-price">' + product.price.unit + '</div>' : '') +
     '</div>' +
     infoRows +
     '<div class="delivery-section closed">' +
@@ -153,7 +169,12 @@ function renderAiCard(item) {
 
   return '' +
     '<article class="ai-card">' +
-    '  <div class="ai-product-image"><img alt="' + item.alt + '" src="' + item.image + '" /></div>' +
+    // 상품 번호가 있는 연관 상품은 이미지를 누르면 그 상품의 상세로 이동합니다
+    '  <div class="ai-product-image">' +
+    (item.id != null
+      ? '<a class="card-link" href="' + detailUrl(item) + '" target="_self"><img alt="' + item.alt + '" src="' + item.image + '" /></a>'
+      : '<img alt="' + item.alt + '" src="' + item.image + '" />') +
+    '</div>' +
     '  <div class="ai-card-actions">' +
     '    <img alt="찜" src="./img/icon/01_heart_icon.png" />' +
     '    <img alt="장바구니" src="./img/icon/02_add_cart.png" />' +
@@ -181,7 +202,7 @@ function renderInfoTabs(tabs) {
 function renderDetailBlock(block) {
   switch (block.type) {
     case 'image': {
-      const variantClass = block.variant === 'logo' ? ' logo-block' : block.variant === 'narrow' ? ' narrow' : '';
+      const variantClass = block.variant === 'logo' ? ' logo-block' : block.variant === 'narrow' ? ' narrow' : block.variant === 'product' ? ' product-shot' : '';
       return '<div class="product-detail-image-block' + variantClass + '"><img alt="' + block.alt + '" src="' + block.src + '" /></div>';
     }
     case 'storyIntro': {

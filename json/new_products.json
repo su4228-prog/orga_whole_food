@@ -4,7 +4,7 @@
     {
       "id": 1,
       "main_image": "./img/new_product/01.jpg",
-      "thumb": "./img/new_product/04.jpg",
+      "thumb": "./img/new_product/05.jpg",
       "brand": "올가",
       "name": "유기농 국산 볶음 서리태 (190g)",
       "price": "12,900원",
@@ -14,7 +14,7 @@
     {
       "id": 2,
       "main_image": "./img/new_product/02.jpg",
-      "thumb": "./img/new_product/05.jpg",
+      "thumb": "./img/new_product/04.jpg",
       "brand": "올가",
       "name": "유기농 국산 볶음 약콩 (145g)",
       "price": "12,900원",
