@@ -5,7 +5,6 @@
 1차로 메인 페이지와 상품 상세 페이지를 **HTML · CSS · 바닐라 JavaScript**로 만들고 상품 정보를 JSON으로 분리했습니다. 2차로 그 JSON을 **Supabase DB**로 옮기고 **FastAPI 서버**를 붙여, 카드마다 자기 상품의 상세 페이지(30개)로 이동하고 왼쪽 아래 **로봇 상담봇**이 배송 · 반품 · 적립금 · 상품 가격을 답하도록 확장했습니다.
 
 🔗 **배포 사이트 바로가기 →** [https://orga-whole-food.onrender.com](https://orga-whole-food.onrender.com) <sub>(Render · 화면 + FastAPI + Supabase + 상담봇)</sub><br>
-🔗 **정적 버전 →** [https://su4228-prog.github.io/0825_004/](https://su4228-prog.github.io/0825_004/) <sub>(GitHub Pages · 서버 없이 JSON으로 동작하는 1차 버전)</sub>
 
 <p align="center">
   <img src="./docs/readme/demo/demo.gif" alt="배포 사이트 기능 시연 — 홈, 상품 섹션, 상세 페이지 확대·수량·배송정보, 연관 상품, 상세 콘텐츠" width="100%" />
