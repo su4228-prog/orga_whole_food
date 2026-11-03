@@ -21,7 +21,7 @@ export function apiBase() {
   return PROD_API_BASE || null;
 }
 
-async function getJson(url, timeoutMs = 4000) {
+async function getJson(url, timeoutMs = 8000) {   // DB 가 막 깨어날 때도 기다리도록 8초
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), timeoutMs);
   try {

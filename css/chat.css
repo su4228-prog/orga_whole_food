@@ -103,6 +103,38 @@
 .chat-send svg { width: 100%; height: 100%; display: block; transform: translateX(1px); }
 .chat-foot { margin: 0; padding: 0 16px 10px; background: #fff; color: #9aa394; font-size: 11px; text-align: center; }
 
+/* 사진 버튼 (입력칸 왼쪽) */
+.chat-photo { flex: none; width: 44px; height: 44px; padding: 10px; border: 1px solid #dfe5d6; border-radius: 50%; background: #f8faf5; color: #4f8a1f; cursor: pointer; transition: background .15s, border-color .15s; }
+.chat-photo:hover { background: #eef6e2; border-color: #7fb048; }
+.chat-photo:disabled { opacity: .45; cursor: default; }
+.chat-photo svg { width: 100%; height: 100%; display: block; }
+
+/* 참고한 자료 (벡터 검색) */
+.chat-sources { display: block; margin-top: 8px; padding-top: 7px; border-top: 1px dashed #e3e9da; color: #7d8a72; font-size: 11.5px; line-height: 1.45; }
+
+/* 보낸 사진 */
+.chat-msg--photo { padding: 4px; background: #4f8a1f; }
+.chat-msg--photo img { display: block; max-width: 180px; max-height: 180px; border-radius: 12px; }
+
+/* 사진 검색 결과: 사진 위에 YOLO 가 찾은 위치 표시 */
+.chat-vision { max-width: 86%; white-space: normal; }
+.chat-vision-figure { position: relative; overflow: hidden; border-radius: 12px; line-height: 0; }
+.chat-vision-figure img { display: block; width: 100%; height: auto; }
+.chat-vision-box { position: absolute; border: 2px solid rgba(255, 255, 255, .85); border-radius: 4px; box-shadow: 0 0 0 1px rgba(0, 0, 0, .25); }
+.chat-vision-box.is-food { border-color: #9be05a; }
+.chat-vision-box em { position: absolute; left: -2px; top: -2px; padding: 2px 6px; border-radius: 4px 0 4px 0; background: rgba(31, 42, 26, .78); color: #fff; font-size: 11px; font-style: normal; font-weight: 600; line-height: 1.5; white-space: nowrap; }
+.chat-vision-box.is-food em { background: #3f7417; }
+.chat-vision-text { margin: 10px 0 0; }
+
+/* 추천 상품 카드 */
+.chat-products { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
+.chat-product { display: flex; align-items: center; gap: 10px; padding: 6px; border: 1px solid #e6ecdd; border-radius: 12px; background: #fbfcf8; color: inherit; text-decoration: none; transition: border-color .15s, background .15s; }
+.chat-product:hover { border-color: #9cc46a; background: #f3f8ea; }
+.chat-product img { flex: none; width: 48px; height: 48px; border-radius: 8px; object-fit: cover; background: #eee; }
+.chat-product-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; font-size: 12.5px; line-height: 1.4; }
+.chat-product-info strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; }
+.chat-product-info span { color: #3f7417; font-weight: 700; }
+
 @media (prefers-reduced-motion: reduce) {
   .chat-panel, .chat-panel.is-open, .chat-toggle, .chat-row, .chat-typing span { transition: none; animation: none; }
 }

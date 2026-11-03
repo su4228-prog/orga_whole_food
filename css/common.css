@@ -191,6 +191,12 @@
   white-space: nowrap;
 }
 
+/* 로그인 후 "OOO님" (js/auth.js) */
+.member-hello b {
+  color: #5b7a1c;
+  font-weight: 700;
+}
+
 
 /* ── 하단 영역 : GNB · 유틸 아이콘 ── */
 

@@ -4,3 +4,10 @@ uvicorn[standard]==0.54.0
 supabase==2.33.0
 python-dotenv==1.2.4
 openai==3.35.1
+# 사진으로 상품 찾기 (YOLO) — PyTorch 없이 가벼운 ONNX Runtime 으로 실행
+onnxruntime==1.31.0
+numpy==2.5.4
+pillow==13.0.0
+# 회원 로그인 — 비밀번호 해시(bcrypt) · 로그인 출입증(JWT)
+bcrypt==5.0.0
+PyJWT==2.15.1

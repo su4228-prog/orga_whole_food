@@ -91,11 +91,24 @@ def search_products(q: str, limit: int = 20) -> list[dict]:
     if q:
         query = query.or_(f"name.ilike.*{q}*,brand.ilike.*{q}*")
     rows = query.order("id").limit(limit).execute().data
-    return [_drop_none({
+    return [_summary(r) for r in rows]
+
+
+def products_by_ids(ids: list[int]) -> list[dict]:
+    """상품 번호 목록 → 검색 결과 모양 (받은 순서 유지)"""
+    if not ids:
+        return []
+    rows = get_client().table("products").select(SEARCH_COLUMNS).in_("id", ids).execute().data
+    by_id = {r["id"]: r for r in rows}
+    return [_summary(by_id[i]) for i in ids if i in by_id]
+
+
+def _summary(r: dict) -> dict:
+    return _drop_none({
         "id": r["id"], "name": r["name"], "brand": r["brand"], "image": r["image"],
         "price": won(r["price"]), "discount": pct(r["discount_rate"]),
         "unit_price": r["unit_price"], "rating": r["rating"], "reviews": r["review_count"],
-    }) for r in rows]
+    })
 
 
 # ───────────────────────── 상세 ─────────────────────────
@@ -155,21 +168,23 @@ def _basic_detail(prod: dict, links: list[dict]) -> dict:
     free = any(l.get("delivery_badge") == "무료배송" for l in links)
     lines = ["무료배송 상품"] if free else ["40,000원 미만 구매 시 3,000원"]
     rc = prod["review_count"] or 0
+    info_rows = [{"label": "보관방법", "value": prod["storage"], "rowClass": "storage-row"}] if prod.get("storage") else []
+    desc = prod.get("description") or ""
     return {
         "product": {
-            "category": "",
+            "category": prod.get("category") or "",
             "brand": {"icon": DEFAULT_BRAND_ICON, "name": prod["brand"]},
             "badge": badge,
             "nameLines": [prod["name"]],
             "fullName": prod["name"],
-            "description": "",
+            "description": desc,
             "price": {
                 "original": _original_price(prod["price"], prod["discount_rate"]),
                 "sale": prod["price"],
                 "discountRate": prod["discount_rate"],
                 "unit": prod["unit_price"] or "",
             },
-            "infoRows": [],
+            "infoRows": info_rows,
             "delivery": {
                 "types": [{"icon": "🚚", "label": "일반배송"}, {"icon": "☾", "label": "새벽배송"}],
                 "details": [
@@ -192,8 +207,8 @@ def _basic_detail(prod: dict, links: list[dict]) -> dict:
         ],
         "detailContent": [{
             "type": "textSection",
-            "heading": "상세 정보 준비 중",
-            "paragraphs": ["이 상품의 상세 설명은 준비 중입니다."],
+            "heading": "상품 소개" if desc else "상세 정보 준비 중",
+            "paragraphs": [desc or "이 상품의 상세 설명은 준비 중입니다."],
         }],
     }
 

@@ -72,3 +72,54 @@ class ChatRequest(BaseModel):
 
 class ChatResponse(BaseModel):
     answer: str
+    sources: list[str] = Field(default_factory=list, description="벡터 검색으로 찾아 참고한 자료 이름")
+
+
+class VisionRequest(BaseModel):
+    image: str = Field(min_length=100, max_length=2_800_000,
+                       description="사진 (data:image/jpeg;base64,... 형식, 화면에서 640px 이하로 줄여서 보냄)")
+
+
+class Detection(BaseModel):
+    label: str                                # YOLO 이름 (apple)
+    label_ko: str                             # 한국어 이름 (사과)
+    score: float                              # 확신도 0~1
+    box: list[float]                          # [x1, y1, x2, y2] 사진 크기 대비 비율 0~1
+    food: bool                                # 상품 검색에 쓰는 식품 · 용기인지
+
+
+class LoginRequest(BaseModel):
+    login_id: str = Field(min_length=1, max_length=40)
+    password: str = Field(min_length=1, max_length=200)
+
+
+class SignupRequest(BaseModel):
+    login_id: str = Field(min_length=1, max_length=40, description="영문 소문자 · 숫자 4~20자")
+    password: str = Field(min_length=1, max_length=200, description="영문 + 숫자 8자 이상")
+    name: str = Field(min_length=1, max_length=40)
+
+
+class AdminAnalyzeRequest(BaseModel):
+    image: str = Field(min_length=100, max_length=2_800_000, description="상품 사진 (data URL)")
+    file_name: Optional[str] = Field(None, max_length=200)
+
+
+class AdminProductPatch(BaseModel):
+    """상품 수정 — 보낸 칸만 바뀝니다"""
+    name: Optional[str] = Field(None, max_length=100)
+    price: Optional[int] = None
+    discount_rate: Optional[int] = None
+    category: Optional[str] = Field(None, max_length=30)
+    storage: Optional[str] = Field(None, max_length=30)
+    description: Optional[str] = Field(None, max_length=200)
+
+
+class AdminProductCreate(AdminProductPatch):
+    image: str = Field(min_length=100, max_length=2_800_000, description="상품 사진 (data URL)")
+    analysis_id: Optional[int] = Field(None, description="이 사진을 분석한 AI 분석 기록 번호")
+
+
+class VisionResponse(BaseModel):
+    message: str
+    detections: list[Detection]
+    products: list[ProductSummary]

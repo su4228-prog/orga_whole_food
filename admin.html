@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta name="robots" content="noindex" />
+  <title>ORGA 관리자 · AI 상품등록</title>
+  <link rel="stylesheet" href="./css/reset.css?v=20261020" />
+  <link rel="stylesheet" href="./css/admin.css?v=20261103" />
+</head>
+
+<body>
+  <header class="admin-header">
+    <div class="admin-wrap admin-header-inner">
+      <a class="admin-logo" href="index.html">ORGA <small>WHOLE FOODS</small></a>
+      <span class="admin-badge">관리자</span>
+      <nav class="admin-nav">
+        <a href="index.html">쇼핑몰로 가기</a>
+        <button type="button" id="logoutBtn" hidden>로그아웃</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="admin-wrap admin-main">
+    <h1 class="admin-title">AI 상품등록 · 상품 관리</h1>
+    <p class="admin-lead">사진을 올리면 YOLO가 물체를 찾고 OpenAI Vision이 상품명 · 가격 · 분류를 추천합니다. 확인 후 등록하면 쇼핑몰 · 검색 · 상담봇에 바로 반영됩니다.</p>
+
+    <!-- 서버가 없을 때 (GitHub Pages) -->
+    <section class="card notice" id="noServer" hidden>
+      <h2>서버가 필요한 페이지예요</h2>
+      <p>관리자 기능은 서버(FastAPI)가 켜진 주소에서만 동작합니다. <code>backend/README.md</code>의 방법으로 서버를 켜고 <code>http://127.0.0.1:8000/admin.html</code> 로 접속해 주세요.</p>
+    </section>
+
+    <!-- 로그인 필요 · 권한 없음 -->
+    <section class="card login-card" id="loginCard" hidden>
+      <h2 id="gateTitle">관리자 계정으로 로그인해 주세요</h2>
+      <p class="form-msg" id="loginMsg" role="alert"></p>
+      <a class="btn btn-primary" id="gateLink" href="login.html?next=admin.html">로그인하러 가기</a>
+    </section>
+
+    <div id="adminApp" hidden>
+      <div class="grid-2">
+        <!-- 1. 사진 업로드 + AI 분석 -->
+        <section class="card">
+          <h2>1. 상품 사진 업로드 (AI 비전 분석)</h2>
+          <label class="dropzone" id="dropzone" tabindex="0">
+            <input type="file" id="photoInput" accept="image/*" hidden />
+            <span class="dropzone-empty" id="dropEmpty">
+              <span class="dropzone-icon" aria-hidden="true">📷</span>
+              <strong>사진을 끌어 놓거나 눌러서 고르세요</strong>
+              <small>JPG · PNG · WEBP</small>
+            </span>
+            <span class="photo-figure" id="photoFigure" hidden>
+              <img id="photoPreview" alt="올린 상품 사진" />
+            </span>
+          </label>
+          <p class="file-name" id="fileName"></p>
+          <button type="button" class="btn btn-blue" id="analyzeBtn" disabled>✨ AI로 상품 정보 자동 완성</button>
+          <div class="ai-result" id="aiResult" hidden></div>
+        </section>
+
+        <!-- 2. 확인 후 등록 -->
+        <section class="card">
+          <h2>2. 상품 정보 확인 및 DB 저장</h2>
+          <form id="productForm" class="product-form">
+            <label><span>상품명 <em>(AI 추천)</em></span>
+              <input name="name" required minlength="2" maxlength="100" placeholder="예: 유기농 레몬 (1kg)" />
+            </label>
+            <div class="row-2">
+              <label>판매가 (원)
+                <input name="price" type="number" required min="100" max="10000000" step="10" placeholder="예: 6900" />
+              </label>
+              <label>할인율 (%)
+                <input name="discount_rate" type="number" min="0" max="90" placeholder="없으면 비움" />
+              </label>
+            </div>
+            <div class="row-2">
+              <label>분류
+                <select name="category" required id="categorySelect"></select>
+              </label>
+              <label>보관
+                <select name="storage" id="storageSelect"></select>
+              </label>
+            </div>
+            <label>한 줄 설명
+              <textarea name="description" rows="2" maxlength="200" placeholder="예: 상큼한 향이 좋은 유기농 레몬"></textarea>
+            </label>
+            <button type="submit" class="btn btn-green" id="saveBtn">💾 Supabase에 상품 등록하기</button>
+            <p class="form-msg" id="saveMsg" role="status"></p>
+          </form>
+        </section>
+      </div>
+
+      <!-- 3. 상품 관리 -->
+      <section class="card">
+        <div class="card-head">
+          <h2>3. 상품 관리 <small id="totalText"></small></h2>
+          <form id="searchForm" class="search-form" role="search">
+            <input id="searchInput" type="search" maxlength="50" placeholder="상품명 · 분류로 검색" aria-label="상품 검색" />
+            <button type="submit" class="btn btn-small">검색</button>
+          </form>
+        </div>
+        <div class="table-wrap">
+          <table class="product-table">
+            <thead>
+              <tr><th>사진</th><th>번호</th><th>상품명</th><th>분류</th><th>보관</th><th>판매가</th><th>할인</th><th>구분</th><th>관리</th></tr>
+            </thead>
+            <tbody id="productRows"></tbody>
+          </table>
+        </div>
+        <nav class="pager" id="pager" aria-label="페이지"></nav>
+      </section>
+
+      <!-- 4. 기록 -->
+      <section class="card">
+        <div class="card-head">
+          <h2>4. 최근 기록</h2>
+          <button type="button" class="btn btn-small" id="reloadLogs">새로고침</button>
+        </div>
+        <div class="grid-2 logs">
+          <div>
+            <h3>관리자 작업 기록 <small>admin_action_logs</small></h3>
+            <ul class="log-list" id="actionLogs"></ul>
+          </div>
+          <div>
+            <h3>AI 분석 기록 <small>ai_analysis_logs</small></h3>
+            <ul class="log-list" id="analysisLogs"></ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script type="module" src="./js/admin.js?v=20261103"></script>
+  <script type="module" src="./js/chat.js?v=20261020c"></script>
+</body>
+
+</html>

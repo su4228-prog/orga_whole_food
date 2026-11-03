@@ -47,8 +47,9 @@ for cat, q, hist, must_any, must_not in CASES:
     ok_any = (not must_any) or any(k in ans for k in must_any)
     ok_not = not any(k in ans for k in must_not)
     ok = r.status_code == 200 and ok_any and ok_not
-    results.append({"분류": cat, "질문": q, "통과": ok, "답변": ans})
-    print(f"{'✅' if ok else '❌'} [{cat}] {q}\n   → {ans}\n")
+    sources = r.json().get("sources", [])
+    results.append({"분류": cat, "질문": q, "통과": ok, "답변": ans, "참고": sources})
+    print(f"{'✅' if ok else '❌'} [{cat}] {q}\n   → {ans}\n   참고: {sources}\n")
 
 passed = sum(r["통과"] for r in results)
 print(f"결과: {passed}/{len(results)} 통과")

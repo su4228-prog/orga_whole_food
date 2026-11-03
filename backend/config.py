@@ -18,6 +18,13 @@ OPENAI_MODEL = (os.getenv("OPENAI_MODEL") or "gpt-4o-mini").strip()
 CHAT_LIMIT_PER_USER = int(os.getenv("CHAT_LIMIT_PER_USER", "10"))          # 한 사람당
 CHAT_LIMIT_WINDOW_SEC = int(os.getenv("CHAT_LIMIT_WINDOW_SEC", "600"))     # 이 시간(초) 동안
 CHAT_LIMIT_PER_DAY = int(os.getenv("CHAT_LIMIT_PER_DAY", "300"))           # 사이트 전체 하루
+# 회원 로그인 — 출입증(JWT)에 도장을 찍는 비밀 열쇠 (비어 있으면 로그인 기능이 꺼짐)
+JWT_SECRET = (os.getenv("JWT_SECRET") or "").strip()
+JWT_EXPIRE_SEC = int(os.getenv("JWT_EXPIRE_SEC", "7200"))                 # 로그인 유지 시간 (2시간)
+
+# 사진으로 상품 찾기(YOLO) — 무료 서버 CPU 를 아끼기 위해 따로 제한
+VISION_LIMIT_PER_USER = int(os.getenv("VISION_LIMIT_PER_USER", "6"))      # 한 사람당 (같은 시간 동안)
+VISION_LIMIT_PER_DAY = int(os.getenv("VISION_LIMIT_PER_DAY", "200"))      # 사이트 전체 하루
 
 # 화면(브라우저)에서 이 서버를 부를 수 있는 주소. 모든 곳("*")을 허용하지 않고 필요한 곳만 적습니다.
 _DEFAULT_ORIGINS = ",".join([

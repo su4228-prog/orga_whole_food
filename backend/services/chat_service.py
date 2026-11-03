@@ -1,5 +1,8 @@
 """쇼핑몰 상담 챗봇 — 이용 안내 문서와 상품 목록만 근거로 답합니다.
 
+근거 찾기는 벡터 검색(RAG): 질문과 의미가 가까운 안내 조각 · 상품 설명만 골라 넘깁니다 (services/rag_service.py).
+벡터 검색을 쓸 수 없으면 안내 문서 전체를 넘기는 방식으로 자동 전환합니다.
+
 정확도를 위해 두 가지를 서버가 직접 계산해 함께 넘깁니다.
 1) 요약 사실: 무료배송 상품 목록, 베스트 순위 (모델이 긴 목록에서 세다가 틀리지 않게)
 2) 질문에 나온 상품의 사실: 가격 · 무료배송 여부 · 상온/냉장 구분과 그에 맞는 반품 기준
@@ -13,6 +16,7 @@ from openai import OpenAI
 
 from config import OPENAI_API_KEY, OPENAI_MODEL
 from db import get_client
+from services import rag_service
 
 log = logging.getLogger("olga.chat")
 
@@ -22,7 +26,7 @@ FALLBACK = "문서에서 확인되지 않는 내용이에요. 고객기쁨센터
 SYSTEM_PROMPT = f"""당신은 '올가 푸드' 온라인 쇼핑몰의 상담 챗봇 '올가 상담봇'입니다.
 
 규칙
-1. 아래 [이용 안내], [상품 목록], [요약 사실], 그리고 질문과 함께 주어지는 [질문 속 상품 정보]만 근거로 답합니다.
+1. 아래 [이용 안내], [관련 상품 설명], [상품 목록], [요약 사실], 그리고 질문과 함께 주어지는 [질문 속 상품 정보]만 근거로 답합니다.
 2. 이 자료들에 없는 내용(다른 회사·일반 상식·시사·건강 효능·의학 정보 등)은 추측하지 말고 정확히 이렇게 답합니다: "{FALLBACK}"
 3. 상품의 효능이나 건강 효과는 말하지 않습니다.
 4. 고객 개인의 주문 상태, 배송 위치, 환불 진행 상황은 조회할 수 없으니 마이페이지나 고객기쁨센터로 안내합니다.
@@ -59,6 +63,11 @@ def _openai() -> OpenAI:
     return _client
 
 
+def refresh() -> None:
+    """상품이 바뀌었을 때 다음 질문부터 새 목록을 쓰도록 캐시를 비웁니다 (관리자 등록 · 수정 · 삭제 후)."""
+    _cache["at"] = 0.0
+
+
 def _keywords(name: str) -> set[str]:
     cleaned = re.sub(r"\[[^\]]*\]|\([^)]*\)", " ", name)                  # [산지직송], (50g) 같은 표기 제거
     words = re.findall(r"[가-힣A-Za-z]+", cleaned)
@@ -82,8 +91,9 @@ def _load():
     for p in products:
         L = [l for l in links if l["product_id"] == p["id"]]
         detail = details.get(p["id"], {}).get("product", {})
-        storage = next((r["value"] for r in detail.get("infoRows", []) if r.get("label") == "보관방법"), "")
-        category = detail.get("category", "")
+        storage = p.get("storage") or next(
+            (r["value"] for r in detail.get("infoRows", []) if r.get("label") == "보관방법"), "")
+        category = p.get("category") or detail.get("category", "")    # 관리자 화면에서 고친 값 우선
         if "냉동" in storage or storage.startswith("냉장") or category in ("과일", "채소", "정육·달걀", "수산"):
             kind = "냉장·냉동·신선 상품"
         else:
@@ -144,16 +154,46 @@ def _facts_for(question: str, items: list[dict]) -> str:
     return "\n".join(lines)
 
 
-def ask(question: str, history: list[dict]) -> str:
+POLICY_K = 4          # 질문마다 넘길 이용 안내 조각 수
+PRODUCT_K = 3         # 질문마다 넘길 상품 설명 수 (전체 30개 중)
+SOURCE_MIN = 0.35     # 화면에 '참고한 자료'로 보여줄 최소 유사도
+
+
+def _retrieve(question: str, recent_user: str) -> tuple[str, str, list[str]]:
+    """(이용 안내 부분, 관련 상품 설명, 참고 자료 이름들). 벡터 검색이 안 되면 문서 전체를 돌려줍니다."""
+    if rag_service.available():
+        try:
+            query = f"{recent_user} {question}".strip()[-500:]       # 이어지는 질문은 앞 질문까지 함께 검색
+            vec = rag_service.embed([query])[0]
+            policy = rag_service.search(query, "policy", POLICY_K, vec)
+            products = rag_service.search(query, "product", PRODUCT_K, vec)
+            top = policy[0]["similarity"] if policy else 1
+            sources = [c["title"].split(" > ")[0] for c in policy[:2]               # 1등과 점수가 비슷한 것만 표시
+                       if c["similarity"] >= max(SOURCE_MIN, top - 0.05)]
+            sources += [c["title"] for c in products[:2] if c["similarity"] >= SOURCE_MIN + 0.1]
+            return ("\n\n".join(c["content"] for c in policy),
+                    "\n\n".join(c["content"] for c in products),
+                    list(dict.fromkeys(sources)))
+        except Exception:
+            log.exception("벡터 검색 실패 → 문서 전체 방식으로 대신합니다")
+    return POLICY_FILE.read_text(encoding="utf-8"), "", []
+
+
+def ask(question: str, history: list[dict]) -> tuple[str, list[str]]:
+    """(답변, 참고한 자료 이름들)"""
     data = _load()
-    policy = POLICY_FILE.read_text(encoding="utf-8")
-    context = (f"[이용 안내]\n{policy}\n\n[상품 목록]\n{data['catalog']}\n\n[요약 사실]\n{data['summary']}")
+    # 이전 질문까지 함께 보고 상품을 찾는다 ("그거 3개 사면?" 같은 이어지는 질문 대비)
+    recent_user = " ".join(t["content"] for t in history[-4:] if t["role"] == "user")
+    policy, product_docs, sources = _retrieve(question, recent_user)
+
+    context = f"[이용 안내]\n{policy}\n\n"
+    if product_docs:
+        context += f"[관련 상품 설명]\n{product_docs}\n\n"
+    context += f"[상품 목록]\n{data['catalog']}\n\n[요약 사실]\n{data['summary']}"
     messages = [{"role": "system", "content": SYSTEM_PROMPT + "\n\n" + context}]
     for turn in history[-6:]:
         messages.append({"role": turn["role"], "content": turn["content"][:600]})
 
-    # 이전 질문까지 함께 보고 상품을 찾는다 ("그거 3개 사면?" 같은 이어지는 질문 대비)
-    recent_user = " ".join(t["content"] for t in history[-4:] if t["role"] == "user")
     facts = _facts_for(question, data["items"]) or _facts_for(recent_user, data["items"])
     user_content = question if not facts else f"{question}\n\n[질문 속 상품 정보]\n{facts}"
     messages.append({"role": "user", "content": user_content})
@@ -162,5 +202,5 @@ def ask(question: str, history: list[dict]) -> str:
     if not OPENAI_MODEL.startswith(("gpt-5", "o")):      # 일부 최신 모델은 temperature 를 받지 않음
         params["temperature"] = 0.2
     res = _openai().chat.completions.create(**params)
-    answer = (res.choices[0].message.content or "").strip()
-    return answer.replace("**", "") or FALLBACK
+    answer = (res.choices[0].message.content or "").strip().replace("**", "") or FALLBACK
+    return answer, ([] if answer == FALLBACK else sources)
