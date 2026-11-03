@@ -1,4 +1,4 @@
-"""API 응답 모양 정의 — 지금 사이트가 읽는 JSON과 같은 모양을 유지합니다."""
+"""API 요청 · 응답 모양 — 상품 응답은 사이트가 읽던 JSON과 같은 모양을 유지하고, 입력은 길이 · 형식을 검사합니다."""
 from typing import Any, Literal, Optional
 
 from pydantic import BaseModel, ConfigDict, Field
@@ -119,7 +119,13 @@ class AdminProductCreate(AdminProductPatch):
     analysis_id: Optional[int] = Field(None, description="이 사진을 분석한 AI 분석 기록 번호")
 
 
+class PhotoMatch(BaseModel):
+    product_id: int
+    similarity: float                         # 사진 특징 일치도 0~1
+
+
 class VisionResponse(BaseModel):
     message: str
     detections: list[Detection]
     products: list[ProductSummary]
+    match: Optional[PhotoMatch] = None        # 같은 상품을 찾았을 때

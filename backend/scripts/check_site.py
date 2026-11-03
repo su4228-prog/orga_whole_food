@@ -71,7 +71,7 @@ with sync_playwright() as p:
             if d > 0:
                 over[f"{name} {w}px"] = d
         q.close()
-    check("가로 넘침 없음 (알려진 항목: 상세 390px)", set(over) <= {"상세 390px"}, str(over))
+    check("가로 넘침 없음", not over, str(over))
 
     print("4) 보안")
     for path in ("/backend/.env", "/backend/app.py", "/.git/config", "/backend/rag_docs/policy.md"):

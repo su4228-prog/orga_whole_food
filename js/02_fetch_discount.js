@@ -1,10 +1,7 @@
-// 올가 할인 특가
-// json/discount_products.json
+// 02_fetch_discount.js — 올가 할인 특가 섹션 카드
+// 데이터: /api/sections/discount — 서버가 없으면 json/discount_products.json (js/api.js)
+// 함수로 내보내고 main.js 에서 실행합니다.
 
-// export fetch(...) 형태로 직접 내보낼 수 없음
-// fetch 코드를 함수로 감싼 후 그 함수를 export 해야 함
-
-// 서버(API)가 있으면 서버에서, 없으면 json 파일에서 가져옵니다 (js/api.js)
 import { loadSection, detailUrl } from "./api.js";
 
 export function loadDiscountProducts() {

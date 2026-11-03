@@ -134,6 +134,8 @@
 .chat-product-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; font-size: 12.5px; line-height: 1.4; }
 .chat-product-info strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; }
 .chat-product-info span { color: #3f7417; font-weight: 700; }
+.chat-product.is-same { border-color: #7fb048; background: #f1f8e6; }
+.chat-product-info .chat-same { color: #3f7417; font-size: 11px; font-style: normal; font-weight: 700; }
 
 @media (prefers-reduced-motion: reduce) {
   .chat-panel, .chat-panel.is-open, .chat-toggle, .chat-row, .chat-typing span { transition: none; animation: none; }

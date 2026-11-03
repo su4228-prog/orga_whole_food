@@ -4,6 +4,7 @@
   일부러 계산이 느려서 유출되더라도 비밀번호를 하나씩 맞혀 보는 공격이 어렵습니다.
 - 로그인하면 2시간짜리 출입증(JWT)을 줍니다. 안에는 회원 번호 · 아이디 · 이름 · 역할 · 만료 시각이 들어 있고,
   서버만 아는 열쇠(JWT_SECRET)로 도장을 찍어 위조할 수 없습니다.
+- 출입증은 HttpOnly 쿠키로 보내 화면의 스크립트가 읽을 수 없게 합니다 (app.py).
 - 서버는 로그인 상태를 따로 기억하지 않고, 요청마다 출입증을 확인합니다.
 """
 import re
@@ -44,7 +45,7 @@ def _require_enabled() -> None:
 
 # ───────────────────────── 비밀번호 ─────────────────────────
 def hash_password(password: str) -> str:
-    return bcrypt.hashpw(password.encode(), bcrypt.gensalt(rounds=12)).decode()
+    return bcrypt.hashpw(password.encode(), bcrypt.gensalt(rounds=10)).decode()
 
 
 def check_password(password: str, hashed: str) -> bool:
@@ -116,11 +117,10 @@ def login(login_id: str, password: str) -> dict:
 
 
 # ───────────────────────── 출입증 확인 ─────────────────────────
-def current_user(authorization: str | None) -> dict:
-    """'Authorization: Bearer 출입증' 을 확인하고, 지금 DB 의 회원 정보를 돌려줍니다.
+def current_user(token: str | None) -> dict:
+    """출입증을 확인하고, 지금 DB 의 회원 정보를 돌려줍니다.
     (탈퇴했거나 관리자 권한이 빠졌으면 출입증이 남아 있어도 바로 반영)"""
     _require_enabled()
-    token = (authorization or "").removeprefix("Bearer ").strip()
     if not token:
         raise AuthError("로그인이 필요해요.")
     try:
@@ -135,8 +135,8 @@ def current_user(authorization: str | None) -> dict:
     return public(rows[0])
 
 
-def require_admin(authorization: str | None) -> dict:
-    user = current_user(authorization)
+def require_admin(token: str | None) -> dict:
+    user = current_user(token)
     if user["role"] != "admin":
         raise ForbiddenError("관리자 계정만 들어올 수 있어요.")
     return user

@@ -1,13 +1,13 @@
 // auth.js — 로그인 상태 유지 (모든 페이지 공통)
 //
-// 로그인 성공 → 서버가 준 출입증(JWT)과 회원 정보를 localStorage 에 저장
-// 요청할 때 → Authorization: Bearer 출입증
-// 로그아웃 → 저장한 출입증 · 회원 정보 삭제 (서버에 따로 알릴 필요 없음)
+// 로그인 성공 → 서버가 출입증(JWT)을 HttpOnly 쿠키로 저장 (화면의 스크립트는 읽을 수 없음)
+//              화면은 헤더 표시에 필요한 회원 정보(이름 · 역할 · 만료 시각)만 localStorage 에 보관
+// 요청할 때 → 쿠키가 자동으로 함께 감 · 데이터를 바꾸는 요청에는 X-Requested-With 머리말
+// 로그아웃 → 서버가 쿠키 삭제 + 화면의 회원 정보 삭제
 // 만료 시각이 지났거나 서버가 출입증을 거절하면 자동으로 로그아웃 상태가 됩니다.
 
 import { apiBase } from "./api.js";
 
-const TOKEN_KEY = "orga_token";
 const USER_KEY = "orga_user";
 
 function read(key) {
@@ -18,35 +18,37 @@ function write(key, value) {
   try { value == null ? localStorage.removeItem(key) : localStorage.setItem(key, value); } catch (e) { /* 저장 불가 환경 */ }
 }
 
+write("orga_token", null);                          // 예전 방식(localStorage 토큰)으로 남은 값 정리
+
 /** 로그인한 회원 정보 { id, login_id, name, role, expires_at } — 없거나 만료면 null */
 export function getUser() {
   let user = null;
   try { user = JSON.parse(read(USER_KEY) || "null"); } catch (e) { user = null; }
-  if (!user || !read(TOKEN_KEY)) return null;
+  if (!user) return null;
   if (!user.expires_at || user.expires_at * 1000 <= Date.now()) {
-    clearSession();
+    write(USER_KEY, null);
     return null;
   }
   return user;
 }
 
-export function getToken() {
-  return getUser() ? read(TOKEN_KEY) : null;
-}
-
+/** 로그인 · 가입 응답 { user, expires_at } 저장 (출입증은 서버가 쿠키로 따로 저장) */
 export function saveSession(data) {
-  write(TOKEN_KEY, data.token);
   write(USER_KEY, JSON.stringify({ ...data.user, expires_at: data.expires_at }));
 }
 
-export function clearSession() {
-  write(TOKEN_KEY, null);
+export async function clearSession() {
   write(USER_KEY, null);
+  const base = apiBase();
+  if (base === null) return;
+  try {
+    await fetch(`${base}/api/auth/logout`, { method: "POST", credentials: "include", headers: authHeaders() });
+  } catch (e) { /* 서버가 잠시 안 되어도 화면은 로그아웃 상태 */ }
 }
 
+/** 서버 요청에 붙일 머리말 — 쿠키는 브라우저가 자동으로 보냄 */
 export function authHeaders() {
-  const token = getToken();
-  return token ? { Authorization: `Bearer ${token}` } : {};
+  return { "X-Requested-With": "orga" };
 }
 
 /** 로그인 뒤 돌아갈 주소 — 이 사이트 안의 페이지만 허용 */
@@ -79,9 +81,9 @@ export function renderMemberLinks() {
     name.textContent = user.name;
     hello.append(name, "님");
     const out = link("로그아웃", "#");
-    out.addEventListener("click", (e) => {
+    out.addEventListener("click", async (e) => {
       e.preventDefault();
-      clearSession();
+      await clearSession();
       if (/admin\.html$/.test(location.pathname)) location.href = "index.html";
       else renderMemberLinks();
     });
@@ -97,12 +99,11 @@ export function renderMemberLinks() {
 /** 서버에 출입증이 아직 유효한지 확인하고 이름 · 권한을 최신으로 맞춤 */
 export async function refreshUser() {
   const base = apiBase();
-  const token = getToken();
-  if (base === null || !token) return getUser();
+  if (base === null || !getUser()) return getUser();
   try {
-    const res = await fetch(`${base}/api/auth/me`, { headers: { Authorization: `Bearer ${token}` } });
+    const res = await fetch(`${base}/api/auth/me`, { credentials: "include" });
     if (res.status === 401) {
-      clearSession();
+      write(USER_KEY, null);
       return null;
     }
     if (res.ok) {

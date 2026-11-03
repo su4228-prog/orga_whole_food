@@ -1,0 +1,29 @@
+# 무료 서버 깨우기 — 3일마다 배포 사이트를 한 번 열어 Render 서버를 깨우고 Supabase DB 를 읽습니다.
+# (Supabase 무료 프로젝트는 일주일 넘게 쓰지 않으면 일시 중지되므로 그 전에 한 번씩 사용)
+# GitHub 화면의 Actions → keepalive → Run workflow 로 바로 실행해 볼 수도 있습니다.
+name: keepalive
+
+on:
+  schedule:
+    - cron: "0 0 */3 * *"        # 3일마다 09:00 (한국 시간)
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: 서버 깨우기 · DB 읽기
+        env:
+          SITE: https://orga-whole-food.onrender.com
+        run: |
+          # 잠든 서버가 깨어나는 데 1분 가까이 걸릴 수 있어 몇 번 다시 시도합니다.
+          for path in /health /api/sections/best; do
+            for i in 1 2 3 4 5; do
+              code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 90 "$SITE$path") || code=000
+              echo "$path → $code"
+              [ "$code" = "200" ] && break
+              sleep 20
+            done
+            [ "$code" = "200" ] || exit 1
+          done

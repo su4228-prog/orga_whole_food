@@ -163,6 +163,10 @@ def create_product(data: dict, image: str | None, analysis_id: int | None, ip: s
         db.table("ai_analysis_logs").update({"product_id": row["id"]}).eq("id", analysis_id).execute()
     _log("create", row["id"], row["name"], {**fields, "image": url, "analysis_id": analysis_id}, ip, actor)
     _after_change(row["id"])
+    try:                                                   # 사진으로 같은 상품 찾기에 바로 반영
+        vision_service.save_product_vector(row["id"], url)
+    except Exception:
+        log.exception("상품 사진 특징 저장 실패 (scripts/build_photo_vectors.py 로 다시 만들 수 있음)")
     return _row(row, set())
 
 
@@ -195,6 +199,7 @@ def delete_product(pid: int, ip: str, actor: str | None = None) -> dict:
             log.exception("사진 파일 삭제 실패")
     _log("delete", pid, p["name"], {"price": p.get("price"), "category": p.get("category"), "image": p.get("image")}, ip, actor)
     _after_change(pid, removed=True)
+    vision_service.refresh_vectors()                       # 특징은 상품과 함께 지워짐 (on delete cascade)
     return {"deleted": pid}
 
 

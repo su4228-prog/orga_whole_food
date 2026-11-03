@@ -3,644 +3,1576 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ORGA Whole Foods — README 슬라이드</title>
+<title>ORGA Whole Foods — 포트폴리오</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
 <style>
-/* 슬라이드는 항상 1600×900 (16:9) 고정. 제목·부제목·본문·꼬리말 위치는 모든 장이 같은 좌표를 씁니다.
-   eyebrow top52 · 제목 top84 · 부제목 top156 · 구분선 top204 · 본문 top228~bottom92 · 꼬리말 bottom34 */
 :root{
-  --ink:#16261c; --muted:#5a665c; --paper:#f4f6ee; --card:#ffffff; --line:#dde2d0;
-  --green:#56741c; --green-soft:#e6eecf; --brown:#76553f; --brown-soft:#f0e7dd; --red:#e8372c;
-  --dark:#14231a; --dark-2:#1d3125; --dark-line:#2d4535; --dark-muted:#a9b8a9;
-  --sans:"Noto Sans KR","Malgun Gothic",system-ui,sans-serif; --mono:"IBM Plex Mono",Consolas,monospace;
-  --s:1;
+  --bg:#f3f6f1; --paper:#ffffff; --ink:#15211a; --sub:#56635a; --line:#dbe3d6;
+  --green:#3f7417; --green-2:#5b8f22; --green-soft:#e7f0da; --blue:#2c5d9e; --blue-soft:#e4ecf7;
+  --red:#e0483e; --red-soft:#fde6e3; --amber:#b7791f; --amber-soft:#fbf0dc; --violet:#6b46c1; --violet-soft:#efe9fb;
+  --dark:#13201a; --dark-2:#1c2e24; --dark-line:#2c4436; --dark-sub:#a7b8a9;
+  --code:#101a14; --code-ink:#dfe9d6;
+  --sans:"Noto Sans KR","Malgun Gothic",system-ui,sans-serif; --mono:"IBM Plex Mono",Consolas,monospace; --s:1;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{background:#cfd4c6}
+html,body{background:#c9d1c5}
 body{font-family:var(--sans);color:var(--ink);padding:24px 0 48px;display:flex;flex-direction:column;align-items:center;gap:24px}
-.frame{width:calc(1600px*var(--s));height:calc(900px*var(--s));flex:none;box-shadow:0 6px 24px rgba(0,0,0,.18)}
-.slide{width:1600px;height:900px;position:relative;overflow:hidden;background:var(--paper);transform:scale(var(--s));transform-origin:0 0}
-.slide.dark{background:var(--dark);color:#f2f6ee}
+.frame{width:calc(1600px*var(--s));height:calc(900px*var(--s));flex:none;box-shadow:0 6px 24px rgba(0,0,0,.16)}
+.slide{width:1600px;height:900px;position:relative;overflow:hidden;background:var(--bg);transform:scale(var(--s));transform-origin:0 0;padding:58px 88px 64px}
+.slide.white{background:#fbfcfa}
+.slide.dark{background:var(--dark);color:#eef4ec}
+.sec{font:700 15px/1 var(--sans);letter-spacing:.06em;color:var(--sub)}
+.sec b{color:var(--green);font-weight:700}
+.dark .sec{color:var(--dark-sub)}.dark .sec b{color:#a8d26a}
+.h{margin-top:18px;font:900 54px/1.18 var(--sans);letter-spacing:-.03em}
+.h em{font-style:normal;color:var(--green)}
+.dark .h em{color:#a8d26a}
+.h.one{white-space:nowrap}
+.lead{margin-top:16px;font:400 21px/1.6 var(--sans);color:var(--sub);max-width:780px}
+.dark .lead{color:var(--dark-sub)}
+.pn{position:absolute;right:88px;bottom:30px;font:600 14px/1 var(--mono);color:#8a988c}
+.pn b{color:var(--green)}
+.dark .pn{color:#6f8273}.dark .pn b{color:#a8d26a}
+.foot{position:absolute;left:88px;bottom:28px;right:260px;font:400 15px/1.5 var(--sans);color:var(--sub)}
+.foot code{font:500 14px var(--mono);color:var(--ink);background:#e7ece3;padding:1px 6px;border-radius:4px}
 
-/* ── 공통 머리말 (모든 장 동일 위치) ── */
-.eyebrow{position:absolute;left:80px;top:52px;font:600 15px/1 var(--mono);letter-spacing:.16em;color:var(--green);text-transform:uppercase}
-.title{position:absolute;left:80px;top:80px;width:1440px;height:68px;font:900 52px/68px var(--sans);letter-spacing:-.02em;white-space:nowrap;overflow:hidden}
-.subtitle{position:absolute;left:80px;top:154px;width:1440px;height:36px;font:400 22px/36px var(--sans);color:var(--muted);white-space:nowrap;overflow:hidden}
-.rule{position:absolute;left:80px;right:80px;top:204px;height:1px;background:var(--line)}
-.body{position:absolute;left:80px;right:80px;top:228px;bottom:92px}
-.foot{position:absolute;left:80px;right:80px;bottom:30px;display:flex;justify-content:space-between;font:400 15px/1 var(--sans);color:var(--muted)}
-.foot b{font:600 15px/1 var(--mono);color:var(--green)}
-.dark .eyebrow{color:#a8c75b}.dark .subtitle{color:var(--dark-muted)}.dark .rule{background:var(--dark-line)}
-.dark .foot{color:var(--dark-muted)}.dark .foot b{color:#a8c75b}
+/* 기능 장: 왼쪽 설명 + 오른쪽 화면 */
+.feat{position:absolute;left:88px;right:88px;top:58px;bottom:70px;display:grid;grid-template-columns:520px 1fr;gap:48px}
+.feat .left{display:flex;flex-direction:column;min-width:0}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:26px}
+.steps.two{grid-template-columns:repeat(2,1fr)}
+.step{background:#e9efe4;border-radius:10px;padding:14px 14px 16px;display:flex;flex-direction:column;gap:5px}
+.step i{font:700 13px/1 var(--mono);font-style:normal;color:var(--red);letter-spacing:.06em}
+.step b{font:700 18px/1.35 var(--sans)}
+.step span{font:400 14.5px/1.5 var(--sans);color:var(--sub)}
+.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:22px}
+.fact{border-left:4px solid var(--green);padding:4px 0 4px 14px}
+.fact b{display:block;font:900 30px/1.1 var(--sans);color:var(--green);letter-spacing:-.02em}
+.fact span{font:400 15px/1.45 var(--sans);color:var(--sub)}
+.note{margin-top:auto;padding-top:16px;border-top:1px solid var(--line);font:400 16px/1.6 var(--sans);color:var(--sub)}
+.note b{color:var(--ink)}
 
-/* ── 공통 부품 ── */
-.grid{display:grid;gap:20px;height:100%;min-height:0}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px 26px;min-height:0;min-width:0;display:flex;flex-direction:column;gap:12px;overflow:hidden}
-.card h3{font:700 22px/1.3 var(--sans)}
-.card p,.card li{font:400 17px/1.6 var(--sans);color:var(--muted)}
-.card b,.card strong{color:var(--ink);font-weight:700}
-.card ul{list-style:none;display:flex;flex-direction:column;gap:6px}
-.card.big li{font-size:19px;line-height:1.65}
-.card.big .note{font-size:17px}
-.card li{padding-left:16px;position:relative}
-.card li::before{content:"";position:absolute;left:0;top:.72em;width:6px;height:6px;border-radius:50%;background:var(--green)}
-.num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:9px;background:var(--green-soft);color:var(--green);font:600 16px/1 var(--mono);flex:none}
-.hd{display:flex;align-items:center;gap:12px}
-.note{background:var(--green-soft);border-radius:10px;padding:12px 16px;font:400 16px/1.55 var(--sans);color:var(--ink)}
-.note.brown{background:var(--brown-soft)}
-.note small{display:block;font:600 12px/1 var(--mono);letter-spacing:.12em;color:var(--green);margin-bottom:6px;text-transform:uppercase}
-.note.brown small{color:var(--brown)}
-.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;display:flex;flex-direction:column;justify-content:center;gap:6px}
-.stat b{font:900 46px/1 var(--sans);color:var(--green);letter-spacing:-.02em}.stat b i{font:700 20px/1 var(--sans);font-style:normal;margin-left:3px}
-.stat span{font:400 16px/1.4 var(--sans);color:var(--muted)}
-.dark .stat{background:var(--dark-2);border-color:var(--dark-line)}.dark .stat b{color:#b9d96a}.dark .stat span{color:var(--dark-muted)}
-.pill{display:inline-flex;align-items:center;padding:7px 15px;border-radius:99px;border:1px solid var(--line);background:#fff;font:600 15px/1 var(--sans);color:var(--ink)}
-.dark .pill{background:var(--dark-2);border-color:var(--dark-line);color:#f2f6ee}
-.pill.hot{background:#8fb33a;border-color:#8fb33a;color:#10200f}
+/* 브라우저 틀 + 화면 + 번호 */
+.win{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:visible;box-shadow:0 10px 30px rgba(30,50,30,.10);display:flex;flex-direction:column;min-height:0;align-self:center}
+.win .bar{border-radius:14px 14px 0 0;height:44px;flex:none;display:flex;align-items:center;gap:12px;padding:0 18px;background:#eef2ea;border-bottom:1px solid var(--line);font:600 13px/1 var(--mono);letter-spacing:.12em;color:#6b786e}
+.win .bar i{width:10px;height:10px;border-radius:50%;background:#d3dbcd;display:inline-block}
+.win .cap{flex:none;padding:12px 18px;border-top:1px solid var(--line);font:700 16px/1.3 var(--sans)}
+.shot{position:relative;line-height:0}
+.shot img{width:100%;display:block}
+.hl{position:absolute;border:3px solid var(--red);border-radius:8px;background:rgba(224,72,62,.06);pointer-events:none}
+.pin{position:absolute;transform:translate(-17px,-50%);display:flex;align-items:center;gap:8px;z-index:3;white-space:nowrap}
+.pin i{width:34px;height:34px;border-radius:50%;background:var(--red);color:#fff;font:700 17px/34px var(--sans);font-style:normal;text-align:center;box-shadow:0 0 0 3px #fff,0 3px 8px rgba(0,0,0,.25);flex:none}
+.pin span{background:var(--red);color:#fff;font:700 16px/1 var(--sans);padding:9px 12px;border-radius:7px;box-shadow:0 3px 8px rgba(0,0,0,.2)}
+.pin.l{flex-direction:row-reverse;transform:translate(calc(-100% + 17px),-50%)}
+
+/* 코드 */
+.codes{display:grid;gap:18px;min-height:0}
+.code{background:var(--code);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;min-height:0}
+.code .file{flex:none;display:flex;justify-content:space-between;padding:10px 16px;background:#18261d;font:500 13px/1 var(--mono);color:#9fb39f}
+.code .file b{color:#cfe6b4;font-weight:600}
+.code pre{flex:1;padding:14px 18px;font:400 14px/1.6 var(--mono);color:var(--code-ink);white-space:pre;overflow:hidden}
+pre .c{color:#7e957f}pre .k{color:#a8d26a}pre .s{color:#f2c58f}pre .n{color:#8cc8ff}pre .hi{background:rgba(168,210,106,.16);display:inline-block;width:100%}
+.del{color:#ff9d92}.add{color:#bfe68a}
+.points{display:flex;flex-direction:column;gap:12px;margin-top:22px}
+.point{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start}
+.point i{width:30px;height:30px;border-radius:8px;background:var(--green-soft);color:var(--green);font:700 15px/30px var(--mono);font-style:normal;text-align:center}
+.point b{display:block;font:700 18px/1.4 var(--sans)}
+.point span{font:400 15.5px/1.55 var(--sans);color:var(--sub)}
+.point span b,.lead b,.step span b{display:inline;font:inherit;font-weight:700;color:var(--ink)}
+.point code,.lead code,.note code{font:500 .9em var(--mono);background:#e4ebdf;padding:1px 6px;border-radius:4px;color:var(--ink)}
+
+/* 공통 카드 · 표 */
+.card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:20px 22px;min-width:0}
+.card h3{font:700 20px/1.3 var(--sans)}
+.card p,.card li{font:400 15.5px/1.6 var(--sans);color:var(--sub)}
+.tbl{background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden}
 table{border-collapse:collapse;width:100%}
-th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);font:400 16.5px/1.5 var(--sans);vertical-align:top}
-th{font:600 13px/1.2 var(--mono);letter-spacing:.08em;color:var(--green);text-transform:uppercase;background:#f1f5e4}
-td:first-child{font-weight:700;white-space:nowrap}
-table.tight th,table.tight td{padding:7px 14px;font-size:16px}
-.tbl{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;min-height:0}
-code,pre{font-family:var(--mono)}
-pre{background:#14231a;color:#dbe8cf;border-radius:12px;padding:18px 20px;font-size:14.5px;line-height:1.62;white-space:pre;overflow:hidden;min-height:0}
-pre .k{color:#a8c75b}pre .s{color:#f0c89a}pre .c{color:#7f9482}
-code.i{background:var(--green-soft);color:var(--green);padding:1px 7px;border-radius:5px;font-size:.88em}
-
-/* 스크린샷 프레임 */
-.shot{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#fff;min-height:0;min-width:0}
-.shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
-.shot em{position:absolute;left:12px;top:12px;z-index:2;background:rgba(20,35,26,.88);color:#fff;font:600 14px/1 var(--sans);padding:7px 12px;border-radius:7px;font-style:normal}
-.shot em b{font:600 13px/1 var(--mono);color:#b9d96a;margin-right:7px}
-.cap{font:400 15px/1.5 var(--sans);color:var(--muted)}
-.shot.fit{background:#fff}.shot.fit img{object-fit:contain;object-position:center}
-.cap2{display:flex;flex-direction:column;gap:2px;flex:none}.cap2 b{font:700 17px/1.35 var(--sans)}.cap2 b i{font:600 14px/1 var(--mono);font-style:normal;color:var(--green);margin-right:8px}.cap2 span{font:400 15px/1.4 var(--sans);color:var(--muted)}
-.bar{display:flex;flex-direction:column;gap:8px;min-height:0}
-.bar .shot{flex:1}
-.flow{display:flex;align-items:center;gap:0}
-.flow .box{flex:1;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:6px;height:100%;justify-content:center}
-.flow .box b{font:700 18px/1.3 var(--sans)}.flow .box span{font:400 15px/1.5 var(--sans);color:var(--muted)}
-.flow .arr{flex:none;width:44px;text-align:center;font:600 26px/1 var(--mono);color:var(--green)}
-.flow.v{flex-direction:column;align-items:stretch;height:100%}
-.flow.v .arr{width:auto;height:30px;line-height:30px;transform:rotate(90deg)}
-
-@media screen{.slide{box-shadow:none}}
+th,td{text-align:left;padding:10px 16px;border-bottom:1px solid #edf1ea;font:400 15.5px/1.5 var(--sans);vertical-align:top}
+th{font:700 13px/1.2 var(--sans);color:var(--sub);background:#f4f7f1;letter-spacing:.02em}
+td code{font:500 13.5px var(--mono);color:var(--green)}
+tr:last-child td{border-bottom:0}
+.tag{display:inline-block;font:700 12px/1 var(--mono);padding:5px 8px;border-radius:5px;letter-spacing:.04em}
+.tag.get{background:var(--blue-soft);color:var(--blue)}.tag.post{background:var(--green-soft);color:var(--green)}
+.tag.patch{background:var(--amber-soft);color:var(--amber)}.tag.del{background:var(--red-soft);color:var(--red)}
 </style>
 </head>
 <body>
 
-<!-- ================= 01 표지 ================= -->
+<!-- ================= 01 ================= -->
 <div class="frame"><section class="slide dark" id="s01">
-  <div class="eyebrow">Online Food Shop · Full-stack Portfolio</div>
-  <h1 class="title">ORGA Whole Foods</h1>
-  <p class="subtitle">반응형 쇼핑몰 화면을 FastAPI · Supabase · OpenAI 상담봇으로 확장하고 Render에 배포했습니다.</p>
-  <div class="rule"></div>
-  <div class="body" style="display:grid;grid-template-columns:900px 1fr;gap:28px">
-    <div class="shot" style="border-color:var(--dark-line)"><em><b>LIVE</b>orga-whole-food.onrender.com</em><img src="img/fit_hero.jpg" alt="메인 화면"></div>
-    <div style="display:grid;grid-template-rows:1fr 1fr auto;gap:16px;min-height:0">
-      <div class="grid" style="grid-template-columns:1fr 1fr;gap:16px">
-        <div class="stat"><b>31<i>개</i></b><span>메인 1 · 상품 상세 30</span></div>
-        <div class="stat"><b>30<i>개</i></b><span>DB에 저장한 상품</span></div>
-      </div>
-      <div class="grid" style="grid-template-columns:1fr 1fr;gap:16px">
-        <div class="stat"><b>7<i>개</i></b><span>FastAPI 엔드포인트</span></div>
-        <div class="stat"><b>22<i>문항</i></b><span>상담봇 자동 점검</span></div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:14px;padding-top:6px">
-        <p style="font:400 18px/1.65 var(--sans);color:var(--dark-muted)">화면은 API를 먼저 호출하고, 서버가 없으면 JSON으로 대신합니다. 상품별 상세 30개와 문서 기반 상담봇을 한 주소에서 제공합니다.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:10px"><span class="pill hot">● Render Live</span><span class="pill">FastAPI</span><span class="pill">Supabase</span><span class="pill">OpenAI</span><span class="pill">JavaScript</span></div>
-      </div>
+<style>
+.cover-grid{position:absolute;left:88px;right:88px;top:150px;bottom:90px;display:grid;grid-template-columns:1fr 720px;gap:56px}
+.cover-h{font:900 92px/1.02 var(--sans);letter-spacing:-.04em;margin-top:22px}
+.cover-h em{font-style:normal;color:#a8d26a}
+.cover-sub{margin-top:26px;font:400 23px/1.6 var(--sans);color:var(--dark-sub)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+.chip{border:1px solid var(--dark-line);background:var(--dark-2);color:#e6efe3;border-radius:99px;padding:9px 16px;font:600 15px/1 var(--sans)}
+.chip.on{background:#a8d26a;border-color:#a8d26a;color:#13201a}
+.cover-shot{border-radius:14px;overflow:hidden;border:1px solid var(--dark-line);align-self:center;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.cover-shot img{display:block;width:100%}
+.meta{position:absolute;left:88px;bottom:40px;font:500 16px/1.5 var(--sans);color:var(--dark-sub)}
+.meta b{color:#eef4ec}
+.agenda{position:absolute;left:88px;right:88px;top:250px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.ag{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:30px 30px 28px;display:flex;flex-direction:column;gap:14px;min-height:430px}
+.ag .no{font:900 56px/1 var(--sans);color:var(--green);letter-spacing:-.03em}
+.ag h3{font:800 28px/1.25 var(--sans)}
+.ag ul{list-style:none;display:flex;flex-direction:column;gap:9px;margin-top:6px}
+.ag li{font:400 17px/1.5 var(--sans);color:var(--sub);padding-left:16px;position:relative}
+.ag li::before{content:"";position:absolute;left:0;top:.65em;width:6px;height:6px;border-radius:50%;background:var(--green-2)}
+.ag .pages{margin-top:auto;font:600 14px/1 var(--mono);color:#8a988c}
+.ov{position:absolute;left:88px;right:88px;top:270px;bottom:84px;display:grid;grid-template-columns:600px 1fr;gap:28px}
+.ov-l{display:flex;flex-direction:column;gap:14px}
+.ov-row{display:grid;grid-template-columns:110px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);font:400 17px/1.55 var(--sans);color:var(--sub)}
+.ov-row b{font:700 16px/1.55 var(--sans);color:var(--ink)}
+.ov-r{display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,1fr);gap:14px}
+.fk{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:6px}
+.fk i{font:700 13px/1 var(--mono);font-style:normal;color:var(--green);letter-spacing:.06em}
+.fk b{font:800 20px/1.3 var(--sans)}
+.fk span{font:400 15px/1.5 var(--sans);color:var(--sub)}
+.fk.wide{grid-column:1/3}
+.map{position:absolute;left:88px;right:88px;top:250px;bottom:80px}
+.map svg{width:100%;height:100%}
+.nums{position:absolute;left:88px;right:88px;top:270px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.num{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:26px 26px 24px;display:flex;flex-direction:column;gap:8px;min-height:236px}
+.num b{font:900 64px/1 var(--sans);color:var(--green);letter-spacing:-.03em}
+.num b small{font:800 26px/1 var(--sans);margin-left:4px}
+.num strong{font:700 19px/1.3 var(--sans)}
+.num span{font:400 15px/1.55 var(--sans);color:var(--sub)}
+</style>
+
+<div class="sec"><b>PORTFOLIO</b> · 고서연 (su4228-prog)</div>
+<div class="cover-grid">
+  <div>
+    <div class="cover-h">ORGA<br>Whole Foods<br><em>AI 쇼핑몰</em></div>
+    <p class="cover-sub">유기농 식품 쇼핑몰에 <b style="color:#fff">벡터 RAG 상담봇</b>, <b style="color:#fff">YOLO 사진 상품 찾기</b>,<br><b style="color:#fff">AI 상품등록 관리자</b>, <b style="color:#fff">JWT 회원 기능</b>을 직접 설계 · 구현했습니다.</p>
+    <div class="chips"><span class="chip on">● orga-whole-food.onrender.com</span><span class="chip">FastAPI</span><span class="chip">Supabase · pgvector</span><span class="chip">OpenAI</span><span class="chip">YOLO11 · ONNX</span><span class="chip">JWT · bcrypt</span></div>
+  </div>
+  <div class="cover-shot"><img src="shots/main.jpg" alt=""></div>
+</div>
+<div class="meta"><b>개인 프로젝트</b> · 기획 · 화면 · 서버 · DB · AI · 배포 전체</div><div class="pn"><b>01</b> / 28</div></section></div>
+<!-- ================= 02 ================= -->
+<div class="frame"><section class="slide white" id="s02">
+<style>
+.cover-grid{position:absolute;left:88px;right:88px;top:150px;bottom:90px;display:grid;grid-template-columns:1fr 720px;gap:56px}
+.cover-h{font:900 92px/1.02 var(--sans);letter-spacing:-.04em;margin-top:22px}
+.cover-h em{font-style:normal;color:#a8d26a}
+.cover-sub{margin-top:26px;font:400 23px/1.6 var(--sans);color:var(--dark-sub)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+.chip{border:1px solid var(--dark-line);background:var(--dark-2);color:#e6efe3;border-radius:99px;padding:9px 16px;font:600 15px/1 var(--sans)}
+.chip.on{background:#a8d26a;border-color:#a8d26a;color:#13201a}
+.cover-shot{border-radius:14px;overflow:hidden;border:1px solid var(--dark-line);align-self:center;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.cover-shot img{display:block;width:100%}
+.meta{position:absolute;left:88px;bottom:40px;font:500 16px/1.5 var(--sans);color:var(--dark-sub)}
+.meta b{color:#eef4ec}
+.agenda{position:absolute;left:88px;right:88px;top:250px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.ag{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:30px 30px 28px;display:flex;flex-direction:column;gap:14px;min-height:430px}
+.ag .no{font:900 56px/1 var(--sans);color:var(--green);letter-spacing:-.03em}
+.ag h3{font:800 28px/1.25 var(--sans)}
+.ag ul{list-style:none;display:flex;flex-direction:column;gap:9px;margin-top:6px}
+.ag li{font:400 17px/1.5 var(--sans);color:var(--sub);padding-left:16px;position:relative}
+.ag li::before{content:"";position:absolute;left:0;top:.65em;width:6px;height:6px;border-radius:50%;background:var(--green-2)}
+.ag .pages{margin-top:auto;font:600 14px/1 var(--mono);color:#8a988c}
+.ov{position:absolute;left:88px;right:88px;top:270px;bottom:84px;display:grid;grid-template-columns:600px 1fr;gap:28px}
+.ov-l{display:flex;flex-direction:column;gap:14px}
+.ov-row{display:grid;grid-template-columns:110px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);font:400 17px/1.55 var(--sans);color:var(--sub)}
+.ov-row b{font:700 16px/1.55 var(--sans);color:var(--ink)}
+.ov-r{display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,1fr);gap:14px}
+.fk{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:6px}
+.fk i{font:700 13px/1 var(--mono);font-style:normal;color:var(--green);letter-spacing:.06em}
+.fk b{font:800 20px/1.3 var(--sans)}
+.fk span{font:400 15px/1.5 var(--sans);color:var(--sub)}
+.fk.wide{grid-column:1/3}
+.map{position:absolute;left:88px;right:88px;top:250px;bottom:80px}
+.map svg{width:100%;height:100%}
+.nums{position:absolute;left:88px;right:88px;top:270px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.num{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:26px 26px 24px;display:flex;flex-direction:column;gap:8px;min-height:236px}
+.num b{font:900 64px/1 var(--sans);color:var(--green);letter-spacing:-.03em}
+.num b small{font:800 26px/1 var(--sans);margin-left:4px}
+.num strong{font:700 19px/1.3 var(--sans)}
+.num span{font:400 15px/1.55 var(--sans);color:var(--sub)}
+</style>
+
+<div class="sec"><b>00</b> / 순서</div>
+<div class="h">오늘 이야기할 <em>세 가지</em></div>
+<div class="agenda">
+  <div class="ag"><div class="no">01</div><h3>프로젝트 소개</h3>
+    <ul><li>무엇을 왜 만들었나</li><li>기능 지도</li><li>숫자로 보는 프로젝트</li></ul><div class="pages">03 — 05</div></div>
+  <div class="ag"><div class="no">02</div><h3>주요 기능과 구현</h3>
+    <ul><li>쇼핑몰 화면 · 상품별 상세</li><li>상담봇 — 벡터 RAG</li><li>사진으로 상품 찾기 — YOLO + RAG</li><li>관리자 — AI 상품등록 · 관리 · 기록</li><li>회원 — JWT · HttpOnly 쿠키 · bcrypt</li></ul><div class="pages">06 — 16 · 기능마다 화면 + 코드</div></div>
+  <div class="ag"><div class="no">03</div><h3>기술과 문제 해결</h3>
+    <ul><li>사용한 도구</li><li>프로그램 구조 · 서버 기능 · ERD</li><li>사진 한 장이 지나가는 길</li><li>실제로 겪은 오류, 고치기 전과 후</li><li>검증 결과</li></ul><div class="pages">17 — 28</div></div>
+</div><div class="pn"><b>02</b> / 28</div></section></div>
+<!-- ================= 03 ================= -->
+<div class="frame"><section class="slide white" id="s03">
+<style>
+.cover-grid{position:absolute;left:88px;right:88px;top:150px;bottom:90px;display:grid;grid-template-columns:1fr 720px;gap:56px}
+.cover-h{font:900 92px/1.02 var(--sans);letter-spacing:-.04em;margin-top:22px}
+.cover-h em{font-style:normal;color:#a8d26a}
+.cover-sub{margin-top:26px;font:400 23px/1.6 var(--sans);color:var(--dark-sub)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+.chip{border:1px solid var(--dark-line);background:var(--dark-2);color:#e6efe3;border-radius:99px;padding:9px 16px;font:600 15px/1 var(--sans)}
+.chip.on{background:#a8d26a;border-color:#a8d26a;color:#13201a}
+.cover-shot{border-radius:14px;overflow:hidden;border:1px solid var(--dark-line);align-self:center;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.cover-shot img{display:block;width:100%}
+.meta{position:absolute;left:88px;bottom:40px;font:500 16px/1.5 var(--sans);color:var(--dark-sub)}
+.meta b{color:#eef4ec}
+.agenda{position:absolute;left:88px;right:88px;top:250px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.ag{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:30px 30px 28px;display:flex;flex-direction:column;gap:14px;min-height:430px}
+.ag .no{font:900 56px/1 var(--sans);color:var(--green);letter-spacing:-.03em}
+.ag h3{font:800 28px/1.25 var(--sans)}
+.ag ul{list-style:none;display:flex;flex-direction:column;gap:9px;margin-top:6px}
+.ag li{font:400 17px/1.5 var(--sans);color:var(--sub);padding-left:16px;position:relative}
+.ag li::before{content:"";position:absolute;left:0;top:.65em;width:6px;height:6px;border-radius:50%;background:var(--green-2)}
+.ag .pages{margin-top:auto;font:600 14px/1 var(--mono);color:#8a988c}
+.ov{position:absolute;left:88px;right:88px;top:270px;bottom:84px;display:grid;grid-template-columns:600px 1fr;gap:28px}
+.ov-l{display:flex;flex-direction:column;gap:14px}
+.ov-row{display:grid;grid-template-columns:110px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);font:400 17px/1.55 var(--sans);color:var(--sub)}
+.ov-row b{font:700 16px/1.55 var(--sans);color:var(--ink)}
+.ov-r{display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,1fr);gap:14px}
+.fk{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:6px}
+.fk i{font:700 13px/1 var(--mono);font-style:normal;color:var(--green);letter-spacing:.06em}
+.fk b{font:800 20px/1.3 var(--sans)}
+.fk span{font:400 15px/1.5 var(--sans);color:var(--sub)}
+.fk.wide{grid-column:1/3}
+.map{position:absolute;left:88px;right:88px;top:250px;bottom:80px}
+.map svg{width:100%;height:100%}
+.nums{position:absolute;left:88px;right:88px;top:270px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.num{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:26px 26px 24px;display:flex;flex-direction:column;gap:8px;min-height:236px}
+.num b{font:900 64px/1 var(--sans);color:var(--green);letter-spacing:-.03em}
+.num b small{font:800 26px/1 var(--sans);margin-left:4px}
+.num strong{font:700 19px/1.3 var(--sans)}
+.num span{font:400 15px/1.55 var(--sans);color:var(--sub)}
+</style>
+
+<div class="sec"><b>01</b> / 프로젝트 소개</div>
+<div class="h">식품 쇼핑몰에 <em>AI를 넣으면</em><br>무엇이 편해질까</div>
+<div class="ov">
+  <div class="ov-l">
+    <div class="ov-row"><b>무엇을</b><span>유기농 식품 쇼핑몰 ORGA를 본뜬 웹사이트 — 상품 30개 · 상세 페이지 30개</span></div>
+    <div class="ov-row"><b>손님에게</b><span>배송 · 반품 · 적립금을 바로 답하는 상담봇, 사진 한 장으로 같은 상품을 찾는 검색</span></div>
+    <div class="ov-row"><b>관리자에게</b><span>사진만 올리면 상품명 · 가격 · 분류가 채워지는 등록 화면, 모든 작업 기록</span></div>
+    <div class="ov-row"><b>원칙</b><span>AI는 근거(문서 · DB)로만 답하고, 비밀 키 · 비용 · 권한은 서버가 지킨다</span></div>
+    <div class="ov-row"><b>범위</b><span>개인 프로젝트 · 화면 · 서버 · DB · AI · 배포 전체 · Render 무료 서버에 공개</span></div>
+  </div>
+  <div class="ov-r">
+    <div class="fk"><i>FEATURE 1</i><b>쇼핑몰 화면</b><span>메인 6개 섹션 · 상품별 상세 · 반응형</span></div>
+    <div class="fk"><i>FEATURE 2</i><b>RAG 상담봇</b><span>pgvector로 근거를 찾아 답하고 출처 표시</span></div>
+    <div class="fk"><i>FEATURE 3</i><b>사진으로 상품 찾기</b><span>YOLO 분류 · 탐지 + 벡터 검색 추천</span></div>
+    <div class="fk"><i>FEATURE 4</i><b>관리자 AI 상품등록</b><span>YOLO + OpenAI Vision · 검색 · 수정 · 기록</span></div>
+    <div class="fk wide"><i>FEATURE 5</i><b>회원 · 권한</b><span>회원가입 · JWT 로그인 유지(HttpOnly 쿠키) · bcrypt · 관리자 역할(role)</span></div>
+  </div>
+</div><div class="pn"><b>03</b> / 28</div></section></div>
+<!-- ================= 04 ================= -->
+<div class="frame"><section class="slide white" id="s04">
+<style>
+.cover-grid{position:absolute;left:88px;right:88px;top:150px;bottom:90px;display:grid;grid-template-columns:1fr 720px;gap:56px}
+.cover-h{font:900 92px/1.02 var(--sans);letter-spacing:-.04em;margin-top:22px}
+.cover-h em{font-style:normal;color:#a8d26a}
+.cover-sub{margin-top:26px;font:400 23px/1.6 var(--sans);color:var(--dark-sub)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+.chip{border:1px solid var(--dark-line);background:var(--dark-2);color:#e6efe3;border-radius:99px;padding:9px 16px;font:600 15px/1 var(--sans)}
+.chip.on{background:#a8d26a;border-color:#a8d26a;color:#13201a}
+.cover-shot{border-radius:14px;overflow:hidden;border:1px solid var(--dark-line);align-self:center;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.cover-shot img{display:block;width:100%}
+.meta{position:absolute;left:88px;bottom:40px;font:500 16px/1.5 var(--sans);color:var(--dark-sub)}
+.meta b{color:#eef4ec}
+.agenda{position:absolute;left:88px;right:88px;top:250px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.ag{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:30px 30px 28px;display:flex;flex-direction:column;gap:14px;min-height:430px}
+.ag .no{font:900 56px/1 var(--sans);color:var(--green);letter-spacing:-.03em}
+.ag h3{font:800 28px/1.25 var(--sans)}
+.ag ul{list-style:none;display:flex;flex-direction:column;gap:9px;margin-top:6px}
+.ag li{font:400 17px/1.5 var(--sans);color:var(--sub);padding-left:16px;position:relative}
+.ag li::before{content:"";position:absolute;left:0;top:.65em;width:6px;height:6px;border-radius:50%;background:var(--green-2)}
+.ag .pages{margin-top:auto;font:600 14px/1 var(--mono);color:#8a988c}
+.ov{position:absolute;left:88px;right:88px;top:270px;bottom:84px;display:grid;grid-template-columns:600px 1fr;gap:28px}
+.ov-l{display:flex;flex-direction:column;gap:14px}
+.ov-row{display:grid;grid-template-columns:110px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);font:400 17px/1.55 var(--sans);color:var(--sub)}
+.ov-row b{font:700 16px/1.55 var(--sans);color:var(--ink)}
+.ov-r{display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,1fr);gap:14px}
+.fk{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:6px}
+.fk i{font:700 13px/1 var(--mono);font-style:normal;color:var(--green);letter-spacing:.06em}
+.fk b{font:800 20px/1.3 var(--sans)}
+.fk span{font:400 15px/1.5 var(--sans);color:var(--sub)}
+.fk.wide{grid-column:1/3}
+.map{position:absolute;left:88px;right:88px;top:250px;bottom:80px}
+.map svg{width:100%;height:100%}
+.nums{position:absolute;left:88px;right:88px;top:270px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.num{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:26px 26px 24px;display:flex;flex-direction:column;gap:8px;min-height:236px}
+.num b{font:900 64px/1 var(--sans);color:var(--green);letter-spacing:-.03em}
+.num b small{font:800 26px/1 var(--sans);margin-left:4px}
+.num strong{font:700 19px/1.3 var(--sans)}
+.num span{font:400 15px/1.55 var(--sans);color:var(--sub)}
+</style>
+
+<div class="sec"><b>01</b> / 프로젝트 소개</div>
+<div class="h one">ORGA의 기능을 <em>한 장에</em></div>
+<div class="map"><svg viewBox="0 0 1424 560" font-family="Noto Sans KR, sans-serif">
+  <g stroke="#b9c8b0" stroke-width="2" fill="none">
+    <path d="M712 280 L250 110"/><path d="M712 280 L250 450"/><path d="M712 280 L1174 110"/><path d="M712 280 L1174 450"/><path d="M712 280 L712 500"/>
+  </g>
+  <circle cx="712" cy="280" r="104" fill="#3f7417"/>
+  <text x="712" y="270" text-anchor="middle" fill="#fff" font-size="34" font-weight="900">ORGA</text>
+  <text x="712" y="306" text-anchor="middle" fill="#dcebc6" font-size="18" font-weight="700">AI 쇼핑몰</text>
+  <g font-size="17" fill="#56635a">
+    <rect x="60" y="34" width="380" height="156" rx="14" fill="#fff" stroke="#dbe3d6"/>
+    <text x="84" y="74" font-size="23" font-weight="800" fill="#15211a">상담봇 · 벡터 RAG</text>
+    <text x="84" y="108">질문 임베딩 → pgvector 유사도 검색</text><text x="84" y="134">안내 12 · 상품 30 조각 · 출처 표시</text><text x="84" y="160">가격 · 순위 · 반품 기준은 서버 계산</text>
+    <rect x="60" y="374" width="380" height="156" rx="14" fill="#fff" stroke="#dbe3d6"/>
+    <text x="84" y="414" font-size="23" font-weight="800" fill="#15211a">사진으로 상품 찾기</text>
+    <text x="84" y="448">YOLO 분류 특징 → 같은 상품 찾기</text><text x="84" y="474">YOLO 탐지 → 물체 위치 · 이름</text><text x="84" y="500">이름으로 벡터 검색 → 추천</text>
+    <rect x="984" y="34" width="380" height="156" rx="14" fill="#fff" stroke="#dbe3d6"/>
+    <text x="1008" y="74" font-size="23" font-weight="800" fill="#15211a">관리자</text>
+    <text x="1008" y="108">사진 → YOLO + OpenAI Vision 자동 입력</text><text x="1008" y="134">검색 · 5개씩 페이지 · 수정 · 삭제</text><text x="1008" y="160">작업 기록 · AI 분석 기록 · 즉시 반영</text>
+    <rect x="984" y="374" width="380" height="156" rx="14" fill="#fff" stroke="#dbe3d6"/>
+    <text x="1008" y="414" font-size="23" font-weight="800" fill="#15211a">회원 · 권한</text>
+    <text x="1008" y="448">가입 · 로그인 (JWT · HttpOnly 쿠키)</text><text x="1008" y="474">bcrypt 해시 · 시도 횟수 제한</text><text x="1008" y="500">role=admin 만 관리자 화면</text>
+    <rect x="522" y="420" width="380" height="132" rx="14" fill="#fff" stroke="#dbe3d6"/>
+    <text x="546" y="458" font-size="23" font-weight="800" fill="#15211a">쇼핑몰 화면</text>
+    <text x="546" y="490">메인 6개 섹션 · 상품별 상세 30개</text><text x="546" y="516">이미지 확대 · 수량 계산 · 반응형</text>
+  </g>
+</svg></div><div class="pn"><b>04</b> / 28</div></section></div>
+<!-- ================= 05 ================= -->
+<div class="frame"><section class="slide white" id="s05">
+<style>
+.cover-grid{position:absolute;left:88px;right:88px;top:150px;bottom:90px;display:grid;grid-template-columns:1fr 720px;gap:56px}
+.cover-h{font:900 92px/1.02 var(--sans);letter-spacing:-.04em;margin-top:22px}
+.cover-h em{font-style:normal;color:#a8d26a}
+.cover-sub{margin-top:26px;font:400 23px/1.6 var(--sans);color:var(--dark-sub)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+.chip{border:1px solid var(--dark-line);background:var(--dark-2);color:#e6efe3;border-radius:99px;padding:9px 16px;font:600 15px/1 var(--sans)}
+.chip.on{background:#a8d26a;border-color:#a8d26a;color:#13201a}
+.cover-shot{border-radius:14px;overflow:hidden;border:1px solid var(--dark-line);align-self:center;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.cover-shot img{display:block;width:100%}
+.meta{position:absolute;left:88px;bottom:40px;font:500 16px/1.5 var(--sans);color:var(--dark-sub)}
+.meta b{color:#eef4ec}
+.agenda{position:absolute;left:88px;right:88px;top:250px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.ag{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:30px 30px 28px;display:flex;flex-direction:column;gap:14px;min-height:430px}
+.ag .no{font:900 56px/1 var(--sans);color:var(--green);letter-spacing:-.03em}
+.ag h3{font:800 28px/1.25 var(--sans)}
+.ag ul{list-style:none;display:flex;flex-direction:column;gap:9px;margin-top:6px}
+.ag li{font:400 17px/1.5 var(--sans);color:var(--sub);padding-left:16px;position:relative}
+.ag li::before{content:"";position:absolute;left:0;top:.65em;width:6px;height:6px;border-radius:50%;background:var(--green-2)}
+.ag .pages{margin-top:auto;font:600 14px/1 var(--mono);color:#8a988c}
+.ov{position:absolute;left:88px;right:88px;top:270px;bottom:84px;display:grid;grid-template-columns:600px 1fr;gap:28px}
+.ov-l{display:flex;flex-direction:column;gap:14px}
+.ov-row{display:grid;grid-template-columns:110px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);font:400 17px/1.55 var(--sans);color:var(--sub)}
+.ov-row b{font:700 16px/1.55 var(--sans);color:var(--ink)}
+.ov-r{display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,1fr);gap:14px}
+.fk{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:6px}
+.fk i{font:700 13px/1 var(--mono);font-style:normal;color:var(--green);letter-spacing:.06em}
+.fk b{font:800 20px/1.3 var(--sans)}
+.fk span{font:400 15px/1.5 var(--sans);color:var(--sub)}
+.fk.wide{grid-column:1/3}
+.map{position:absolute;left:88px;right:88px;top:250px;bottom:80px}
+.map svg{width:100%;height:100%}
+.nums{position:absolute;left:88px;right:88px;top:270px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.num{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:26px 26px 24px;display:flex;flex-direction:column;gap:8px;min-height:236px}
+.num b{font:900 64px/1 var(--sans);color:var(--green);letter-spacing:-.03em}
+.num b small{font:800 26px/1 var(--sans);margin-left:4px}
+.num strong{font:700 19px/1.3 var(--sans)}
+.num span{font:400 15px/1.55 var(--sans);color:var(--sub)}
+</style>
+
+<div class="sec"><b>01</b> / 프로젝트 소개</div>
+<div class="h one">숫자로 보는 <em>ORGA</em></div>
+<div class="nums">
+  <div class="num"><b>30<small>개</small></b><strong>상품 · 상세 페이지</strong><span>상품마다 자기 상세 페이지 · 관리자 화면에서 바로 추가</span></div>
+  <div class="num"><b>20<small>개</small></b><strong>FastAPI 엔드포인트</strong><span>상품 · 회원 · 상담봇 · 사진 · 관리자 · 상태</span></div>
+  <div class="num"><b>11<small>개</small></b><strong>Supabase 표</strong><span>상품 · 벡터 · 사진 특징 · 회원 · 기록 · 횟수 제한</span></div>
+  <div class="num"><b>42<small>조각</small></b><strong>RAG 벡터</strong><span>이용 안내 12 + 상품 설명 30 · 1536차원</span></div>
+  <div class="num"><b>22<small>/22</small></b><strong>상담봇 질문 점검</strong><span>배송 · 반품 · 가격 · 순위 · 문서 밖 · 규칙 무시</span></div>
+  <div class="num"><b>90<small>/90</small></b><strong>사진 → 같은 상품</strong><span>잘라내고 밝기를 바꾼 상품 사진 모두 정답</span></div>
+  <div class="num"><b>150<small>MB</small></b><strong>YOLO 메모리</strong><span>PyTorch 없이 ONNX · 무료 서버 512MB 안</span></div>
+  <div class="num"><b>0<small>건</small></b><strong>공개 코드의 비밀 키</strong><span>키는 서버 환경 변수에만 · 출입증은 HttpOnly 쿠키</span></div>
+</div><div class="pn"><b>05</b> / 28</div></section></div>
+<!-- ================= 06 ================= -->
+<div class="frame"><section class="slide " id="s06">
+<div class="feat" style="grid-template-columns:470px 1fr">
+  <div class="left"><div class="sec"><b>02</b> / 주요 기능</div>
+    <div class="h">상품 30개,<br><em>각자의 상세 페이지</em></div>
+    <p class="lead">메인 6개 섹션의 카드를 누르면 <code>sub.html?id=번호</code>로 그 상품의 상세가 열립니다.</p>
+    <div class="steps">
+      <div class="step"><i>STEP 1</i><b>섹션 카드</b><span>API로 받은 데이터로 6개 섹션 렌더링</span></div>
+      <div class="step"><i>STEP 2</i><b>상품 상세</b><span>이름 · 가격 · 할인 · 보관 · 연관 상품</span></div>
+      <div class="step"><i>STEP 3</i><b>주문 영역</b><span>수량 × 판매가 즉시 계산</span></div>
+    </div>
+    <div class="facts">
+      <div class="fact"><b>33 → 30</b><span>카드 33개 · 같은 상품은 DB에 1줄</span></div>
+      <div class="fact"><b>320 ~ 1440px</b><span>11가지 폭에서 가로 넘침 0</span></div>
+    </div>
+    <p class="note">데이터는 <b>API → 실패 시 예비 JSON</b> 순서로 읽어, 서버가 잠깐 멈춰도 화면은 유지됩니다.</p>
+  </div>
+  <div style="display:grid;grid-template-rows:1fr 1fr;gap:20px;min-height:0;justify-items:center;align-items:center">
+    <div class="win" style="width:540px"><div class="bar"><i></i><i></i><i></i>ORGA / MAIN</div><div class="shot"><img src="shots/main.jpg" alt=""><div class="pin" style="left:6.2%;top:17.8%"><i>1</i><span>배너 슬라이더</span></div><div class="pin" style="left:12.2%;top:74.95%"><i>2</i><span>카테고리 12개</span></div><div class="pin l" style="left:74.4%;top:4.35%"><i>3</i><span>회원 메뉴</span></div></div></div>
+    <div class="win" style="width:540px"><div class="bar"><i></i><i></i><i></i>ORGA / sub.html?id=3</div><div class="shot"><img src="shots/detail.jpg" alt=""><div class="pin l" style="left:88.6%;top:31.65%"><i>4</i><span>상품 정보</span></div><div class="pin l" style="left:88.6%;top:43.75%"><i>5</i><span>할인 · 가격</span></div><div class="pin l" style="left:88.6%;top:83.75%"><i>6</i><span>수량 · 주문금액</span></div></div></div>
+  </div>
+</div>
+<div class="foot">구현: <code>js/api.js</code> · <code>js/01~06_fetch_*.js</code> · <code>js/sub.js</code> · <code>services/product_service.py</code></div><div class="pn"><b>06</b> / 28</div></section></div>
+<!-- ================= 07 ================= -->
+<div class="frame"><section class="slide " id="s07">
+<div class="feat">
+  <div class="left"><div class="sec"><b>02</b> / 주요 기능</div>
+    <div class="h">근거를 찾아서<br><em>답하는 상담봇</em></div>
+    <p class="lead">질문과 뜻이 가까운 이용 안내 · 상품 설명만 <b>벡터 검색(RAG)</b>으로 골라 답하고, 근거로 쓴 자료를 함께 보여줍니다.</p>
+    <div class="steps">
+      <div class="step"><i>STEP 1</i><b>질문</b><span>이어지는 질문은 앞 질문까지 함께 검색</span></div>
+      <div class="step"><i>STEP 2</i><b>근거로 답변</b><span>안내 4조각 · 상품 3개 + 서버 계산 사실</span></div>
+      <div class="step"><i>STEP 3</i><b>출처 표시</b><span>"참고: 적립금"</span></div>
+    </div>
+    <div class="facts">
+      <div class="fact"><b>22 / 22</b><span>시험 질문 모두 정답 (문서 밖 · 규칙 무시 포함)</span></div>
+      <div class="fact"><b>10회 / 10분</b><span>한 사람당 질문 제한 · DB에 기록</span></div>
+    </div>
+    <p class="note">문서에 없는 질문은 지어내지 않고 <b>"확인되지 않는 내용"</b>으로 답하도록 규칙을 정했습니다.</p>
+  </div>
+  <div class="win" style="width:640px"><div class="bar"><i></i><i></i><i></i>ORGA / 상담봇</div><div class="shot"><img src="shots/rag.jpg" alt=""><div class="pin l" style="left:32.4%;top:37.75%"><i>1</i><span>질문</span></div><div class="pin" style="left:56.4%;top:42.3%"><i>2</i><span>근거로 만든 답변</span></div><div class="pin" style="left:49.099999999999994%;top:61.449999999999996%"><i>3</i><span>참고한 자료</span></div></div><div class="cap">왼쪽 아래 로봇 버튼 · 모든 페이지 공통</div></div>
+</div>
+<div class="foot">구현: <code>services/rag_service.py</code> · <code>services/chat_service.py</code> · <code>sql/002_vector_rag.sql</code> · <code>js/chat.js</code></div><div class="pn"><b>07</b> / 28</div></section></div>
+<!-- ================= 08 ================= -->
+<div class="frame"><section class="slide " id="s08">
+<div class="feat" style="grid-template-columns:470px 1fr">
+  <div class="left"><div class="sec"><b>02</b> / 주요 기능</div>
+    <div class="h">RAG는<br><em>이렇게 동작합니다</em></div>
+    <div class="points">
+      <div class="point"><i>1</i><div><b>조각 만들기 · 저장</b><span>이용 안내를 제목(##) 단위 12조각, 상품 30개를 1조각씩 → <code>text-embedding-3-small</code>로 1536차원 벡터 → <code>rag_chunks</code></span></div></div>
+      <div class="point"><i>2</i><div><b>비슷한 조각 찾기</b><span>질문 벡터와 코사인 거리(<code>&lt;=&gt;</code>)가 가까운 순으로 <code>match_rag_chunks</code> 함수가 반환 · HNSW 색인</span></div></div>
+      <div class="point"><i>3</i><div><b>근거만 넘기기</b><span>찾은 조각 + 가격 · 순위 · 반품 기준 같은 <b>서버 계산 사실</b>을 <code>gpt-4o-mini</code>에 전달</span></div></div>
+      <div class="point"><i>4</i><div><b>안전장치</b><span>검색 실패 시 문서 전체 방식으로 자동 전환 · 1등과 점수가 비슷한 자료만 출처로 표시</span></div></div>
     </div>
   </div>
-  <div class="foot"><span><b>01</b> / 18</span><span>ORGA Whole Foods · su4228-prog</span></div>
-</section></div>
+  <div class="codes" style="grid-template-rows:auto auto 1fr">
+    <div class="code"><div class="file"><b>backend/services/rag_service.py</b><span>조각 저장 · 검색</span></div><pre style="font-size:13.5px"><span class="k">def</span> rebuild() -&gt; int:
+    chunks = policy_chunks() + product_chunks()          <span class="c"># 안내 12 + 상품 30</span>
+    vectors = embed([c[<span class="s">&quot;content&quot;</span>] <span class="k">for</span> c <span class="k">in</span> chunks])      <span class="c"># text-embedding-3-small</span>
+    db.table(<span class="s">&quot;rag_chunks&quot;</span>).insert([{**c, <span class="s">&quot;embedding&quot;</span>: v} <span class="k">for</span> c, v <span class="k">in</span> zip(chunks, vectors)])
 
-<!-- ================= 02 개요 ================= -->
-<div class="frame"><section class="slide" id="s02">
-  <div class="eyebrow">Overview</div>
-  <h2 class="title">프로젝트 한눈에 보기</h2>
-  <p class="subtitle">무엇을 어떤 범위로 만들었고, 어떤 순서로 설명하는지 정리했습니다.</p>
-  <div class="rule"></div>
-  <div class="body" style="display:grid;grid-template-columns:1fr 520px;grid-template-rows:1fr 118px;gap:20px">
-    <div class="tbl" style="grid-row:1">
-      <table style="height:100%">
-        <tr><td style="width:130px">목표</td><td>반응형 쇼핑몰 화면을 만들고, 상품 데이터를 DB와 API로 옮겨 실제 서비스 구조로 확장합니다.</td></tr>
-        <tr><td>메인 페이지</td><td>헤더 · 배너 슬라이더 · 카테고리 · 상품 6개 섹션(33개 카드) · 푸터</td></tr>
-        <tr><td>상세 페이지</td><td>상품 30개 각각의 상세 · 이미지 확대 · 수량 계산 · 연관 상품 · 상세 콘텐츠</td></tr>
-        <tr><td>서버 · DB</td><td>FastAPI 엔드포인트 7개 · Supabase 표 4개 · 상품 30개 · 섹션 연결 33개</td></tr>
-        <tr><td>상담봇</td><td>이용 안내와 상품 정보를 근거로 답변 · 횟수 제한 · 키는 서버에만 보관</td></tr>
-        <tr><td>배포</td><td>Render 무료 Web Service · <code class="i">/health</code> 상태 확인 · GitHub <code class="i">main</code> 자동 배포</td></tr>
-        <tr><td>개발</td><td>su4228-prog — 화면 구현 · 데이터 구조 · 백엔드 · 배포</td></tr>
-      </table>
+<span class="k">def</span> search(query, source=<span class="k">None</span>, k=5, vector=<span class="k">None</span>):
+    vec = vector <span class="k">or</span> embed([query])[0]
+    <span class="k">return</span> get_client().rpc(<span class="s">&quot;match_rag_chunks&quot;</span>, {<span class="s">&quot;query_embedding&quot;</span>: vec,
+        <span class="s">&quot;match_count&quot;</span>: k, <span class="s">&quot;filter_source&quot;</span>: source}).execute().data</pre></div>
+    <div class="code"><div class="file"><b>backend/sql/002_vector_rag.sql</b><span>pgvector 코사인 유사도</span></div><pre style="font-size:13.5px"><span class="k">create</span> <span class="k">function</span> match_rag_chunks(query_embedding vector(1536), match_count <span class="k">int</span>, filter_source <span class="k">text</span>)
+<span class="k">returns</span> <span class="k">table</span> (id <span class="k">bigint</span>, title <span class="k">text</span>, content <span class="k">text</span>, similarity <span class="k">float</span>) <span class="k">as</span> $$
+  <span class="k">select</span> id, title, content, 1 - (embedding &lt;=&gt; query_embedding) <span class="k">as</span> similarity
+  <span class="k">from</span> rag_chunks <span class="k">where</span> filter_source is <span class="k">null</span> <span class="k">or</span> source = filter_source
+  <span class="k">order</span> <span class="k">by</span> embedding &lt;=&gt; query_embedding <span class="k">limit</span> match_count;
+$$;</pre></div>
+    <div class="code"><div class="file"><b>backend/services/chat_service.py</b><span>질문 → 근거 → 답변</span></div><pre style="font-size:13.5px"><span class="k">def</span> _retrieve(question, recent_user):
+    query = f<span class="s">&quot;{recent_user} {question}&quot;</span>.strip()[-500:]   <span class="c"># 이어지는 질문은 앞 질문까지</span>
+    vec = rag_service.embed([query])[0]
+<span class="hi">    policy = rag_service.search(query, <span class="s">&quot;policy&quot;</span>, POLICY_K, vec)      <span class="c"># 안내 4조각</span></span>
+<span class="hi">    products = rag_service.search(query, <span class="s">&quot;product&quot;</span>, PRODUCT_K, vec)  <span class="c"># 상품 3개</span></span>
+    ...
+context = f<span class="s">&quot;[이용 안내]\n{policy}\n\n[관련 상품 설명]\n{product_docs}\n\n[요약 사실]\n{summary}&quot;</span></pre></div>
+  </div>
+</div><div class="pn"><b>08</b> / 28</div></section></div>
+<!-- ================= 09 ================= -->
+<div class="frame"><section class="slide " id="s09">
+<div class="feat">
+  <div class="left"><div class="sec"><b>02</b> / 주요 기능</div>
+    <div class="h">사진 한 장으로<br><em>같은 상품 찾기</em></div>
+    <p class="lead">YOLO 두 가지 모델과 RAG를 함께 씁니다. <b>분류 모델</b>은 같은 상품을, <b>탐지 모델</b>은 사진 속 식품을 찾고, 그 이름으로 <b>벡터 검색</b>해 함께 볼 상품을 고릅니다.</p>
+    <div class="steps">
+      <div class="step"><i>STEP 1</i><b>YOLO 탐지</b><span>식품 위치 · 이름 표시</span></div>
+      <div class="step"><i>STEP 2</i><b>YOLO 분류</b><span>상품 30개 사진과 특징 비교</span></div>
+      <div class="step"><i>STEP 3</i><b>RAG 추천</b><span>찾은 이름으로 벡터 검색</span></div>
     </div>
-    <div class="card" style="grid-row:1;gap:10px">
-      <h3>📌 목차</h3>
-      <ul style="gap:5px;flex:1;justify-content:space-between">
-        <li><b>설계 목표</b> · 정적 사이트에서 서버로 확장</li>
-        <li><b>메인 페이지</b> · 홈과 상품 섹션</li>
-        <li><b>API 우선</b> · JSON 대체 구조</li>
-        <li><b>상세 페이지</b> · 상세 콘텐츠 블록</li>
-        <li><b>상품 API · Supabase</b> 데이터 모델</li>
-        <li><b>상담봇</b> 근거와 안전장치</li>
-        <li><b>주문 기능</b> · 배송정보 · 연관 상품</li>
-        <li><b>기술 선택</b> · 프로젝트 구조 · 실행</li>
-        <li><b>검증 결과</b> · 회고 · 다음 단계</li>
-      </ul>
+    <div class="facts">
+      <div class="fact"><b>90 / 90</b><span>잘라내고 밝기를 바꾼 상품 사진 모두 정답</span></div>
+      <div class="fact"><b>약 150MB</b><span>PyTorch 없이 ONNX · 무료 서버 512MB 안</span></div>
     </div>
-    <div class="grid" style="grid-column:1/3;grid-template-columns:repeat(5,1fr);gap:16px">
-      <div class="stat"><b>33<i>개</i></b><span>상품 카드</span></div>
-      <div class="stat"><b>30<i>개</i></b><span>상품별 상세 화면</span></div>
-      <div class="stat"><b>7<i>개</i></b><span>API 엔드포인트</span></div>
-      <div class="stat"><b>4<i>개</i></b><span>Supabase 표</span></div>
-      <div class="stat"><b>22<i>문항</i></b><span>상담봇 자동 점검</span></div>
+    <p class="note">배너 · 아이콘처럼 상품이 아닌 사진은 일치도 최고 0.70 → <b>0.75 이상만 "같은 상품"</b>으로 판단합니다.</p>
+  </div>
+  <div class="win" style="width:520px"><div class="bar"><i></i><i></i><i></i>ORGA / 상담봇 · 📷</div><div class="shot"><img src="shots/vision.jpg" alt=""><div class="pin" style="left:49.2%;top:20.2%"><i>1</i><span>YOLO 탐지</span></div><div class="pin" style="left:53.0%;top:60.75%"><i>2</i><span>같은 상품 96%</span></div><div class="pin" style="left:53.0%;top:74.7%"><i>3</i><span>분류 · 탐지 · 벡터 검색</span></div><div class="pin" style="left:13.899999999999999%;top:82.55%"><i>4</i><span>사진 올리기</span></div></div></div>
+</div>
+<div class="foot">구현: <code>services/vision_service.py</code> · <code>models/yolo11n_320.onnx</code> · <code>models/yolo11n_cls_features.onnx</code> · <code>js/chat.js</code></div><div class="pn"><b>09</b> / 28</div></section></div>
+<!-- ================= 10 ================= -->
+<div class="frame"><section class="slide " id="s10">
+<div class="feat" style="grid-template-columns:470px 1fr">
+  <div class="left"><div class="sec"><b>02</b> / 주요 기능</div>
+    <div class="h">무료 서버에서<br><em>YOLO 두 개 돌리기</em></div>
+    <div class="points">
+      <div class="point"><i>1</i><div><b>ONNX로 변환</b><span>탐지 YOLO11n은 320px 입력, 분류 YOLO11n은 마지막 층 전 <b>특징 1280개</b>만 꺼내도록 변환 → PyTorch 없이 ONNX Runtime</span></div></div>
+      <div class="point"><i>2</i><div><b>같은 상품 = 특징 비교</b><span>상품 30개 사진 특징을 <code>product_photo_vectors</code>에 저장 · 올린 사진 특징과 내적(코사인)</span></div></div>
+      <div class="point"><i>3</i><div><b>탐지 결과 직접 해석</b><span>출력 (후보, 4+80)에서 점수 0.25 이상 · 같은 종류끼리 NMS로 겹침 제거</span></div></div>
+      <div class="point"><i>4</i><div><b>추천은 RAG로</b><span>"병" → "병에 담긴 청 병조림" 같은 검색어로 상품 벡터 검색 · 1등과 비슷한 것만</span></div></div>
     </div>
   </div>
-  <div class="foot"><span><b>02</b> / 18</span><span>Overview</span></div>
-</section></div>
+  <div class="codes" style="grid-template-rows:auto 1fr">
+    <div class="code"><div class="file"><b>backend/services/vision_service.py</b><span>같은 상품 찾기</span></div><pre style="font-size:13.5px"><span class="k">def</span> photo_vector(img) -&gt; np.ndarray:
+    <span class="s">&quot;&quot;</span><span class="s">&quot;사진 → YOLO 분류 모델의 특징 1280개 (길이 1로 맞춤)&quot;</span><span class="s">&quot;&quot;</span>
+    x = center_crop(img, 224) / 255.0
+    v = _load(FEATURE_FILE).run(<span class="k">None</span>, {<span class="s">&quot;images&quot;</span>: x})[0][0]
+    <span class="k">return</span> v / np.linalg.norm(v)
 
-<!-- ================= 03 설계 목표 ================= -->
-<div class="frame"><section class="slide" id="s03">
-  <div class="eyebrow">Design Goals</div>
-  <h2 class="title">설계 목표 — 화면을 유지하며 서버로 확장</h2>
-  <p class="subtitle">기존 렌더링 코드를 살리고 데이터 공급원만 JSON에서 API와 DB로 바꿨습니다.</p>
-  <div class="rule"></div>
-  <div class="body" style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 108px;gap:20px">
-    <div class="card">
-      <div class="hd"><span class="num">01</span><h3>API 우선, JSON 대체</h3></div>
-      <p>화면은 같은 데이터 모양을 사용합니다. Render에서는 API를 읽고, 서버가 없으면 기존 JSON으로 자동 전환합니다.</p>
-      <ul><li><code class="i">api.js</code>가 실행 환경에 맞는 주소 선택</li><li>API 오류 시 섹션 JSON으로 대체</li><li>GitHub Pages 정적 버전도 계속 동작</li></ul>
-      <pre style="flex:1;font-size:15px;line-height:1.7"><span class="k">Render</span>  /api/sections/{key}
-   └▶ 카드 렌더링
-<span class="k">정적</span>    json/*.json
-   └▶ 같은 카드 렌더링</pre>
+<span class="k">def</span> match_product(img):
+    ids, matrix = _product_vectors()          <span class="c"># 상품 30개 사진 특징 (5분 캐시)</span>
+<span class="hi">    scores = matrix @ photo_vector(img)        <span class="c"># 코사인 유사도</span></span>
+    best = int(scores.argmax())
+<span class="hi">    <span class="k">if</span> scores[best] &lt; SAME_PRODUCT:            <span class="c"># 0.75 미만이면 같은 상품 아님</span></span>
+        <span class="k">return</span> <span class="k">None</span>
+    <span class="k">return</span> {<span class="s">&quot;product_id&quot;</span>: ids[best], <span class="s">&quot;similarity&quot;</span>: round(float(scores[best]), 3)}</pre></div>
+    <div class="code"><div class="file"><b>backend/services/vision_service.py</b><span>사진 한 장 → 추천</span></div><pre style="font-size:13.5px"><span class="k">def</span> photo_search(data_url):
+    img = decode(data_url)
+<span class="hi">    match = match_product(img)                     <span class="c"># ① YOLO 분류 → 같은 상품</span></span>
+<span class="hi">    detections = detect(img)                       <span class="c"># ② YOLO 탐지 → 사과 · 병 · 그릇 …</span></span>
+    names, query = search_terms(detections)
+<span class="hi">    products = _recommend(names, query)            <span class="c"># ③ 이름 검색 + 벡터 검색(RAG)</span></span>
+
+<span class="k">def</span> _recommend(names, query, k=3):
+    hits = rag_service.search(query, <span class="s">&quot;product&quot;</span>, k + 2)
+    top = hits[0][<span class="s">&quot;similarity&quot;</span>]
+    ids += [c[<span class="s">&quot;metadata&quot;</span>][<span class="s">&quot;product_id&quot;</span>] <span class="k">for</span> c <span class="k">in</span> hits <span class="k">if</span> c[<span class="s">&quot;similarity&quot;</span>] &gt;= top - SIMILAR_GAP]</pre></div>
+  </div>
+</div><div class="pn"><b>10</b> / 28</div></section></div>
+<!-- ================= 11 ================= -->
+<div class="frame"><section class="slide " id="s11">
+<div class="feat" style="grid-template-columns:440px 1fr">
+  <div class="left"><div class="sec"><b>02</b> / 주요 기능</div>
+    <div class="h">사진만 올리면<br><em>정보가 채워진다</em></div>
+    <p class="lead">관리자 페이지에서 상품 사진을 올리면 YOLO가 물체 위치를, OpenAI Vision이 상품명 · 가격 · 분류 · 보관을 추천합니다.</p>
+    <div class="steps">
+      <div class="step"><i>STEP 1</i><b>YOLO</b><span>물체 위치 표시</span></div>
+      <div class="step"><i>STEP 2</i><b>Vision</b><span>추천 + 근거</span></div>
+      <div class="step"><i>STEP 3</i><b>확인 후 등록</b><span>사람이 최종 결정</span></div>
     </div>
-    <div class="card">
-      <div class="hd"><span class="num">02</span><h3>중복 없는 DB 구조</h3></div>
-      <p>상품은 한 번만 저장하고 여러 섹션에는 연결 정보만 둡니다. 가격이나 설명을 한 곳에서 수정할 수 있습니다.</p>
-      <ul><li><code class="i">products</code> 상품 30개</li><li><code class="i">sections</code> 섹션 6개</li><li><code class="i">section_products</code> 카드 연결 33개</li></ul>
-      <pre style="flex:1;font-size:15px;line-height:1.7"><span class="k">products</span> 1 ── N section_products
-<span class="k">sections</span> 1 ── N section_products
-<span class="k">products</span> 1 ── 1 product_details</pre>
+    <div class="facts">
+      <div class="fact"><b>약 2초</b><span>사진 → 입력칸 자동 완성</span></div>
+      <div class="fact"><b>즉시 반영</b><span>상세 · 검색 · 상담봇 · 사진 검색</span></div>
     </div>
-    <div class="card">
-      <div class="hd"><span class="num">03</span><h3>키와 비용 보호</h3></div>
-      <p>브라우저에는 비밀 키를 보내지 않습니다. 서버가 외부 서비스와 통신하고 상담봇 호출 횟수도 먼저 제한합니다.</p>
-      <ul><li>비밀 값은 Render 환경 변수로 관리</li><li>한 사람당 10분에 10번</li><li>사이트 전체 하루 300번</li></ul>
-      <pre style="flex:1;font-size:15px;line-height:1.7"><span class="k">브라우저</span> ─▶ FastAPI
-             ├▶ Supabase
-             └▶ OpenAI
-<span class="c">키가 프론트엔드로 전달되는 곳: 0</span></pre>
-    </div>
-    <div class="grid" style="grid-column:1/4;grid-template-columns:repeat(3,1fr);gap:20px">
-      <div class="stat" style="flex-direction:row;align-items:center;gap:18px"><b>30</b><span>상품별 상세 데이터</span></div>
-      <div class="stat" style="flex-direction:row;align-items:center;gap:18px"><b>4</b><span>역할별 Supabase 표</span></div>
-      <div class="stat" style="flex-direction:row;align-items:center;gap:18px"><b>0</b><span>공개 코드에 포함된 비밀 키</span></div>
+    <p class="note">AI 결과는 <code>ai_analysis_logs</code>에, 등록은 <code>admin_action_logs</code>에 작업자와 함께 남습니다.</p>
+  </div>
+  <div class="win" style="width:100%"><div class="bar"><i></i><i></i><i></i>ORGA / admin.html</div><div class="shot"><img src="shots/admin_ai.jpg" alt=""><div class="hl" style="left:22.8%;top:47.6%;width:17.0%;height:15.6%"></div><div class="pin" style="left:39.8%;top:47.6%"><i>1</i><span>YOLO 사과 84%</span></div><div class="pin" style="left:47.2%;top:88.89999999999999%"><i>2</i><span>Vision 추천 · 근거</span></div><div class="pin l" style="left:88.9%;top:32.05%"><i>3</i><span>자동 입력</span></div><div class="pin l" style="left:88.9%;top:66.95%"><i>4</i><span>확인 후 등록</span></div></div><div class="cap">role=admin 계정만 들어올 수 있는 관리자 페이지</div></div>
+</div>
+<div class="foot">구현: <code>admin.html</code> · <code>js/admin.js</code> · <code>services/admin_service.py</code> · <code>sql/003_admin.sql</code></div><div class="pn"><b>11</b> / 28</div></section></div>
+<!-- ================= 12 ================= -->
+<div class="frame"><section class="slide " id="s12">
+<div class="feat" style="grid-template-columns:470px 1fr">
+  <div class="left"><div class="sec"><b>02</b> / 주요 기능</div>
+    <div class="h">YOLO와 Vision의<br><em>역할을 나눴습니다</em></div>
+    <div class="points">
+      <div class="point"><i>1</i><div><b>YOLO 결과를 힌트로</b><span>"사과(84%)" 같은 탐지 결과와 쇼핑몰 상품 가격 예시를 프롬프트에 함께 넣어 추천을 맞춤</span></div></div>
+      <div class="point"><i>2</i><div><b>JSON으로만 받기</b><span><code>response_format=json_object</code> · 분류는 정해진 목록에서만, 가격은 10원 단위 · 범위 검사</span></div></div>
+      <div class="point"><i>3</i><div><b>등록 = 5곳에 기록</b><span>products · Storage 사진 · product_images · 작업 기록 · 분석 기록과 상품 연결</span></div></div>
+      <div class="point"><i>4</i><div><b>AI에 바로 반영</b><span>그 상품만 RAG 조각을 다시 만들고, 사진 특징도 저장 → 상담봇 · 사진 검색이 바로 앎</span></div></div>
     </div>
   </div>
-  <div class="foot"><span><b>03</b> / 18</span><span>Design Goals</span></div>
-</section></div>
-
-<!-- ================= 04 기술 스택 ================= -->
-<div class="frame"><section class="slide" id="s04">
-  <div class="eyebrow">Tech Stack &amp; Deployment</div>
-  <h2 class="title">기술 스택과 배포 구조</h2>
-  <p class="subtitle">화면과 API를 FastAPI 한 서버에서 제공하고, 상품 데이터와 상담봇은 외부 서비스와 연결합니다.</p>
-  <div class="rule"></div>
-  <div class="body" style="display:grid;grid-template-columns:660px 1fr;grid-template-rows:1fr 150px;gap:20px">
-    <div class="tbl" style="grid-row:1/3">
-      <table style="height:100%">
-        <tr><th colspan="2">구분 · 기술</th></tr>
-        <tr><td style="width:150px">마크업</td><td>HTML5 시맨틱 태그 (<code class="i">header</code> · <code class="i">main</code> · <code class="i">section</code> · <code class="i">article</code>)</td></tr>
-        <tr><td>스타일</td><td>CSS3 · 변수(<code class="i">:root</code>) · Grid · Flex · <code class="i">aspect-ratio</code> · 미디어쿼리</td></tr>
-        <tr><td>스크립트</td><td>JavaScript (ES Modules <code class="i">import / export</code>)</td></tr>
-        <tr><td>데이터</td><td>Supabase (PostgreSQL) · JSON 7개는 서버가 없을 때 쓰는 예비 데이터</td></tr>
-        <tr><td>인터랙션</td><td>배너 슬라이더(자동재생/일시정지) · 이미지 확대 렌즈 · 수량 계산 · 접이식 배송정보</td></tr>
-        <tr><td>서버</td><td>Python · FastAPI · Uvicorn · Pydantic 응답 모델</td></tr>
-        <tr><td>상담봇</td><td>OpenAI <code class="i">gpt-4o-mini</code> · 이용 안내 문서 + 상품 목록 + 서버 계산 사실</td></tr>
-        <tr><td>배포</td><td>Render 무료 Web Service · GitHub <code class="i">main</code> 자동 배포 · <code class="i">/health</code></td></tr>
-      </table>
-    </div>
-    <div class="flow v" style="grid-row:1">
-      <div class="box" style="flex:1"><b>브라우저</b><span>사이트 화면과 API를 같은 Render 주소로 요청</span></div>
-      <div class="arr">→</div>
-      <div class="box" style="flex:1.2"><b>FastAPI on Render</b><span>화면 파일 제공 · 상품·섹션 API 4종 · 상담봇 API · 상태 확인</span></div>
-      <div class="arr">→</div>
-      <div class="box" style="flex:1.2"><b>Supabase · OpenAI</b><span>상품 30개와 상세 데이터 조회 · 질문할 때만 상담봇 호출</span></div>
-    </div>
-    <div class="note brown" style="grid-row:2;grid-column:2;display:flex;flex-direction:column;justify-content:center;font-size:14px"><small>Deployment</small><b>orga-whole-food.onrender.com</b><br><code class="i">pip install -r backend/requirements.txt</code><br><code class="i">cd backend &amp;&amp; uvicorn app:app --host 0.0.0.0 --port $PORT</code></div>
+  <div class="codes" style="grid-template-rows:auto 1fr">
+    <div class="code"><div class="file"><b>backend/services/admin_service.py — analyze()</b><span>YOLO 힌트 + Vision JSON</span></div><pre style="font-size:13.5px">detections = vision_service.detect(img)                    <span class="c"># YOLO</span>
+yolo_text = <span class="s">&quot;, &quot;</span>.join(f<span class="s">&quot;{d[&#x27;label_ko&#x27;]}({round(d[&#x27;score&#x27;] * 100)}%)&quot;</span> <span class="k">for</span> d <span class="k">in</span> detections)
+<span class="hi">prompt = VISION_PROMPT.format(categories=<span class="s">&quot;, &quot;</span>.join(CATEGORIES), yolo=yolo_text,</span>
+                              prices=_price_examples())     <span class="c"># 쇼핑몰 가격 예시</span>
+res = OpenAI(...).chat.completions.create(model=OPENAI_MODEL,
+    messages=[{<span class="s">&quot;role&quot;</span>: <span class="s">&quot;user&quot;</span>, <span class="s">&quot;content&quot;</span>: [{<span class="s">&quot;type&quot;</span>: <span class="s">&quot;text&quot;</span>, <span class="s">&quot;text&quot;</span>: prompt},
+              {<span class="s">&quot;type&quot;</span>: <span class="s">&quot;image_url&quot;</span>, <span class="s">&quot;image_url&quot;</span>: {<span class="s">&quot;url&quot;</span>: data_url, <span class="s">&quot;detail&quot;</span>: <span class="s">&quot;low&quot;</span>}}]}],
+    response_format={<span class="s">&quot;type&quot;</span>: <span class="s">&quot;json_object&quot;</span>})
+<span class="hi">result[<span class="s">&quot;category&quot;</span>] = raw[<span class="s">&quot;category&quot;</span>] <span class="k">if</span> raw[<span class="s">&quot;category&quot;</span>] <span class="k">in</span> CATEGORIES <span class="k">else</span> <span class="s">&quot;기타&quot;</span></span></pre></div>
+    <div class="code"><div class="file"><b>backend/services/admin_service.py — create_product()</b><span>등록 = 저장 · 기록 · AI 반영</span></div><pre style="font-size:13.5px">url = _upload(image)                                         <span class="c"># Supabase Storage (JPEG 재저장)</span>
+row = db.table(<span class="s">&quot;products&quot;</span>).insert({**fields, <span class="s">&quot;image&quot;</span>: url, <span class="s">&quot;source&quot;</span>: <span class="s">&quot;admin&quot;</span>}).execute().data[0]
+db.table(<span class="s">&quot;product_images&quot;</span>).insert({<span class="s">&quot;product_id&quot;</span>: row[<span class="s">&quot;id&quot;</span>], <span class="s">&quot;url&quot;</span>: url})
+db.table(<span class="s">&quot;ai_analysis_logs&quot;</span>).update({<span class="s">&quot;product_id&quot;</span>: row[<span class="s">&quot;id&quot;</span>]}).eq(<span class="s">&quot;id&quot;</span>, analysis_id)
+_log(<span class="s">&quot;create&quot;</span>, row[<span class="s">&quot;id&quot;</span>], row[<span class="s">&quot;name&quot;</span>], {...}, ip, actor)    <span class="c"># 작업자 아이디</span>
+<span class="hi">_after_change(row[<span class="s">&quot;id&quot;</span>])                                      <span class="c"># 상담봇 캐시 · RAG 조각</span></span>
+<span class="hi">vision_service.save_product_vector(row[<span class="s">&quot;id&quot;</span>], url)          <span class="c"># 사진 검색 특징</span></span></pre></div>
   </div>
-  <div class="foot"><span><b>04</b> / 18</span><span>Tech Stack &amp; Deployment</span></div>
-</section></div>
-
-<!-- ================= 05 홈 ================= -->
-<div class="frame"><section class="slide" id="s05">
-  <div class="eyebrow">Feature 01 · Home</div>
-  <h2 class="title">메인 화면 — 헤더 · 배너 · 카테고리</h2>
-  <p class="subtitle">첫 화면에서 브랜드 메뉴와 프로모션 배너, 12개 카테고리까지 한 번에 보여줍니다.</p>
-  <div class="rule"></div>
-  <div class="body" style="display:grid;grid-template-columns:1fr 520px;grid-template-rows:1fr 1fr;gap:20px">
-    <div class="shot" style="grid-row:1/3"><em><b>01</b>메인 첫 화면 (1440px)</em><img src="img/fit_hero.jpg" alt="메인 첫 화면"></div>
-    <div class="card" style="gap:10px">
-      <h3>배너 슬라이더</h3>
-      <ul><li>배너 8장, 한 화면에 <b>3장</b>(모바일 1장) 노출</li><li><b>3.5초</b> 자동 넘김 · 이전/다음 · 일시정지(Ⅱ ↔ ▶)</li><li>현재 번호 카운터(<code class="i">2 / 8</code>) 실시간 표시</li><li>화면 크기가 바뀌면 이동 거리를 다시 계산</li></ul>
+</div><div class="pn"><b>12</b> / 28</div></section></div>
+<!-- ================= 13 ================= -->
+<div class="frame"><section class="slide " id="s13">
+<div class="feat" style="grid-template-columns:440px 1fr">
+  <div class="left"><div class="sec"><b>02</b> / 주요 기능</div>
+    <div class="h">찾고, 고치고,<br><em>기록이 남는다</em></div>
+    <p class="lead">상품명 · 분류로 검색하고 5개씩 나눠 보며, 표에서 바로 수정 · 삭제합니다. 모든 변경은 전 → 후 값과 작업자가 기록됩니다.</p>
+    <div class="steps two">
+      <div class="step"><i>STEP 1</i><b>검색 · 페이지</b><span>상품명 · 분류 · 5개 단위</span></div>
+      <div class="step"><i>STEP 2</i><b>수정 PATCH</b><span>바뀐 칸만 전송</span></div>
+      <div class="step"><i>STEP 3</i><b>삭제 DELETE</b><span>메인 진열 원본은 보호</span></div>
+      <div class="step"><i>STEP 4</i><b>작업 기록</b><span>판매가: 130000 → 12340</span></div>
     </div>
-    <div class="shot"><em><b>02</b>슬라이더 · 카테고리 12개</em><img src="img/fit_slider.jpg" alt="슬라이더와 카테고리"></div>
+    <p class="note">삭제하면 상품 사진 파일 · RAG 조각 · 사진 특징까지 함께 정리합니다.</p>
   </div>
-  <div class="foot"><span><b>05</b> / 18</span><span>Feature · Home</span></div>
-</section></div>
-
-<!-- ================= 06 상품 섹션 ================= -->
-<div class="frame"><section class="slide" id="s06">
-  <div class="eyebrow">Feature 02 · Product Sections</div>
-  <h2 class="title">상품 섹션 6개 — 33개 카드</h2>
-  <p class="subtitle">섹션마다 배경색과 카드 구성을 달리하고, 가격·할인·평점 같은 요소는 데이터가 있을 때만 표시합니다.</p>
-  <div class="rule"></div>
-  <div class="body" style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr;gap:16px 20px">
-    <div class="bar"><div class="shot fit"><img src="img/full_client.jpg" alt="고객 맞춤 추천 · 5개"></div><div class="cap2"><b><i>01</i>고객 맞춤 추천 · 5개</b><span>#AI 추천 — 할인 뱃지 · 단위 가격 · 평점/후기</span></div></div>
-    <div class="bar"><div class="shot fit"><img src="img/full_discount.jpg" alt="올가 할인 특가 · 5개"></div><div class="cap2"><b><i>02</i>올가 할인 특가 · 5개</b><span>베이지 배경 — 할인율을 빨간색으로 강조</span></div></div>
-    <div class="bar"><div class="shot fit"><img src="img/full_gift.jpg" alt="광고 배너 + 선물세트 · 5개"></div><div class="cap2"><b><i>03</i>광고 배너 + 선물세트 · 5개</b><span>배너 2개와 추석 선물세트 사전예약 카드</span></div></div>
-    <div class="bar"><div class="shot fit"><img src="img/full_md.jpg" alt="MD 추천상품 · 5개"></div><div class="cap2"><b><i>04</i>MD 추천상품 · 5개</b><span>와이드 배너 + 카드 그리드</span></div></div>
-    <div class="bar"><div class="shot fit"><img src="img/full_new.jpg" alt="NEW 신상품 · 3개"></div><div class="cap2"><b><i>05</i>NEW 신상품 · 3개</b><span>메인 이미지 + 썸네일 2단 레이아웃</span></div></div>
-    <div class="bar"><div class="shot fit"><img src="img/full_best.jpg" alt="베스트 상품 · 10개"></div><div class="cap2"><b><i>06</i>베스트 상품 · 10개</b><span>카테고리 탭과 1~10위 순위 번호</span></div></div>
-  </div>
-  <div class="foot"><span><b>06</b> / 18</span><span>Feature · Product Sections</span></div>
-</section></div>
-
-<!-- ================= 07 API 우선 렌더링 ================= -->
-<div class="frame"><section class="slide" id="s07">
-  <div class="eyebrow">Architecture · API First</div>
-  <h2 class="title">API 우선 · JSON 대체 구조</h2>
-  <p class="subtitle">같은 화면 코드가 Render에서는 API를, GitHub Pages에서는 JSON을 읽습니다.</p>
-  <div class="rule"></div>
-  <div class="body" style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:272px 1fr;gap:20px">
-    <pre style="font-size:13.5px;line-height:1.45"><span class="c">// js/api.js</span>
-<span class="k">export async function</span> loadSection(key, fallback) {
-  <span class="k">const</span> base = apiBase();
-  <span class="k">if</span> (base !== null) {
-    <span class="k">try</span> { <span class="k">return await</span> getJson(
-      <span class="s">`${base}/api/sections/${key}`</span>);
-    } <span class="k">catch</span> { console.warn(<span class="s">"JSON으로 대체"</span>); }
-  }
-  <span class="k">return</span> getJson(fallback);
-}</pre>
-    <pre style="font-size:13.5px;line-height:1.45"><span class="c">// 실행 환경별 데이터 흐름</span>
-<span class="k">Render</span>
-  /api/sections/client
-    └▶ Supabase
-        └▶ 기존 JSON 모양 응답
-
-<span class="k">GitHub Pages</span>
-  /api 요청 불가
-    └▶ json/client_products.json
-
-<span class="c">두 경로 모두 같은 렌더링 함수 사용</span></pre>
-    <div class="tbl" style="grid-column:1/3">
-      <table style="height:100%" class="tight">
-        <tr><th>요청</th><th>서버 응답</th><th>대체 파일</th><th>화면 결과</th></tr>
-        <tr><td>sections/client</td><td>추천 상품 5개</td><td>client_products.json</td><td>고객 맞춤 추천</td></tr>
-        <tr><td>sections/discount</td><td>할인 상품 5개</td><td>discount_products.json</td><td>올가 할인 특가</td></tr>
-        <tr><td>sections/gift</td><td>선물 상품 5개</td><td>gift_products.json</td><td>추석 선물세트</td></tr>
-        <tr><td>sections/md</td><td>MD 상품 5개</td><td>md_products.json</td><td>MD 추천상품</td></tr>
-        <tr><td>sections/new</td><td>신상품 3개</td><td>new_products.json</td><td>NEW 신상품</td></tr>
-        <tr><td>sections/best</td><td>베스트 10개</td><td>best_products.json</td><td>베스트 상품</td></tr>
-      </table>
+  <div class="win" style="width:100%"><div class="bar"><i></i><i></i><i></i>ORGA / admin.html · 상품 관리</div><div class="shot"><img src="shots/admin_list.jpg" alt=""><div class="hl" style="left:78.6%;top:18.2%;width:3.6%;height:4.0%"></div><div class="hl" style="left:82.7%;top:18.2%;width:3.6%;height:4.0%"></div><div class="pin l" style="left:68.1%;top:8.5%"><i>1</i><span>검색</span></div><div class="pin l" style="left:78.6%;top:18.2%"><i>2</i><span>수정 · 삭제</span></div><div class="pin" style="left:49.95%;top:60.8%"><i>3</i><span>5개씩</span></div><div class="pin" style="left:49.0%;top:79.9%"><i>4</i><span>작업 기록</span></div></div></div>
+</div>
+<div class="foot">구현: <code>js/admin.js</code> · <code>services/admin_service.py</code> · <code>admin_action_logs</code> · <code>ai_analysis_logs</code></div><div class="pn"><b>13</b> / 28</div></section></div>
+<!-- ================= 14 ================= -->
+<div class="frame"><section class="slide " id="s14">
+<div class="feat" style="grid-template-columns:470px 1fr">
+  <div class="left"><div class="sec"><b>02</b> / 주요 기능</div>
+    <div class="h">권한은 화면이 아니라<br><em>서버가 검사합니다</em></div>
+    <div class="points">
+      <div class="point"><i>1</i><div><b>모든 관리자 API에 같은 검사</b><span>FastAPI <code>Depends(admin_user)</code> — 출입증 확인 후 <b>DB의 현재 역할</b>이 admin일 때만</span></div></div>
+      <div class="point"><i>2</i><div><b>위조 요청 차단</b><span>쿠키로 로그인한 상태에서 데이터를 바꾸려면 사이트만 붙이는 머리말이 필요 → 다른 사이트에서 보낸 요청은 403</span></div></div>
+      <div class="point"><i>3</i><div><b>DB에서 나눠 가져오기</b><span><code>count="exact"</code> + <code>range()</code>로 5개씩 · 검색어는 특수문자 제거 후 <code>ilike</code></span></div></div>
+      <div class="point"><i>4</i><div><b>바뀐 값만 기록</b><span>수정 전 값과 비교해 달라진 칸만 before / after로 저장</span></div></div>
     </div>
   </div>
-  <div class="foot"><span><b>07</b> / 18</span><span>Architecture · API First</span></div>
-</section></div>
+  <div class="codes" style="grid-template-rows:auto auto">
+    <div class="code"><div class="file"><b>backend/app.py</b><span>관리자 API 공통 검사</span></div><pre style="font-size:13.5px"><span class="k">def</span> admin_user(request: Request) -&gt; dict:
+<span class="hi">    <span class="k">if</span> (request.method <span class="k">not</span> <span class="k">in</span> (<span class="s">&quot;GET&quot;</span>, <span class="s">&quot;HEAD&quot;</span>) <span class="k">and</span> request.cookies.get(SESSION_COOKIE)</span>
+<span class="hi">            <span class="k">and</span> request.headers.get(<span class="s">&quot;x-requested-with&quot;</span>) != <span class="s">&quot;orga&quot;</span>):</span>
+        <span class="k">raise</span> ForbiddenError(<span class="s">&quot;허용되지 않은 요청이에요.&quot;</span>)       <span class="c"># 위조 요청 차단</span>
+<span class="hi">    <span class="k">return</span> auth_service.require_admin(session_token(request))    <span class="c"># role=admin 만</span></span>
 
-<!-- ================= 08 상세 페이지 상단 ================= -->
-<div class="frame"><section class="slide" id="s08">
-  <div class="eyebrow">Feature 03 · Product Detail</div>
-  <h2 class="title">상품 상세 — 갤러리와 이미지 확대</h2>
-  <p class="subtitle">카드를 누르면 이동하는 상세 페이지입니다. 대표 이미지에 마우스를 올리면 확대 렌즈가 나타납니다.</p>
-  <div class="rule"></div>
-  <div class="body" style="display:grid;grid-template-columns:780px 1fr;grid-template-rows:296px 1fr;gap:20px">
-    <div class="shot" style="grid-row:1/3"><em><b>01</b>상세 첫 화면</em><img src="img/fit_sub_top.jpg" alt=""></div>
-    <div class="shot"><em><b>02</b>이미지 확대 (렌즈 250px → 결과 550px)</em><img src="img/fit_sub_zoom.jpg" alt=""></div>
-    <div class="card" style="gap:6px;padding:16px 24px">
-      <h3>기능</h3>
-      <ul style="gap:5px;flex:1;justify-content:space-between">
-        <li><b>대표 이미지 + 썸네일</b> 전환 · <b>확대 렌즈</b>(2.2배)</li>
-        <li>BEST 뱃지 · 카테고리 · 브랜드 · 원산지/보관방법</li>
-        <li>정가 취소선 · 판매가 · <b>할인율</b> · 100g당 단가</li>
-        <li>찜하기 · 공유하기(복사/기기 공유) · 맨 위로 버튼</li>
-      </ul>
-      <div class="note" style="padding:9px 14px"><small style="margin-bottom:3px">Data</small>모두 상품 API의 <code class="i">product</code> 값에서 생성</div>
+@app.delete(<span class="s">&quot;/api/admin/products/{product_id}&quot;</span>)
+<span class="k">def</span> admin_delete(product_id: int, who=Depends(visitor), admin=Depends(admin_user)):
+    <span class="k">return</span> admin_service.delete_product(product_id, who, admin[<span class="s">&quot;login_id&quot;</span>])</pre></div>
+    <div class="code"><div class="file"><b>backend/services/admin_service.py</b><span>검색 · 페이지 · 변경 기록</span></div><pre style="font-size:13.5px">query = get_client().table(<span class="s">&quot;products&quot;</span>).select(<span class="s">&quot;*&quot;</span>, count=<span class="s">&quot;exact&quot;</span>)
+<span class="k">if</span> q:
+    query = query.or_(f<span class="s">&quot;name.ilike.*{q}*,category.ilike.*{q}*&quot;</span>)
+res = query.order(<span class="s">&quot;id&quot;</span>, desc=<span class="k">True</span>).range(start, start + size - 1).execute()
+
+changed = {k: {<span class="s">&quot;before&quot;</span>: before.get(k), <span class="s">&quot;after&quot;</span>: v}
+           <span class="k">for</span> k, v <span class="k">in</span> fields.items() <span class="k">if</span> before.get(k) != v}
+_log(<span class="s">&quot;update&quot;</span>, pid, row[<span class="s">&quot;name&quot;</span>], changed, ip, actor)</pre></div>
+  </div>
+</div><div class="pn"><b>14</b> / 28</div></section></div>
+<!-- ================= 15 ================= -->
+<div class="frame"><section class="slide " id="s15">
+<div class="feat" style="grid-template-columns:440px 1fr">
+  <div class="left"><div class="sec"><b>02</b> / 주요 기능</div>
+    <div class="h">가입 즉시 로그인,<br><em>새로고침해도 유지</em></div>
+    <p class="lead">아이디 중복 확인 · 비밀번호 규칙 안내 · 아이디 저장 · 비밀번호 보기를 넣고, 로그인하면 헤더가 회원 메뉴로 바뀝니다.</p>
+    <div class="steps">
+      <div class="step"><i>STEP 1</i><b>로그인</b><span>2시간 유지</span></div>
+      <div class="step"><i>STEP 2</i><b>회원가입</b><span>중복 · 규칙 확인</span></div>
+      <div class="step"><i>STEP 3</i><b>회원 메뉴</b><span>관리자만 "관리자"</span></div>
+    </div>
+    <div style="margin-top:22px"><div class="win" style="width:100%"><div class="bar"><i></i><i></i><i></i>ORGA / 로그인 후 헤더</div><div class="shot"><img src="shots/header.jpg" alt=""><div class="pin l" style="left:91.5%;top:34.2%"><i>3</i><span>관리자 메뉴</span></div></div></div></div>
+    <p class="note">출입증은 <b>HttpOnly 쿠키</b> — 화면의 스크립트가 읽을 수 없습니다.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:1.25fr 1fr;gap:18px;align-items:center;min-height:0">
+    <div class="win" style="width:100%"><div class="bar"><i></i><i></i><i></i>ORGA / login.html</div><div class="shot"><img src="shots/login.jpg" alt=""><div class="pin l" style="left:35.0%;top:34.6%"><i>1</i><span>아이디 · 비밀번호</span></div></div></div>
+    <div class="win" style="width:100%"><div class="bar"><i></i><i></i><i></i>ORGA / signup.html</div><div class="shot"><img src="shots/signup.jpg" alt=""><div class="pin l" style="left:80.0%;top:13.8%"><i>2</i><span>중복 확인</span></div></div></div>
+  </div>
+</div>
+<div class="foot">구현: <code>login.html</code> · <code>signup.html</code> · <code>js/auth.js</code> · <code>services/auth_service.py</code> · <code>sql/004_users.sql</code></div><div class="pn"><b>15</b> / 28</div></section></div>
+<!-- ================= 16 ================= -->
+<div class="frame"><section class="slide " id="s16">
+<div class="feat" style="grid-template-columns:470px 1fr">
+  <div class="left"><div class="sec"><b>02</b> / 주요 기능</div>
+    <div class="h">JWT · HttpOnly 쿠키 ·<br><em>bcrypt</em></div>
+    <div class="points">
+      <div class="point"><i>1</i><div><b>비밀번호는 bcrypt 해시만</b><span>일부러 느리고 매번 소금을 섞어, 유출돼도 대입 공격 · 같은 값 노출이 어렵게 (SHA-256 대신)</span></div></div>
+      <div class="point"><i>2</i><div><b>JWT를 HttpOnly 쿠키로</b><span>회원 번호 · 역할 · 2시간 만료를 서명 · <code>SameSite=Lax</code> · HTTPS에서는 <code>Secure</code></span></div></div>
+      <div class="point"><i>3</i><div><b>권한은 DB 기준</b><span>요청마다 출입증을 풀고 DB의 현재 역할로 다시 확인 → 권한을 빼면 즉시 반영</span></div></div>
+      <div class="point"><i>4</i><div><b>추측 막기</b><span>없는 아이디도 같은 시간이 걸리게 해시 비교 · 로그인 10분 5회 제한</span></div></div>
     </div>
   </div>
-  <div class="foot"><span><b>08</b> / 18</span><span>Feature · Product Detail</span></div>
-</section></div>
+  <div class="codes" style="grid-template-rows:auto auto">
+    <div class="code"><div class="file"><b>backend/app.py — 로그인 응답</b><span>쿠키 발급</span></div><pre style="font-size:13.5px"><span class="k">def</span> _with_session(request, issued) -&gt; JSONResponse:
+    <span class="c"># 출입증은 HttpOnly 쿠키로만, 화면에는 회원 정보와 만료 시각만</span>
+    response = JSONResponse({<span class="s">&quot;user&quot;</span>: issued[<span class="s">&quot;user&quot;</span>], <span class="s">&quot;expires_at&quot;</span>: issued[<span class="s">&quot;expires_at&quot;</span>]})
+<span class="hi">    response.set_cookie(<span class="s">&quot;orga_session&quot;</span>, issued[<span class="s">&quot;token&quot;</span>], max_age=JWT_EXPIRE_SEC,</span>
+<span class="hi">                        httponly=<span class="k">True</span>, secure=https, samesite=<span class="s">&quot;lax&quot;</span>, path=<span class="s">&quot;/&quot;</span>)</span>
+    <span class="k">return</span> response</pre></div>
+    <div class="code"><div class="file"><b>backend/services/auth_service.py</b><span>해시 · 발급 · 확인</span></div><pre style="font-size:13.5px"><span class="k">def</span> hash_password(password):
+    <span class="k">return</span> bcrypt.hashpw(password.encode(), bcrypt.gensalt(rounds=10)).decode()
 
-<!-- ================= 09 상세 주문/연관 ================= -->
-<div class="frame"><section class="slide" id="s09">
-  <div class="eyebrow">Feature 04 · Order &amp; Recommendation</div>
-  <h2 class="title">수량 계산 · 배송정보 · 연관 상품</h2>
-  <p class="subtitle">구매 직전에 필요한 정보를 접고 펼 수 있게 하고, 연관 상품 10개를 슬라이더로 보여줍니다.</p>
-  <div class="rule"></div>
-  <div class="body" style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 150px;gap:20px">
-    <div class="shot"><em><b>01</b>배송정보 펼침 · 수량 3 → 108,000원</em><img src="img/fit_sub_order.jpg" alt=""></div>
-    <div class="shot"><em><b>02</b>연관 상품 슬라이더 (5개씩 노출)</em><img src="img/fit_sub_ai.jpg" alt=""></div>
-    <div class="grid" style="grid-column:1/3;grid-template-columns:repeat(3,1fr);gap:20px">
-      <div class="card" style="gap:6px;padding:16px 22px"><h3 style="font-size:19px">수량 · 금액</h3><p style="font-size:16px;line-height:1.55">＋ / － 버튼으로 수량을 바꾸면 판매가 × 수량이 <b>주문금액</b>과 항목 금액에 동시에 반영됩니다. (최소 1개)</p><code class="i" style="font-size:13.5px;align-self:flex-start">price = productPrice × quantity</code></div>
-      <div class="card" style="gap:6px;padding:16px 22px"><h3 style="font-size:19px">배송정보 토글</h3><p style="font-size:16px;line-height:1.55">일반배송 · 새벽배송 도착 예정일과 배송비 기준을 <b>max-height 전환</b>으로 부드럽게 접고 펼칩니다.</p><code class="i" style="font-size:13.5px;align-self:flex-start">.delivery-section.closed → max-height: 0</code></div>
-      <div class="card" style="gap:6px;padding:16px 22px"><h3 style="font-size:19px">연관 상품 슬라이더</h3><p style="font-size:16px;line-height:1.55">화면 폭에 따라 <b>5 → 3 → 2개</b>씩 보이며, 처음과 끝에서는 이전/다음 버튼이 비활성 처리됩니다.</p><code class="i" style="font-size:13.5px;align-self:flex-start">≤650px → 2개 · ≤1000px → 3개 · 그 외 5개</code></div>
-    </div>
+<span class="k">def</span> login(login_id, password):
+    user = _find(login_id)
+<span class="hi">    ok = check_password(password, user[<span class="s">&quot;password_hash&quot;</span>] <span class="k">if</span> user <span class="k">else</span> _DUMMY_HASH)</span>
+    <span class="k">if</span> <span class="k">not</span> user <span class="k">or</span> <span class="k">not</span> ok:
+        <span class="k">raise</span> AuthError(<span class="s">&quot;아이디 또는 비밀번호가 맞지 않아요.&quot;</span>)
+    <span class="k">return</span> _issue(user)          <span class="c"># JWT: sub · login_id · name · role · exp</span>
+
+<span class="k">def</span> current_user(token):
+    claims = jwt.decode(token, JWT_SECRET, algorithms=[<span class="s">&quot;HS256&quot;</span>], options={<span class="s">&quot;require&quot;</span>: [<span class="s">&quot;exp&quot;</span>, <span class="s">&quot;sub&quot;</span>]})
+    <span class="k">return</span> public(find_by_id(claims[<span class="s">&quot;sub&quot;</span>]))     <span class="c"># 지금 DB 의 역할로 다시 확인</span></pre></div>
   </div>
-  <div class="foot"><span><b>09</b> / 18</span><span>Feature · Order &amp; Recommendation</span></div>
-</section></div>
-
-<!-- ================= 10 상품 API ================= -->
-<div class="frame"><section class="slide" id="s10">
-  <div class="eyebrow">Backend · Product API</div>
-  <h2 class="title">FastAPI 상품 API</h2>
-  <p class="subtitle">Supabase 데이터를 화면이 쓰던 JSON과 같은 모양으로 돌려주어 프론트엔드 변경을 줄였습니다.</p>
-  <div class="rule"></div>
-  <div class="body" style="display:grid;grid-template-columns:1fr 600px;grid-template-rows:1fr 150px;gap:20px">
-    <div class="tbl" style="grid-row:1/3">
-      <table style="height:100%">
-        <tr><th style="width:280px">주소</th><th>역할</th></tr>
-        <tr><td><code class="i">GET /api/sections</code></td><td>섹션 6개 목록</td></tr>
-        <tr><td><code class="i">GET /api/sections/{key}</code></td><td>섹션 제목과 상품 카드 목록</td></tr>
-        <tr><td><code class="i">GET /api/products?q=</code></td><td>상품 이름과 브랜드 검색</td></tr>
-        <tr><td><code class="i">GET /api/products/{id}</code></td><td>상품 상세 · 연관 상품 · 탭 · 상세 블록</td></tr>
-        <tr><td><code class="i">GET /api/chat/status</code></td><td>상담봇 사용 가능 여부</td></tr>
-        <tr><td><code class="i">POST /api/chat</code></td><td>질문과 이전 대화를 받아 상담 답변</td></tr>
-        <tr><td><code class="i">GET /health</code></td><td>Render 상태 확인</td></tr>
-      </table>
-    </div>
-    <pre style="font-size:15px;line-height:1.62"><span class="c"># backend/app.py</span>
-app = FastAPI(
-  title=<span class="s">"ORGA Whole Foods API"</span>
-)
-
-@app.get(<span class="s">"/api/products/{product_id}"</span>,
-         response_model=ProductDetailResponse)
-<span class="k">def</span> product(product_id: int):
-    <span class="k">return</span> svc.get_product(product_id)
-
-@app.get(<span class="s">"/health"</span>)
-<span class="k">def</span> health():
-    <span class="k">return</span> {<span class="s">"status"</span>: <span class="s">"ok"</span>}</pre>
-    <div class="note brown" style="display:flex;flex-direction:column;justify-content:center"><small>Response design</small>가격은 DB에서 숫자로 보관하고 화면 응답에서 천 단위 구분을 적용합니다. 상세 글이 없는 상품도 카드 정보를 바탕으로 기본 상세를 구성합니다.</div>
+</div><div class="pn"><b>16</b> / 28</div></section></div>
+<!-- ================= 17 ================= -->
+<div class="frame"><section class="slide white" id="s17">
+<style>
+.tools{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.tool{background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.tool h3{padding:18px 24px;color:#fff;font:800 23px/1 var(--sans)}
+.tool ul{list-style:none;padding:16px 24px;display:flex;flex-direction:column;gap:13px}
+.tool li b{display:block;font:700 18px/1.3 var(--sans)}
+.tool li span{font:400 14.5px/1.45 var(--sans);color:var(--sub)}
+.arch{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:1fr 330px;gap:36px}
+.arch svg{width:100%;height:100%}
+.files{display:flex;flex-direction:column;gap:0}
+.files div{padding:14px 0;border-top:1px solid #cfd9c9}
+.files b{display:block;font:800 17px/1.3 var(--sans);color:var(--green)}
+.files code{font:500 14px/1.6 var(--mono);color:var(--ink)}
+.files span{display:block;font:400 14px/1.5 var(--sans);color:var(--sub)}
+.wide{position:absolute;left:88px;right:88px;top:250px;bottom:80px}
+.erd{position:absolute;left:88px;right:88px;top:240px;bottom:76px}
+.erd svg{width:100%;height:100%}
+.path{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:1fr 1fr;gap:16px}
+.ps{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:8px;position:relative}
+.ps i{font:800 14px/1 var(--mono);font-style:normal;color:var(--red)}
+.ps b{font:800 19px/1.3 var(--sans)}
+.ps span{font:400 14.5px/1.5 var(--sans);color:var(--sub)}
+.ps code{margin-top:auto;font:500 12.5px/1.45 var(--mono);color:var(--green);background:#eef4e6;border-radius:6px;padding:6px 8px}
+.ps.ai{border-color:#cdbdf0;background:#faf7ff}.ps.ai i{color:var(--violet)}
+.fix{position:absolute;left:88px;right:88px;top:228px;bottom:72px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto 1fr auto;gap:14px}
+.fc{background:var(--paper);border-radius:10px;padding:14px 18px;border-top:4px solid var(--line)}
+.fc small{display:block;font:700 13px/1 var(--sans);color:var(--sub);margin-bottom:8px}
+.fc p{font:500 16.5px/1.5 var(--sans)}
+.fc.s{border-top-color:#9db3c9}.fc.c{border-top-color:#d08a2c}.fc.r{border-top-color:#3f9d55}
+.ba{grid-column:1/4;display:grid;grid-template-columns:1fr 1fr;gap:16px;min-height:0}
+.bai{position:relative;border-radius:10px;overflow:hidden;background:#fff;border:2px solid var(--line);min-height:0}
+.bai img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.bai.cover img{object-fit:cover;object-position:top center}
+.bai.b{border-color:#f0b4ad}.bai.a{border-color:#b6d58f}
+.bai em{position:absolute;left:10px;top:10px;z-index:2;font:700 13px/1 var(--sans);font-style:normal;color:#fff;padding:7px 10px;border-radius:6px}
+.bai.b em{background:var(--red)}.bai.a em{background:#3f9d55}
+.bacode{grid-column:1/4;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.bacode pre{font-size:13.5px !important}
+.code.b{border-left:4px solid var(--red)}.code.a{border-left:4px solid #3f9d55}
+.tc2{position:absolute;left:88px;right:88px;top:250px;bottom:72px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.twocol{display:flex;flex-direction:column;gap:12px;min-height:0}
+.twocol h3{font:800 22px/1.3 var(--sans)}
+.twocol .row3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.twocol .fc p{font-size:15px}
+.ver{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:1fr 430px;gap:24px}
+.cause{display:flex;flex-direction:column;gap:12px}
+.cb{display:grid;grid-template-columns:150px 1fr 40px;align-items:center;gap:12px;font:600 16px/1.3 var(--sans)}
+.cb .bar{height:22px;border-radius:6px;background:var(--green-2)}
+.cb b{font:800 18px/1 var(--mono);color:var(--green)}
+.learn{position:absolute;left:88px;right:88px;top:270px;bottom:90px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.ln{background:var(--dark-2);border:1px solid var(--dark-line);border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:14px}
+.ln i{font:900 44px/1 var(--sans);font-style:normal;color:#a8d26a}
+.ln b{font:800 23px/1.35 var(--sans);color:#fff}
+.ln span{font:400 17px/1.65 var(--sans);color:var(--dark-sub)}
+</style>
+<div class="sec"><b>03</b> / 기술과 문제 해결</div>
+<div class="h one">이 프로그램은 <em>이런 도구로 만들었습니다</em></div>
+<p class="lead">실제로 사용한 도구와 역할입니다. 버전은 <code>backend/requirements.txt</code> 기준입니다.</p>
+<div class="tools">
+  <div class="tool"><h3 style="background:#2c5d9e">Frontend</h3><ul>
+    <li><b>HTML5 · CSS3</b><span>시맨틱 태그 · Grid · Flex · 반응형</span></li>
+    <li><b>JavaScript (ES Modules)</b><span>프레임워크 없이 화면 조립 · fetch</span></li>
+    <li><b>HttpOnly 쿠키 로그인</b><span>화면은 회원 이름 · 역할만 보관</span></li>
+    <li><b>Canvas</b><span>사진을 640 · 1200px로 줄여 전송</span></li></ul></div>
+  <div class="tool"><h3 style="background:#3f7417">Backend</h3><ul>
+    <li><b>FastAPI 0.146 · Uvicorn</b><span>API 20개 · 화면 파일 제공</span></li>
+    <li><b>Pydantic</b><span>입력 길이 · 형식 검사</span></li>
+    <li><b>Supabase (PostgreSQL)</b><span>표 11개 · RLS · Storage(사진)</span></li>
+    <li><b>PyJWT · bcrypt</b><span>로그인 출입증 · 비밀번호 해시</span></li>
+    <li><b>supabase-py</b><span>DB · RPC · Storage 연결</span></li></ul></div>
+  <div class="tool"><h3 style="background:#6b46c1">AI</h3><ul>
+    <li><b>OpenAI gpt-4o-mini</b><span>상담 답변 · Vision 상품 분석</span></li>
+    <li><b>text-embedding-3-small</b><span>RAG 벡터 (1536차원)</span></li>
+    <li><b>pgvector</b><span>코사인 유사도 검색 · HNSW 색인</span></li>
+    <li><b>YOLO11n 탐지 · 분류</b><span>물체 위치 · 같은 상품 특징</span></li>
+    <li><b>ONNX Runtime</b><span>PyTorch 없이 무료 서버에서 실행</span></li></ul></div>
+  <div class="tool"><h3 style="background:#b7791f">인프라 · 점검</h3><ul>
+    <li><b>GitHub</b><span>코드 보관 · 변경 기록</span></li>
+    <li><b>Render</b><span>무료 Web Service · 자동 배포</span></li>
+    <li><b>GitHub Actions</b><span>3일마다 서버 · DB 깨우기</span></li>
+    <li><b>Playwright</b><span>화면 · 회원 · 관리자 자동 점검</span></li>
+    <li><b>Claude Code</b><span>AI 개발 도구 · 결과는 직접 실행해 확인</span></li></ul></div>
+</div><div class="pn"><b>17</b> / 28</div></section></div>
+<!-- ================= 18 ================= -->
+<div class="frame"><section class="slide white" id="s18">
+<style>
+.tools{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.tool{background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.tool h3{padding:18px 24px;color:#fff;font:800 23px/1 var(--sans)}
+.tool ul{list-style:none;padding:16px 24px;display:flex;flex-direction:column;gap:13px}
+.tool li b{display:block;font:700 18px/1.3 var(--sans)}
+.tool li span{font:400 14.5px/1.45 var(--sans);color:var(--sub)}
+.arch{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:1fr 330px;gap:36px}
+.arch svg{width:100%;height:100%}
+.files{display:flex;flex-direction:column;gap:0}
+.files div{padding:14px 0;border-top:1px solid #cfd9c9}
+.files b{display:block;font:800 17px/1.3 var(--sans);color:var(--green)}
+.files code{font:500 14px/1.6 var(--mono);color:var(--ink)}
+.files span{display:block;font:400 14px/1.5 var(--sans);color:var(--sub)}
+.wide{position:absolute;left:88px;right:88px;top:250px;bottom:80px}
+.erd{position:absolute;left:88px;right:88px;top:240px;bottom:76px}
+.erd svg{width:100%;height:100%}
+.path{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:1fr 1fr;gap:16px}
+.ps{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:8px;position:relative}
+.ps i{font:800 14px/1 var(--mono);font-style:normal;color:var(--red)}
+.ps b{font:800 19px/1.3 var(--sans)}
+.ps span{font:400 14.5px/1.5 var(--sans);color:var(--sub)}
+.ps code{margin-top:auto;font:500 12.5px/1.45 var(--mono);color:var(--green);background:#eef4e6;border-radius:6px;padding:6px 8px}
+.ps.ai{border-color:#cdbdf0;background:#faf7ff}.ps.ai i{color:var(--violet)}
+.fix{position:absolute;left:88px;right:88px;top:228px;bottom:72px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto 1fr auto;gap:14px}
+.fc{background:var(--paper);border-radius:10px;padding:14px 18px;border-top:4px solid var(--line)}
+.fc small{display:block;font:700 13px/1 var(--sans);color:var(--sub);margin-bottom:8px}
+.fc p{font:500 16.5px/1.5 var(--sans)}
+.fc.s{border-top-color:#9db3c9}.fc.c{border-top-color:#d08a2c}.fc.r{border-top-color:#3f9d55}
+.ba{grid-column:1/4;display:grid;grid-template-columns:1fr 1fr;gap:16px;min-height:0}
+.bai{position:relative;border-radius:10px;overflow:hidden;background:#fff;border:2px solid var(--line);min-height:0}
+.bai img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.bai.cover img{object-fit:cover;object-position:top center}
+.bai.b{border-color:#f0b4ad}.bai.a{border-color:#b6d58f}
+.bai em{position:absolute;left:10px;top:10px;z-index:2;font:700 13px/1 var(--sans);font-style:normal;color:#fff;padding:7px 10px;border-radius:6px}
+.bai.b em{background:var(--red)}.bai.a em{background:#3f9d55}
+.bacode{grid-column:1/4;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.bacode pre{font-size:13.5px !important}
+.code.b{border-left:4px solid var(--red)}.code.a{border-left:4px solid #3f9d55}
+.tc2{position:absolute;left:88px;right:88px;top:250px;bottom:72px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.twocol{display:flex;flex-direction:column;gap:12px;min-height:0}
+.twocol h3{font:800 22px/1.3 var(--sans)}
+.twocol .row3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.twocol .fc p{font-size:15px}
+.ver{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:1fr 430px;gap:24px}
+.cause{display:flex;flex-direction:column;gap:12px}
+.cb{display:grid;grid-template-columns:150px 1fr 40px;align-items:center;gap:12px;font:600 16px/1.3 var(--sans)}
+.cb .bar{height:22px;border-radius:6px;background:var(--green-2)}
+.cb b{font:800 18px/1 var(--mono);color:var(--green)}
+.learn{position:absolute;left:88px;right:88px;top:270px;bottom:90px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.ln{background:var(--dark-2);border:1px solid var(--dark-line);border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:14px}
+.ln i{font:900 44px/1 var(--sans);font-style:normal;color:#a8d26a}
+.ln b{font:800 23px/1.35 var(--sans);color:#fff}
+.ln span{font:400 17px/1.65 var(--sans);color:var(--dark-sub)}
+</style>
+<div class="sec"><b>03</b> / 기술과 문제 해결</div>
+<div class="h">화면 · 서버 · DB · AI가<br><em>연결되는 프로그램 구조</em></div>
+<div class="arch">
+  <svg viewBox="0 0 1000 560" font-family="Noto Sans KR, sans-serif">
+    <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3f7417"/></marker></defs>
+    <g stroke="#3f7417" stroke-width="2.4" fill="none" marker-end="url(#ar)">
+      <path d="M232 170 H372"/><path d="M628 170 H768"/><path d="M500 300 V392"/><path d="M590 260 L770 420"/>
+    </g>
+    <g font-size="13" font-weight="700" fill="#3f7417" text-anchor="middle">
+      <text x="302" y="156">fetch · 쿠키</text><text x="698" y="156">SQL · RPC</text><text x="520" y="350" text-anchor="start">ONNX</text><text x="712" y="320">HTTPS</text>
+    </g>
+    <g text-anchor="middle">
+      <circle cx="130" cy="170" r="104" fill="#eef4e6" stroke="#b9cfa2" stroke-width="2"/>
+      <text x="130" y="140" font-size="14" font-weight="700" fill="#3f7417">FRONTEND</text>
+      <text x="130" y="176" font-size="26" font-weight="900" fill="#15211a">브라우저</text>
+      <text x="130" y="206" font-size="15" fill="#56635a">HTML · CSS · JS</text>
+      <circle cx="500" cy="170" r="126" fill="#e7f0da" stroke="#9cc06e" stroke-width="2"/>
+      <text x="500" y="128" font-size="14" font-weight="700" fill="#3f7417">BACKEND · RENDER</text>
+      <text x="500" y="168" font-size="30" font-weight="900" fill="#15211a">FastAPI</text>
+      <text x="500" y="198" font-size="15" fill="#56635a">상품 · 회원 · 상담봇 · 사진 · 관리자</text>
+      <text x="500" y="222" font-size="15" fill="#56635a">권한 · 횟수 제한 · 오류 처리</text>
+      <circle cx="870" cy="170" r="110" fill="#eef4e6" stroke="#b9cfa2" stroke-width="2"/>
+      <text x="870" y="134" font-size="14" font-weight="700" fill="#3f7417">DATA</text>
+      <text x="870" y="170" font-size="26" font-weight="900" fill="#15211a">Supabase</text>
+      <text x="870" y="198" font-size="15" fill="#56635a">PostgreSQL · pgvector</text>
+      <text x="870" y="222" font-size="15" fill="#56635a">Storage · RLS</text>
+    </g>
+    <rect x="340" y="396" width="320" height="104" rx="14" fill="#fff" stroke="#c9d6bf"/>
+    <text x="500" y="436" text-anchor="middle" font-size="21" font-weight="800" fill="#15211a">YOLO11n (서버 안)</text>
+    <text x="500" y="468" text-anchor="middle" font-size="15" fill="#56635a">탐지 320px · 분류 특징 1280 · ONNX</text>
+    <rect x="700" y="424" width="290" height="104" rx="14" fill="#faf7ff" stroke="#cdbdf0"/>
+    <text x="845" y="464" text-anchor="middle" font-size="21" font-weight="800" fill="#15211a">OpenAI API</text>
+    <text x="845" y="496" text-anchor="middle" font-size="15" fill="#56635a">gpt-4o-mini · 임베딩 · Vision</text>
+    <text x="30" y="540" font-size="14" fill="#56635a">비밀 키(Supabase · OpenAI · JWT)는 서버 환경 변수에만 있고, 브라우저는 서버 하나와만 통신합니다.</text>
+  </svg>
+  <div class="files">
+    <div><b>화면</b><code>index · sub · login · signup · admin.html</code><span>쇼핑몰 · 회원 · 관리자 화면</span></div>
+    <div><b>화면 동작</b><code>js/api.js · auth.js · chat.js · admin.js</code><span>API 호출 · 로그인 유지 · 상담봇 · 관리자</span></div>
+    <div><b>서버 입구</b><code>backend/app.py</code><span>주소 · 권한 검사 · 오류 → 상태 코드</span></div>
+    <div><b>기능</b><code>backend/services/</code><span>product · auth · chat · rag · vision · admin · rate_limit</span></div>
+    <div><b>DB · 모델</b><code>backend/sql/001~005 · models/</code><span>표 11개 · 함수 · YOLO ONNX 2개</span></div>
   </div>
-  <div class="foot"><span><b>10</b> / 18</span><span>Backend · Product API</span></div>
-</section></div>
+</div><div class="pn"><b>18</b> / 28</div></section></div>
+<!-- ================= 19 ================= -->
+<div class="frame"><section class="slide white" id="s19">
+<style>
+.tools{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.tool{background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.tool h3{padding:18px 24px;color:#fff;font:800 23px/1 var(--sans)}
+.tool ul{list-style:none;padding:16px 24px;display:flex;flex-direction:column;gap:13px}
+.tool li b{display:block;font:700 18px/1.3 var(--sans)}
+.tool li span{font:400 14.5px/1.45 var(--sans);color:var(--sub)}
+.arch{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:1fr 330px;gap:36px}
+.arch svg{width:100%;height:100%}
+.files{display:flex;flex-direction:column;gap:0}
+.files div{padding:14px 0;border-top:1px solid #cfd9c9}
+.files b{display:block;font:800 17px/1.3 var(--sans);color:var(--green)}
+.files code{font:500 14px/1.6 var(--mono);color:var(--ink)}
+.files span{display:block;font:400 14px/1.5 var(--sans);color:var(--sub)}
+.wide{position:absolute;left:88px;right:88px;top:250px;bottom:80px}
+.erd{position:absolute;left:88px;right:88px;top:240px;bottom:76px}
+.erd svg{width:100%;height:100%}
+.path{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:1fr 1fr;gap:16px}
+.ps{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:8px;position:relative}
+.ps i{font:800 14px/1 var(--mono);font-style:normal;color:var(--red)}
+.ps b{font:800 19px/1.3 var(--sans)}
+.ps span{font:400 14.5px/1.5 var(--sans);color:var(--sub)}
+.ps code{margin-top:auto;font:500 12.5px/1.45 var(--mono);color:var(--green);background:#eef4e6;border-radius:6px;padding:6px 8px}
+.ps.ai{border-color:#cdbdf0;background:#faf7ff}.ps.ai i{color:var(--violet)}
+.fix{position:absolute;left:88px;right:88px;top:228px;bottom:72px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto 1fr auto;gap:14px}
+.fc{background:var(--paper);border-radius:10px;padding:14px 18px;border-top:4px solid var(--line)}
+.fc small{display:block;font:700 13px/1 var(--sans);color:var(--sub);margin-bottom:8px}
+.fc p{font:500 16.5px/1.5 var(--sans)}
+.fc.s{border-top-color:#9db3c9}.fc.c{border-top-color:#d08a2c}.fc.r{border-top-color:#3f9d55}
+.ba{grid-column:1/4;display:grid;grid-template-columns:1fr 1fr;gap:16px;min-height:0}
+.bai{position:relative;border-radius:10px;overflow:hidden;background:#fff;border:2px solid var(--line);min-height:0}
+.bai img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.bai.cover img{object-fit:cover;object-position:top center}
+.bai.b{border-color:#f0b4ad}.bai.a{border-color:#b6d58f}
+.bai em{position:absolute;left:10px;top:10px;z-index:2;font:700 13px/1 var(--sans);font-style:normal;color:#fff;padding:7px 10px;border-radius:6px}
+.bai.b em{background:var(--red)}.bai.a em{background:#3f9d55}
+.bacode{grid-column:1/4;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.bacode pre{font-size:13.5px !important}
+.code.b{border-left:4px solid var(--red)}.code.a{border-left:4px solid #3f9d55}
+.tc2{position:absolute;left:88px;right:88px;top:250px;bottom:72px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.twocol{display:flex;flex-direction:column;gap:12px;min-height:0}
+.twocol h3{font:800 22px/1.3 var(--sans)}
+.twocol .row3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.twocol .fc p{font-size:15px}
+.ver{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:1fr 430px;gap:24px}
+.cause{display:flex;flex-direction:column;gap:12px}
+.cb{display:grid;grid-template-columns:150px 1fr 40px;align-items:center;gap:12px;font:600 16px/1.3 var(--sans)}
+.cb .bar{height:22px;border-radius:6px;background:var(--green-2)}
+.cb b{font:800 18px/1 var(--mono);color:var(--green)}
+.learn{position:absolute;left:88px;right:88px;top:270px;bottom:90px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.ln{background:var(--dark-2);border:1px solid var(--dark-line);border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:14px}
+.ln i{font:900 44px/1 var(--sans);font-style:normal;color:#a8d26a}
+.ln b{font:800 23px/1.35 var(--sans);color:#fff}
+.ln span{font:400 17px/1.65 var(--sans);color:var(--dark-sub)}
+</style>
+<div class="sec"><b>03</b> / 기술과 문제 해결</div>
+<div class="h one">서버가 하는 일 <em>20가지</em></div>
+<p class="lead">오류는 한 곳에서 상태 코드로 바꿉니다 — 없음 404 · 로그인 필요 401 · 권한 없음 403 · 횟수 초과 429 · 입력 오류 400</p>
+<div class="wide" style="top:262px"><div class="tbl"><table>
+<tr><th style="width:110px">묶음</th><th style="width:110px">방식</th><th style="width:560px">주소</th><th>하는 일</th></tr><tr><td><b>상품</b></td><td><span class="tag get">GET</span></td><td><code>/api/sections · /api/sections/{key}</code></td><td>섹션 6개 · 섹션별 카드</td></tr><tr><td><b></b></td><td><span class="tag get">GET</span></td><td><code>/api/products?q= · /api/products/{id}</code></td><td>상품 검색 · 상세 (연관 상품 포함)</td></tr><tr><td><b>회원</b></td><td><span class="tag get">GET</span></td><td><code>/api/auth/check-id</code></td><td>아이디 중복 확인</td></tr><tr><td><b></b></td><td><span class="tag post">POST</span></td><td><code>/api/auth/signup · /login · /logout</code></td><td>가입 · 로그인(HttpOnly 쿠키 발급) · 로그아웃</td></tr><tr><td><b></b></td><td><span class="tag get">GET</span></td><td><code>/api/auth/me</code></td><td>출입증 확인 · 현재 역할</td></tr><tr><td><b>상담봇</b></td><td><span class="tag get">GET</span></td><td><code>/api/chat/status</code></td><td>상담봇 · 사진 검색 사용 가능 여부</td></tr><tr><td><b></b></td><td><span class="tag post">POST</span></td><td><code>/api/chat</code></td><td>벡터 RAG 상담 (10분 10회)</td></tr><tr><td><b></b></td><td><span class="tag post">POST</span></td><td><code>/api/vision</code></td><td>사진 → 같은 상품 · 물체 · 추천 (10분 6회)</td></tr><tr><td><b>관리자</b></td><td><span class="tag get">GET</span></td><td><code>/api/admin/status · /products · /logs</code></td><td>설정 · 상품 목록(검색 · 5개씩) · 기록</td></tr><tr><td><b></b></td><td><span class="tag post">POST</span></td><td><code>/api/admin/analyze · /api/admin/products</code></td><td>AI 분석(YOLO + Vision) · 상품 등록</td></tr><tr><td><b></b></td><td><span class="tag patch">PATCH</span></td><td><code>/api/admin/products/{id}</code></td><td>상품 수정 (바뀐 칸만)</td></tr><tr><td><b></b></td><td><span class="tag del">DELETE</span></td><td><code>/api/admin/products/{id}</code></td><td>상품 삭제 (메인 진열 원본 보호)</td></tr><tr><td><b>상태</b></td><td><span class="tag get">GET</span></td><td><code>/health</code></td><td>Render 상태 확인 · GitHub Actions 깨우기</td></tr>
+</table></div></div><div class="pn"><b>19</b> / 28</div></section></div>
+<!-- ================= 20 ================= -->
+<div class="frame"><section class="slide white" id="s20">
+<style>
+.tools{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.tool{background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.tool h3{padding:18px 24px;color:#fff;font:800 23px/1 var(--sans)}
+.tool ul{list-style:none;padding:16px 24px;display:flex;flex-direction:column;gap:13px}
+.tool li b{display:block;font:700 18px/1.3 var(--sans)}
+.tool li span{font:400 14.5px/1.45 var(--sans);color:var(--sub)}
+.arch{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:1fr 330px;gap:36px}
+.arch svg{width:100%;height:100%}
+.files{display:flex;flex-direction:column;gap:0}
+.files div{padding:14px 0;border-top:1px solid #cfd9c9}
+.files b{display:block;font:800 17px/1.3 var(--sans);color:var(--green)}
+.files code{font:500 14px/1.6 var(--mono);color:var(--ink)}
+.files span{display:block;font:400 14px/1.5 var(--sans);color:var(--sub)}
+.wide{position:absolute;left:88px;right:88px;top:250px;bottom:80px}
+.erd{position:absolute;left:88px;right:88px;top:240px;bottom:76px}
+.erd svg{width:100%;height:100%}
+.path{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:1fr 1fr;gap:16px}
+.ps{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:8px;position:relative}
+.ps i{font:800 14px/1 var(--mono);font-style:normal;color:var(--red)}
+.ps b{font:800 19px/1.3 var(--sans)}
+.ps span{font:400 14.5px/1.5 var(--sans);color:var(--sub)}
+.ps code{margin-top:auto;font:500 12.5px/1.45 var(--mono);color:var(--green);background:#eef4e6;border-radius:6px;padding:6px 8px}
+.ps.ai{border-color:#cdbdf0;background:#faf7ff}.ps.ai i{color:var(--violet)}
+.fix{position:absolute;left:88px;right:88px;top:228px;bottom:72px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto 1fr auto;gap:14px}
+.fc{background:var(--paper);border-radius:10px;padding:14px 18px;border-top:4px solid var(--line)}
+.fc small{display:block;font:700 13px/1 var(--sans);color:var(--sub);margin-bottom:8px}
+.fc p{font:500 16.5px/1.5 var(--sans)}
+.fc.s{border-top-color:#9db3c9}.fc.c{border-top-color:#d08a2c}.fc.r{border-top-color:#3f9d55}
+.ba{grid-column:1/4;display:grid;grid-template-columns:1fr 1fr;gap:16px;min-height:0}
+.bai{position:relative;border-radius:10px;overflow:hidden;background:#fff;border:2px solid var(--line);min-height:0}
+.bai img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.bai.cover img{object-fit:cover;object-position:top center}
+.bai.b{border-color:#f0b4ad}.bai.a{border-color:#b6d58f}
+.bai em{position:absolute;left:10px;top:10px;z-index:2;font:700 13px/1 var(--sans);font-style:normal;color:#fff;padding:7px 10px;border-radius:6px}
+.bai.b em{background:var(--red)}.bai.a em{background:#3f9d55}
+.bacode{grid-column:1/4;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.bacode pre{font-size:13.5px !important}
+.code.b{border-left:4px solid var(--red)}.code.a{border-left:4px solid #3f9d55}
+.tc2{position:absolute;left:88px;right:88px;top:250px;bottom:72px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.twocol{display:flex;flex-direction:column;gap:12px;min-height:0}
+.twocol h3{font:800 22px/1.3 var(--sans)}
+.twocol .row3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.twocol .fc p{font-size:15px}
+.ver{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:1fr 430px;gap:24px}
+.cause{display:flex;flex-direction:column;gap:12px}
+.cb{display:grid;grid-template-columns:150px 1fr 40px;align-items:center;gap:12px;font:600 16px/1.3 var(--sans)}
+.cb .bar{height:22px;border-radius:6px;background:var(--green-2)}
+.cb b{font:800 18px/1 var(--mono);color:var(--green)}
+.learn{position:absolute;left:88px;right:88px;top:270px;bottom:90px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.ln{background:var(--dark-2);border:1px solid var(--dark-line);border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:14px}
+.ln i{font:900 44px/1 var(--sans);font-style:normal;color:#a8d26a}
+.ln b{font:800 23px/1.35 var(--sans);color:#fff}
+.ln span{font:400 17px/1.65 var(--sans);color:var(--dark-sub)}
+</style>
+<div class="sec"><b>03</b> / 기술과 문제 해결</div>
+<div class="h one">ERD — <em>표 11개</em>의 관계</div>
+<div class="erd"><svg viewBox="0 0 1424 600" font-family="Noto Sans KR, sans-serif"><g stroke="#9cb38c" stroke-width="2" fill="none"><path d="M290 190 H560"/><path d="M165 74 V150"/><path d="M290 360 C420 360 450 260 560 260"/><path d="M455 420 C455 330 520 300 560 300"/><path d="M860 230 H1010"/><path d="M860 270 C940 270 940 380 1010 380"/><path d="M860 200 C940 200 940 110 1010 110"/></g><rect x="560" y="180" width="300" height="172" rx="10" fill="#fff" stroke="#c9d6bf"/><rect x="560" y="180" width="300" height="38" rx="10" fill="#3f7417"/><rect x="560" y="208" width="300" height="10" fill="#3f7417"/><text x="574" y="205" font-size="16" font-weight="800" fill="#fff">products</text><text x="574" y="244" font-size="13.5" fill="#3f7417" font-family="IBM Plex Mono, monospace">PK id</text><text x="574" y="268" font-size="13.5" fill="#3a463e" font-family="IBM Plex Mono, monospace">name · brand · image</text><text x="574" y="292" font-size="13.5" fill="#3a463e" font-family="IBM Plex Mono, monospace">price · discount_rate</text><text x="574" y="316" font-size="13.5" fill="#3a463e" font-family="IBM Plex Mono, monospace">category · storage</text><text x="574" y="340" font-size="13.5" fill="#3a463e" font-family="IBM Plex Mono, monospace">description · source</text><rect x="40" y="10" width="250" height="100" rx="10" fill="#fff" stroke="#c9d6bf"/><rect x="40" y="10" width="250" height="38" rx="10" fill="#2c5d9e"/><rect x="40" y="38" width="250" height="10" fill="#2c5d9e"/><text x="54" y="35" font-size="16" font-weight="800" fill="#fff">sections</text><text x="54" y="74" font-size="13.5" fill="#3f7417" font-family="IBM Plex Mono, monospace">PK key</text><text x="54" y="98" font-size="13.5" fill="#3a463e" font-family="IBM Plex Mono, monospace">title · sort_order</text><rect x="40" y="150" width="250" height="124" rx="10" fill="#fff" stroke="#c9d6bf"/><rect x="40" y="150" width="250" height="38" rx="10" fill="#2c5d9e"/><rect x="40" y="178" width="250" height="10" fill="#2c5d9e"/><text x="54" y="175" font-size="16" font-weight="800" fill="#fff">section_products</text><text x="54" y="214" font-size="13.5" fill="#3f7417" font-family="IBM Plex Mono, monospace">FK section_key</text><text x="54" y="238" font-size="13.5" fill="#3f7417" font-family="IBM Plex Mono, monospace">FK product_id</text><text x="54" y="262" font-size="13.5" fill="#3a463e" font-family="IBM Plex Mono, monospace">sort_order · image</text><rect x="40" y="330" width="250" height="100" rx="10" fill="#fff" stroke="#c9d6bf"/><rect x="40" y="330" width="250" height="38" rx="10" fill="#2c5d9e"/><rect x="40" y="358" width="250" height="10" fill="#2c5d9e"/><text x="54" y="355" font-size="16" font-weight="800" fill="#fff">product_details</text><text x="54" y="394" font-size="13.5" fill="#3f7417" font-family="IBM Plex Mono, monospace">PK FK product_id</text><text x="54" y="418" font-size="13.5" fill="#3a463e" font-family="IBM Plex Mono, monospace">detail (jsonb)</text><rect x="330" y="420" width="250" height="100" rx="10" fill="#fff" stroke="#c9d6bf"/><rect x="330" y="420" width="250" height="38" rx="10" fill="#2c5d9e"/><rect x="330" y="448" width="250" height="10" fill="#2c5d9e"/><text x="344" y="445" font-size="16" font-weight="800" fill="#fff">product_images</text><text x="344" y="484" font-size="13.5" fill="#3f7417" font-family="IBM Plex Mono, monospace">FK product_id</text><text x="344" y="508" font-size="13.5" fill="#3a463e" font-family="IBM Plex Mono, monospace">url · is_main</text><rect x="1010" y="10" width="330" height="148" rx="10" fill="#fff" stroke="#c9d6bf"/><rect x="1010" y="10" width="330" height="38" rx="10" fill="#6b46c1"/><rect x="1010" y="38" width="330" height="10" fill="#6b46c1"/><text x="1024" y="35" font-size="16" font-weight="800" fill="#fff">rag_chunks</text><text x="1024" y="74" font-size="13.5" fill="#3f7417" font-family="IBM Plex Mono, monospace">PK id</text><text x="1024" y="98" font-size="13.5" fill="#3a463e" font-family="IBM Plex Mono, monospace">source · title · content</text><text x="1024" y="122" font-size="13.5" fill="#3a463e" font-family="IBM Plex Mono, monospace">metadata.product_id</text><text x="1024" y="146" font-size="13.5" fill="#3a463e" font-family="IBM Plex Mono, monospace">embedding vector(1536)</text><rect x="1010" y="190" width="330" height="100" rx="10" fill="#fff" stroke="#c9d6bf"/><rect x="1010" y="190" width="330" height="38" rx="10" fill="#6b46c1"/><rect x="1010" y="218" width="330" height="10" fill="#6b46c1"/><text x="1024" y="215" font-size="16" font-weight="800" fill="#fff">product_photo_vectors</text><text x="1024" y="254" font-size="13.5" fill="#3f7417" font-family="IBM Plex Mono, monospace">PK FK product_id</text><text x="1024" y="278" font-size="13.5" fill="#3a463e" font-family="IBM Plex Mono, monospace">vector real[1280]</text><rect x="1010" y="320" width="330" height="124" rx="10" fill="#fff" stroke="#c9d6bf"/><rect x="1010" y="320" width="330" height="38" rx="10" fill="#6b46c1"/><rect x="1010" y="348" width="330" height="10" fill="#6b46c1"/><text x="1024" y="345" font-size="16" font-weight="800" fill="#fff">ai_analysis_logs</text><text x="1024" y="384" font-size="13.5" fill="#3f7417" font-family="IBM Plex Mono, monospace">PK id</text><text x="1024" y="408" font-size="13.5" fill="#3a463e" font-family="IBM Plex Mono, monospace">yolo · result (jsonb)</text><text x="1024" y="432" font-size="13.5" fill="#3f7417" font-family="IBM Plex Mono, monospace">FK product_id (set null)</text><rect x="620" y="420" width="300" height="100" rx="10" fill="#fff" stroke="#c9d6bf"/><rect x="620" y="420" width="300" height="38" rx="10" fill="#b7791f"/><rect x="620" y="448" width="300" height="10" fill="#b7791f"/><text x="634" y="445" font-size="16" font-weight="800" fill="#fff">admin_action_logs</text><text x="634" y="484" font-size="13.5" fill="#3a463e" font-family="IBM Plex Mono, monospace">action · product_id</text><text x="634" y="508" font-size="13.5" fill="#3a463e" font-family="IBM Plex Mono, monospace">detail · actor · ip</text><rect x="330" y="10" width="200" height="124" rx="10" fill="#fff" stroke="#c9d6bf"/><rect x="330" y="10" width="200" height="38" rx="10" fill="#b7791f"/><rect x="330" y="38" width="200" height="10" fill="#b7791f"/><text x="344" y="35" font-size="16" font-weight="800" fill="#fff">users</text><text x="344" y="74" font-size="13.5" fill="#3f7417" font-family="IBM Plex Mono, monospace">PK id · login_id</text><text x="344" y="98" font-size="13.5" fill="#3a463e" font-family="IBM Plex Mono, monospace">password_hash</text><text x="344" y="122" font-size="13.5" fill="#3a463e" font-family="IBM Plex Mono, monospace">role (user/admin)</text><rect x="1010" y="470" width="330" height="76" rx="10" fill="#fff" stroke="#c9d6bf"/><rect x="1010" y="470" width="330" height="38" rx="10" fill="#b7791f"/><rect x="1010" y="498" width="330" height="10" fill="#b7791f"/><text x="1024" y="495" font-size="16" font-weight="800" fill="#fff">rate_limit_hits</text><text x="1024" y="534" font-size="13.5" fill="#3a463e" font-family="IBM Plex Mono, monospace">bucket · key · created_at</text>
+<g font-size="13" fill="#56635a"><rect x="40" y="560" width="14" height="14" fill="#2c5d9e"/><text x="62" y="572">상품 · 화면</text>
+<rect x="160" y="560" width="14" height="14" fill="#6b46c1"/><text x="182" y="572">AI (RAG · 사진 · 분석)</text>
+<rect x="350" y="560" width="14" height="14" fill="#b7791f"/><text x="372" y="572">회원 · 기록 · 횟수 제한</text>
+<text x="600" y="572">모든 표 RLS 사용 · 서버(service_role)만 읽고 씀 · 상품을 지우면 상세 · 사진 · 특징이 함께 삭제(cascade)</text></g>
+</svg></div><div class="pn"><b>20</b> / 28</div></section></div>
+<!-- ================= 21 ================= -->
+<div class="frame"><section class="slide white" id="s21">
+<style>
+.tools{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.tool{background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.tool h3{padding:18px 24px;color:#fff;font:800 23px/1 var(--sans)}
+.tool ul{list-style:none;padding:16px 24px;display:flex;flex-direction:column;gap:13px}
+.tool li b{display:block;font:700 18px/1.3 var(--sans)}
+.tool li span{font:400 14.5px/1.45 var(--sans);color:var(--sub)}
+.arch{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:1fr 330px;gap:36px}
+.arch svg{width:100%;height:100%}
+.files{display:flex;flex-direction:column;gap:0}
+.files div{padding:14px 0;border-top:1px solid #cfd9c9}
+.files b{display:block;font:800 17px/1.3 var(--sans);color:var(--green)}
+.files code{font:500 14px/1.6 var(--mono);color:var(--ink)}
+.files span{display:block;font:400 14px/1.5 var(--sans);color:var(--sub)}
+.wide{position:absolute;left:88px;right:88px;top:250px;bottom:80px}
+.erd{position:absolute;left:88px;right:88px;top:240px;bottom:76px}
+.erd svg{width:100%;height:100%}
+.path{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:1fr 1fr;gap:16px}
+.ps{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:8px;position:relative}
+.ps i{font:800 14px/1 var(--mono);font-style:normal;color:var(--red)}
+.ps b{font:800 19px/1.3 var(--sans)}
+.ps span{font:400 14.5px/1.5 var(--sans);color:var(--sub)}
+.ps code{margin-top:auto;font:500 12.5px/1.45 var(--mono);color:var(--green);background:#eef4e6;border-radius:6px;padding:6px 8px}
+.ps.ai{border-color:#cdbdf0;background:#faf7ff}.ps.ai i{color:var(--violet)}
+.fix{position:absolute;left:88px;right:88px;top:228px;bottom:72px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto 1fr auto;gap:14px}
+.fc{background:var(--paper);border-radius:10px;padding:14px 18px;border-top:4px solid var(--line)}
+.fc small{display:block;font:700 13px/1 var(--sans);color:var(--sub);margin-bottom:8px}
+.fc p{font:500 16.5px/1.5 var(--sans)}
+.fc.s{border-top-color:#9db3c9}.fc.c{border-top-color:#d08a2c}.fc.r{border-top-color:#3f9d55}
+.ba{grid-column:1/4;display:grid;grid-template-columns:1fr 1fr;gap:16px;min-height:0}
+.bai{position:relative;border-radius:10px;overflow:hidden;background:#fff;border:2px solid var(--line);min-height:0}
+.bai img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.bai.cover img{object-fit:cover;object-position:top center}
+.bai.b{border-color:#f0b4ad}.bai.a{border-color:#b6d58f}
+.bai em{position:absolute;left:10px;top:10px;z-index:2;font:700 13px/1 var(--sans);font-style:normal;color:#fff;padding:7px 10px;border-radius:6px}
+.bai.b em{background:var(--red)}.bai.a em{background:#3f9d55}
+.bacode{grid-column:1/4;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.bacode pre{font-size:13.5px !important}
+.code.b{border-left:4px solid var(--red)}.code.a{border-left:4px solid #3f9d55}
+.tc2{position:absolute;left:88px;right:88px;top:250px;bottom:72px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.twocol{display:flex;flex-direction:column;gap:12px;min-height:0}
+.twocol h3{font:800 22px/1.3 var(--sans)}
+.twocol .row3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.twocol .fc p{font-size:15px}
+.ver{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:1fr 430px;gap:24px}
+.cause{display:flex;flex-direction:column;gap:12px}
+.cb{display:grid;grid-template-columns:150px 1fr 40px;align-items:center;gap:12px;font:600 16px/1.3 var(--sans)}
+.cb .bar{height:22px;border-radius:6px;background:var(--green-2)}
+.cb b{font:800 18px/1 var(--mono);color:var(--green)}
+.learn{position:absolute;left:88px;right:88px;top:270px;bottom:90px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.ln{background:var(--dark-2);border:1px solid var(--dark-line);border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:14px}
+.ln i{font:900 44px/1 var(--sans);font-style:normal;color:#a8d26a}
+.ln b{font:800 23px/1.35 var(--sans);color:#fff}
+.ln span{font:400 17px/1.65 var(--sans);color:var(--dark-sub)}
+</style>
+<div class="sec"><b>03</b> / 기술과 문제 해결</div>
+<div class="h">"📷 사진 검색"을 누르면,<br><em>사진 한 장이 지나가는 길</em></div>
+<div class="path">
+  <div class="ps"><i>1 · 화면</i><b>사진 줄이기</b><span>긴 쪽 640px JPEG로 줄여 전송량 · 서버 부담 감소</span><code>js/chat.js · shrink()</code></div>
+  <div class="ps"><i>2 · 서버</i><b>횟수 확인</b><span>방문자 주소로 10분 6회 · 하루 200회 · DB에 기록</span><code>rate_limit_hit() RPC</code></div>
+  <div class="ps"><i>3 · 서버</i><b>사진 검사</b><span>2MB · 2,500만 화소 이하 · 실제 이미지인지 · 회전 정보 반영</span><code>vision_service.decode()</code></div>
+  <div class="ps ai"><i>4 · YOLO 분류</i><b>같은 상품 찾기</b><span>특징 1280개 → 상품 30개와 코사인 비교 · 0.75 이상</span><code>match_product()</code></div>
+  <div class="ps ai"><i>5 · YOLO 탐지</i><b>물체 찾기</b><span>320px 입력 · 점수 0.25 이상 · NMS · 위치는 비율(0~1)</span><code>detect()</code></div>
+  <div class="ps ai"><i>6 · RAG</i><b>추천 상품</b><span>이름 검색 → 모자라면 벡터 검색 · 1등과 비슷한 것만</span><code>_recommend() · rag_service.search()</code></div>
+  <div class="ps"><i>7 · 서버</i><b>응답</b><span>안내 문장 · 찾은 물체 · 같은 상품 · 추천 상품 (사진은 저장 안 함)</span><code>VisionResponse</code></div>
+  <div class="ps"><i>8 · 화면</i><b>결과 그리기</b><span>사진 위 네모 · "같은 상품 96%" 카드 · 상세로 이동</span><code>js/chat.js · photoResult()</code></div>
+</div><div class="pn"><b>21</b> / 28</div></section></div>
+<!-- ================= 22 ================= -->
+<div class="frame"><section class="slide white" id="s22">
+<style>
+.tools{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.tool{background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.tool h3{padding:18px 24px;color:#fff;font:800 23px/1 var(--sans)}
+.tool ul{list-style:none;padding:16px 24px;display:flex;flex-direction:column;gap:13px}
+.tool li b{display:block;font:700 18px/1.3 var(--sans)}
+.tool li span{font:400 14.5px/1.45 var(--sans);color:var(--sub)}
+.arch{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:1fr 330px;gap:36px}
+.arch svg{width:100%;height:100%}
+.files{display:flex;flex-direction:column;gap:0}
+.files div{padding:14px 0;border-top:1px solid #cfd9c9}
+.files b{display:block;font:800 17px/1.3 var(--sans);color:var(--green)}
+.files code{font:500 14px/1.6 var(--mono);color:var(--ink)}
+.files span{display:block;font:400 14px/1.5 var(--sans);color:var(--sub)}
+.wide{position:absolute;left:88px;right:88px;top:250px;bottom:80px}
+.erd{position:absolute;left:88px;right:88px;top:240px;bottom:76px}
+.erd svg{width:100%;height:100%}
+.path{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:1fr 1fr;gap:16px}
+.ps{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:8px;position:relative}
+.ps i{font:800 14px/1 var(--mono);font-style:normal;color:var(--red)}
+.ps b{font:800 19px/1.3 var(--sans)}
+.ps span{font:400 14.5px/1.5 var(--sans);color:var(--sub)}
+.ps code{margin-top:auto;font:500 12.5px/1.45 var(--mono);color:var(--green);background:#eef4e6;border-radius:6px;padding:6px 8px}
+.ps.ai{border-color:#cdbdf0;background:#faf7ff}.ps.ai i{color:var(--violet)}
+.fix{position:absolute;left:88px;right:88px;top:228px;bottom:72px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto 1fr auto;gap:14px}
+.fc{background:var(--paper);border-radius:10px;padding:14px 18px;border-top:4px solid var(--line)}
+.fc small{display:block;font:700 13px/1 var(--sans);color:var(--sub);margin-bottom:8px}
+.fc p{font:500 16.5px/1.5 var(--sans)}
+.fc.s{border-top-color:#9db3c9}.fc.c{border-top-color:#d08a2c}.fc.r{border-top-color:#3f9d55}
+.ba{grid-column:1/4;display:grid;grid-template-columns:1fr 1fr;gap:16px;min-height:0}
+.bai{position:relative;border-radius:10px;overflow:hidden;background:#fff;border:2px solid var(--line);min-height:0}
+.bai img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.bai.cover img{object-fit:cover;object-position:top center}
+.bai.b{border-color:#f0b4ad}.bai.a{border-color:#b6d58f}
+.bai em{position:absolute;left:10px;top:10px;z-index:2;font:700 13px/1 var(--sans);font-style:normal;color:#fff;padding:7px 10px;border-radius:6px}
+.bai.b em{background:var(--red)}.bai.a em{background:#3f9d55}
+.bacode{grid-column:1/4;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.bacode pre{font-size:13.5px !important}
+.code.b{border-left:4px solid var(--red)}.code.a{border-left:4px solid #3f9d55}
+.tc2{position:absolute;left:88px;right:88px;top:250px;bottom:72px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.twocol{display:flex;flex-direction:column;gap:12px;min-height:0}
+.twocol h3{font:800 22px/1.3 var(--sans)}
+.twocol .row3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.twocol .fc p{font-size:15px}
+.ver{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:1fr 430px;gap:24px}
+.cause{display:flex;flex-direction:column;gap:12px}
+.cb{display:grid;grid-template-columns:150px 1fr 40px;align-items:center;gap:12px;font:600 16px/1.3 var(--sans)}
+.cb .bar{height:22px;border-radius:6px;background:var(--green-2)}
+.cb b{font:800 18px/1 var(--mono);color:var(--green)}
+.learn{position:absolute;left:88px;right:88px;top:270px;bottom:90px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.ln{background:var(--dark-2);border:1px solid var(--dark-line);border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:14px}
+.ln i{font:900 44px/1 var(--sans);font-style:normal;color:#a8d26a}
+.ln b{font:800 23px/1.35 var(--sans);color:#fff}
+.ln span{font:400 17px/1.65 var(--sans);color:var(--dark-sub)}
+</style>
+<div class="sec"><b>03</b> / 기술과 문제 해결</div>
+<div class="h one">실제로 겪은 오류, <em>고치기 전과 후</em></div>
+<div style="margin-top:16px;font:700 17px/1 var(--sans);display:flex;gap:28px"><b style="color:var(--green);border-bottom:3px solid var(--green);padding-bottom:6px">01 상담봇 CSS</b> <span style="color:var(--sub)">02 DB 연결</span> <span style="color:var(--sub)">03 hidden</span> <span style="color:var(--sub)">04 말풍선</span></div>
+<div class="fix">
+  <div class="fc s"><small>증상</small><p>상담봇 로봇 아이콘이 화면을 덮을 만큼 크게 보임</p></div>
+  <div class="fc c"><small>원인</small><p>브라우저에 남은 예전 CSS · 스타일이 적용되기 전에 버튼을 그림</p></div>
+  <div class="fc r"><small>해결</small><p>chat.css 분리 · 불러온 뒤에만 그림 · 버전(?v=) · no-cache 헤더</p></div>
+  <div class="ba"><div class="bai b cover"><em>✕ 고치기 전 (재현)</em><img src="img/fix_robot_before.jpg" alt=""></div>
+                  <div class="bai a"><em>✓ 고친 후</em><img src="img/fix_robot_after.jpg" alt=""></div></div>
+  <div class="bacode"><div class="code b"><pre><span class="c">// js/chat.js</span>
+<span class="k">async</span> <span class="k">function</span> init() {
+  …
+  build(base);   <span class="c">// 스타일 적용 여부와 상관없이 그림</span>
+}</pre></div><div class="code a"><pre><span class="k">if</span> (!(<span class="k">await</span> loadStyles())) <span class="k">return</span>;   <span class="c">// chat.css 를 불러온 뒤에만</span>
+build(base, !!status.vision);
+link.onerror = () =&gt; resolve(<span class="k">false</span>);   <span class="c">// 못 불러오면 버튼도 안 만듦</span></pre></div></div>
+</div><div class="pn"><b>22</b> / 28</div></section></div>
+<!-- ================= 23 ================= -->
+<div class="frame"><section class="slide white" id="s23">
+<style>
+.tools{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.tool{background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.tool h3{padding:18px 24px;color:#fff;font:800 23px/1 var(--sans)}
+.tool ul{list-style:none;padding:16px 24px;display:flex;flex-direction:column;gap:13px}
+.tool li b{display:block;font:700 18px/1.3 var(--sans)}
+.tool li span{font:400 14.5px/1.45 var(--sans);color:var(--sub)}
+.arch{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:1fr 330px;gap:36px}
+.arch svg{width:100%;height:100%}
+.files{display:flex;flex-direction:column;gap:0}
+.files div{padding:14px 0;border-top:1px solid #cfd9c9}
+.files b{display:block;font:800 17px/1.3 var(--sans);color:var(--green)}
+.files code{font:500 14px/1.6 var(--mono);color:var(--ink)}
+.files span{display:block;font:400 14px/1.5 var(--sans);color:var(--sub)}
+.wide{position:absolute;left:88px;right:88px;top:250px;bottom:80px}
+.erd{position:absolute;left:88px;right:88px;top:240px;bottom:76px}
+.erd svg{width:100%;height:100%}
+.path{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:1fr 1fr;gap:16px}
+.ps{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:8px;position:relative}
+.ps i{font:800 14px/1 var(--mono);font-style:normal;color:var(--red)}
+.ps b{font:800 19px/1.3 var(--sans)}
+.ps span{font:400 14.5px/1.5 var(--sans);color:var(--sub)}
+.ps code{margin-top:auto;font:500 12.5px/1.45 var(--mono);color:var(--green);background:#eef4e6;border-radius:6px;padding:6px 8px}
+.ps.ai{border-color:#cdbdf0;background:#faf7ff}.ps.ai i{color:var(--violet)}
+.fix{position:absolute;left:88px;right:88px;top:228px;bottom:72px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto 1fr auto;gap:14px}
+.fc{background:var(--paper);border-radius:10px;padding:14px 18px;border-top:4px solid var(--line)}
+.fc small{display:block;font:700 13px/1 var(--sans);color:var(--sub);margin-bottom:8px}
+.fc p{font:500 16.5px/1.5 var(--sans)}
+.fc.s{border-top-color:#9db3c9}.fc.c{border-top-color:#d08a2c}.fc.r{border-top-color:#3f9d55}
+.ba{grid-column:1/4;display:grid;grid-template-columns:1fr 1fr;gap:16px;min-height:0}
+.bai{position:relative;border-radius:10px;overflow:hidden;background:#fff;border:2px solid var(--line);min-height:0}
+.bai img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.bai.cover img{object-fit:cover;object-position:top center}
+.bai.b{border-color:#f0b4ad}.bai.a{border-color:#b6d58f}
+.bai em{position:absolute;left:10px;top:10px;z-index:2;font:700 13px/1 var(--sans);font-style:normal;color:#fff;padding:7px 10px;border-radius:6px}
+.bai.b em{background:var(--red)}.bai.a em{background:#3f9d55}
+.bacode{grid-column:1/4;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.bacode pre{font-size:13.5px !important}
+.code.b{border-left:4px solid var(--red)}.code.a{border-left:4px solid #3f9d55}
+.tc2{position:absolute;left:88px;right:88px;top:250px;bottom:72px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.twocol{display:flex;flex-direction:column;gap:12px;min-height:0}
+.twocol h3{font:800 22px/1.3 var(--sans)}
+.twocol .row3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.twocol .fc p{font-size:15px}
+.ver{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:1fr 430px;gap:24px}
+.cause{display:flex;flex-direction:column;gap:12px}
+.cb{display:grid;grid-template-columns:150px 1fr 40px;align-items:center;gap:12px;font:600 16px/1.3 var(--sans)}
+.cb .bar{height:22px;border-radius:6px;background:var(--green-2)}
+.cb b{font:800 18px/1 var(--mono);color:var(--green)}
+.learn{position:absolute;left:88px;right:88px;top:270px;bottom:90px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.ln{background:var(--dark-2);border:1px solid var(--dark-line);border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:14px}
+.ln i{font:900 44px/1 var(--sans);font-style:normal;color:#a8d26a}
+.ln b{font:800 23px/1.35 var(--sans);color:#fff}
+.ln span{font:400 17px/1.65 var(--sans);color:var(--dark-sub)}
+</style>
+<div class="sec"><b>03</b> / 기술과 문제 해결</div>
+<div class="h one">실제로 겪은 오류, <em>고치기 전과 후</em></div>
+<div style="margin-top:16px;font:700 17px/1 var(--sans);display:flex;gap:28px"><span style="color:var(--sub)">01 상담봇 CSS</span> <b style="color:var(--green);border-bottom:3px solid var(--green);padding-bottom:6px">02 DB 연결</b> <span style="color:var(--sub)">03 hidden</span> <span style="color:var(--sub)">04 말풍선</span></div>
+<div class="fix">
+  <div class="fc s"><small>증상</small><p>메인의 모든 상품이 복숭아 상세로 연결됨</p></div>
+  <div class="fc c"><small>원인</small><p>섹션 6개를 동시에 요청할 때 DB 연결 1개를 여러 스레드가 공유해 통신이 엉킴</p></div>
+  <div class="fc r"><small>해결</small><p>스레드마다 연결을 따로 · 20번 연속 열기 실패 0</p></div>
+  <div class="ba"><div class="bai b"><em>✕ 고치기 전 · DB 일시 중지도 원인</em><img src="img/fix_supabase_paused.png" alt=""></div>
+                  <div class="bai a"><em>✓ 고친 후</em><img src="shots/cards.jpg" alt=""></div></div>
+  <div class="bacode"><div class="code b"><pre><span class="c"># backend/db.py</span>
+@lru_cache(maxsize=1)
+<span class="k">def</span> get_client() -&gt; Client:
+    <span class="k">return</span> create_client(URL, KEY)   <span class="c"># 연결 1개 공유</span>
+<span class="c"># httpx.ReadError: [WinError 10035]</span></pre></div><div class="code a"><pre>_local = threading.local()
 
-<!-- ================= 11 Supabase ================= -->
-<div class="frame"><section class="slide" id="s11">
-  <div class="eyebrow">Backend · Supabase</div>
-  <h2 class="title">Supabase 데이터 모델</h2>
-  <p class="subtitle">상품과 섹션을 분리하고 연결 표를 두어 중복 상품을 한 곳에서 관리합니다.</p>
-  <div class="rule"></div>
-  <div class="body" style="display:grid;grid-template-columns:1fr 600px;grid-template-rows:1fr 170px;gap:20px">
-    <div class="tbl" style="grid-row:1/3">
-      <table style="height:100%">
-        <tr><th>표</th><th>행</th><th>저장 내용</th></tr>
-        <tr><td>products</td><td>30</td><td>상품 이름 · 브랜드 · 가격 · 할인율 · 이미지 · 평점 · 후기 수</td></tr>
-        <tr><td>sections</td><td>6</td><td>섹션 키 · 제목 · 표시 순서</td></tr>
-        <tr><td>section_products</td><td>33</td><td>섹션별 상품 연결과 카드 표시 순서</td></tr>
-        <tr><td>product_details</td><td>30</td><td>갤러리 · 소개 · 정보 탭 · 상세 콘텐츠 JSON</td></tr>
-      </table>
-    </div>
-    <pre style="grid-row:1;font-size:14.5px;line-height:1.55"><span class="c"># 관계</span>
-<span class="k">sections</span>
-   1
-   │
-   N
-<span class="k">section_products</span>  N ─── 1  <span class="k">products</span>
-                                    │
-                                    1
-                                    │
-                                    1
-                             <span class="k">product_details</span>
+<span class="k">def</span> get_client() -&gt; Client:
+    client = getattr(_local, <span class="s">&quot;client&quot;</span>, <span class="k">None</span>)
+    <span class="k">if</span> client <span class="k">is</span> <span class="k">None</span>:
+        client = _local.client = create_client(URL, KEY)
+    <span class="k">return</span> client</pre></div></div>
+</div><div class="pn"><b>23</b> / 28</div></section></div>
+<!-- ================= 24 ================= -->
+<div class="frame"><section class="slide white" id="s24">
+<style>
+.tools{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.tool{background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.tool h3{padding:18px 24px;color:#fff;font:800 23px/1 var(--sans)}
+.tool ul{list-style:none;padding:16px 24px;display:flex;flex-direction:column;gap:13px}
+.tool li b{display:block;font:700 18px/1.3 var(--sans)}
+.tool li span{font:400 14.5px/1.45 var(--sans);color:var(--sub)}
+.arch{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:1fr 330px;gap:36px}
+.arch svg{width:100%;height:100%}
+.files{display:flex;flex-direction:column;gap:0}
+.files div{padding:14px 0;border-top:1px solid #cfd9c9}
+.files b{display:block;font:800 17px/1.3 var(--sans);color:var(--green)}
+.files code{font:500 14px/1.6 var(--mono);color:var(--ink)}
+.files span{display:block;font:400 14px/1.5 var(--sans);color:var(--sub)}
+.wide{position:absolute;left:88px;right:88px;top:250px;bottom:80px}
+.erd{position:absolute;left:88px;right:88px;top:240px;bottom:76px}
+.erd svg{width:100%;height:100%}
+.path{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:1fr 1fr;gap:16px}
+.ps{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:8px;position:relative}
+.ps i{font:800 14px/1 var(--mono);font-style:normal;color:var(--red)}
+.ps b{font:800 19px/1.3 var(--sans)}
+.ps span{font:400 14.5px/1.5 var(--sans);color:var(--sub)}
+.ps code{margin-top:auto;font:500 12.5px/1.45 var(--mono);color:var(--green);background:#eef4e6;border-radius:6px;padding:6px 8px}
+.ps.ai{border-color:#cdbdf0;background:#faf7ff}.ps.ai i{color:var(--violet)}
+.fix{position:absolute;left:88px;right:88px;top:228px;bottom:72px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto 1fr auto;gap:14px}
+.fc{background:var(--paper);border-radius:10px;padding:14px 18px;border-top:4px solid var(--line)}
+.fc small{display:block;font:700 13px/1 var(--sans);color:var(--sub);margin-bottom:8px}
+.fc p{font:500 16.5px/1.5 var(--sans)}
+.fc.s{border-top-color:#9db3c9}.fc.c{border-top-color:#d08a2c}.fc.r{border-top-color:#3f9d55}
+.ba{grid-column:1/4;display:grid;grid-template-columns:1fr 1fr;gap:16px;min-height:0}
+.bai{position:relative;border-radius:10px;overflow:hidden;background:#fff;border:2px solid var(--line);min-height:0}
+.bai img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.bai.cover img{object-fit:cover;object-position:top center}
+.bai.b{border-color:#f0b4ad}.bai.a{border-color:#b6d58f}
+.bai em{position:absolute;left:10px;top:10px;z-index:2;font:700 13px/1 var(--sans);font-style:normal;color:#fff;padding:7px 10px;border-radius:6px}
+.bai.b em{background:var(--red)}.bai.a em{background:#3f9d55}
+.bacode{grid-column:1/4;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.bacode pre{font-size:13.5px !important}
+.code.b{border-left:4px solid var(--red)}.code.a{border-left:4px solid #3f9d55}
+.tc2{position:absolute;left:88px;right:88px;top:250px;bottom:72px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.twocol{display:flex;flex-direction:column;gap:12px;min-height:0}
+.twocol h3{font:800 22px/1.3 var(--sans)}
+.twocol .row3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.twocol .fc p{font-size:15px}
+.ver{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:1fr 430px;gap:24px}
+.cause{display:flex;flex-direction:column;gap:12px}
+.cb{display:grid;grid-template-columns:150px 1fr 40px;align-items:center;gap:12px;font:600 16px/1.3 var(--sans)}
+.cb .bar{height:22px;border-radius:6px;background:var(--green-2)}
+.cb b{font:800 18px/1 var(--mono);color:var(--green)}
+.learn{position:absolute;left:88px;right:88px;top:270px;bottom:90px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.ln{background:var(--dark-2);border:1px solid var(--dark-line);border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:14px}
+.ln i{font:900 44px/1 var(--sans);font-style:normal;color:#a8d26a}
+.ln b{font:800 23px/1.35 var(--sans);color:#fff}
+.ln span{font:400 17px/1.65 var(--sans);color:var(--dark-sub)}
+</style>
+<div class="sec"><b>03</b> / 기술과 문제 해결</div>
+<div class="h one">실제로 겪은 오류, <em>고치기 전과 후</em></div>
+<div style="margin-top:16px;font:700 17px/1 var(--sans);display:flex;gap:28px"><span style="color:var(--sub)">01 상담봇 CSS</span> <span style="color:var(--sub)">02 DB 연결</span> <b style="color:var(--green);border-bottom:3px solid var(--green);padding-bottom:6px">03 hidden</b> <span style="color:var(--sub)">04 말풍선</span></div>
+<div class="fix">
+  <div class="fc s"><small>증상</small><p>관리자 사진 칸에 깨진 이미지와 글자가 겹쳐 보임</p></div>
+  <div class="fc c"><small>원인</small><p>hidden 속성은 기본 스타일이라 직접 쓴 display 규칙이 우선순위에서 이김</p></div>
+  <div class="fc r"><small>해결</small><p>[hidden] 규칙을 맨 앞에 두어 확실히 숨김</p></div>
+  <div class="ba"><div class="bai b"><em>✕ 고치기 전 (재현)</em><img src="img/fix_admin_before.jpg" alt=""></div>
+                  <div class="bai a"><em>✓ 고친 후</em><img src="img/fix_admin_after.jpg" alt=""></div></div>
+  <div class="bacode"><div class="code b"><pre>/* css/admin.css */
+.photo-figure {
+  display: inline-block;   /* hidden 을 덮어씀 */
+}</pre></div><div class="code a"><pre>[hidden] { display: none !important; }
 
-<span class="c">같은 상품이 여러 섹션에 나와도
-products에는 한 번만 저장</span></pre>
-    <div class="note" style="display:flex;flex-direction:column;justify-content:center"><small>Data migration</small>기존 JSON 7개를 읽어 중복 상품을 합치고, 가격 문자열은 숫자로 변환했습니다. <code class="i">verify_seed.py</code>로 원본과 DB 데이터를 비교합니다.</div>
+/* display 를 정한 요소도 hidden 이면 숨김 */</pre></div></div>
+</div><div class="pn"><b>24</b> / 28</div></section></div>
+<!-- ================= 25 ================= -->
+<div class="frame"><section class="slide white" id="s25">
+<style>
+.tools{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.tool{background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.tool h3{padding:18px 24px;color:#fff;font:800 23px/1 var(--sans)}
+.tool ul{list-style:none;padding:16px 24px;display:flex;flex-direction:column;gap:13px}
+.tool li b{display:block;font:700 18px/1.3 var(--sans)}
+.tool li span{font:400 14.5px/1.45 var(--sans);color:var(--sub)}
+.arch{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:1fr 330px;gap:36px}
+.arch svg{width:100%;height:100%}
+.files{display:flex;flex-direction:column;gap:0}
+.files div{padding:14px 0;border-top:1px solid #cfd9c9}
+.files b{display:block;font:800 17px/1.3 var(--sans);color:var(--green)}
+.files code{font:500 14px/1.6 var(--mono);color:var(--ink)}
+.files span{display:block;font:400 14px/1.5 var(--sans);color:var(--sub)}
+.wide{position:absolute;left:88px;right:88px;top:250px;bottom:80px}
+.erd{position:absolute;left:88px;right:88px;top:240px;bottom:76px}
+.erd svg{width:100%;height:100%}
+.path{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:1fr 1fr;gap:16px}
+.ps{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:8px;position:relative}
+.ps i{font:800 14px/1 var(--mono);font-style:normal;color:var(--red)}
+.ps b{font:800 19px/1.3 var(--sans)}
+.ps span{font:400 14.5px/1.5 var(--sans);color:var(--sub)}
+.ps code{margin-top:auto;font:500 12.5px/1.45 var(--mono);color:var(--green);background:#eef4e6;border-radius:6px;padding:6px 8px}
+.ps.ai{border-color:#cdbdf0;background:#faf7ff}.ps.ai i{color:var(--violet)}
+.fix{position:absolute;left:88px;right:88px;top:228px;bottom:72px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto 1fr auto;gap:14px}
+.fc{background:var(--paper);border-radius:10px;padding:14px 18px;border-top:4px solid var(--line)}
+.fc small{display:block;font:700 13px/1 var(--sans);color:var(--sub);margin-bottom:8px}
+.fc p{font:500 16.5px/1.5 var(--sans)}
+.fc.s{border-top-color:#9db3c9}.fc.c{border-top-color:#d08a2c}.fc.r{border-top-color:#3f9d55}
+.ba{grid-column:1/4;display:grid;grid-template-columns:1fr 1fr;gap:16px;min-height:0}
+.bai{position:relative;border-radius:10px;overflow:hidden;background:#fff;border:2px solid var(--line);min-height:0}
+.bai img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.bai.cover img{object-fit:cover;object-position:top center}
+.bai.b{border-color:#f0b4ad}.bai.a{border-color:#b6d58f}
+.bai em{position:absolute;left:10px;top:10px;z-index:2;font:700 13px/1 var(--sans);font-style:normal;color:#fff;padding:7px 10px;border-radius:6px}
+.bai.b em{background:var(--red)}.bai.a em{background:#3f9d55}
+.bacode{grid-column:1/4;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.bacode pre{font-size:13.5px !important}
+.code.b{border-left:4px solid var(--red)}.code.a{border-left:4px solid #3f9d55}
+.tc2{position:absolute;left:88px;right:88px;top:250px;bottom:72px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.twocol{display:flex;flex-direction:column;gap:12px;min-height:0}
+.twocol h3{font:800 22px/1.3 var(--sans)}
+.twocol .row3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.twocol .fc p{font-size:15px}
+.ver{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:1fr 430px;gap:24px}
+.cause{display:flex;flex-direction:column;gap:12px}
+.cb{display:grid;grid-template-columns:150px 1fr 40px;align-items:center;gap:12px;font:600 16px/1.3 var(--sans)}
+.cb .bar{height:22px;border-radius:6px;background:var(--green-2)}
+.cb b{font:800 18px/1 var(--mono);color:var(--green)}
+.learn{position:absolute;left:88px;right:88px;top:270px;bottom:90px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.ln{background:var(--dark-2);border:1px solid var(--dark-line);border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:14px}
+.ln i{font:900 44px/1 var(--sans);font-style:normal;color:#a8d26a}
+.ln b{font:800 23px/1.35 var(--sans);color:#fff}
+.ln span{font:400 17px/1.65 var(--sans);color:var(--dark-sub)}
+</style>
+<div class="sec"><b>03</b> / 기술과 문제 해결</div>
+<div class="h one">실제로 겪은 오류, <em>고치기 전과 후</em></div>
+<div style="margin-top:16px;font:700 17px/1 var(--sans);display:flex;gap:28px"><span style="color:var(--sub)">01 상담봇 CSS</span> <span style="color:var(--sub)">02 DB 연결</span> <span style="color:var(--sub)">03 hidden</span> <b style="color:var(--green);border-bottom:3px solid var(--green);padding-bottom:6px">04 말풍선</b></div>
+<div class="fix">
+  <div class="fc s"><small>증상</small><p>로그인 말풍선이 '카카오로 계속하기' 글자를 가림</p></div>
+  <div class="fc c"><small>원인</small><p>말풍선을 absolute로 띄우고 여백을 숫자로 맞춤 → 화면 폭마다 높이가 달라 겹침</p></div>
+  <div class="fc r"><small>해결</small><p>문서 흐름에 넣어 버튼 위에 차례로 · 1440 · 390 · 340px 겹침 0</p></div>
+  <div class="ba"><div class="bai b"><em>✕ 고치기 전</em><img src="img/fix_bubble_before.png" alt=""></div>
+                  <div class="bai a"><em>✓ 고친 후</em><img src="img/fix_bubble_after.png" alt=""></div></div>
+  <div class="bacode"><div class="code b"><pre>/* css/login.css */
+.bubble {
+  position: absolute; top: 0; left: 50%;
+  transform: translateX(-50%);
+}</pre></div><div class="code a"><pre>.easy-buttons { display: grid; gap: 10px; }
+.bubble {
+  position: relative; justify-self: center;
+  margin: 0 0 4px;
+}</pre></div></div>
+</div><div class="pn"><b>25</b> / 28</div></section></div>
+<!-- ================= 26 ================= -->
+<div class="frame"><section class="slide white" id="s26">
+<style>
+.tools{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.tool{background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.tool h3{padding:18px 24px;color:#fff;font:800 23px/1 var(--sans)}
+.tool ul{list-style:none;padding:16px 24px;display:flex;flex-direction:column;gap:13px}
+.tool li b{display:block;font:700 18px/1.3 var(--sans)}
+.tool li span{font:400 14.5px/1.45 var(--sans);color:var(--sub)}
+.arch{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:1fr 330px;gap:36px}
+.arch svg{width:100%;height:100%}
+.files{display:flex;flex-direction:column;gap:0}
+.files div{padding:14px 0;border-top:1px solid #cfd9c9}
+.files b{display:block;font:800 17px/1.3 var(--sans);color:var(--green)}
+.files code{font:500 14px/1.6 var(--mono);color:var(--ink)}
+.files span{display:block;font:400 14px/1.5 var(--sans);color:var(--sub)}
+.wide{position:absolute;left:88px;right:88px;top:250px;bottom:80px}
+.erd{position:absolute;left:88px;right:88px;top:240px;bottom:76px}
+.erd svg{width:100%;height:100%}
+.path{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:1fr 1fr;gap:16px}
+.ps{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:8px;position:relative}
+.ps i{font:800 14px/1 var(--mono);font-style:normal;color:var(--red)}
+.ps b{font:800 19px/1.3 var(--sans)}
+.ps span{font:400 14.5px/1.5 var(--sans);color:var(--sub)}
+.ps code{margin-top:auto;font:500 12.5px/1.45 var(--mono);color:var(--green);background:#eef4e6;border-radius:6px;padding:6px 8px}
+.ps.ai{border-color:#cdbdf0;background:#faf7ff}.ps.ai i{color:var(--violet)}
+.fix{position:absolute;left:88px;right:88px;top:228px;bottom:72px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto 1fr auto;gap:14px}
+.fc{background:var(--paper);border-radius:10px;padding:14px 18px;border-top:4px solid var(--line)}
+.fc small{display:block;font:700 13px/1 var(--sans);color:var(--sub);margin-bottom:8px}
+.fc p{font:500 16.5px/1.5 var(--sans)}
+.fc.s{border-top-color:#9db3c9}.fc.c{border-top-color:#d08a2c}.fc.r{border-top-color:#3f9d55}
+.ba{grid-column:1/4;display:grid;grid-template-columns:1fr 1fr;gap:16px;min-height:0}
+.bai{position:relative;border-radius:10px;overflow:hidden;background:#fff;border:2px solid var(--line);min-height:0}
+.bai img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.bai.cover img{object-fit:cover;object-position:top center}
+.bai.b{border-color:#f0b4ad}.bai.a{border-color:#b6d58f}
+.bai em{position:absolute;left:10px;top:10px;z-index:2;font:700 13px/1 var(--sans);font-style:normal;color:#fff;padding:7px 10px;border-radius:6px}
+.bai.b em{background:var(--red)}.bai.a em{background:#3f9d55}
+.bacode{grid-column:1/4;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.bacode pre{font-size:13.5px !important}
+.code.b{border-left:4px solid var(--red)}.code.a{border-left:4px solid #3f9d55}
+.tc2{position:absolute;left:88px;right:88px;top:250px;bottom:72px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.twocol{display:flex;flex-direction:column;gap:12px;min-height:0}
+.twocol h3{font:800 22px/1.3 var(--sans)}
+.twocol .row3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.twocol .fc p{font-size:15px}
+.ver{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:1fr 430px;gap:24px}
+.cause{display:flex;flex-direction:column;gap:12px}
+.cb{display:grid;grid-template-columns:150px 1fr 40px;align-items:center;gap:12px;font:600 16px/1.3 var(--sans)}
+.cb .bar{height:22px;border-radius:6px;background:var(--green-2)}
+.cb b{font:800 18px/1 var(--mono);color:var(--green)}
+.learn{position:absolute;left:88px;right:88px;top:270px;bottom:90px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.ln{background:var(--dark-2);border:1px solid var(--dark-line);border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:14px}
+.ln i{font:900 44px/1 var(--sans);font-style:normal;color:#a8d26a}
+.ln b{font:800 23px/1.35 var(--sans);color:#fff}
+.ln span{font:400 17px/1.65 var(--sans);color:var(--dark-sub)}
+</style>
+<div class="sec"><b>03</b> / 기술과 문제 해결</div>
+<div class="h one">실제로 겪은 오류, <em>고치기 전과 후</em></div>
+<div class="tc2">
+  <div class="twocol"><h3>05 &nbsp;처음 쓰는 아이디도 "이미 사용 중"</h3>
+    <div class="row3"><div class="fc s"><small>증상</small><p>새 아이디도 사용 중</p></div><div class="fc c"><small>원인</small><p>503 오류 응답을 '사용 불가'로 읽음</p></div><div class="fc r"><small>해결</small><p>res.ok 먼저 확인</p></div></div>
+    <div class="code b"><pre style="font-size:13.5px"><span class="k">const</span> data = <span class="k">await</span> res.json();
+<span class="k">if</span> (data.available) { /* 사용 가능 */ }
+<span class="k">else</span> hint(<span class="s">&quot;이미 사용 중인 아이디예요.&quot;</span>);   <span class="c">// 503 도 여기로</span></pre></div>
+    <div class="code a"><pre style="font-size:13.5px"><span class="k">const</span> data = <span class="k">await</span> res.json().<span class="k">catch</span>(() =&gt; ({}));
+<span class="k">if</span> (!res.ok) <span class="k">throw</span> <span class="k">new</span> Error(data.detail);   <span class="c">// 오류는 따로 안내</span>
+<span class="k">if</span> (data.available) { /* 사용 가능 */ }</pre></div>
+    <p class="note" style="margin-top:4px">"값이 없다"와 "요청이 실패했다"를 구분해야 사용자가 원인을 오해하지 않습니다.</p>
   </div>
-  <div class="foot"><span><b>11</b> / 18</span><span>Backend · Supabase</span></div>
-</section></div>
-
-<!-- ================= 12 상담봇 ================= -->
-<div class="frame"><section class="slide" id="s12">
-  <div class="eyebrow">Backend · Shopping Assistant</div>
-  <h2 class="title">문서와 상품 정보를 근거로 답하는 상담봇</h2>
-  <p class="subtitle">배송 · 반품 · 적립금 · 상품 가격을 답하고, 확인되지 않은 내용은 지어내지 않도록 제한합니다.</p>
-  <div class="rule"></div>
-  <div class="body" style="display:grid;grid-template-columns:700px 1fr;grid-template-rows:1fr 170px;gap:20px">
-    <div class="shot" style="grid-row:1/3"><em><b>LIVE</b>왼쪽 아래 상담봇</em><img src="img/chat.jpg" alt="상담봇 대화 화면"></div>
-    <div class="tbl">
-      <table style="height:100%">
-        <tr><th>항목</th><th>구현</th></tr>
-        <tr><td>답변 근거</td><td>이용 안내 문서 · 상품 30개 · 서버가 계산한 가격과 순위</td></tr>
-        <tr><td>대화</td><td>이전 대화 6개까지 전달해 이어 묻기 지원</td></tr>
-        <tr><td>비용 제한</td><td>한 사람당 10분에 10회 · 사이트 전체 하루 300회</td></tr>
-        <tr><td>안전</td><td>질문 300자 · HTML 실행 차단 · 내부 오류 숨김</td></tr>
-        <tr><td>표시 조건</td><td>OpenAI 키가 있고 서버 상태가 정상일 때만 버튼 표시</td></tr>
-      </table>
-    </div>
-    <div class="note brown" style="display:flex;flex-direction:column;justify-content:center"><small>Accuracy</small>베스트 순위, 무료배송 상품, 반품 기준을 모델이 추측하지 않도록 서버가 먼저 계산해 전달했습니다. 질문 22개를 3회 연속 모두 통과했습니다.</div>
+  <div class="twocol"><h3>06 &nbsp;상담봇이 순위 · 반품 기한을 틀림</h3>
+    <div class="row3"><div class="fc s"><small>증상</small><p>베스트 1위 · 무료배송 · 반품 기한 오답</p></div><div class="fc c"><small>원인</small><p>긴 목록을 모델이 직접 세고 추측</p></div><div class="fc r"><small>해결</small><p>서버가 계산한 사실을 함께 전달</p></div></div>
+    <div class="tbl"><table>
+      <tr><th>질문</th><th>고치기 전</th><th>고친 후</th></tr>
+      <tr><td>베스트 1위는?</td><td style="color:var(--red)">다른 상품</td><td><b>생나또</b></td></tr>
+      <tr><td>무료배송 상품은?</td><td style="color:var(--red)">아닌 상품 섞임</td><td><b>참송이 · 굴비 · 한우 불고기</b></td></tr>
+      <tr><td>김자반 봉지 터짐</td><td style="color:var(--red)">"2일 이내"</td><td><b>상온 기준 3개월 / 30일</b></td></tr>
+    </table></div>
+    <div class="code a"><pre style="font-size:13px">rule = RULE_ROOM <span class="k">if</span> it[<span class="s">&quot;kind&quot;</span>] == <span class="s">&quot;상온 상품&quot;</span> <span class="k">else</span> RULE_COLD
+lines.append(f<span class="s">&quot;- {name}: 판매가 {price:,}원 · 베스트 {best}위 · {rule}&quot;</span>)
+<span class="c"># 규칙: [질문 속 상품 정보]가 있으면 반드시 그대로 따릅니다</span></pre></div>
   </div>
-  <div class="foot"><span><b>12</b> / 18</span><span>Backend · Shopping Assistant</span></div>
-</section></div>
-
-<!-- ================= 13 의사결정 ================= -->
-<div class="frame"><section class="slide" id="s13">
-  <div class="eyebrow">Decisions</div>
-  <h2 class="title">기술적 의사결정</h2>
-  <p class="subtitle">선택한 방식과 검토한 대안, 그렇게 정한 이유를 정리했습니다.</p>
-  <div class="rule"></div>
-  <div class="body tbl">
-    <table style="height:100%">
-      <tr><th style="width:190px">항목</th><th style="width:300px">채택</th><th style="width:300px">검토 대안</th><th>이유</th></tr>
-      <tr><td>데이터 저장</td><td>Supabase (PostgreSQL)</td><td>JSON만 유지</td><td>상품별 상세 30개와 검색, 상담봇이 같은 데이터를 사용해야 해서 DB로 옮겼습니다.</td></tr>
-      <tr><td>표 구조</td><td>상품 1줄 + 섹션 연결 표</td><td>섹션마다 상품 복사</td><td>여러 섹션에 나오는 상품도 가격과 설명을 한 곳에서 수정합니다.</td></tr>
-      <tr><td>서버</td><td>FastAPI</td><td>Node.js Express</td><td>입력과 응답 형태 검사, <code class="i">/docs</code> 자동 문서를 활용했습니다.</td></tr>
-      <tr><td>API 응답</td><td>기존 JSON과 같은 모양</td><td>새 응답 구조</td><td>프론트엔드 렌더링 코드를 거의 바꾸지 않고 연결했습니다.</td></tr>
-      <tr><td>서버 장애</td><td>JSON으로 자동 대체</td><td>오류 화면</td><td>GitHub Pages 정적 버전도 같은 상품 화면을 유지합니다.</td></tr>
-      <tr><td>상담봇 근거</td><td>문서 + 상품 + 계산 사실</td><td>모델 지식만 사용</td><td>순위와 가격처럼 틀리면 안 되는 내용을 서버가 먼저 계산합니다.</td></tr>
-      <tr><td>배포</td><td>Render 서버 하나</td><td>화면과 API 분리 배포</td><td>같은 주소에서 화면과 API가 동작해 CORS와 설정이 단순합니다.</td></tr>
-    </table>
-  </div>
-  <div class="foot"><span><b>13</b> / 18</span><span>Decisions</span></div>
-</section></div>
-
-<!-- ================= 14 프로젝트 구조 ================= -->
-<div class="frame"><section class="slide" id="s14">
-  <div class="eyebrow">Project Structure</div>
-  <h2 class="title">프로젝트 구조와 데이터 모델</h2>
-  <p class="subtitle">화면 파일과 서버 코드를 한 저장소에 두고, FastAPI가 정적 파일과 API를 함께 제공합니다.</p>
-  <div class="rule"></div>
-  <div class="body" style="display:grid;grid-template-columns:640px 1fr;gap:20px">
-    <pre style="font-size:16px;line-height:1.56">orga_whole_food/
-├─ index.html            <span class="c"># 메인 페이지</span>
-├─ sub.html              <span class="c"># 상품 상세 페이지</span>
-├─ css/                  <span class="c"># 공통 · 메인 · 상세 · 상담봇</span>
-├─ js/
-│  ├─ api.js             <span class="c"># API 주소 · JSON 대체</span>
-│  ├─ 01~06_fetch_*.js   <span class="c"># 섹션 카드 렌더링</span>
-│  ├─ sub.js             <span class="c"># 상세 렌더링</span>
-│  └─ chat.js            <span class="c"># 상담봇 화면</span>
-├─ json/ · img/          <span class="c"># 예비 데이터 · 이미지</span>
-├─ backend/
-│  ├─ app.py             <span class="c"># API · 화면 제공</span>
-│  ├─ services/          <span class="c"># 상품 · 상담봇 · 횟수 제한</span>
-│  ├─ rag_docs/          <span class="c"># 이용 안내 문서</span>
-│  ├─ sql/               <span class="c"># Supabase 표</span>
-│  └─ scripts/           <span class="c"># 이전 · 검증 도구</span>
-├─ requirements.txt      <span class="c"># 배포 의존성 연결</span>
-├─ render.yaml           <span class="c"># Render 설정</span>
-└─ README.md</pre>
-    <div style="display:grid;grid-template-rows:1fr 1fr;gap:20px;min-height:0">
-      <pre style="font-size:14px;line-height:1.45;padding:14px 20px"><span class="c">// GET /api/products/3</span>
-{
-  <span class="k">"id"</span>: 3,
-  <span class="k">"hasFullDetail"</span>: true,
-  <span class="k">"product"</span>: { nameLines, price, gallery, … },
-  <span class="k">"aiRecommend"</span>: [ <span class="c">/* 10개 */</span> ],
-  <span class="k">"infoTabs"</span>: [ <span class="c">/* 5개 */</span> ],
-  <span class="k">"detailContent"</span>: [ <span class="c">/* 상세 블록 */</span> ]
-}</pre>
-      <div class="note" style="display:flex;flex-direction:column;justify-content:center"><small>Static files</small><b>SITE_DIR는 backend의 상위 폴더</b><br>FastAPI가 HTML과 css · js · json · img 폴더를 같은 주소에서 제공합니다.</div>
-    </div>
-  </div>
-  <div class="foot"><span><b>14</b> / 18</span><span>Project Structure</span></div>
-</section></div>
-
-<!-- ================= 15 실행 방법 ================= -->
-<div class="frame"><section class="slide" id="s15">
-  <div class="eyebrow">Getting Started</div>
-  <h2 class="title">로컬 실행과 Render 배포</h2>
-  <p class="subtitle">로컬에서는 backend 폴더에서 실행하고, Render에서는 저장소 루트 기준 명령을 사용합니다.</p>
-  <div class="rule"></div>
-  <div class="body" style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 150px;gap:20px">
-    <div class="card" style="gap:14px">
-      <div class="hd"><span class="num">01</span><h3>로컬 서버 — PowerShell</h3></div>
-      <pre style="font-size:14.5px;line-height:1.5;flex:1"><span class="c"># 저장소 복제</span>
-git clone https://github.com/su4228-prog/orga_whole_food.git
-cd orga_whole_food\backend
-
-python -m venv .venv
-.venv\Scripts\python -m pip install -r requirements.txt
-copy .env.example .env
-
-.venv\Scripts\python -m uvicorn app:app --host 127.0.0.1 --port 8000</pre>
-      <p><code class="i">.env</code>에는 본인 환경의 값을 직접 입력하고 GitHub에는 올리지 않습니다.</p>
-    </div>
-    <div class="card" style="gap:14px">
-      <div class="hd"><span class="num">02</span><h3>Render 무료 Web Service</h3></div>
-      <ul style="gap:7px">
-        <li><b>Root Directory</b> — 빈칸</li>
-        <li><b>Build</b> — <code class="i">pip install -r backend/requirements.txt</code></li>
-        <li><b>Start</b> — <code class="i">cd backend &amp;&amp; uvicorn app:app --host 0.0.0.0 --port $PORT</code></li>
-        <li><b>Health Check</b> — <code class="i">/health</code></li>
-        <li><b>환경 변수</b> — Supabase 2개 · OpenAI 1개 · Python 버전 · 프록시 설정</li>
-      </ul>
-      <div class="note" style="margin-top:auto"><small>Live</small><b>https://orga-whole-food.onrender.com</b><br>무료 서버가 잠든 뒤 첫 요청은 수십 초 걸릴 수 있습니다.</div>
-    </div>
-    <div class="grid" style="grid-column:1/3;grid-template-columns:repeat(3,1fr);gap:20px">
-      <div class="stat" style="flex-direction:row;align-items:center;gap:18px"><b>3</b><span>외부 서비스 환경 변수</span></div>
-      <div class="stat" style="flex-direction:row;align-items:center;gap:18px"><b>1</b><span>웹 서비스로 화면과 API 제공</span></div>
-      <div class="stat" style="flex-direction:row;align-items:center;gap:18px"><b>200</b><span><code>/health</code> 정상 응답</span></div>
-    </div>
-  </div>
-  <div class="foot"><span><b>15</b> / 18</span><span>Getting Started</span></div>
-</section></div>
-
-<!-- ================= 16 검증 ================= -->
-<div class="frame"><section class="slide" id="s16">
-  <div class="eyebrow">Verification</div>
-  <h2 class="title">검증 결과 — 배포 사이트 기준</h2>
-  <p class="subtitle">2026.10.20 로컬 점검 스크립트와 공개 Render 주소를 직접 열어 화면 · API · 상담봇을 확인했습니다.</p>
-  <div class="rule"></div>
-  <div class="body" style="display:grid;grid-template-columns:1fr 520px;grid-template-rows:1fr 150px;gap:20px">
-    <div class="tbl" style="grid-row:1/3">
-      <table style="height:100%">
-        <tr><th>검사</th><th>결과</th></tr>
-        <tr><td>공개 상태</td><td>Render <code class="i">/health</code>에서 <code class="i">{"status":"ok"}</code> 응답</td></tr>
-        <tr><td>메인</td><td>Supabase 기반 상품 카드 33개와 이미지 정상 표시</td></tr>
-        <tr><td>상세 30개</td><td>상품별 이름 · 상세 블록 · 연관 상품 10개 · 이미지 정상</td></tr>
-        <tr><td>DB</td><td>원본 JSON과 Supabase 데이터 일치 (<code class="i">verify_seed.py</code>)</td></tr>
-        <tr><td>API</td><td>섹션 · 검색 · 상세 · 잘못된 입력 처리 통과 (<code class="i">verify_api.py</code>)</td></tr>
-        <tr><td>상담봇</td><td>질문 22개를 3회 연속 통과 (<code class="i">test_chat.py</code>)</td></tr>
-        <tr><td>공개 상담봇</td><td>배포 사이트에서 “베스트 1위 상품” 질문에 실제 응답 확인</td></tr>
-        <tr><td>보안</td><td><code class="i">backend/.env</code> 제외 · 추적 파일에서 실제 키 형태 없음</td></tr>
-        <tr><td>가로 넘침</td><td>1440 · 1100 · 900 · 760 · 560px에서 0 · 메인은 390px도 0</td></tr>
-      </table>
-    </div>
-    <div class="card" style="gap:8px;border-color:#e8c9a8;background:#fff8f0">
-      <h3 style="color:var(--brown)">🔧 개선 예정 항목</h3>
-      <p><b>상세 페이지 390px 폭에서 가로 69px 넘침을 보정할 예정입니다.</b> 데스크톱·태블릿 폭에서는 정상이며, 모바일 상세의 고정 폭 요소가 원인으로 보입니다.</p>
-      <table class="tight" style="margin-top:6px"><tr><th>폭</th><th>메인</th><th>상세</th></tr><tr><td>1440 ~ 560px</td><td>넘침 0</td><td>넘침 0</td></tr><tr><td style="color:var(--red)">390px</td><td>넘침 0</td><td style="color:var(--red);font-weight:700">+69px</td></tr></table>
-      <div class="note brown" style="margin-top:auto"><small>Free plan</small>서버가 잠든 뒤 첫 화면과 상세 데이터가 표시되기까지 대기 시간이 생길 수 있습니다.</div>
-    </div>
-    <div class="note brown" style="display:flex;flex-direction:column;justify-content:center"><small>검증하지 않은 범위</small>모든 브라우저·기기 실측, 접근성 전수 점검, 이미지 사용 권한 검토는 이번에 확인하지 않았습니다.</div>
-  </div>
-  <div class="foot"><span><b>16</b> / 18</span><span>Verification</span></div>
-</section></div>
-
-<!-- ================= 17 회고 ================= -->
-<div class="frame"><section class="slide" id="s17">
-  <div class="eyebrow">Retrospective</div>
-  <h2 class="title">회고</h2>
-  <p class="subtitle">잘한 점, 개선할 점, 그리고 추후 단계를 정리했습니다.</p>
-  <div class="rule"></div>
-  <div class="body" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
-    <div class="card big"><div class="hd"><span class="num" style="background:#dff0d5;color:#3c7a1f">K</span><h3>잘한 점 (Keep)</h3></div>
-      <ul style="gap:11px"><li><b>데이터와 화면을 분리</b>해 JSON에서 DB로 옮길 때 렌더링 코드를 거의 유지했습니다.</li><li>API가 없으면 JSON을 읽어 <b>정적 버전도 계속 동작</b>합니다.</li><li>상품 · 섹션 · 상세를 분리해 <b>중복 데이터를 줄였습니다.</b></li><li>점검 스크립트로 DB · API · 상담봇을 <b>반복 검증</b>할 수 있습니다.</li></ul>
-      <div class="note" style="margin-top:auto"><small>Keep</small>화면 · 서버 · DB · 상담봇을 <b>Render 한 주소</b>에서 제공했습니다.</div></div>
-    <div class="card big"><div class="hd"><span class="num" style="background:#f7e2cf;color:#a8591a">I</span><h3>개선할 점 (Improve)</h3></div>
-      <ul style="gap:11px"><li>로그인 · 장바구니 · 검색창은 화면만 있고 <b>동작은 다음 단계</b>입니다.</li><li>상담봇 횟수 제한이 서버 메모리에 있어 <b>재시작하면 초기화</b>됩니다.</li><li>무료 서버가 잠들면 첫 접속에 <b>대기 시간</b>이 생깁니다.</li><li>모바일 상세의 <b>가로 넘침 보정</b>이 남았습니다.</li></ul>
-      <div class="note brown" style="margin-top:auto"><small>Improvement</small>390px 상세 페이지의 <b>가로 넘침 69px</b>을 보정할 예정입니다.</div></div>
-    <div class="card big"><div class="hd"><span class="num" style="background:#dfe8f7;color:#2b5aa8">N</span><h3>추후 단계 (Next)</h3></div>
-      <ul style="gap:11px"><li>GitHub Pages도 <b>Render API</b>를 사용하도록 연결</li><li>헤더 검색창을 <b>상품 검색 API</b>와 연결</li><li><b>Supabase 인증</b>으로 회원가입 · 로그인 구현</li><li>장바구니와 주문 흐름 구현</li><li>횟수 제한을 외부 저장소로 이전</li><li>모바일 상세 가로 넘침 보정</li></ul>
-      <div class="note" style="margin-top:auto"><small>Next</small>백엔드와 배포는 완료했습니다. 다음 단계는 사용자 기능과 운영 안정성입니다.</div></div>
-  </div>
-  <div class="foot"><span><b>17</b> / 18</span><span>Retrospective</span></div>
-</section></div>
-
-<!-- ================= 18 로드맵 ================= -->
-<div class="frame"><section class="slide dark" id="s18">
-  <div class="eyebrow">Completion &amp; Next</div>
-  <h2 class="title">백엔드 확장과 공개 배포 완료</h2>
-  <p class="subtitle">계획했던 데이터 이전, API, 상품별 상세, 상담봇, Render 배포를 모두 구현했습니다.</p>
-  <div class="rule"></div>
-  <div class="body" style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 150px;gap:20px">
-    <div class="card" style="background:var(--dark-2);border-color:var(--dark-line);color:#f2f6ee">
-      <h3 style="color:#f2f6ee">현재 서비스 구조</h3>
-      <pre style="background:#0f1a13;border:1px solid var(--dark-line);flex:1;font-size:15.5px;line-height:1.75">브라우저
-   │  화면 · /api/* 요청
-   ▼
-FastAPI on Render ──▶ Supabase (PostgreSQL)
-   │              products · sections
-   │              section_products · product_details
-   └──────────────▶ OpenAI (질문할 때만)</pre>
-      <p style="color:var(--dark-muted)"><b style="color:#fff">Render 공개 주소</b>에서 사이트 · 상품 상세 · API · 상담봇이 함께 동작합니다.</p>
-    </div>
-    <div class="card" style="background:var(--dark-2);border-color:var(--dark-line);color:#f2f6ee">
-      <h3 style="color:#f2f6ee">구현 체크</h3>
-      <ul style="gap:11px;color:var(--dark-muted)">
-        <li style="color:var(--dark-muted)"><b style="color:#b9d96a">✓</b> Supabase 표 4개와 상품 30개 이전</li>
-        <li style="color:var(--dark-muted)"><b style="color:#b9d96a">✓</b> 섹션 · 검색 · 상세 · 상담봇 API</li>
-        <li style="color:var(--dark-muted)"><b style="color:#b9d96a">✓</b> 카드마다 <code class="i">sub.html?id=…</code> 상세 연결</li>
-        <li style="color:var(--dark-muted)"><b style="color:#b9d96a">✓</b> 문서와 상품 정보를 근거로 답하는 상담봇</li>
-        <li style="color:var(--dark-muted)"><b style="color:#b9d96a">✓</b> 비밀 키 제외 · 사용 횟수 제한</li>
-        <li style="color:var(--dark-muted)"><b style="color:#b9d96a">✓</b> Render 무료 Web Service 공개 배포</li>
-      </ul>
-    </div>
-    <div class="grid" style="grid-column:1/3;grid-template-columns:repeat(3,1fr);gap:20px">
-      <div class="stat" style="flex-direction:row;align-items:center;gap:18px"><b>4</b><span>Supabase 표</span></div>
-      <div class="stat" style="flex-direction:row;align-items:center;gap:18px"><b>7</b><span>FastAPI 엔드포인트</span></div>
-      <div class="stat" style="flex-direction:row;align-items:center;gap:18px"><b>100<i>%</i></b><span>배포 체크리스트 완료</span></div>
-    </div>
-  </div>
-  <div class="foot"><span><b>18</b> / 18</span><span>ORGA Whole Foods · su4228-prog</span></div>
-</section></div>
-
+</div><div class="pn"><b>26</b> / 28</div></section></div>
+<!-- ================= 27 ================= -->
+<div class="frame"><section class="slide white" id="s27">
+<style>
+.tools{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.tool{background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.tool h3{padding:18px 24px;color:#fff;font:800 23px/1 var(--sans)}
+.tool ul{list-style:none;padding:16px 24px;display:flex;flex-direction:column;gap:13px}
+.tool li b{display:block;font:700 18px/1.3 var(--sans)}
+.tool li span{font:400 14.5px/1.45 var(--sans);color:var(--sub)}
+.arch{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:1fr 330px;gap:36px}
+.arch svg{width:100%;height:100%}
+.files{display:flex;flex-direction:column;gap:0}
+.files div{padding:14px 0;border-top:1px solid #cfd9c9}
+.files b{display:block;font:800 17px/1.3 var(--sans);color:var(--green)}
+.files code{font:500 14px/1.6 var(--mono);color:var(--ink)}
+.files span{display:block;font:400 14px/1.5 var(--sans);color:var(--sub)}
+.wide{position:absolute;left:88px;right:88px;top:250px;bottom:80px}
+.erd{position:absolute;left:88px;right:88px;top:240px;bottom:76px}
+.erd svg{width:100%;height:100%}
+.path{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:1fr 1fr;gap:16px}
+.ps{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:8px;position:relative}
+.ps i{font:800 14px/1 var(--mono);font-style:normal;color:var(--red)}
+.ps b{font:800 19px/1.3 var(--sans)}
+.ps span{font:400 14.5px/1.5 var(--sans);color:var(--sub)}
+.ps code{margin-top:auto;font:500 12.5px/1.45 var(--mono);color:var(--green);background:#eef4e6;border-radius:6px;padding:6px 8px}
+.ps.ai{border-color:#cdbdf0;background:#faf7ff}.ps.ai i{color:var(--violet)}
+.fix{position:absolute;left:88px;right:88px;top:228px;bottom:72px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto 1fr auto;gap:14px}
+.fc{background:var(--paper);border-radius:10px;padding:14px 18px;border-top:4px solid var(--line)}
+.fc small{display:block;font:700 13px/1 var(--sans);color:var(--sub);margin-bottom:8px}
+.fc p{font:500 16.5px/1.5 var(--sans)}
+.fc.s{border-top-color:#9db3c9}.fc.c{border-top-color:#d08a2c}.fc.r{border-top-color:#3f9d55}
+.ba{grid-column:1/4;display:grid;grid-template-columns:1fr 1fr;gap:16px;min-height:0}
+.bai{position:relative;border-radius:10px;overflow:hidden;background:#fff;border:2px solid var(--line);min-height:0}
+.bai img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.bai.cover img{object-fit:cover;object-position:top center}
+.bai.b{border-color:#f0b4ad}.bai.a{border-color:#b6d58f}
+.bai em{position:absolute;left:10px;top:10px;z-index:2;font:700 13px/1 var(--sans);font-style:normal;color:#fff;padding:7px 10px;border-radius:6px}
+.bai.b em{background:var(--red)}.bai.a em{background:#3f9d55}
+.bacode{grid-column:1/4;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.bacode pre{font-size:13.5px !important}
+.code.b{border-left:4px solid var(--red)}.code.a{border-left:4px solid #3f9d55}
+.tc2{position:absolute;left:88px;right:88px;top:250px;bottom:72px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.twocol{display:flex;flex-direction:column;gap:12px;min-height:0}
+.twocol h3{font:800 22px/1.3 var(--sans)}
+.twocol .row3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.twocol .fc p{font-size:15px}
+.ver{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:1fr 430px;gap:24px}
+.cause{display:flex;flex-direction:column;gap:12px}
+.cb{display:grid;grid-template-columns:150px 1fr 40px;align-items:center;gap:12px;font:600 16px/1.3 var(--sans)}
+.cb .bar{height:22px;border-radius:6px;background:var(--green-2)}
+.cb b{font:800 18px/1 var(--mono);color:var(--green)}
+.learn{position:absolute;left:88px;right:88px;top:270px;bottom:90px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.ln{background:var(--dark-2);border:1px solid var(--dark-line);border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:14px}
+.ln i{font:900 44px/1 var(--sans);font-style:normal;color:#a8d26a}
+.ln b{font:800 23px/1.35 var(--sans);color:#fff}
+.ln span{font:400 17px/1.65 var(--sans);color:var(--dark-sub)}
+</style>
+<div class="sec"><b>03</b> / 기술과 문제 해결</div>
+<div class="h one">확인한 것 — <em>자동 점검 도구로</em></div>
+<p class="lead">점검 스크립트를 함께 만들어 두어, 고칠 때마다 같은 기준으로 다시 확인했습니다. 로컬과 배포 주소(Render) 모두 같은 도구로 점검합니다.</p>
+<div class="wide" style="top:300px"><div class="tbl"><table>
+<tr><th style="width:170px">영역</th><th>확인한 내용</th><th style="width:150px">결과</th><th style="width:230px">도구</th></tr><tr><td><b>상담봇 RAG</b></td><td>질문 22개 (배송 · 반품 · 가격 · 순위 · 이어지는 질문 · 문서 밖 · 규칙 무시)</td><td><b style="color:var(--green)">22 / 22</b></td><td><code>test_chat.py</code></td></tr><tr><td><b>사진 → 같은 상품</b></td><td>잘라내고 밝기를 바꾼 상품 사진 · 다른 섹션 사진</td><td><b style="color:var(--green)">90/90 · 3/3</b></td><td><code>직접 시험</code></td></tr><tr><td><b>화면</b></td><td>메인 카드 33 · 상세 30 · JS 오류 0 · HTTP 오류 0 · 11가지 폭 가로 넘침 0</td><td><b style="color:var(--green)">통과</b></td><td><code>check_site.py</code></td></tr><tr><td><b>회원 · 관리자</b></td><td>가입 · 쿠키 · 새로고침 유지 · 권한 차단 · 위조 요청 403 · 로그아웃</td><td><b style="color:var(--green)">13 / 13</b></td><td><code>check_auth.py</code></td></tr><tr><td><b>DB · API</b></td><td>원본과 DB 일치 · 섹션 · 검색 · 상세 · 잘못된 입력</td><td><b style="color:var(--green)">통과</b></td><td><code>verify_seed · verify_api</code></td></tr><tr><td><b>관리자 흐름</b></td><td>AI 분석 → 등록 → 수정 → 검색 → 삭제 → 기록 · 상담봇 즉시 반영</td><td><b style="color:var(--green)">통과</b></td><td><code>직접 시험</code></td></tr><tr><td><b>안정성</b></td><td>메인 20번 연속 열기 · 서버 오류 기록</td><td><b style="color:var(--green)">0 / 20</b></td><td><code>직접 시험</code></td></tr><tr><td><b>보안</b></td><td>.env · 서버 코드 · .git 주소 접근 · 공개 코드의 키</td><td><b style="color:var(--green)">404 · 0건</b></td><td><code>check_site.py</code></td></tr>
+</table></div></div><div class="pn"><b>27</b> / 28</div></section></div>
+<!-- ================= 28 ================= -->
+<div class="frame"><section class="slide dark" id="s28">
+<style>
+.tools{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.tool{background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.tool h3{padding:18px 24px;color:#fff;font:800 23px/1 var(--sans)}
+.tool ul{list-style:none;padding:16px 24px;display:flex;flex-direction:column;gap:13px}
+.tool li b{display:block;font:700 18px/1.3 var(--sans)}
+.tool li span{font:400 14.5px/1.45 var(--sans);color:var(--sub)}
+.arch{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:1fr 330px;gap:36px}
+.arch svg{width:100%;height:100%}
+.files{display:flex;flex-direction:column;gap:0}
+.files div{padding:14px 0;border-top:1px solid #cfd9c9}
+.files b{display:block;font:800 17px/1.3 var(--sans);color:var(--green)}
+.files code{font:500 14px/1.6 var(--mono);color:var(--ink)}
+.files span{display:block;font:400 14px/1.5 var(--sans);color:var(--sub)}
+.wide{position:absolute;left:88px;right:88px;top:250px;bottom:80px}
+.erd{position:absolute;left:88px;right:88px;top:240px;bottom:76px}
+.erd svg{width:100%;height:100%}
+.path{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:1fr 1fr;gap:16px}
+.ps{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:8px;position:relative}
+.ps i{font:800 14px/1 var(--mono);font-style:normal;color:var(--red)}
+.ps b{font:800 19px/1.3 var(--sans)}
+.ps span{font:400 14.5px/1.5 var(--sans);color:var(--sub)}
+.ps code{margin-top:auto;font:500 12.5px/1.45 var(--mono);color:var(--green);background:#eef4e6;border-radius:6px;padding:6px 8px}
+.ps.ai{border-color:#cdbdf0;background:#faf7ff}.ps.ai i{color:var(--violet)}
+.fix{position:absolute;left:88px;right:88px;top:228px;bottom:72px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto 1fr auto;gap:14px}
+.fc{background:var(--paper);border-radius:10px;padding:14px 18px;border-top:4px solid var(--line)}
+.fc small{display:block;font:700 13px/1 var(--sans);color:var(--sub);margin-bottom:8px}
+.fc p{font:500 16.5px/1.5 var(--sans)}
+.fc.s{border-top-color:#9db3c9}.fc.c{border-top-color:#d08a2c}.fc.r{border-top-color:#3f9d55}
+.ba{grid-column:1/4;display:grid;grid-template-columns:1fr 1fr;gap:16px;min-height:0}
+.bai{position:relative;border-radius:10px;overflow:hidden;background:#fff;border:2px solid var(--line);min-height:0}
+.bai img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.bai.cover img{object-fit:cover;object-position:top center}
+.bai.b{border-color:#f0b4ad}.bai.a{border-color:#b6d58f}
+.bai em{position:absolute;left:10px;top:10px;z-index:2;font:700 13px/1 var(--sans);font-style:normal;color:#fff;padding:7px 10px;border-radius:6px}
+.bai.b em{background:var(--red)}.bai.a em{background:#3f9d55}
+.bacode{grid-column:1/4;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.bacode pre{font-size:13.5px !important}
+.code.b{border-left:4px solid var(--red)}.code.a{border-left:4px solid #3f9d55}
+.tc2{position:absolute;left:88px;right:88px;top:250px;bottom:72px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.twocol{display:flex;flex-direction:column;gap:12px;min-height:0}
+.twocol h3{font:800 22px/1.3 var(--sans)}
+.twocol .row3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.twocol .fc p{font-size:15px}
+.ver{position:absolute;left:88px;right:88px;top:250px;bottom:80px;display:grid;grid-template-columns:1fr 430px;gap:24px}
+.cause{display:flex;flex-direction:column;gap:12px}
+.cb{display:grid;grid-template-columns:150px 1fr 40px;align-items:center;gap:12px;font:600 16px/1.3 var(--sans)}
+.cb .bar{height:22px;border-radius:6px;background:var(--green-2)}
+.cb b{font:800 18px/1 var(--mono);color:var(--green)}
+.learn{position:absolute;left:88px;right:88px;top:270px;bottom:90px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.ln{background:var(--dark-2);border:1px solid var(--dark-line);border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:14px}
+.ln i{font:900 44px/1 var(--sans);font-style:normal;color:#a8d26a}
+.ln b{font:800 23px/1.35 var(--sans);color:#fff}
+.ln span{font:400 17px/1.65 var(--sans);color:var(--dark-sub)}
+</style>
+<div class="sec"><b>03</b> / 기술과 문제 해결</div>
+<div class="h">이 프로젝트에서<br><em>배운 것</em></div>
+<div class="learn">
+  <div class="ln"><i>01</i><b>AI는 근거와 함께 쓸 때<br>믿을 수 있다</b><span>모델이 추측하던 순위 · 반품 기준을 서버가 계산해 넘기고, 근거는 벡터 검색으로 골라 출처까지 보여주니 22/22를 유지했습니다.</span></div>
+  <div class="ln"><i>02</i><b>조건에 맞춰<br>모델을 고른다</b><span>무료 서버 512MB에서 YOLO를 돌리려고 ONNX로 바꾸고, 같은 상품 찾기는 분류 모델의 특징만 꺼내 30개와 비교하는 방식으로 풀었습니다.</span></div>
+  <div class="ln"><i>03</i><b>재현 → 원인 → 수정 →<br>자동 점검</b><span>"가끔" 생기는 오류도 일부러 재현하고, 고친 뒤에는 점검 도구로 같은 기준을 다시 확인하는 습관을 만들었습니다.</span></div>
+</div><div class="pn"><b>28</b> / 28</div></section></div>
 <script>
 // 화면 폭에 맞춰 슬라이드를 축소해서 보여줍니다 (?export 를 붙이면 1600×900 원본 크기)
 (function(){

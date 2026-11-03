@@ -5,7 +5,7 @@
 // role=admin 계정만 들어올 수 있습니다. 모든 글자는 textContent 로 넣어 HTML 이 실행되지 않게 합니다.
 
 import { apiBase, detailUrl } from "./api.js";
-import { clearSession, getToken, refreshUser } from "./auth.js";
+import { authHeaders, clearSession, refreshUser } from "./auth.js";
 
 const PHOTO_MAX_SIDE = 1200;
 const $ = (id) => document.getElementById(id);
@@ -51,11 +51,11 @@ function gate(title, message, switchAccount) {
   setMsg($("loginMsg"), message, !!message);
   const link = $("gateLink");
   link.textContent = switchAccount ? "다른 계정으로 로그인" : "로그인하러 가기";
-  link.onclick = switchAccount ? () => clearSession() : null;
+  link.onclick = switchAccount ? (e) => { e.preventDefault(); clearSession().then(() => { location.href = link.href; }); } : null;
 }
 
-function logout() {
-  clearSession();
+async function logout() {
+  await clearSession();
   location.href = "login.html?next=admin.html";
 }
 
@@ -68,7 +68,8 @@ async function enterApp() {
 async function api(path, { method = "GET", body } = {}) {
   const res = await fetch(`${base}${path}`, {
     method,
-    headers: { "Content-Type": "application/json", Authorization: `Bearer ${getToken() || ""}` },
+    credentials: "include",                         // 출입증은 HttpOnly 쿠키로 자동 전송
+    headers: { "Content-Type": "application/json", ...authHeaders() },
     body: body ? JSON.stringify(body) : undefined,
   });
   const data = await res.json().catch(() => ({}));

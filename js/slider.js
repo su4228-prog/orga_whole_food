@@ -1,9 +1,6 @@
-// 배너 슬라이더
-// index.html의 #sliderTrack 캐러셀을 동작시키는 기능
-
-// export fetch(...) 형태처럼 즉시 실행 코드는 바로 export 할 수 없음
-// 이 슬라이더는 fetch는 아니지만 같은 이유로 함수로 감싼 후 export 함
-// (감싸지 않으면 import 되는 순간 바로 실행되어 실행 시점을 제어할 수 없음)
+// slider.js — 메인 배너 슬라이더 (#sliderTrack)
+// 3장씩(모바일 1장) 보여주고 3.5초마다 넘김 · 이전/다음 · 일시정지 · 현재 번호
+// 함수로 내보내고 main.js 에서 실행합니다.
 
 export function initSlider() {
 

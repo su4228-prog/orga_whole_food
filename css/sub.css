@@ -1731,3 +1731,51 @@
 
 /* 상세 설명 속 상품 사진 — 복숭아 병조림 상세의 이미지와 같은 너비로 꽉 채움 */
 .product-detail-image-block.product-shot{width:100%;margin:0}
+
+/* 가격 줄은 자리가 모자라면 다음 줄로 (넉넉하면 한 줄 그대로) */
+.sale-price-row {
+  flex-wrap: wrap !important;
+  row-gap: 6px !important;
+}
+
+/* 휴대폰 폭 — 가격 줄 · 배송정보 줄이 화면 밖으로 밀리지 않게
+   (위쪽 !important 규칙보다 뒤에 두어 우선 적용) */
+@media (max-width: 520px) {
+  .sale-price-row {
+    flex-wrap: wrap !important;
+    gap: 6px 10px !important;
+  }
+
+  .sale-price,
+  .discount-rate {
+    font-size: 28px !important;
+  }
+
+  .product-info-row {
+    grid-template-columns: 90px minmax(0, 1fr) !important;
+  }
+
+  .product-info-row.origin-row .info-label,
+  .product-info-row.origin-row .info-value {
+    font-size: 18px !important;
+  }
+
+  .delivery-heading {
+    grid-template-columns: 90px minmax(0, 1fr) 20px !important;
+  }
+
+  .delivery-types {
+    flex-wrap: wrap;
+    gap: 12px !important;
+  }
+
+  .order-bottom {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .order-item-price {
+    margin-left: auto;
+    font-size: 18px !important;
+  }
+}

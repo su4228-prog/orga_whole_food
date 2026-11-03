@@ -1,6 +1,5 @@
-// main.js
-// 각 기능별 JS 파일에서 export한 함수를 import하여
-// 한 곳에서 실행하는 메인 JavaScript 파일
+// main.js — 메인 페이지 실행 순서
+// 기능별 파일에서 내보낸 함수를 모아 한 곳에서 실행합니다.
 
 // 배너 슬라이더
 import { initSlider } from "./slider.js";

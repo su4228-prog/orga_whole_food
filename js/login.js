@@ -44,6 +44,7 @@ form.addEventListener("submit", async (e) => {
   try {
     const res = await fetch(`${base}/api/auth/login`, {
       method: "POST",
+      credentials: "include",                       // 출입증 쿠키 받기
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ login_id, password }),
     });

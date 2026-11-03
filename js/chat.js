@@ -49,7 +49,7 @@ async function init() {
   build(base, !!status.vision);
 }
 
-const CSS_VERSION = "20261020c";
+const CSS_VERSION = "20261104";
 
 function loadStyles() {
   return new Promise((resolve) => {
@@ -314,20 +314,22 @@ function build(base, visionOn) {
     if (data.products.length) {
       const cards = el("div", "chat-products");
       data.products.forEach((p) => {
-        const a = el("a", "chat-product");
+        const same = data.match && data.match.product_id === p.id;
+        const a = el("a", "chat-product" + (same ? " is-same" : ""));
         a.href = detailUrl(p);
         const pic = el("img");
         pic.src = p.image || "";
         pic.alt = "";
         pic.loading = "lazy";
         const info = el("span", "chat-product-info");
+        if (same) info.append(el("em", "chat-same", `같은 상품 · 일치도 ${Math.round(data.match.similarity * 100)}%`));
         info.append(el("strong", null, p.name), el("span", null, p.price || ""));
         a.append(pic, info);
         cards.append(a);
       });
       bubble.append(cards);
     }
-    bubble.append(el("span", "chat-sources", "YOLO 물체 인식 결과 · 일반 물체 80종 기준"));
+    bubble.append(el("span", "chat-sources", "YOLO 분류(같은 상품) · YOLO 탐지(물체) · 벡터 검색(추천)"));
     return bubble;
   }
 }
