@@ -251,10 +251,6 @@ FastAPI on Render ───────────▶ Supabase (PostgreSQL · p
 | 05 | 새 아이디도 "이미 사용 중" | 503 오류 응답을 '사용 불가'로 읽음 | `res.ok` 먼저 확인 |
 | 06 | 상담봇이 순위 · 반품 기한을 틀림 | 긴 목록을 모델이 직접 세고 추측 | 서버가 계산한 사실을 함께 전달 |
 
-| 01 고치기 전 → 후 | 03 고치기 전 → 후 | 04 고치기 전 → 후 |
-|:---:|:---:|:---:|
-| <img src="./docs/readme/img/fix_robot_before.jpg" width="100%" /><br><img src="./docs/readme/img/fix_robot_after.jpg" width="100%" /> | <img src="./docs/readme/img/fix_admin_before.jpg" width="100%" /><br><img src="./docs/readme/img/fix_admin_after.jpg" width="100%" /> | <img src="./docs/readme/img/fix_bubble_before.png" width="100%" /><br><img src="./docs/readme/img/fix_bubble_after.png" width="100%" /> |
-
 ```python
 # 02 · backend/db.py — 수정 전: @lru_cache 로 연결 1개를 모든 요청이 공유
 _local = threading.local()
