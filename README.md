@@ -12,6 +12,8 @@
 ![JWT](https://img.shields.io/badge/JWT-HttpOnly_Cookie-000000?style=flat-square&logo=jsonwebtokens&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES_Modules-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 
+> 🎬 **시연 영상 (약 2분)** — [`docs/readme/demo/orga_demo.mp4`](./docs/readme/demo/orga_demo.mp4) · 메인 → 상품 상세 → 상담봇 RAG → 사진으로 같은 상품 찾기 → 관리자 로그인 → AI 상품등록 → 검색 · 수정 · 기록 · 삭제
+>
 > 📑 발표 슬라이드 28장은 아래 [슬라이드 펼쳐보기](#-슬라이드-펼쳐보기)에 있습니다. 원본: [`docs/readme/README.html`](./docs/readme/README.html)
 
 | 상품 · 상세 | API | Supabase 표 | RAG 벡터 | 상담봇 점검 | 사진 → 같은 상품 | 공개 코드의 비밀 키 |
